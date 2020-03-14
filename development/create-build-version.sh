@@ -17,7 +17,7 @@ if [ -z "${DESTDIR}" ]; then
   exit 1
 fi
 
-VERSION=$(head ./debian/changelog --lines=1|sed -E 's/^[^(]*\(([^)]*).*/\1/g')
+VERSION=$(head ./debian/changelog -n=1|sed -E 's/^[^(]*\(([^)]*).*/\1/g')
 GITHASH=$(git rev-parse --short HEAD)
 if [ -z "${GITHASH}" ] ; then
   echo "Seems getting git version failed.."
