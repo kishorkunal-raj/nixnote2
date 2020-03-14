@@ -14,7 +14,7 @@
 
 cmake_minimum_required (VERSION 3.0.2)
 project (nixnote2)
-add_definitions(-std=c++11)
+add_definitions(-std=c++14)
 
 find_package (Qt5Widgets REQUIRED)
 find_package (Qt5Gui REQUIRED)
