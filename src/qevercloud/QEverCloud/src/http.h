@@ -1,83 +1,120 @@
 /**
  * Original work: Copyright (c) 2014 Sergey Skoblikov
- * Modified work: Copyright (c) 2015-2016 Dmitry Ivanov
+ * Modified work: Copyright (c) 2015-2019 Dmitry Ivanov
  *
- * This file is a part of QEverCloud project and is distributed under the terms of MIT license:
+ * This file is a part of QEverCloud project and is distributed under the terms
+ * of MIT license:
  * https://opensource.org/licenses/MIT
  */
 
 #ifndef QEVERCLOUD_HTTP_H
 #define QEVERCLOUD_HTTP_H
 
-#include <qt4helpers.h>
-#include <QString>
+#include <Helpers.h>
+
 #include <QByteArray>
-#include <QtEndian>
 #include <QNetworkRequest>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-#include <QTimer>
-#include <QSharedPointer>
-#include <QTypeInfo>
 #include <QSslError>
+#include <QString>
+#include <QtEndian>
+#include <QTimer>
+#include <QTypeInfo>
+
+#include <memory>
 
 /** @cond HIDDEN_SYMBOLS  */
 
 namespace qevercloud {
 
-QNetworkAccessManager * evernoteNetworkAccessManager();
+////////////////////////////////////////////////////////////////////////////////
 
-// the class greatly simplifies QNetworkReply handling
+/**
+ * @brief The ReplyFetcher class simplifies handling of QNetworkReply
+ */
 class ReplyFetcher: public QObject
 {
     Q_OBJECT
 public:
     ReplyFetcher(QObject * parent = Q_NULLPTR);
 
-    void start(QNetworkAccessManager * nam, QUrl url);
+    void start(QNetworkAccessManager * nam, QUrl url, qint64 timeoutMsec);
+
     // if !postData.isNull() then POST will be issued instead of GET
-    void start(QNetworkAccessManager * nam, QNetworkRequest request, QByteArray postData = QByteArray());
-    bool isError() { return !m_success; }
-    QString errorText() { return m_errorText; }
-    QByteArray receivedData() { return m_receivedData; }
-    int httpStatusCode() { return m_httpStatusCode; }
+    void start(QNetworkAccessManager * nam, QNetworkRequest request,
+               qint64 timeoutMsec, QByteArray postData = QByteArray());
+
+    bool isError() const { return m_errorType != QNetworkReply::NoError; }
+
+    QNetworkReply::NetworkError errorType() const { return m_errorType; }
+
+    QString errorText() const { return m_errorText; }
+
+    QByteArray receivedData() const { return m_receivedData; }
+
+    int httpStatusCode() const { return m_httpStatusCode; }
 
 Q_SIGNALS:
-    void replyFetched(QObject*); // sends itself
+    void replyFetched(QObject * self); // sends itself
 
 private Q_SLOTS:
     void onFinished();
     void onError(QNetworkReply::NetworkError);
-    void onSslErrors(QList<QSslError> l);
-    void onDownloadProgress(qint64, qint64);
+    void onSslErrors(QList<QSslError> list);
+    void onDownloadProgress(qint64 downloaded, qint64 total);
     void checkForTimeout();
 
 private:
-    void setError(QString errorText);
+    void setError(QNetworkReply::NetworkError errorType, QString errorText);
 
 private:
-    QSharedPointer<QNetworkReply>   m_reply;
-    bool                            m_success;
-    QString                         m_errorText;
-    QByteArray                      m_receivedData;
-    int                             m_httpStatusCode;
-    QTimer*                         m_ticker;
-    qint64                          m_lastNetworkTime;
+    struct QNetworkReplyDeleter
+    {
+        void operator()(QNetworkReply * reply)
+        {
+            reply->deleteLater();
+        }
+    };
+
+    using QNetworkReplyPtr = std::unique_ptr<QNetworkReply, QNetworkReplyDeleter>;
+
+    QNetworkReplyPtr    m_reply;
+
+    QNetworkReply::NetworkError m_errorType = QNetworkReply::NoError;
+    QString     m_errorText;
+    QByteArray  m_receivedData;
+    int         m_httpStatusCode = 0;
+
+    QTimer *    m_ticker;
+    qint64      m_lastNetworkTime = 0;
+    qint64      m_timeoutMsec = 0;
 };
+
+////////////////////////////////////////////////////////////////////////////////
 
 QNetworkRequest createEvernoteRequest(QString url);
 
-QByteArray askEvernote(QString url, QByteArray postData);
+QByteArray askEvernote(QString url, QByteArray postData, const qint64 timeoutMsec);
 
 QByteArray simpleDownload(QNetworkAccessManager * nam, QNetworkRequest request,
-                          QByteArray postData = QByteArray(), int * httpStatusCode = Q_NULLPTR);
+                          const qint64 timeoutMsec,
+                          QByteArray postData = QByteArray(),
+                          int * httpStatusCode = Q_NULLPTR);
 
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @brief The ReplyFetcherLauncher class simplifies ReplyFetcher starting
+ */
 class ReplyFetcherLauncher: public QObject
 {
     Q_OBJECT
 public:
-    explicit ReplyFetcherLauncher(ReplyFetcher * fetcher, QNetworkAccessManager * nam,
-                                  const QNetworkRequest & request, const QByteArray & postData);
+    explicit ReplyFetcherLauncher(
+        ReplyFetcher * fetcher, QNetworkAccessManager * nam,
+        const QNetworkRequest & request, const qint64 timeoutMsec,
+        const QByteArray & postData);
 
 public Q_SLOTS:
     void start();
@@ -86,6 +123,7 @@ private:
     ReplyFetcher *          m_fetcher;
     QNetworkAccessManager * m_nam;
     QNetworkRequest         m_request;
+    qint64                  m_timeoutMsec;
     QByteArray              m_postData;
 };
 

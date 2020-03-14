@@ -1,15 +1,22 @@
 /**
  * Original work: Copyright (c) 2014 Sergey Skoblikov
- * Modified work: Copyright (c) 2015-2016 Dmitry Ivanov
+ * Modified work: Copyright (c) 2015-2019 Dmitry Ivanov
  *
- * This file is a part of QEverCloud project and is distributed under the terms of MIT license:
+ * This file is a part of QEverCloud project and is distributed under the terms
+ * of MIT license:
  * https://opensource.org/licenses/MIT
  */
 
-#include <thumbnail.h>
-#include "http.h"
+#include "Http.h"
+
+#include <Globals.h>
+#include <Log.h>
+#include <RequestContext.h>
+#include <Thumbnail.h>
 
 namespace qevercloud {
+
+////////////////////////////////////////////////////////////////////////////////
 
 class ThumbnailPrivate
 {
@@ -18,8 +25,10 @@ public:
     QString m_shardId;
     QString m_authenticationToken;
     int m_size;
-    Thumbnail::ImageType::type m_imageType;
+    Thumbnail::ImageType m_imageType;
 };
+
+////////////////////////////////////////////////////////////////////////////////
 
 Thumbnail::Thumbnail():
     d_ptr(new ThumbnailPrivate)
@@ -30,7 +39,7 @@ Thumbnail::Thumbnail():
 
 
 Thumbnail::Thumbnail(QString host, QString shardId, QString authenticationToken,
-                     int size, Thumbnail::ImageType::type imageType) :
+                     int size, Thumbnail::ImageType imageType) :
     d_ptr(new ThumbnailPrivate)
 {
     d_ptr->m_host = host;
@@ -69,33 +78,81 @@ Thumbnail & Thumbnail::setSize(int size)
     return *this;
 }
 
-Thumbnail & Thumbnail::setImageType(ImageType::type imageType)
+Thumbnail & Thumbnail::setImageType(ImageType imageType)
 {
     d_ptr->m_imageType = imageType;
     return *this;
 }
 
-QByteArray Thumbnail::download(Guid guid, bool isPublic, bool isResourceGuid)
+QByteArray Thumbnail::download(
+    Guid guid, const bool isPublic, const bool isResourceGuid,
+    const qint64 timeoutMsec)
 {
-    int httpStatusCode = 0;
-    QPair<QNetworkRequest, QByteArray> request = createPostRequest(guid, isPublic, isResourceGuid);
+    QEC_DEBUG("thumbnail", "Downloading thumbnail: guid = " << guid
+        << (isPublic ? "public" : "non-public") << ", "
+        << (isResourceGuid ? "resource guid" : "not a resource guid"));
 
-    QByteArray reply = simpleDownload(evernoteNetworkAccessManager(), request.first,
-                                      request.second, &httpStatusCode);
-    if (httpStatusCode != 200) {
-        throw EverCloudException(QStringLiteral("HTTP Status Code = %1").arg(httpStatusCode));
+    int httpStatusCode = 0;
+    auto request = createPostRequest(guid, isPublic, isResourceGuid);
+
+    QByteArray reply = simpleDownload(
+        evernoteNetworkAccessManager(),
+        request.first,
+        timeoutMsec,
+        request.second,
+        &httpStatusCode);
+
+    if (httpStatusCode != 200)
+    {
+        QEC_WARNING("thumbnail", "Failed to download thumbnail with guid "
+            << guid << ": http status code = " << httpStatusCode);
+
+        throw EverCloudException(
+            QString::fromUtf8("HTTP Status Code = %1").arg(httpStatusCode));
     }
 
+    QEC_DEBUG("thumbnail", "Finished download for guid " << guid);
     return reply;
 }
 
-AsyncResult* Thumbnail::downloadAsync(Guid guid, bool isPublic, bool isResourceGuid)
+AsyncResult * Thumbnail::downloadAsync(
+    Guid guid, const bool isPublic, const bool isResourceGuid,
+    const qint64 timeoutMsec)
 {
-    QPair<QNetworkRequest, QByteArray> pair = createPostRequest(guid, isPublic, isResourceGuid);
-    return new AsyncResult(pair.first, pair.second);
+    QEC_DEBUG("thumbnail", "Starting async thumbnail download: guid = " << guid
+        << (isPublic ? "public" : "non-public") << ", "
+        << (isResourceGuid ? "resource guid" : "not a resource guid"));
+
+    auto pair = createPostRequest(guid, isPublic, isResourceGuid);
+    auto ctx = newRequestContext({}, timeoutMsec);
+    auto res = new AsyncResult(
+        pair.first,
+        pair.second,
+        ctx);
+
+    QObject::connect(res, &AsyncResult::finished,
+                     [=] (QVariant value,
+                          EverCloudExceptionDataPtr error,
+                          IRequestContextPtr ctx)
+                     {
+                         Q_UNUSED(value)
+                         Q_UNUSED(ctx)
+
+                         if (!error) {
+                             QEC_DEBUG("thumbnail", "Finished async download "
+                                << "for guid " << guid);
+                             return;
+                         }
+
+                         QEC_WARNING("thumbnail", "Async download for guid "
+                            << guid << " finished with error: "
+                            << error->errorMessage);
+                     });
+    return res;
 }
 
-QPair<QNetworkRequest, QByteArray> Thumbnail::createPostRequest(Guid guid, bool isPublic, bool isResourceGuid)
+std::pair<QNetworkRequest, QByteArray> Thumbnail::createPostRequest(
+    Guid guid, bool isPublic, bool isResourceGuid)
 {
     Q_D(Thumbnail);
 
@@ -134,14 +191,61 @@ QPair<QNetworkRequest, QByteArray> Thumbnail::createPostRequest(Guid guid, bool 
         url += QStringLiteral("?size=%1").arg(d->m_size);
     }
 
+    QEC_TRACE("thumbnail", "Sending thumbnail download request: url = " << url);
+
     request.setUrl(QUrl(url));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/x-www-form-urlencoded"));
+    request.setHeader(QNetworkRequest::ContentTypeHeader,
+                      QStringLiteral("application/x-www-form-urlencoded"));
 
     if (!isPublic) {
-        postData = QByteArray("auth=")+ QUrl::toPercentEncoding(d->m_authenticationToken);
+        postData =
+            QByteArray("auth=") + QUrl::toPercentEncoding(d->m_authenticationToken);
     }
 
-    return qMakePair(request, postData);
+    return std::make_pair(request, postData);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+namespace {
+
+template <typename T>
+void printImageType(T & strm, const Thumbnail::ImageType imageType)
+{
+    switch(imageType)
+    {
+    case Thumbnail::ImageType::PNG:
+        strm << "PNG";
+        break;
+    case Thumbnail::ImageType::JPEG:
+        strm << "JPEG";
+        break;
+    case Thumbnail::ImageType::GIF:
+        strm << "GIF";
+        break;
+    case Thumbnail::ImageType::BMP:
+        strm << "BMP";
+        break;
+    default:
+        strm << "Unknown (" << static_cast<qint64>(imageType) << ")";
+        break;
+    }
+}
+
+} // namespace
+
+////////////////////////////////////////////////////////////////////////////////
+
+QTextStream & operator<<(QTextStream & strm, const Thumbnail::ImageType imageType)
+{
+    printImageType(strm, imageType);
+    return strm;
+}
+
+QDebug & operator<<(QDebug & dbg, const Thumbnail::ImageType imageType)
+{
+    printImageType(dbg, imageType);
+    return dbg;
 }
 
 } // namespace qevercloud

@@ -1,33 +1,30 @@
 /**
  * Original work: Copyright (c) 2014 Sergey Skoblikov
- * Modified work: Copyright (c) 2015-2016 Dmitry Ivanov
+ * Modified work: Copyright (c) 2015-2020 Dmitry Ivanov
  *
- * This file is a part of QEverCloud project and is distributed under the terms of MIT license:
+ * This file is a part of QEverCloud project and is distributed under the terms
+ * of MIT license:
  * https://opensource.org/licenses/MIT
  *
  * This file was generated from Evernote Thrift API
  */
 
-
 #ifndef QEVERCLOUD_GENERATED_SERVICES_H
 #define QEVERCLOUD_GENERATED_SERVICES_H
 
-#include "../Optional.h"
-#include "../export.h"
+#include "../Export.h"
+
 #include "../AsyncResult.h"
-#include "constants.h"
-#include "types.h"
-#include <QMap>
-#include <QList>
-#include <QSet>
-#include <QString>
-#include <QStringList>
-#include <QByteArray>
-#include <QDateTime>
-#include <QMetaType>
+#include "../DurableService.h"
+#include "../Optional.h"
+#include "../RequestContext.h"
+#include "Constants.h"
+#include "Types.h"
 #include <QObject>
 
 namespace qevercloud {
+
+////////////////////////////////////////////////////////////////////////////////
 
 /**
  * Service:  NoteStore
@@ -55,28 +52,29 @@ namespace qevercloud {
  *       content.
  * </ul>
  */
-class QEVERCLOUD_EXPORT NoteStore: public QObject
+class QEVERCLOUD_EXPORT INoteStore: public QObject
 {
     Q_OBJECT
-    Q_DISABLE_COPY(NoteStore)
+    Q_DISABLE_COPY(INoteStore)
+protected:
+    INoteStore(QObject * parent) :
+        QObject(parent)
+    {}
+
 public:
-    explicit NoteStore(QString noteStoreUrl = QString(), QString authenticationToken = QString(), QObject * parent = 0);
-    explicit NoteStore(QObject * parent);
-
-    void setNoteStoreUrl(QString noteStoreUrl) { m_url = noteStoreUrl; }
-    QString noteStoreUrl() { return m_url; }
-
-    void setAuthenticationToken(QString authenticationToken) { m_authenticationToken = authenticationToken; }
-    QString authenticationToken() { return m_authenticationToken; }
+    virtual QString noteStoreUrl() const = 0;
+    virtual void setNoteStoreUrl(QString url) = 0;
 
     /**
        * Asks the NoteStore to provide information about the status of the user
        * account corresponding to the provided authentication token.
        */
-    SyncState getSyncState(QString authenticationToken = QString());
+    virtual SyncState getSyncState(
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getSyncState @endlink */
-    AsyncResult * getSyncStateAsync(QString authenticationToken = QString());
+    virtual AsyncResult * getSyncStateAsync(
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Asks the NoteStore to provide the state of the account in order of
@@ -111,10 +109,18 @@ public:
        *   </li>
        * </ul>
        */
-    SyncChunk getFilteredSyncChunk(qint32 afterUSN, qint32 maxEntries, const SyncChunkFilter& filter, QString authenticationToken = QString());
+    virtual SyncChunk getFilteredSyncChunk(
+        qint32 afterUSN,
+        qint32 maxEntries,
+        const SyncChunkFilter & filter,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getFilteredSyncChunk @endlink */
-    AsyncResult * getFilteredSyncChunkAsync(qint32 afterUSN, qint32 maxEntries, const SyncChunkFilter& filter, QString authenticationToken = QString());
+    virtual AsyncResult * getFilteredSyncChunkAsync(
+        qint32 afterUSN,
+        qint32 maxEntries,
+        const SyncChunkFilter & filter,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Asks the NoteStore to provide information about the status of a linked
@@ -157,10 +163,14 @@ public:
        *   </li>
        * </ul>
        */
-    SyncState getLinkedNotebookSyncState(const LinkedNotebook& linkedNotebook, QString authenticationToken = QString());
+    virtual SyncState getLinkedNotebookSyncState(
+        const LinkedNotebook & linkedNotebook,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getLinkedNotebookSyncState @endlink */
-    AsyncResult * getLinkedNotebookSyncStateAsync(const LinkedNotebook& linkedNotebook, QString authenticationToken = QString());
+    virtual AsyncResult * getLinkedNotebookSyncStateAsync(
+        const LinkedNotebook & linkedNotebook,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Asks the NoteStore to provide information about the contents of a linked
@@ -226,18 +236,30 @@ public:
        *   </li>
        * </ul>
        */
-    SyncChunk getLinkedNotebookSyncChunk(const LinkedNotebook& linkedNotebook, qint32 afterUSN, qint32 maxEntries, bool fullSyncOnly, QString authenticationToken = QString());
+    virtual SyncChunk getLinkedNotebookSyncChunk(
+        const LinkedNotebook & linkedNotebook,
+        qint32 afterUSN,
+        qint32 maxEntries,
+        bool fullSyncOnly,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getLinkedNotebookSyncChunk @endlink */
-    AsyncResult * getLinkedNotebookSyncChunkAsync(const LinkedNotebook& linkedNotebook, qint32 afterUSN, qint32 maxEntries, bool fullSyncOnly, QString authenticationToken = QString());
+    virtual AsyncResult * getLinkedNotebookSyncChunkAsync(
+        const LinkedNotebook & linkedNotebook,
+        qint32 afterUSN,
+        qint32 maxEntries,
+        bool fullSyncOnly,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns a list of all of the notebooks in the account.
        */
-    QList< Notebook > listNotebooks(QString authenticationToken = QString());
+    virtual QList<Notebook> listNotebooks(
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link listNotebooks @endlink */
-    AsyncResult * listNotebooksAsync(QString authenticationToken = QString());
+    virtual AsyncResult * listNotebooksAsync(
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns a list of all the notebooks in a business that the user has permission to access,
@@ -252,10 +274,12 @@ public:
        *     business auth token.</li>
        * </ul>
        */
-    QList< Notebook > listAccessibleBusinessNotebooks(QString authenticationToken = QString());
+    virtual QList<Notebook> listAccessibleBusinessNotebooks(
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link listAccessibleBusinessNotebooks @endlink */
-    AsyncResult * listAccessibleBusinessNotebooksAsync(QString authenticationToken = QString());
+    virtual AsyncResult * listAccessibleBusinessNotebooksAsync(
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns the current state of the notebook with the provided GUID.
@@ -276,19 +300,25 @@ public:
        *   </li>
        * </ul>
        */
-    Notebook getNotebook(Guid guid, QString authenticationToken = QString());
+    virtual Notebook getNotebook(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getNotebook @endlink */
-    AsyncResult * getNotebookAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * getNotebookAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns the notebook that should be used to store new notes in the
        * user's account when no other notebooks are specified.
        */
-    Notebook getDefaultNotebook(QString authenticationToken = QString());
+    virtual Notebook getDefaultNotebook(
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getDefaultNotebook @endlink */
-    AsyncResult * getDefaultNotebookAsync(QString authenticationToken = QString());
+    virtual AsyncResult * getDefaultNotebookAsync(
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Asks the service to make a notebook with the provided name.
@@ -324,10 +354,14 @@ public:
        *   </li>
        * </ul>
        */
-    Notebook createNotebook(const Notebook& notebook, QString authenticationToken = QString());
+    virtual Notebook createNotebook(
+        const Notebook & notebook,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link createNotebook @endlink */
-    AsyncResult * createNotebookAsync(const Notebook& notebook, QString authenticationToken = QString());
+    virtual AsyncResult * createNotebookAsync(
+        const Notebook & notebook,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Submits notebook changes to the service. The provided data must include the
@@ -368,10 +402,14 @@ public:
        *   </li>
        * </ul>
        */
-    qint32 updateNotebook(const Notebook& notebook, QString authenticationToken = QString());
+    virtual qint32 updateNotebook(
+        const Notebook & notebook,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link updateNotebook @endlink */
-    AsyncResult * updateNotebookAsync(const Notebook& notebook, QString authenticationToken = QString());
+    virtual AsyncResult * updateNotebookAsync(
+        const Notebook & notebook,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Permanently removes the notebook from the user's account.
@@ -398,19 +436,25 @@ public:
        *   </li>
        * </ul>
        */
-    qint32 expungeNotebook(Guid guid, QString authenticationToken = QString());
+    virtual qint32 expungeNotebook(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link expungeNotebook @endlink */
-    AsyncResult * expungeNotebookAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * expungeNotebookAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns a list of the tags in the account.  Evernote does not support
        * the undeletion of tags, so this will only include active tags.
        */
-    QList< Tag > listTags(QString authenticationToken = QString());
+    virtual QList<Tag> listTags(
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link listTags @endlink */
-    AsyncResult * listTagsAsync(QString authenticationToken = QString());
+    virtual AsyncResult * listTagsAsync(
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns a list of the tags that are applied to at least one note within
@@ -425,10 +469,14 @@ public:
        *   </li>
        * </ul>
        */
-    QList< Tag > listTagsByNotebook(Guid notebookGuid, QString authenticationToken = QString());
+    virtual QList<Tag> listTagsByNotebook(
+        Guid notebookGuid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link listTagsByNotebook @endlink */
-    AsyncResult * listTagsByNotebookAsync(Guid notebookGuid, QString authenticationToken = QString());
+    virtual AsyncResult * listTagsByNotebookAsync(
+        Guid notebookGuid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns the current state of the Tag with the provided GUID.
@@ -448,10 +496,14 @@ public:
        *   </li>
        * </ul>
        */
-    Tag getTag(Guid guid, QString authenticationToken = QString());
+    virtual Tag getTag(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getTag @endlink */
-    AsyncResult * getTagAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * getTagAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Asks the service to make a tag with a set of information.
@@ -481,10 +533,14 @@ public:
        *   </li>
        * </ul>
        */
-    Tag createTag(const Tag& tag, QString authenticationToken = QString());
+    virtual Tag createTag(
+        const Tag & tag,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link createTag @endlink */
-    AsyncResult * createTagAsync(const Tag& tag, QString authenticationToken = QString());
+    virtual AsyncResult * createTagAsync(
+        const Tag & tag,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Submits tag changes to the service.  The provided data must include
@@ -517,10 +573,14 @@ public:
        *   </li>
        * </ul>
        */
-    qint32 updateTag(const Tag& tag, QString authenticationToken = QString());
+    virtual qint32 updateTag(
+        const Tag & tag,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link updateTag @endlink */
-    AsyncResult * updateTagAsync(const Tag& tag, QString authenticationToken = QString());
+    virtual AsyncResult * updateTagAsync(
+        const Tag & tag,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Removes the provided tag from every note that is currently tagged with
@@ -548,10 +608,14 @@ public:
        *   </li>
        * </ul>
        */
-    void untagAll(Guid guid, QString authenticationToken = QString());
+    virtual void untagAll(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link untagAll @endlink */
-    AsyncResult * untagAllAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * untagAllAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Permanently deletes the tag with the provided GUID, if present.
@@ -578,19 +642,25 @@ public:
        *   </li>
        * </ul>
        */
-    qint32 expungeTag(Guid guid, QString authenticationToken = QString());
+    virtual qint32 expungeTag(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link expungeTag @endlink */
-    AsyncResult * expungeTagAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * expungeTagAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns a list of the searches in the account.  Evernote does not support
        * the undeletion of searches, so this will only include active searches.
        */
-    QList< SavedSearch > listSearches(QString authenticationToken = QString());
+    virtual QList<SavedSearch> listSearches(
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link listSearches @endlink */
-    AsyncResult * listSearchesAsync(QString authenticationToken = QString());
+    virtual AsyncResult * listSearchesAsync(
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns the current state of the search with the provided GUID.
@@ -609,10 +679,14 @@ public:
        *   </li>
        * </ul>
        */
-    SavedSearch getSearch(Guid guid, QString authenticationToken = QString());
+    virtual SavedSearch getSearch(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getSearch @endlink */
-    AsyncResult * getSearchAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * getSearchAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Asks the service to make a saved search with a set of information.
@@ -638,10 +712,14 @@ public:
        *   </li>
        * </ul>
        */
-    SavedSearch createSearch(const SavedSearch& search, QString authenticationToken = QString());
+    virtual SavedSearch createSearch(
+        const SavedSearch & search,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link createSearch @endlink */
-    AsyncResult * createSearchAsync(const SavedSearch& search, QString authenticationToken = QString());
+    virtual AsyncResult * createSearchAsync(
+        const SavedSearch & search,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Submits search changes to the service. The provided data must include
@@ -670,10 +748,14 @@ public:
        *   </li>
        * </ul>
        */
-    qint32 updateSearch(const SavedSearch& search, QString authenticationToken = QString());
+    virtual qint32 updateSearch(
+        const SavedSearch & search,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link updateSearch @endlink */
-    AsyncResult * updateSearchAsync(const SavedSearch& search, QString authenticationToken = QString());
+    virtual AsyncResult * updateSearchAsync(
+        const SavedSearch & search,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Permanently deletes the saved search with the provided GUID, if present.
@@ -700,10 +782,14 @@ public:
        *   </li>
        * </ul>
        */
-    qint32 expungeSearch(Guid guid, QString authenticationToken = QString());
+    virtual qint32 expungeSearch(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link expungeSearch @endlink */
-    AsyncResult * expungeSearchAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * expungeSearchAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Finds the position of a note within a sorted subset of all of the user's
@@ -746,10 +832,16 @@ public:
        *   </li>
        * </ul>
        */
-    qint32 findNoteOffset(const NoteFilter& filter, Guid guid, QString authenticationToken = QString());
+    virtual qint32 findNoteOffset(
+        const NoteFilter & filter,
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link findNoteOffset @endlink */
-    AsyncResult * findNoteOffsetAsync(const NoteFilter& filter, Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * findNoteOffsetAsync(
+        const NoteFilter & filter,
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Used to find the high-level information about a set of the notes from a
@@ -808,10 +900,20 @@ public:
        *   </li>
        * </ul>
        */
-    NotesMetadataList findNotesMetadata(const NoteFilter& filter, qint32 offset, qint32 maxNotes, const NotesMetadataResultSpec& resultSpec, QString authenticationToken = QString());
+    virtual NotesMetadataList findNotesMetadata(
+        const NoteFilter & filter,
+        qint32 offset,
+        qint32 maxNotes,
+        const NotesMetadataResultSpec & resultSpec,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link findNotesMetadata @endlink */
-    AsyncResult * findNotesMetadataAsync(const NoteFilter& filter, qint32 offset, qint32 maxNotes, const NotesMetadataResultSpec& resultSpec, QString authenticationToken = QString());
+    virtual AsyncResult * findNotesMetadataAsync(
+        const NoteFilter & filter,
+        qint32 offset,
+        qint32 maxNotes,
+        const NotesMetadataResultSpec & resultSpec,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * This function is used to determine how many notes are found for each
@@ -844,10 +946,16 @@ public:
        *   <li> "Notebook.guid" - not found, by GUID</li>
        * </ul>
        */
-    NoteCollectionCounts findNoteCounts(const NoteFilter& filter, bool withTrash, QString authenticationToken = QString());
+    virtual NoteCollectionCounts findNoteCounts(
+        const NoteFilter & filter,
+        bool withTrash,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link findNoteCounts @endlink */
-    AsyncResult * findNoteCountsAsync(const NoteFilter& filter, bool withTrash, QString authenticationToken = QString());
+    virtual AsyncResult * findNoteCountsAsync(
+        const NoteFilter & filter,
+        bool withTrash,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns the current state of the note in the service with the provided
@@ -880,10 +988,16 @@ public:
        *   </li>
        * </ul>
        */
-    Note getNoteWithResultSpec(Guid guid, const NoteResultSpec& resultSpec, QString authenticationToken = QString());
+    virtual Note getNoteWithResultSpec(
+        Guid guid,
+        const NoteResultSpec & resultSpec,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getNoteWithResultSpec @endlink */
-    AsyncResult * getNoteWithResultSpecAsync(Guid guid, const NoteResultSpec& resultSpec, QString authenticationToken = QString());
+    virtual AsyncResult * getNoteWithResultSpecAsync(
+        Guid guid,
+        const NoteResultSpec & resultSpec,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * DEPRECATED. See getNoteWithResultSpec.
@@ -892,10 +1006,22 @@ public:
        * mapping to the equivalent field of a NoteResultSpec. The Note.sharedNotes field is never
        * populated on the returned note. To get a note with its shares, use getNoteWithResultSpec.
        */
-    Note getNote(Guid guid, bool withContent, bool withResourcesData, bool withResourcesRecognition, bool withResourcesAlternateData, QString authenticationToken = QString());
+    virtual Note getNote(
+        Guid guid,
+        bool withContent,
+        bool withResourcesData,
+        bool withResourcesRecognition,
+        bool withResourcesAlternateData,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getNote @endlink */
-    AsyncResult * getNoteAsync(Guid guid, bool withContent, bool withResourcesData, bool withResourcesRecognition, bool withResourcesAlternateData, QString authenticationToken = QString());
+    virtual AsyncResult * getNoteAsync(
+        Guid guid,
+        bool withContent,
+        bool withResourcesData,
+        bool withResourcesRecognition,
+        bool withResourcesAlternateData,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Get all of the application data for the note identified by GUID,
@@ -905,10 +1031,14 @@ public:
        * only needs to fetch its own applicationData entry, use
        * getNoteApplicationDataEntry instead.
        */
-    LazyMap getNoteApplicationData(Guid guid, QString authenticationToken = QString());
+    virtual LazyMap getNoteApplicationData(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getNoteApplicationData @endlink */
-    AsyncResult * getNoteApplicationDataAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * getNoteApplicationDataAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Get the value of a single entry in the applicationData map
@@ -919,29 +1049,49 @@ public:
        *   <li> "NoteAttributes.applicationData.key" - note not found, by key</li>
        * </ul>
        */
-    QString getNoteApplicationDataEntry(Guid guid, QString key, QString authenticationToken = QString());
+    virtual QString getNoteApplicationDataEntry(
+        Guid guid,
+        QString key,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getNoteApplicationDataEntry @endlink */
-    AsyncResult * getNoteApplicationDataEntryAsync(Guid guid, QString key, QString authenticationToken = QString());
+    virtual AsyncResult * getNoteApplicationDataEntryAsync(
+        Guid guid,
+        QString key,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Update, or create, an entry in the applicationData map for
        * the note identified by guid.
        */
-    qint32 setNoteApplicationDataEntry(Guid guid, QString key, QString value, QString authenticationToken = QString());
+    virtual qint32 setNoteApplicationDataEntry(
+        Guid guid,
+        QString key,
+        QString value,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link setNoteApplicationDataEntry @endlink */
-    AsyncResult * setNoteApplicationDataEntryAsync(Guid guid, QString key, QString value, QString authenticationToken = QString());
+    virtual AsyncResult * setNoteApplicationDataEntryAsync(
+        Guid guid,
+        QString key,
+        QString value,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Remove an entry identified by 'key' from the applicationData map for
        * the note identified by 'guid'. Silently ignores an unset of a
        * non-existing key.
        */
-    qint32 unsetNoteApplicationDataEntry(Guid guid, QString key, QString authenticationToken = QString());
+    virtual qint32 unsetNoteApplicationDataEntry(
+        Guid guid,
+        QString key,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link unsetNoteApplicationDataEntry @endlink */
-    AsyncResult * unsetNoteApplicationDataEntryAsync(Guid guid, QString key, QString authenticationToken = QString());
+    virtual AsyncResult * unsetNoteApplicationDataEntryAsync(
+        Guid guid,
+        QString key,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns XHTML contents of the note with the provided GUID.
@@ -963,10 +1113,14 @@ public:
        *   </li>
        * </ul>
        */
-    QString getNoteContent(Guid guid, QString authenticationToken = QString());
+    virtual QString getNoteContent(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getNoteContent @endlink */
-    AsyncResult * getNoteContentAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * getNoteContentAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns a block of the extracted plain text contents of the note with the
@@ -1002,10 +1156,18 @@ public:
        *   </li>
        * </ul>
        */
-    QString getNoteSearchText(Guid guid, bool noteOnly, bool tokenizeForIndexing, QString authenticationToken = QString());
+    virtual QString getNoteSearchText(
+        Guid guid,
+        bool noteOnly,
+        bool tokenizeForIndexing,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getNoteSearchText @endlink */
-    AsyncResult * getNoteSearchTextAsync(Guid guid, bool noteOnly, bool tokenizeForIndexing, QString authenticationToken = QString());
+    virtual AsyncResult * getNoteSearchTextAsync(
+        Guid guid,
+        bool noteOnly,
+        bool tokenizeForIndexing,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns a block of the extracted plain text contents of the resource with
@@ -1031,10 +1193,14 @@ public:
        *   </li>
        * </ul>
        */
-    QString getResourceSearchText(Guid guid, QString authenticationToken = QString());
+    virtual QString getResourceSearchText(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getResourceSearchText @endlink */
-    AsyncResult * getResourceSearchTextAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * getResourceSearchTextAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns a list of the names of the tags for the note with the provided
@@ -1054,10 +1220,14 @@ public:
        *   </li>
        * </ul>
        */
-    QStringList getNoteTagNames(Guid guid, QString authenticationToken = QString());
+    virtual QStringList getNoteTagNames(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getNoteTagNames @endlink */
-    AsyncResult * getNoteTagNamesAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * getNoteTagNamesAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Asks the service to make a note with the provided set of information.
@@ -1122,10 +1292,14 @@ public:
        *   </li>
        * </ul>
        */
-    Note createNote(const Note& note, QString authenticationToken = QString());
+    virtual Note createNote(
+        const Note & note,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link createNote @endlink */
-    AsyncResult * createNoteAsync(const Note& note, QString authenticationToken = QString());
+    virtual AsyncResult * createNoteAsync(
+        const Note & note,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Submit a set of changes to a note to the service.  The provided data
@@ -1198,10 +1372,14 @@ public:
        *   </li>
        * </ul>
        */
-    Note updateNote(const Note& note, QString authenticationToken = QString());
+    virtual Note updateNote(
+        const Note & note,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link updateNote @endlink */
-    AsyncResult * updateNoteAsync(const Note& note, QString authenticationToken = QString());
+    virtual AsyncResult * updateNoteAsync(
+        const Note & note,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Moves the note into the trash. The note may still be undeleted, unless it
@@ -1229,10 +1407,14 @@ public:
        *   </li>
        * </ul>
        */
-    qint32 deleteNote(Guid guid, QString authenticationToken = QString());
+    virtual qint32 deleteNote(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link deleteNote @endlink */
-    AsyncResult * deleteNoteAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * deleteNoteAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Permanently removes a Note, and all of its Resources,
@@ -1258,10 +1440,14 @@ public:
        *   </li>
        * </ul>
        */
-    qint32 expungeNote(Guid guid, QString authenticationToken = QString());
+    virtual qint32 expungeNote(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link expungeNote @endlink */
-    AsyncResult * expungeNoteAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * expungeNoteAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Performs a deep copy of the Note with the provided GUID 'noteGuid' into
@@ -1305,10 +1491,16 @@ public:
        *   </li>
        * </ul>
        */
-    Note copyNote(Guid noteGuid, Guid toNotebookGuid, QString authenticationToken = QString());
+    virtual Note copyNote(
+        Guid noteGuid,
+        Guid toNotebookGuid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link copyNote @endlink */
-    AsyncResult * copyNoteAsync(Guid noteGuid, Guid toNotebookGuid, QString authenticationToken = QString());
+    virtual AsyncResult * copyNoteAsync(
+        Guid noteGuid,
+        Guid toNotebookGuid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns a list of the prior versions of a particular note that are
@@ -1332,10 +1524,14 @@ public:
        *   </li>
        * </ul>
        */
-    QList< NoteVersionId > listNoteVersions(Guid noteGuid, QString authenticationToken = QString());
+    virtual QList<NoteVersionId> listNoteVersions(
+        Guid noteGuid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link listNoteVersions @endlink */
-    AsyncResult * listNoteVersionsAsync(Guid noteGuid, QString authenticationToken = QString());
+    virtual AsyncResult * listNoteVersionsAsync(
+        Guid noteGuid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * This can be used to retrieve a previous version of a Note after it has been
@@ -1380,10 +1576,22 @@ public:
        *   </li>
        * </ul>
        */
-    Note getNoteVersion(Guid noteGuid, qint32 updateSequenceNum, bool withResourcesData, bool withResourcesRecognition, bool withResourcesAlternateData, QString authenticationToken = QString());
+    virtual Note getNoteVersion(
+        Guid noteGuid,
+        qint32 updateSequenceNum,
+        bool withResourcesData,
+        bool withResourcesRecognition,
+        bool withResourcesAlternateData,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getNoteVersion @endlink */
-    AsyncResult * getNoteVersionAsync(Guid noteGuid, qint32 updateSequenceNum, bool withResourcesData, bool withResourcesRecognition, bool withResourcesAlternateData, QString authenticationToken = QString());
+    virtual AsyncResult * getNoteVersionAsync(
+        Guid noteGuid,
+        qint32 updateSequenceNum,
+        bool withResourcesData,
+        bool withResourcesRecognition,
+        bool withResourcesAlternateData,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns the current state of the resource in the service with the
@@ -1422,10 +1630,22 @@ public:
        *   </li>
        * </ul>
        */
-    Resource getResource(Guid guid, bool withData, bool withRecognition, bool withAttributes, bool withAlternateData, QString authenticationToken = QString());
+    virtual Resource getResource(
+        Guid guid,
+        bool withData,
+        bool withRecognition,
+        bool withAttributes,
+        bool withAlternateData,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getResource @endlink */
-    AsyncResult * getResourceAsync(Guid guid, bool withData, bool withRecognition, bool withAttributes, bool withAlternateData, QString authenticationToken = QString());
+    virtual AsyncResult * getResourceAsync(
+        Guid guid,
+        bool withData,
+        bool withRecognition,
+        bool withAttributes,
+        bool withAlternateData,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Get all of the application data for the Resource identified by GUID,
@@ -1435,10 +1655,14 @@ public:
        * only needs to fetch its own applicationData entry, use
        * getResourceApplicationDataEntry instead.
        */
-    LazyMap getResourceApplicationData(Guid guid, QString authenticationToken = QString());
+    virtual LazyMap getResourceApplicationData(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getResourceApplicationData @endlink */
-    AsyncResult * getResourceApplicationDataAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * getResourceApplicationDataAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Get the value of a single entry in the applicationData map
@@ -1449,28 +1673,48 @@ public:
        *   <li> "ResourceAttributes.applicationData.key" - Resource not found, by key</li>
        * </ul>
        */
-    QString getResourceApplicationDataEntry(Guid guid, QString key, QString authenticationToken = QString());
+    virtual QString getResourceApplicationDataEntry(
+        Guid guid,
+        QString key,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getResourceApplicationDataEntry @endlink */
-    AsyncResult * getResourceApplicationDataEntryAsync(Guid guid, QString key, QString authenticationToken = QString());
+    virtual AsyncResult * getResourceApplicationDataEntryAsync(
+        Guid guid,
+        QString key,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Update, or create, an entry in the applicationData map for
        * the Resource identified by guid.
        */
-    qint32 setResourceApplicationDataEntry(Guid guid, QString key, QString value, QString authenticationToken = QString());
+    virtual qint32 setResourceApplicationDataEntry(
+        Guid guid,
+        QString key,
+        QString value,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link setResourceApplicationDataEntry @endlink */
-    AsyncResult * setResourceApplicationDataEntryAsync(Guid guid, QString key, QString value, QString authenticationToken = QString());
+    virtual AsyncResult * setResourceApplicationDataEntryAsync(
+        Guid guid,
+        QString key,
+        QString value,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Remove an entry identified by 'key' from the applicationData map for
        * the Resource identified by 'guid'.
        */
-    qint32 unsetResourceApplicationDataEntry(Guid guid, QString key, QString authenticationToken = QString());
+    virtual qint32 unsetResourceApplicationDataEntry(
+        Guid guid,
+        QString key,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link unsetResourceApplicationDataEntry @endlink */
-    AsyncResult * unsetResourceApplicationDataEntryAsync(Guid guid, QString key, QString authenticationToken = QString());
+    virtual AsyncResult * unsetResourceApplicationDataEntryAsync(
+        Guid guid,
+        QString key,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Submit a set of changes to a resource to the service.  This can be used
@@ -1521,10 +1765,14 @@ public:
        *   </li>
        * </ul>
        */
-    qint32 updateResource(const Resource& resource, QString authenticationToken = QString());
+    virtual qint32 updateResource(
+        const Resource & resource,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link updateResource @endlink */
-    AsyncResult * updateResourceAsync(const Resource& resource, QString authenticationToken = QString());
+    virtual AsyncResult * updateResourceAsync(
+        const Resource & resource,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns binary data of the resource with the provided GUID.  For
@@ -1548,10 +1796,14 @@ public:
        *   </li>
        * </ul>
        */
-    QByteArray getResourceData(Guid guid, QString authenticationToken = QString());
+    virtual QByteArray getResourceData(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getResourceData @endlink */
-    AsyncResult * getResourceDataAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * getResourceDataAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns the current state of a resource, referenced by containing
@@ -1594,10 +1846,22 @@ public:
        *   </li>
        * </ul>
        */
-    Resource getResourceByHash(Guid noteGuid, QByteArray contentHash, bool withData, bool withRecognition, bool withAlternateData, QString authenticationToken = QString());
+    virtual Resource getResourceByHash(
+        Guid noteGuid,
+        QByteArray contentHash,
+        bool withData,
+        bool withRecognition,
+        bool withAlternateData,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getResourceByHash @endlink */
-    AsyncResult * getResourceByHashAsync(Guid noteGuid, QByteArray contentHash, bool withData, bool withRecognition, bool withAlternateData, QString authenticationToken = QString());
+    virtual AsyncResult * getResourceByHashAsync(
+        Guid noteGuid,
+        QByteArray contentHash,
+        bool withData,
+        bool withRecognition,
+        bool withAlternateData,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns the binary contents of the recognition index for the resource
@@ -1623,10 +1887,14 @@ public:
        *   </li>
        * </ul>
        */
-    QByteArray getResourceRecognition(Guid guid, QString authenticationToken = QString());
+    virtual QByteArray getResourceRecognition(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getResourceRecognition @endlink */
-    AsyncResult * getResourceRecognitionAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * getResourceRecognitionAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * If the Resource with the provided GUID has an alternate data representation
@@ -1652,10 +1920,14 @@ public:
        *   </li>
        * </ul>
        */
-    QByteArray getResourceAlternateData(Guid guid, QString authenticationToken = QString());
+    virtual QByteArray getResourceAlternateData(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getResourceAlternateData @endlink */
-    AsyncResult * getResourceAlternateDataAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * getResourceAlternateDataAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns the set of attributes for the Resource with the provided GUID.
@@ -1677,10 +1949,14 @@ public:
        *   </li>
        * </ul>
        */
-    ResourceAttributes getResourceAttributes(Guid guid, QString authenticationToken = QString());
+    virtual ResourceAttributes getResourceAttributes(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getResourceAttributes @endlink */
-    AsyncResult * getResourceAttributesAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * getResourceAttributesAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * <p>
@@ -1716,10 +1992,16 @@ public:
        *     down for the requester because of an IP-based country lookup.</li>
        * </ul>
        */
-    Notebook getPublicNotebook(UserID userId, QString publicUri);
+    virtual Notebook getPublicNotebook(
+        UserID userId,
+        QString publicUri,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getPublicNotebook @endlink */
-    AsyncResult * getPublicNotebookAsync(UserID userId, QString publicUri);
+    virtual AsyncResult * getPublicNotebookAsync(
+        UserID userId,
+        QString publicUri,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * @Deprecated for first-party clients. See createOrUpdateNotebookShares.
@@ -1798,10 +2080,16 @@ public:
        *   </li>
        *   </ul>
        */
-    SharedNotebook shareNotebook(const SharedNotebook& sharedNotebook, QString message, QString authenticationToken = QString());
+    virtual SharedNotebook shareNotebook(
+        const SharedNotebook & sharedNotebook,
+        QString message,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link shareNotebook @endlink */
-    AsyncResult * shareNotebookAsync(const SharedNotebook& sharedNotebook, QString message, QString authenticationToken = QString());
+    virtual AsyncResult * shareNotebookAsync(
+        const SharedNotebook & sharedNotebook,
+        QString message,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Share a notebook by a messaging thread ID or a list of contacts. This function is
@@ -1857,18 +2145,26 @@ public:
        *     specified, but no thread with that ID exists</li>
        * </ul>
        */
-    CreateOrUpdateNotebookSharesResult createOrUpdateNotebookShares(const NotebookShareTemplate& shareTemplate, QString authenticationToken = QString());
+    virtual CreateOrUpdateNotebookSharesResult createOrUpdateNotebookShares(
+        const NotebookShareTemplate & shareTemplate,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link createOrUpdateNotebookShares @endlink */
-    AsyncResult * createOrUpdateNotebookSharesAsync(const NotebookShareTemplate& shareTemplate, QString authenticationToken = QString());
+    virtual AsyncResult * createOrUpdateNotebookSharesAsync(
+        const NotebookShareTemplate & shareTemplate,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * @Deprecated See createOrUpdateNotebookShares and manageNotebookShares.
        */
-    qint32 updateSharedNotebook(const SharedNotebook& sharedNotebook, QString authenticationToken = QString());
+    virtual qint32 updateSharedNotebook(
+        const SharedNotebook & sharedNotebook,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link updateSharedNotebook @endlink */
-    AsyncResult * updateSharedNotebookAsync(const SharedNotebook& sharedNotebook, QString authenticationToken = QString());
+    virtual AsyncResult * updateSharedNotebookAsync(
+        const SharedNotebook & sharedNotebook,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Set values for the recipient settings associated with a notebook share. Only the
@@ -1906,10 +2202,16 @@ public:
        *       to false and any of reminder* settings to true.</li>
        * </ul>
        */
-    Notebook setNotebookRecipientSettings(QString notebookGuid, const NotebookRecipientSettings& recipientSettings, QString authenticationToken = QString());
+    virtual Notebook setNotebookRecipientSettings(
+        QString notebookGuid,
+        const NotebookRecipientSettings & recipientSettings,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link setNotebookRecipientSettings @endlink */
-    AsyncResult * setNotebookRecipientSettingsAsync(QString notebookGuid, const NotebookRecipientSettings& recipientSettings, QString authenticationToken = QString());
+    virtual AsyncResult * setNotebookRecipientSettingsAsync(
+        QString notebookGuid,
+        const NotebookRecipientSettings & recipientSettings,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Lists the collection of shared notebooks for all notebooks in the
@@ -1918,10 +2220,12 @@ public:
        * @return
        *  The list of all SharedNotebooks for the user
        */
-    QList< SharedNotebook > listSharedNotebooks(QString authenticationToken = QString());
+    virtual QList<SharedNotebook> listSharedNotebooks(
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link listSharedNotebooks @endlink */
-    AsyncResult * listSharedNotebooksAsync(QString authenticationToken = QString());
+    virtual AsyncResult * listSharedNotebooksAsync(
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Asks the service to make a linked notebook with the provided name, username
@@ -1960,10 +2264,14 @@ public:
        *   </li>
        * </ul>
        */
-    LinkedNotebook createLinkedNotebook(const LinkedNotebook& linkedNotebook, QString authenticationToken = QString());
+    virtual LinkedNotebook createLinkedNotebook(
+        const LinkedNotebook & linkedNotebook,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link createLinkedNotebook @endlink */
-    AsyncResult * createLinkedNotebookAsync(const LinkedNotebook& linkedNotebook, QString authenticationToken = QString());
+    virtual AsyncResult * createLinkedNotebookAsync(
+        const LinkedNotebook & linkedNotebook,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * @param linkedNotebook
@@ -1981,18 +2289,24 @@ public:
        *   </li>
        * </ul>
        */
-    qint32 updateLinkedNotebook(const LinkedNotebook& linkedNotebook, QString authenticationToken = QString());
+    virtual qint32 updateLinkedNotebook(
+        const LinkedNotebook & linkedNotebook,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link updateLinkedNotebook @endlink */
-    AsyncResult * updateLinkedNotebookAsync(const LinkedNotebook& linkedNotebook, QString authenticationToken = QString());
+    virtual AsyncResult * updateLinkedNotebookAsync(
+        const LinkedNotebook & linkedNotebook,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns a list of linked notebooks
        */
-    QList< LinkedNotebook > listLinkedNotebooks(QString authenticationToken = QString());
+    virtual QList<LinkedNotebook> listLinkedNotebooks(
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link listLinkedNotebooks @endlink */
-    AsyncResult * listLinkedNotebooksAsync(QString authenticationToken = QString());
+    virtual AsyncResult * listLinkedNotebooksAsync(
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Permanently expunges the linked notebook from the account.
@@ -2005,10 +2319,14 @@ public:
        *   The LinkedNotebook.guid field of the LinkedNotebook to permanently remove
        *   from the account.
        */
-    qint32 expungeLinkedNotebook(Guid guid, QString authenticationToken = QString());
+    virtual qint32 expungeLinkedNotebook(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link expungeLinkedNotebook @endlink */
-    AsyncResult * expungeLinkedNotebookAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * expungeLinkedNotebookAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Asks the service to produce an authentication token that can be used to
@@ -2060,10 +2378,14 @@ public:
        *   </li>
        * </ul>
        */
-    AuthenticationResult authenticateToSharedNotebook(QString shareKeyOrGlobalId, QString authenticationToken = QString());
+    virtual AuthenticationResult authenticateToSharedNotebook(
+        QString shareKeyOrGlobalId,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link authenticateToSharedNotebook @endlink */
-    AsyncResult * authenticateToSharedNotebookAsync(QString shareKeyOrGlobalId, QString authenticationToken = QString());
+    virtual AsyncResult * authenticateToSharedNotebookAsync(
+        QString shareKeyOrGlobalId,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * This function is used to retrieve extended information about a shared
@@ -2090,10 +2412,12 @@ public:
        *   </li>
        * </ul>
        */
-    SharedNotebook getSharedNotebookByAuth(QString authenticationToken = QString());
+    virtual SharedNotebook getSharedNotebookByAuth(
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getSharedNotebookByAuth @endlink */
-    AsyncResult * getSharedNotebookByAuthAsync(QString authenticationToken = QString());
+    virtual AsyncResult * getSharedNotebookByAuthAsync(
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Attempts to send a single note to one or more email recipients.
@@ -2144,10 +2468,14 @@ public:
        *   </li>
        * </ul>
        */
-    void emailNote(const NoteEmailParameters& parameters, QString authenticationToken = QString());
+    virtual void emailNote(
+        const NoteEmailParameters & parameters,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link emailNote @endlink */
-    AsyncResult * emailNoteAsync(const NoteEmailParameters& parameters, QString authenticationToken = QString());
+    virtual AsyncResult * emailNoteAsync(
+        const NoteEmailParameters & parameters,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * If this note is not already shared publicly (via its own direct URL), then this
@@ -2172,10 +2500,14 @@ public:
        *   <li> "Note.guid" - not found, by GUID</li>
        * </ul>
        */
-    QString shareNote(Guid guid, QString authenticationToken = QString());
+    virtual QString shareNote(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link shareNote @endlink */
-    AsyncResult * shareNoteAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * shareNoteAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * If this note is shared publicly then this will stop sharing that note
@@ -2184,7 +2516,7 @@ public:
        *
        * If the Note is not shared, then this function will do nothing.
        *
-       * This function does not remove invididual shares for the note. To remove
+       * This function does not remove individual shares for the note. To remove
        * individual shares, see stopSharingNoteWithRecipients.
        *
        * @param guid
@@ -2199,10 +2531,14 @@ public:
        *   <li>"Note.guid" - not found, by GUID</li>
        * </ul>
        */
-    void stopSharingNote(Guid guid, QString authenticationToken = QString());
+    virtual void stopSharingNote(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link stopSharingNote @endlink */
-    AsyncResult * stopSharingNoteAsync(Guid guid, QString authenticationToken = QString());
+    virtual AsyncResult * stopSharingNoteAsync(
+        Guid guid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Asks the service to produce an authentication token that can be used to
@@ -2246,10 +2582,16 @@ public:
        *   </ul>
        * </ul>
        */
-    AuthenticationResult authenticateToSharedNote(QString guid, QString noteKey, QString authenticationToken = QString());
+    virtual AuthenticationResult authenticateToSharedNote(
+        QString guid,
+        QString noteKey,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link authenticateToSharedNote @endlink */
-    AsyncResult * authenticateToSharedNoteAsync(QString guid, QString noteKey, QString authenticationToken = QString());
+    virtual AsyncResult * authenticateToSharedNoteAsync(
+        QString guid,
+        QString noteKey,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Identify related entities on the service, such as notes,
@@ -2300,10 +2642,16 @@ public:
        *   </li>
        * </ul>
        */
-    RelatedResult findRelated(const RelatedQuery& query, const RelatedResultSpec& resultSpec, QString authenticationToken = QString());
+    virtual RelatedResult findRelated(
+        const RelatedQuery & query,
+        const RelatedResultSpec & resultSpec,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link findRelated @endlink */
-    AsyncResult * findRelatedAsync(const RelatedQuery& query, const RelatedResultSpec& resultSpec, QString authenticationToken = QString());
+    virtual AsyncResult * findRelatedAsync(
+        const RelatedQuery & query,
+        const RelatedResultSpec & resultSpec,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Perform the same operation as updateNote() would provided that the update
@@ -2332,10 +2680,14 @@ public:
        *       not happen if your client is working correctly.</li>
        * </ul>
        */
-    UpdateNoteIfUsnMatchesResult updateNoteIfUsnMatches(const Note& note, QString authenticationToken = QString());
+    virtual UpdateNoteIfUsnMatchesResult updateNoteIfUsnMatches(
+        const Note & note,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link updateNoteIfUsnMatches @endlink */
-    AsyncResult * updateNoteIfUsnMatchesAsync(const Note& note, QString authenticationToken = QString());
+    virtual AsyncResult * updateNoteIfUsnMatchesAsync(
+        const Note & note,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Manage invitations and memberships associated with a given notebook.
@@ -2353,10 +2705,14 @@ public:
        *    shares.</li>
        * </ul>
        */
-    ManageNotebookSharesResult manageNotebookShares(const ManageNotebookSharesParameters& parameters, QString authenticationToken = QString());
+    virtual ManageNotebookSharesResult manageNotebookShares(
+        const ManageNotebookSharesParameters & parameters,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link manageNotebookShares @endlink */
-    AsyncResult * manageNotebookSharesAsync(const ManageNotebookSharesParameters& parameters, QString authenticationToken = QString());
+    virtual AsyncResult * manageNotebookSharesAsync(
+        const ManageNotebookSharesParameters & parameters,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Return the share relationships for the given notebook, including
@@ -2366,15 +2722,20 @@ public:
        * limited use by Evernote clients that have discussed using this
        * routine with the platform team.
        */
-    ShareRelationships getNotebookShares(QString notebookGuid, QString authenticationToken = QString());
+    virtual ShareRelationships getNotebookShares(
+        QString notebookGuid,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getNotebookShares @endlink */
-    AsyncResult * getNotebookSharesAsync(QString notebookGuid, QString authenticationToken = QString());
+    virtual AsyncResult * getNotebookSharesAsync(
+        QString notebookGuid,
+        IRequestContextPtr ctx = {}) = 0;
 
-private:
-    QString m_url;
-    QString m_authenticationToken;
 };
+
+using INoteStorePtr = std::shared_ptr<INoteStore>;
+
+////////////////////////////////////////////////////////////////////////////////
 
 /**
  * Service:  UserStore
@@ -2395,15 +2756,18 @@ private:
  *     privileges
  * </ul>
  */
-class QEVERCLOUD_EXPORT UserStore: public QObject
+class QEVERCLOUD_EXPORT IUserStore: public QObject
 {
     Q_OBJECT
-    Q_DISABLE_COPY(UserStore)
-public:
-    explicit UserStore(QString host, QString authenticationToken = QString(), QObject * parent = 0);
+    Q_DISABLE_COPY(IUserStore)
+protected:
+    IUserStore(QObject * parent) :
+        QObject(parent)
+    {}
 
-    void setAuthenticationToken(QString authenticationToken) { m_authenticationToken = authenticationToken; }
-    QString authenticationToken() { return m_authenticationToken; }
+public:
+    virtual QString userStoreUrl() const = 0;
+    virtual void setUserStoreUrl(QString url) = 0;
 
     /**
        * This should be the first call made by a client to the EDAM service.  It
@@ -2431,10 +2795,18 @@ public:
        *   client.  This should be the current value of the EDAM_VERSION_MINOR
        *   constant for the client.
        */
-    bool checkVersion(QString clientName, qint16 edamVersionMajor = EDAM_VERSION_MAJOR, qint16 edamVersionMinor = EDAM_VERSION_MINOR);
+    virtual bool checkVersion(
+        QString clientName,
+        qint16 edamVersionMajor = EDAM_VERSION_MAJOR,
+        qint16 edamVersionMinor = EDAM_VERSION_MINOR,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link checkVersion @endlink */
-    AsyncResult * checkVersionAsync(QString clientName, qint16 edamVersionMajor = EDAM_VERSION_MAJOR, qint16 edamVersionMinor = EDAM_VERSION_MINOR);
+    virtual AsyncResult * checkVersionAsync(
+        QString clientName,
+        qint16 edamVersionMajor = EDAM_VERSION_MAJOR,
+        qint16 edamVersionMinor = EDAM_VERSION_MINOR,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * This provides bootstrap information to the client. Various bootstrap
@@ -2448,10 +2820,14 @@ public:
        * @return
        *   The bootstrap information suitable for this client.
        */
-    BootstrapInfo getBootstrapInfo(QString locale);
+    virtual BootstrapInfo getBootstrapInfo(
+        QString locale,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getBootstrapInfo @endlink */
-    AsyncResult * getBootstrapInfoAsync(QString locale);
+    virtual AsyncResult * getBootstrapInfoAsync(
+        QString locale,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * This is used to check a username and password in order to create a
@@ -2539,10 +2915,26 @@ public:
        *   <li> AUTH_EXPIRED "password" - user password is expired
        * </ul>
        */
-    AuthenticationResult authenticateLongSession(QString username, QString password, QString consumerKey, QString consumerSecret, QString deviceIdentifier, QString deviceDescription, bool supportsTwoFactor);
+    virtual AuthenticationResult authenticateLongSession(
+        QString username,
+        QString password,
+        QString consumerKey,
+        QString consumerSecret,
+        QString deviceIdentifier,
+        QString deviceDescription,
+        bool supportsTwoFactor,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link authenticateLongSession @endlink */
-    AsyncResult * authenticateLongSessionAsync(QString username, QString password, QString consumerKey, QString consumerSecret, QString deviceIdentifier, QString deviceDescription, bool supportsTwoFactor);
+    virtual AsyncResult * authenticateLongSessionAsync(
+        QString username,
+        QString password,
+        QString consumerKey,
+        QString consumerSecret,
+        QString deviceIdentifier,
+        QString deviceDescription,
+        bool supportsTwoFactor,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Complete the authentication process when a second factor is required. This
@@ -2582,10 +2974,18 @@ public:
        *      two-factor authentication.</li>
        * </ul>
        */
-    AuthenticationResult completeTwoFactorAuthentication(QString oneTimeCode, QString deviceIdentifier, QString deviceDescription, QString authenticationToken = QString());
+    virtual AuthenticationResult completeTwoFactorAuthentication(
+        QString oneTimeCode,
+        QString deviceIdentifier,
+        QString deviceDescription,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link completeTwoFactorAuthentication @endlink */
-    AsyncResult * completeTwoFactorAuthenticationAsync(QString oneTimeCode, QString deviceIdentifier, QString deviceDescription, QString authenticationToken = QString());
+    virtual AsyncResult * completeTwoFactorAuthenticationAsync(
+        QString oneTimeCode,
+        QString deviceIdentifier,
+        QString deviceDescription,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Revoke an existing long lived authentication token. This can be used to
@@ -2605,10 +3005,12 @@ public:
        *     is already revoked.
        * </ul>
        */
-    void revokeLongSession(QString authenticationToken = QString());
+    virtual void revokeLongSession(
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link revokeLongSession @endlink */
-    AsyncResult * revokeLongSessionAsync(QString authenticationToken = QString());
+    virtual AsyncResult * revokeLongSessionAsync(
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * This is used to take an existing authentication token that grants access
@@ -2643,10 +3045,12 @@ public:
        *        sign-on before authenticating to the business.
        * </ul>
        */
-    AuthenticationResult authenticateToBusiness(QString authenticationToken = QString());
+    virtual AuthenticationResult authenticateToBusiness(
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link authenticateToBusiness @endlink */
-    AsyncResult * authenticateToBusinessAsync(QString authenticationToken = QString());
+    virtual AsyncResult * authenticateToBusinessAsync(
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns the User corresponding to the provided authentication token,
@@ -2655,10 +3059,12 @@ public:
        * the access level granted by the token, so a web service client may receive
        * fewer fields than an integrated desktop client.
        */
-    User getUser(QString authenticationToken = QString());
+    virtual User getUser(
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getUser @endlink */
-    AsyncResult * getUserAsync(QString authenticationToken = QString());
+    virtual AsyncResult * getUserAsync(
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Asks the UserStore about the publicly available location information for
@@ -2668,24 +3074,30 @@ public:
        *   <li> DATA_REQUIRED "username" - username is empty
        * </ul>
        */
-    PublicUserInfo getPublicUserInfo(QString username);
+    virtual PublicUserInfo getPublicUserInfo(
+        QString username,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getPublicUserInfo @endlink */
-    AsyncResult * getPublicUserInfoAsync(QString username);
+    virtual AsyncResult * getPublicUserInfoAsync(
+        QString username,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * <p>Returns the URLs that should be used when sending requests to the service on
        * behalf of the account represented by the provided authenticationToken.</p>
        *
-       * <p>This method isn't needed by most clients, who can retreive the correct set of
+       * <p>This method isn't needed by most clients, who can retrieve the correct set of
        * UserUrls from the AuthenticationResult returned from
        * UserStore#authenticateLongSession(). This method is typically only needed to look up
        * the correct URLs for an existing long-lived authentication token.</p>
        */
-    UserUrls getUserUrls(QString authenticationToken = QString());
+    virtual UserUrls getUserUrls(
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getUserUrls @endlink */
-    AsyncResult * getUserUrlsAsync(QString authenticationToken = QString());
+    virtual AsyncResult * getUserUrlsAsync(
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Invite a user to join an Evernote Business account.
@@ -2730,10 +3142,14 @@ public:
        *     user limit. </li>
        * </ul>
        */
-    void inviteToBusiness(QString emailAddress, QString authenticationToken = QString());
+    virtual void inviteToBusiness(
+        QString emailAddress,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link inviteToBusiness @endlink */
-    AsyncResult * inviteToBusinessAsync(QString emailAddress, QString authenticationToken = QString());
+    virtual AsyncResult * inviteToBusinessAsync(
+        QString emailAddress,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Remove a user from an Evernote Business account. Once removed, the user will no
@@ -2759,10 +3175,14 @@ public:
        *     business or that user was not invited via external provisioning. </li>
        * </ul>
        */
-    void removeFromBusiness(QString emailAddress, QString authenticationToken = QString());
+    virtual void removeFromBusiness(
+        QString emailAddress,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link removeFromBusiness @endlink */
-    AsyncResult * removeFromBusinessAsync(QString emailAddress, QString authenticationToken = QString());
+    virtual AsyncResult * removeFromBusinessAsync(
+        QString emailAddress,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Update the email address used to uniquely identify an Evernote Business user.
@@ -2806,10 +3226,16 @@ public:
        *     in the business.</li>
        * </ul>
        */
-    void updateBusinessUserIdentifier(QString oldEmailAddress, QString newEmailAddress, QString authenticationToken = QString());
+    virtual void updateBusinessUserIdentifier(
+        QString oldEmailAddress,
+        QString newEmailAddress,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link updateBusinessUserIdentifier @endlink */
-    AsyncResult * updateBusinessUserIdentifierAsync(QString oldEmailAddress, QString newEmailAddress, QString authenticationToken = QString());
+    virtual AsyncResult * updateBusinessUserIdentifierAsync(
+        QString oldEmailAddress,
+        QString newEmailAddress,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns a list of active business users in a given business.
@@ -2829,10 +3255,12 @@ public:
        *   A business authentication token returned by authenticateToBusiness or with sufficient
        *   privileges to manage Evernote Business membership.
        */
-    QList< UserProfile > listBusinessUsers(QString authenticationToken = QString());
+    virtual QList<UserProfile> listBusinessUsers(
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link listBusinessUsers @endlink */
-    AsyncResult * listBusinessUsersAsync(QString authenticationToken = QString());
+    virtual AsyncResult * listBusinessUsersAsync(
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Returns a list of outstanding invitations to join an Evernote Business account.
@@ -2848,10 +3276,14 @@ public:
        *   in the returned list. If false, only invitations with a status of
        *   BusinessInvitationStatus.APPROVED will be included.
        */
-    QList< BusinessInvitation > listBusinessInvitations(bool includeRequestedInvitations, QString authenticationToken = QString());
+    virtual QList<BusinessInvitation> listBusinessInvitations(
+        bool includeRequestedInvitations,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link listBusinessInvitations @endlink */
-    AsyncResult * listBusinessInvitationsAsync(bool includeRequestedInvitations, QString authenticationToken = QString());
+    virtual AsyncResult * listBusinessInvitationsAsync(
+        bool includeRequestedInvitations,
+        IRequestContextPtr ctx = {}) = 0;
 
     /**
        * Retrieve the standard account limits for a given service level. This should only be
@@ -2863,24 +3295,42 @@ public:
        *   <li>DATA_REQUIRED "serviceLevel" - serviceLevel is null</li>
        * </ul>
        */
-    AccountLimits getAccountLimits(ServiceLevel::type serviceLevel);
+    virtual AccountLimits getAccountLimits(
+        ServiceLevel serviceLevel,
+        IRequestContextPtr ctx = {}) = 0;
 
     /** Asynchronous version of @link getAccountLimits @endlink */
-    AsyncResult * getAccountLimitsAsync(ServiceLevel::type serviceLevel);
+    virtual AsyncResult * getAccountLimitsAsync(
+        ServiceLevel serviceLevel,
+        IRequestContextPtr ctx = {}) = 0;
 
-private:
-    QString m_url;
-    QString m_authenticationToken;
 };
 
+using IUserStorePtr = std::shared_ptr<IUserStore>;
+
+////////////////////////////////////////////////////////////////////////////////
+
+QEVERCLOUD_EXPORT INoteStore * newNoteStore(
+    QString noteStoreUrl = {},
+    IRequestContextPtr ctx = {},
+    QObject * parent = nullptr,
+    IRetryPolicyPtr retryPolicy = {});
+
+QEVERCLOUD_EXPORT IUserStore * newUserStore(
+    QString userStoreUrl = {},
+    IRequestContextPtr ctx = {},
+    QObject * parent = nullptr,
+    IRetryPolicyPtr retryPolicy = {});
+
 } // namespace qevercloud
-Q_DECLARE_METATYPE(QList< qevercloud::Notebook >)
-Q_DECLARE_METATYPE(QList< qevercloud::Tag >)
-Q_DECLARE_METATYPE(QList< qevercloud::SavedSearch >)
-Q_DECLARE_METATYPE(QList< qevercloud::NoteVersionId >)
-Q_DECLARE_METATYPE(QList< qevercloud::SharedNotebook >)
-Q_DECLARE_METATYPE(QList< qevercloud::LinkedNotebook >)
-Q_DECLARE_METATYPE(QList< qevercloud::BusinessInvitation >)
-Q_DECLARE_METATYPE(QList< qevercloud::UserProfile >)
+
+Q_DECLARE_METATYPE(QList<qevercloud::Notebook>)
+Q_DECLARE_METATYPE(QList<qevercloud::Tag>)
+Q_DECLARE_METATYPE(QList<qevercloud::SavedSearch>)
+Q_DECLARE_METATYPE(QList<qevercloud::NoteVersionId>)
+Q_DECLARE_METATYPE(QList<qevercloud::SharedNotebook>)
+Q_DECLARE_METATYPE(QList<qevercloud::LinkedNotebook>)
+Q_DECLARE_METATYPE(QList<qevercloud::BusinessInvitation>)
+Q_DECLARE_METATYPE(QList<qevercloud::UserProfile>)
 
 #endif // QEVERCLOUD_GENERATED_SERVICES_H

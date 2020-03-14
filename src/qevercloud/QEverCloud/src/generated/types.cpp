@@ -1,26 +1,34 @@
 /**
  * Original work: Copyright (c) 2014 Sergey Skoblikov
- * Modified work: Copyright (c) 2015-2016 Dmitry Ivanov
+ * Modified work: Copyright (c) 2015-2020 Dmitry Ivanov
  *
- * This file is a part of QEverCloud project and is distributed under the terms of MIT license:
+ * This file is a part of QEverCloud project and is distributed under the terms
+ * of MIT license:
  * https://opensource.org/licenses/MIT
  *
  * This file was generated from Evernote Thrift API
  */
 
-
-#include <generated/types.h>
-#include "../impl.h"
-#include "../impl.h"
-#include "types_impl.h"
-#include <qt4helpers.h>
+#include <generated/Types.h>
+#include "../Impl.h"
+#include "../Impl.h"
+#include "Types_io.h"
+#include <Helpers.h>
+#include <QDebug>
+#include <QUuid>
 
 namespace qevercloud {
+
+////////////////////////////////////////////////////////////////////////////////
+
 /** @cond HIDDEN_SYMBOLS  */
 
-void readEnumEDAMErrorCode(ThriftBinaryBufferReader & r, EDAMErrorCode::type & e) {
+void readEnumEDAMErrorCode(
+    ThriftBinaryBufferReader & reader,
+    EDAMErrorCode & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(EDAMErrorCode::UNKNOWN): e = EDAMErrorCode::UNKNOWN; break;
     case static_cast<int>(EDAMErrorCode::BAD_DATA_FORMAT): e = EDAMErrorCode::BAD_DATA_FORMAT; break;
@@ -54,9 +62,12 @@ void readEnumEDAMErrorCode(ThriftBinaryBufferReader & r, EDAMErrorCode::type & e
     }
 }
 
-void readEnumEDAMInvalidContactReason(ThriftBinaryBufferReader & r, EDAMInvalidContactReason::type & e) {
+void readEnumEDAMInvalidContactReason(
+    ThriftBinaryBufferReader & reader,
+    EDAMInvalidContactReason & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(EDAMInvalidContactReason::BAD_ADDRESS): e = EDAMInvalidContactReason::BAD_ADDRESS; break;
     case static_cast<int>(EDAMInvalidContactReason::DUPLICATE_CONTACT): e = EDAMInvalidContactReason::DUPLICATE_CONTACT; break;
@@ -65,9 +76,12 @@ void readEnumEDAMInvalidContactReason(ThriftBinaryBufferReader & r, EDAMInvalidC
     }
 }
 
-void readEnumShareRelationshipPrivilegeLevel(ThriftBinaryBufferReader & r, ShareRelationshipPrivilegeLevel::type & e) {
+void readEnumShareRelationshipPrivilegeLevel(
+    ThriftBinaryBufferReader & reader,
+    ShareRelationshipPrivilegeLevel & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(ShareRelationshipPrivilegeLevel::READ_NOTEBOOK): e = ShareRelationshipPrivilegeLevel::READ_NOTEBOOK; break;
     case static_cast<int>(ShareRelationshipPrivilegeLevel::READ_NOTEBOOK_PLUS_ACTIVITY): e = ShareRelationshipPrivilegeLevel::READ_NOTEBOOK_PLUS_ACTIVITY; break;
@@ -77,9 +91,12 @@ void readEnumShareRelationshipPrivilegeLevel(ThriftBinaryBufferReader & r, Share
     }
 }
 
-void readEnumPrivilegeLevel(ThriftBinaryBufferReader & r, PrivilegeLevel::type & e) {
+void readEnumPrivilegeLevel(
+    ThriftBinaryBufferReader & reader,
+    PrivilegeLevel & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(PrivilegeLevel::NORMAL): e = PrivilegeLevel::NORMAL; break;
     case static_cast<int>(PrivilegeLevel::PREMIUM): e = PrivilegeLevel::PREMIUM; break;
@@ -91,9 +108,12 @@ void readEnumPrivilegeLevel(ThriftBinaryBufferReader & r, PrivilegeLevel::type &
     }
 }
 
-void readEnumServiceLevel(ThriftBinaryBufferReader & r, ServiceLevel::type & e) {
+void readEnumServiceLevel(
+    ThriftBinaryBufferReader & reader,
+    ServiceLevel & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(ServiceLevel::BASIC): e = ServiceLevel::BASIC; break;
     case static_cast<int>(ServiceLevel::PLUS): e = ServiceLevel::PLUS; break;
@@ -103,9 +123,12 @@ void readEnumServiceLevel(ThriftBinaryBufferReader & r, ServiceLevel::type & e) 
     }
 }
 
-void readEnumQueryFormat(ThriftBinaryBufferReader & r, QueryFormat::type & e) {
+void readEnumQueryFormat(
+    ThriftBinaryBufferReader & reader,
+    QueryFormat & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(QueryFormat::USER): e = QueryFormat::USER; break;
     case static_cast<int>(QueryFormat::SEXP): e = QueryFormat::SEXP; break;
@@ -113,9 +136,12 @@ void readEnumQueryFormat(ThriftBinaryBufferReader & r, QueryFormat::type & e) {
     }
 }
 
-void readEnumNoteSortOrder(ThriftBinaryBufferReader & r, NoteSortOrder::type & e) {
+void readEnumNoteSortOrder(
+    ThriftBinaryBufferReader & reader,
+    NoteSortOrder & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(NoteSortOrder::CREATED): e = NoteSortOrder::CREATED; break;
     case static_cast<int>(NoteSortOrder::UPDATED): e = NoteSortOrder::UPDATED; break;
@@ -126,9 +152,12 @@ void readEnumNoteSortOrder(ThriftBinaryBufferReader & r, NoteSortOrder::type & e
     }
 }
 
-void readEnumPremiumOrderStatus(ThriftBinaryBufferReader & r, PremiumOrderStatus::type & e) {
+void readEnumPremiumOrderStatus(
+    ThriftBinaryBufferReader & reader,
+    PremiumOrderStatus & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(PremiumOrderStatus::NONE): e = PremiumOrderStatus::NONE; break;
     case static_cast<int>(PremiumOrderStatus::PENDING): e = PremiumOrderStatus::PENDING; break;
@@ -140,9 +169,12 @@ void readEnumPremiumOrderStatus(ThriftBinaryBufferReader & r, PremiumOrderStatus
     }
 }
 
-void readEnumSharedNotebookPrivilegeLevel(ThriftBinaryBufferReader & r, SharedNotebookPrivilegeLevel::type & e) {
+void readEnumSharedNotebookPrivilegeLevel(
+    ThriftBinaryBufferReader & reader,
+    SharedNotebookPrivilegeLevel & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(SharedNotebookPrivilegeLevel::READ_NOTEBOOK): e = SharedNotebookPrivilegeLevel::READ_NOTEBOOK; break;
     case static_cast<int>(SharedNotebookPrivilegeLevel::MODIFY_NOTEBOOK_PLUS_ACTIVITY): e = SharedNotebookPrivilegeLevel::MODIFY_NOTEBOOK_PLUS_ACTIVITY; break;
@@ -154,9 +186,12 @@ void readEnumSharedNotebookPrivilegeLevel(ThriftBinaryBufferReader & r, SharedNo
     }
 }
 
-void readEnumSharedNotePrivilegeLevel(ThriftBinaryBufferReader & r, SharedNotePrivilegeLevel::type & e) {
+void readEnumSharedNotePrivilegeLevel(
+    ThriftBinaryBufferReader & reader,
+    SharedNotePrivilegeLevel & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(SharedNotePrivilegeLevel::READ_NOTE): e = SharedNotePrivilegeLevel::READ_NOTE; break;
     case static_cast<int>(SharedNotePrivilegeLevel::MODIFY_NOTE): e = SharedNotePrivilegeLevel::MODIFY_NOTE; break;
@@ -165,9 +200,12 @@ void readEnumSharedNotePrivilegeLevel(ThriftBinaryBufferReader & r, SharedNotePr
     }
 }
 
-void readEnumSponsoredGroupRole(ThriftBinaryBufferReader & r, SponsoredGroupRole::type & e) {
+void readEnumSponsoredGroupRole(
+    ThriftBinaryBufferReader & reader,
+    SponsoredGroupRole & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(SponsoredGroupRole::GROUP_MEMBER): e = SponsoredGroupRole::GROUP_MEMBER; break;
     case static_cast<int>(SponsoredGroupRole::GROUP_ADMIN): e = SponsoredGroupRole::GROUP_ADMIN; break;
@@ -176,9 +214,12 @@ void readEnumSponsoredGroupRole(ThriftBinaryBufferReader & r, SponsoredGroupRole
     }
 }
 
-void readEnumBusinessUserRole(ThriftBinaryBufferReader & r, BusinessUserRole::type & e) {
+void readEnumBusinessUserRole(
+    ThriftBinaryBufferReader & reader,
+    BusinessUserRole & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(BusinessUserRole::ADMIN): e = BusinessUserRole::ADMIN; break;
     case static_cast<int>(BusinessUserRole::NORMAL): e = BusinessUserRole::NORMAL; break;
@@ -186,9 +227,12 @@ void readEnumBusinessUserRole(ThriftBinaryBufferReader & r, BusinessUserRole::ty
     }
 }
 
-void readEnumBusinessUserStatus(ThriftBinaryBufferReader & r, BusinessUserStatus::type & e) {
+void readEnumBusinessUserStatus(
+    ThriftBinaryBufferReader & reader,
+    BusinessUserStatus & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(BusinessUserStatus::ACTIVE): e = BusinessUserStatus::ACTIVE; break;
     case static_cast<int>(BusinessUserStatus::DEACTIVATED): e = BusinessUserStatus::DEACTIVATED; break;
@@ -196,9 +240,12 @@ void readEnumBusinessUserStatus(ThriftBinaryBufferReader & r, BusinessUserStatus
     }
 }
 
-void readEnumSharedNotebookInstanceRestrictions(ThriftBinaryBufferReader & r, SharedNotebookInstanceRestrictions::type & e) {
+void readEnumSharedNotebookInstanceRestrictions(
+    ThriftBinaryBufferReader & reader,
+    SharedNotebookInstanceRestrictions & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(SharedNotebookInstanceRestrictions::ASSIGNED): e = SharedNotebookInstanceRestrictions::ASSIGNED; break;
     case static_cast<int>(SharedNotebookInstanceRestrictions::NO_SHARED_NOTEBOOKS): e = SharedNotebookInstanceRestrictions::NO_SHARED_NOTEBOOKS; break;
@@ -206,9 +253,12 @@ void readEnumSharedNotebookInstanceRestrictions(ThriftBinaryBufferReader & r, Sh
     }
 }
 
-void readEnumReminderEmailConfig(ThriftBinaryBufferReader & r, ReminderEmailConfig::type & e) {
+void readEnumReminderEmailConfig(
+    ThriftBinaryBufferReader & reader,
+    ReminderEmailConfig & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(ReminderEmailConfig::DO_NOT_SEND): e = ReminderEmailConfig::DO_NOT_SEND; break;
     case static_cast<int>(ReminderEmailConfig::SEND_DAILY_EMAIL): e = ReminderEmailConfig::SEND_DAILY_EMAIL; break;
@@ -216,9 +266,12 @@ void readEnumReminderEmailConfig(ThriftBinaryBufferReader & r, ReminderEmailConf
     }
 }
 
-void readEnumBusinessInvitationStatus(ThriftBinaryBufferReader & r, BusinessInvitationStatus::type & e) {
+void readEnumBusinessInvitationStatus(
+    ThriftBinaryBufferReader & reader,
+    BusinessInvitationStatus & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(BusinessInvitationStatus::APPROVED): e = BusinessInvitationStatus::APPROVED; break;
     case static_cast<int>(BusinessInvitationStatus::REQUESTED): e = BusinessInvitationStatus::REQUESTED; break;
@@ -227,9 +280,12 @@ void readEnumBusinessInvitationStatus(ThriftBinaryBufferReader & r, BusinessInvi
     }
 }
 
-void readEnumContactType(ThriftBinaryBufferReader & r, ContactType::type & e) {
+void readEnumContactType(
+    ThriftBinaryBufferReader & reader,
+    ContactType & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(ContactType::EVERNOTE): e = ContactType::EVERNOTE; break;
     case static_cast<int>(ContactType::SMS): e = ContactType::SMS; break;
@@ -241,9 +297,12 @@ void readEnumContactType(ThriftBinaryBufferReader & r, ContactType::type & e) {
     }
 }
 
-void readEnumEntityType(ThriftBinaryBufferReader & r, EntityType::type & e) {
+void readEnumEntityType(
+    ThriftBinaryBufferReader & reader,
+    EntityType & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(EntityType::NOTE): e = EntityType::NOTE; break;
     case static_cast<int>(EntityType::NOTEBOOK): e = EntityType::NOTEBOOK; break;
@@ -252,9 +311,12 @@ void readEnumEntityType(ThriftBinaryBufferReader & r, EntityType::type & e) {
     }
 }
 
-void readEnumRecipientStatus(ThriftBinaryBufferReader & r, RecipientStatus::type & e) {
+void readEnumRecipientStatus(
+    ThriftBinaryBufferReader & reader,
+    RecipientStatus & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(RecipientStatus::NOT_IN_MY_LIST): e = RecipientStatus::NOT_IN_MY_LIST; break;
     case static_cast<int>(RecipientStatus::IN_MY_LIST): e = RecipientStatus::IN_MY_LIST; break;
@@ -263,9 +325,12 @@ void readEnumRecipientStatus(ThriftBinaryBufferReader & r, RecipientStatus::type
     }
 }
 
-void readEnumCanMoveToContainerStatus(ThriftBinaryBufferReader & r, CanMoveToContainerStatus::type & e) {
+void readEnumCanMoveToContainerStatus(
+    ThriftBinaryBufferReader & reader,
+    CanMoveToContainerStatus & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(CanMoveToContainerStatus::CAN_BE_MOVED): e = CanMoveToContainerStatus::CAN_BE_MOVED; break;
     case static_cast<int>(CanMoveToContainerStatus::INSUFFICIENT_ENTITY_PRIVILEGE): e = CanMoveToContainerStatus::INSUFFICIENT_ENTITY_PRIVILEGE; break;
@@ -274,9 +339,12 @@ void readEnumCanMoveToContainerStatus(ThriftBinaryBufferReader & r, CanMoveToCon
     }
 }
 
-void readEnumRelatedContentType(ThriftBinaryBufferReader & r, RelatedContentType::type & e) {
+void readEnumRelatedContentType(
+    ThriftBinaryBufferReader & reader,
+    RelatedContentType & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(RelatedContentType::NEWS_ARTICLE): e = RelatedContentType::NEWS_ARTICLE; break;
     case static_cast<int>(RelatedContentType::PROFILE_PERSON): e = RelatedContentType::PROFILE_PERSON; break;
@@ -286,9 +354,12 @@ void readEnumRelatedContentType(ThriftBinaryBufferReader & r, RelatedContentType
     }
 }
 
-void readEnumRelatedContentAccess(ThriftBinaryBufferReader & r, RelatedContentAccess::type & e) {
+void readEnumRelatedContentAccess(
+    ThriftBinaryBufferReader & reader,
+    RelatedContentAccess & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(RelatedContentAccess::NOT_ACCESSIBLE): e = RelatedContentAccess::NOT_ACCESSIBLE; break;
     case static_cast<int>(RelatedContentAccess::DIRECT_LINK_ACCESS_OK): e = RelatedContentAccess::DIRECT_LINK_ACCESS_OK; break;
@@ -298,9 +369,12 @@ void readEnumRelatedContentAccess(ThriftBinaryBufferReader & r, RelatedContentAc
     }
 }
 
-void readEnumUserIdentityType(ThriftBinaryBufferReader & r, UserIdentityType::type & e) {
+void readEnumUserIdentityType(
+    ThriftBinaryBufferReader & reader,
+    UserIdentityType & e)
+{
     qint32 i;
-    r.readI32(i);
+    reader.readI32(i);
     switch(i) {
     case static_cast<int>(UserIdentityType::EVERNOTE_USERID): e = UserIdentityType::EVERNOTE_USERID; break;
     case static_cast<int>(UserIdentityType::EMAIL): e = UserIdentityType::EMAIL; break;
@@ -309,11022 +383,21525 @@ void readEnumUserIdentityType(ThriftBinaryBufferReader & r, UserIdentityType::ty
     }
 }
 
-void writeSyncState(ThriftBinaryBufferWriter & w, const SyncState & s) {
-    w.writeStructBegin(QStringLiteral("SyncState"));
-    w.writeFieldBegin(QStringLiteral("currentTime"), ThriftFieldType::T_I64, 1);
-    w.writeI64(s.currentTime);
-    w.writeFieldEnd();
-    w.writeFieldBegin(QStringLiteral("fullSyncBefore"), ThriftFieldType::T_I64, 2);
-    w.writeI64(s.fullSyncBefore);
-    w.writeFieldEnd();
-    w.writeFieldBegin(QStringLiteral("updateCount"), ThriftFieldType::T_I32, 3);
-    w.writeI32(s.updateCount);
-    w.writeFieldEnd();
-    if(s.uploaded.isSet()) {
-        w.writeFieldBegin(QStringLiteral("uploaded"), ThriftFieldType::T_I64, 4);
-        w.writeI64(s.uploaded.ref());
-        w.writeFieldEnd();
-    }
-    if(s.userLastUpdated.isSet()) {
-        w.writeFieldBegin(QStringLiteral("userLastUpdated"), ThriftFieldType::T_I64, 5);
-        w.writeI64(s.userLastUpdated.ref());
-        w.writeFieldEnd();
-    }
-    if(s.userMaxMessageEventId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("userMaxMessageEventId"), ThriftFieldType::T_I64, 6);
-        w.writeI64(s.userMaxMessageEventId.ref());
-        w.writeFieldEnd();
-    }
-    w.writeFieldStop();
-    w.writeStructEnd();
+EverCloudLocalData::EverCloudLocalData()
+{
+    id = QUuid::createUuid().toString();
+    // Remove curvy braces
+    id.remove(id.size() - 1, 1);
+    id.remove(0, 1);
 }
 
-void readSyncState(ThriftBinaryBufferReader & r, SyncState & s) {
+EverCloudLocalData::~EverCloudLocalData() noexcept
+{}
+
+void EverCloudLocalData::print(QTextStream & strm) const
+{
+    strm << "    localData.id = " << id << "\n"
+        << "    localData.dirty = " << (dirty ? "true" : "false") << "\n"
+        << "    localData.local = " << (local ? "true" : "false") << "\n"
+        << "    localData.favorited = " << (favorited ? "true" : "false") << "\n";
+
+    if (!dict.isEmpty())
+    {
+        strm << "    localData.dict:" << "\n";
+        QString valueStr;
+        for(const auto & it: toRange(dict)) {
+            strm << "        [" << it.key() << "] = ";
+            valueStr.resize(0);
+            QDebug dbg(&valueStr);
+            dbg.noquote();
+            dbg.nospace();
+            dbg << it.value();
+            strm << valueStr << "\n";
+        }
+    }
+}
+
+bool EverCloudLocalData::operator==(
+    const EverCloudLocalData & other) const
+{
+    return id == other.id && dirty == other.dirty &&
+        local == other.local && favorited == other.favorited &&
+        dict == other.dict;
+}
+
+bool EverCloudLocalData::operator!=(
+    const EverCloudLocalData & other) const
+{
+    return !operator==(other);
+}
+
+void writeSyncState(
+    ThriftBinaryBufferWriter & writer,
+    const SyncState & s)
+{
+    writer.writeStructBegin(QStringLiteral("SyncState"));
+    writer.writeFieldBegin(
+        QStringLiteral("currentTime"),
+        ThriftFieldType::T_I64,
+        1);
+
+    writer.writeI64(s.currentTime);
+    writer.writeFieldEnd();
+
+    writer.writeFieldBegin(
+        QStringLiteral("fullSyncBefore"),
+        ThriftFieldType::T_I64,
+        2);
+
+    writer.writeI64(s.fullSyncBefore);
+    writer.writeFieldEnd();
+
+    writer.writeFieldBegin(
+        QStringLiteral("updateCount"),
+        ThriftFieldType::T_I32,
+        3);
+
+    writer.writeI32(s.updateCount);
+    writer.writeFieldEnd();
+
+    if (s.uploaded.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("uploaded"),
+            ThriftFieldType::T_I64,
+            4);
+
+        writer.writeI64(s.uploaded.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.userLastUpdated.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("userLastUpdated"),
+            ThriftFieldType::T_I64,
+            5);
+
+        writer.writeI64(s.userLastUpdated.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.userMaxMessageEventId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("userMaxMessageEventId"),
+            ThriftFieldType::T_I64,
+            6);
+
+        writer.writeI64(s.userMaxMessageEventId.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readSyncState(
+    ThriftBinaryBufferReader & reader,
+    SyncState & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
     bool currentTime_isset = false;
     bool fullSyncBefore_isset = false;
     bool updateCount_isset = false;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I64) {
                 currentTime_isset = true;
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.currentTime = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_I64) {
                 fullSyncBefore_isset = true;
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.fullSyncBefore = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I32) {
                 updateCount_isset = true;
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.updateCount = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.uploaded = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.userLastUpdated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_I64) {
                 MessageEventID v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.userMaxMessageEventId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
-    if(!currentTime_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("SyncState.currentTime has no value"));
-    if(!fullSyncBefore_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("SyncState.fullSyncBefore has no value"));
-    if(!updateCount_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("SyncState.updateCount has no value"));
+    reader.readStructEnd();
+    if (!currentTime_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("SyncState.currentTime has no value"));
+    if (!fullSyncBefore_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("SyncState.fullSyncBefore has no value"));
+    if (!updateCount_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("SyncState.updateCount has no value"));
 }
 
-void writeSyncChunk(ThriftBinaryBufferWriter & w, const SyncChunk & s) {
-    w.writeStructBegin(QStringLiteral("SyncChunk"));
-    w.writeFieldBegin(QStringLiteral("currentTime"), ThriftFieldType::T_I64, 1);
-    w.writeI64(s.currentTime);
-    w.writeFieldEnd();
-    if(s.chunkHighUSN.isSet()) {
-        w.writeFieldBegin(QStringLiteral("chunkHighUSN"), ThriftFieldType::T_I32, 2);
-        w.writeI32(s.chunkHighUSN.ref());
-        w.writeFieldEnd();
+void SyncState::print(QTextStream & strm) const
+{
+    strm << "SyncState: {\n";
+    localData.print(strm);
+    strm << "    currentTime = "
+        << currentTime << "\n";
+    strm << "    fullSyncBefore = "
+        << fullSyncBefore << "\n";
+    strm << "    updateCount = "
+        << updateCount << "\n";
+
+    if (uploaded.isSet()) {
+        strm << "    uploaded = "
+            << uploaded.ref() << "\n";
     }
-    w.writeFieldBegin(QStringLiteral("updateCount"), ThriftFieldType::T_I32, 3);
-    w.writeI32(s.updateCount);
-    w.writeFieldEnd();
-    if(s.notes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("notes"), ThriftFieldType::T_LIST, 4);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.notes.ref().length());
-        for(QList< Note >::const_iterator it = s.notes.ref().constBegin(), end = s.notes.ref().constEnd(); it != end; ++it) {
-            writeNote(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+    else {
+        strm << "    uploaded is not set\n";
     }
-    if(s.notebooks.isSet()) {
-        w.writeFieldBegin(QStringLiteral("notebooks"), ThriftFieldType::T_LIST, 5);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.notebooks.ref().length());
-        for(QList< Notebook >::const_iterator it = s.notebooks.ref().constBegin(), end = s.notebooks.ref().constEnd(); it != end; ++it) {
-            writeNotebook(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+
+    if (userLastUpdated.isSet()) {
+        strm << "    userLastUpdated = "
+            << userLastUpdated.ref() << "\n";
     }
-    if(s.tags.isSet()) {
-        w.writeFieldBegin(QStringLiteral("tags"), ThriftFieldType::T_LIST, 6);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.tags.ref().length());
-        for(QList< Tag >::const_iterator it = s.tags.ref().constBegin(), end = s.tags.ref().constEnd(); it != end; ++it) {
-            writeTag(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+    else {
+        strm << "    userLastUpdated is not set\n";
     }
-    if(s.searches.isSet()) {
-        w.writeFieldBegin(QStringLiteral("searches"), ThriftFieldType::T_LIST, 7);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.searches.ref().length());
-        for(QList< SavedSearch >::const_iterator it = s.searches.ref().constBegin(), end = s.searches.ref().constEnd(); it != end; ++it) {
-            writeSavedSearch(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+
+    if (userMaxMessageEventId.isSet()) {
+        strm << "    userMaxMessageEventId = "
+            << userMaxMessageEventId.ref() << "\n";
     }
-    if(s.resources.isSet()) {
-        w.writeFieldBegin(QStringLiteral("resources"), ThriftFieldType::T_LIST, 8);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.resources.ref().length());
-        for(QList< Resource >::const_iterator it = s.resources.ref().constBegin(), end = s.resources.ref().constEnd(); it != end; ++it) {
-            writeResource(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+    else {
+        strm << "    userMaxMessageEventId is not set\n";
     }
-    if(s.expungedNotes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("expungedNotes"), ThriftFieldType::T_LIST, 9);
-        w.writeListBegin(ThriftFieldType::T_STRING, s.expungedNotes.ref().length());
-        for(QList< Guid >::const_iterator it = s.expungedNotes.ref().constBegin(), end = s.expungedNotes.ref().constEnd(); it != end; ++it) {
-            w.writeString(*it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
-    }
-    if(s.expungedNotebooks.isSet()) {
-        w.writeFieldBegin(QStringLiteral("expungedNotebooks"), ThriftFieldType::T_LIST, 10);
-        w.writeListBegin(ThriftFieldType::T_STRING, s.expungedNotebooks.ref().length());
-        for(QList< Guid >::const_iterator it = s.expungedNotebooks.ref().constBegin(), end = s.expungedNotebooks.ref().constEnd(); it != end; ++it) {
-            w.writeString(*it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
-    }
-    if(s.expungedTags.isSet()) {
-        w.writeFieldBegin(QStringLiteral("expungedTags"), ThriftFieldType::T_LIST, 11);
-        w.writeListBegin(ThriftFieldType::T_STRING, s.expungedTags.ref().length());
-        for(QList< Guid >::const_iterator it = s.expungedTags.ref().constBegin(), end = s.expungedTags.ref().constEnd(); it != end; ++it) {
-            w.writeString(*it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
-    }
-    if(s.expungedSearches.isSet()) {
-        w.writeFieldBegin(QStringLiteral("expungedSearches"), ThriftFieldType::T_LIST, 12);
-        w.writeListBegin(ThriftFieldType::T_STRING, s.expungedSearches.ref().length());
-        for(QList< Guid >::const_iterator it = s.expungedSearches.ref().constBegin(), end = s.expungedSearches.ref().constEnd(); it != end; ++it) {
-            w.writeString(*it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
-    }
-    if(s.linkedNotebooks.isSet()) {
-        w.writeFieldBegin(QStringLiteral("linkedNotebooks"), ThriftFieldType::T_LIST, 13);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.linkedNotebooks.ref().length());
-        for(QList< LinkedNotebook >::const_iterator it = s.linkedNotebooks.ref().constBegin(), end = s.linkedNotebooks.ref().constEnd(); it != end; ++it) {
-            writeLinkedNotebook(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
-    }
-    if(s.expungedLinkedNotebooks.isSet()) {
-        w.writeFieldBegin(QStringLiteral("expungedLinkedNotebooks"), ThriftFieldType::T_LIST, 14);
-        w.writeListBegin(ThriftFieldType::T_STRING, s.expungedLinkedNotebooks.ref().length());
-        for(QList< Guid >::const_iterator it = s.expungedLinkedNotebooks.ref().constBegin(), end = s.expungedLinkedNotebooks.ref().constEnd(); it != end; ++it) {
-            w.writeString(*it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
-    }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    strm << "}\n";
 }
 
-void readSyncChunk(ThriftBinaryBufferReader & r, SyncChunk & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeSyncChunk(
+    ThriftBinaryBufferWriter & writer,
+    const SyncChunk & s)
+{
+    writer.writeStructBegin(QStringLiteral("SyncChunk"));
+    writer.writeFieldBegin(
+        QStringLiteral("currentTime"),
+        ThriftFieldType::T_I64,
+        1);
+
+    writer.writeI64(s.currentTime);
+    writer.writeFieldEnd();
+
+    if (s.chunkHighUSN.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("chunkHighUSN"),
+            ThriftFieldType::T_I32,
+            2);
+
+        writer.writeI32(s.chunkHighUSN.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldBegin(
+        QStringLiteral("updateCount"),
+        ThriftFieldType::T_I32,
+        3);
+
+    writer.writeI32(s.updateCount);
+    writer.writeFieldEnd();
+
+    if (s.notes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("notes"),
+            ThriftFieldType::T_LIST,
+            4);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.notes.ref().length());
+        for(const auto & value: qAsConst(s.notes.ref())) {
+            writeNote(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.notebooks.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("notebooks"),
+            ThriftFieldType::T_LIST,
+            5);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.notebooks.ref().length());
+        for(const auto & value: qAsConst(s.notebooks.ref())) {
+            writeNotebook(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.tags.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("tags"),
+            ThriftFieldType::T_LIST,
+            6);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.tags.ref().length());
+        for(const auto & value: qAsConst(s.tags.ref())) {
+            writeTag(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.searches.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("searches"),
+            ThriftFieldType::T_LIST,
+            7);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.searches.ref().length());
+        for(const auto & value: qAsConst(s.searches.ref())) {
+            writeSavedSearch(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.resources.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("resources"),
+            ThriftFieldType::T_LIST,
+            8);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.resources.ref().length());
+        for(const auto & value: qAsConst(s.resources.ref())) {
+            writeResource(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.expungedNotes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("expungedNotes"),
+            ThriftFieldType::T_LIST,
+            9);
+
+        writer.writeListBegin(ThriftFieldType::T_STRING, s.expungedNotes.ref().length());
+        for(const auto & value: qAsConst(s.expungedNotes.ref())) {
+            writer.writeString(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.expungedNotebooks.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("expungedNotebooks"),
+            ThriftFieldType::T_LIST,
+            10);
+
+        writer.writeListBegin(ThriftFieldType::T_STRING, s.expungedNotebooks.ref().length());
+        for(const auto & value: qAsConst(s.expungedNotebooks.ref())) {
+            writer.writeString(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.expungedTags.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("expungedTags"),
+            ThriftFieldType::T_LIST,
+            11);
+
+        writer.writeListBegin(ThriftFieldType::T_STRING, s.expungedTags.ref().length());
+        for(const auto & value: qAsConst(s.expungedTags.ref())) {
+            writer.writeString(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.expungedSearches.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("expungedSearches"),
+            ThriftFieldType::T_LIST,
+            12);
+
+        writer.writeListBegin(ThriftFieldType::T_STRING, s.expungedSearches.ref().length());
+        for(const auto & value: qAsConst(s.expungedSearches.ref())) {
+            writer.writeString(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.linkedNotebooks.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("linkedNotebooks"),
+            ThriftFieldType::T_LIST,
+            13);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.linkedNotebooks.ref().length());
+        for(const auto & value: qAsConst(s.linkedNotebooks.ref())) {
+            writeLinkedNotebook(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.expungedLinkedNotebooks.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("expungedLinkedNotebooks"),
+            ThriftFieldType::T_LIST,
+            14);
+
+        writer.writeListBegin(ThriftFieldType::T_STRING, s.expungedLinkedNotebooks.ref().length());
+        for(const auto & value: qAsConst(s.expungedLinkedNotebooks.ref())) {
+            writer.writeString(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readSyncChunk(
+    ThriftBinaryBufferReader & reader,
+    SyncChunk & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
     bool currentTime_isset = false;
     bool updateCount_isset = false;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I64) {
                 currentTime_isset = true;
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.currentTime = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.chunkHighUSN = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I32) {
                 updateCount_isset = true;
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.updateCount = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< Note > v;
+                QList<Note> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (SyncChunk.notes)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (SyncChunk.notes)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     Note elem;
-                    readNote(r, elem);
+                    readNote(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.notes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< Notebook > v;
+                QList<Notebook> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (SyncChunk.notebooks)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (SyncChunk.notebooks)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     Notebook elem;
-                    readNotebook(r, elem);
+                    readNotebook(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.notebooks = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< Tag > v;
+                QList<Tag> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (SyncChunk.tags)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (SyncChunk.tags)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     Tag elem;
-                    readTag(r, elem);
+                    readTag(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.tags = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< SavedSearch > v;
+                QList<SavedSearch> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (SyncChunk.searches)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (SyncChunk.searches)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     SavedSearch elem;
-                    readSavedSearch(r, elem);
+                    readSavedSearch(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.searches = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< Resource > v;
+                QList<Resource> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (SyncChunk.resources)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (SyncChunk.resources)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     Resource elem;
-                    readResource(r, elem);
+                    readResource(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.resources = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 9) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< Guid > v;
+                QList<Guid> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (SyncChunk.expungedNotes)"));
+                if (elemType != ThriftFieldType::T_STRING) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (SyncChunk.expungedNotes)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     Guid elem;
-                    r.readString(elem);
+                    reader.readString(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.expungedNotes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 10) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< Guid > v;
+                QList<Guid> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (SyncChunk.expungedNotebooks)"));
+                if (elemType != ThriftFieldType::T_STRING) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (SyncChunk.expungedNotebooks)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     Guid elem;
-                    r.readString(elem);
+                    reader.readString(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.expungedNotebooks = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 11) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< Guid > v;
+                QList<Guid> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (SyncChunk.expungedTags)"));
+                if (elemType != ThriftFieldType::T_STRING) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (SyncChunk.expungedTags)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     Guid elem;
-                    r.readString(elem);
+                    reader.readString(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.expungedTags = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 12) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< Guid > v;
+                QList<Guid> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (SyncChunk.expungedSearches)"));
+                if (elemType != ThriftFieldType::T_STRING) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (SyncChunk.expungedSearches)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     Guid elem;
-                    r.readString(elem);
+                    reader.readString(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.expungedSearches = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 13) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< LinkedNotebook > v;
+                QList<LinkedNotebook> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (SyncChunk.linkedNotebooks)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (SyncChunk.linkedNotebooks)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     LinkedNotebook elem;
-                    readLinkedNotebook(r, elem);
+                    readLinkedNotebook(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.linkedNotebooks = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 14) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< Guid > v;
+                QList<Guid> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (SyncChunk.expungedLinkedNotebooks)"));
+                if (elemType != ThriftFieldType::T_STRING) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (SyncChunk.expungedLinkedNotebooks)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     Guid elem;
-                    r.readString(elem);
+                    reader.readString(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.expungedLinkedNotebooks = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
-    if(!currentTime_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("SyncChunk.currentTime has no value"));
-    if(!updateCount_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("SyncChunk.updateCount has no value"));
+    reader.readStructEnd();
+    if (!currentTime_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("SyncChunk.currentTime has no value"));
+    if (!updateCount_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("SyncChunk.updateCount has no value"));
 }
 
-void writeSyncChunkFilter(ThriftBinaryBufferWriter & w, const SyncChunkFilter & s) {
-    w.writeStructBegin(QStringLiteral("SyncChunkFilter"));
-    if(s.includeNotes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeNotes"), ThriftFieldType::T_BOOL, 1);
-        w.writeBool(s.includeNotes.ref());
-        w.writeFieldEnd();
+void SyncChunk::print(QTextStream & strm) const
+{
+    strm << "SyncChunk: {\n";
+    localData.print(strm);
+    strm << "    currentTime = "
+        << currentTime << "\n";
+
+    if (chunkHighUSN.isSet()) {
+        strm << "    chunkHighUSN = "
+            << chunkHighUSN.ref() << "\n";
     }
-    if(s.includeNoteResources.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeNoteResources"), ThriftFieldType::T_BOOL, 2);
-        w.writeBool(s.includeNoteResources.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    chunkHighUSN is not set\n";
     }
-    if(s.includeNoteAttributes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeNoteAttributes"), ThriftFieldType::T_BOOL, 3);
-        w.writeBool(s.includeNoteAttributes.ref());
-        w.writeFieldEnd();
-    }
-    if(s.includeNotebooks.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeNotebooks"), ThriftFieldType::T_BOOL, 4);
-        w.writeBool(s.includeNotebooks.ref());
-        w.writeFieldEnd();
-    }
-    if(s.includeTags.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeTags"), ThriftFieldType::T_BOOL, 5);
-        w.writeBool(s.includeTags.ref());
-        w.writeFieldEnd();
-    }
-    if(s.includeSearches.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeSearches"), ThriftFieldType::T_BOOL, 6);
-        w.writeBool(s.includeSearches.ref());
-        w.writeFieldEnd();
-    }
-    if(s.includeResources.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeResources"), ThriftFieldType::T_BOOL, 7);
-        w.writeBool(s.includeResources.ref());
-        w.writeFieldEnd();
-    }
-    if(s.includeLinkedNotebooks.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeLinkedNotebooks"), ThriftFieldType::T_BOOL, 8);
-        w.writeBool(s.includeLinkedNotebooks.ref());
-        w.writeFieldEnd();
-    }
-    if(s.includeExpunged.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeExpunged"), ThriftFieldType::T_BOOL, 9);
-        w.writeBool(s.includeExpunged.ref());
-        w.writeFieldEnd();
-    }
-    if(s.includeNoteApplicationDataFullMap.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeNoteApplicationDataFullMap"), ThriftFieldType::T_BOOL, 10);
-        w.writeBool(s.includeNoteApplicationDataFullMap.ref());
-        w.writeFieldEnd();
-    }
-    if(s.includeResourceApplicationDataFullMap.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeResourceApplicationDataFullMap"), ThriftFieldType::T_BOOL, 12);
-        w.writeBool(s.includeResourceApplicationDataFullMap.ref());
-        w.writeFieldEnd();
-    }
-    if(s.includeNoteResourceApplicationDataFullMap.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeNoteResourceApplicationDataFullMap"), ThriftFieldType::T_BOOL, 13);
-        w.writeBool(s.includeNoteResourceApplicationDataFullMap.ref());
-        w.writeFieldEnd();
-    }
-    if(s.includeSharedNotes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeSharedNotes"), ThriftFieldType::T_BOOL, 17);
-        w.writeBool(s.includeSharedNotes.ref());
-        w.writeFieldEnd();
-    }
-    if(s.omitSharedNotebooks.isSet()) {
-        w.writeFieldBegin(QStringLiteral("omitSharedNotebooks"), ThriftFieldType::T_BOOL, 16);
-        w.writeBool(s.omitSharedNotebooks.ref());
-        w.writeFieldEnd();
-    }
-    if(s.requireNoteContentClass.isSet()) {
-        w.writeFieldBegin(QStringLiteral("requireNoteContentClass"), ThriftFieldType::T_STRING, 11);
-        w.writeString(s.requireNoteContentClass.ref());
-        w.writeFieldEnd();
-    }
-    if(s.notebookGuids.isSet()) {
-        w.writeFieldBegin(QStringLiteral("notebookGuids"), ThriftFieldType::T_SET, 15);
-        w.writeSetBegin(ThriftFieldType::T_STRING, s.notebookGuids.ref().count());
-        for(QSet< QString >::const_iterator it = s.notebookGuids.ref().constBegin(), end = s.notebookGuids.ref().constEnd(); it != end; ++it) {
-            w.writeString(*it);
+
+    strm << "    updateCount = "
+        << updateCount << "\n";
+
+    if (notes.isSet()) {
+        strm << "    notes = "
+            << "QList<Note> {";
+        for(const auto & v: notes.ref()) {
+            strm << "        " << v << "\n";
         }
-        w.writeSetEnd();
-        w.writeFieldEnd();
+        strm << "    }\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    notes is not set\n";
+    }
+
+    if (notebooks.isSet()) {
+        strm << "    notebooks = "
+            << "QList<Notebook> {";
+        for(const auto & v: notebooks.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    notebooks is not set\n";
+    }
+
+    if (tags.isSet()) {
+        strm << "    tags = "
+            << "QList<Tag> {";
+        for(const auto & v: tags.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    tags is not set\n";
+    }
+
+    if (searches.isSet()) {
+        strm << "    searches = "
+            << "QList<SavedSearch> {";
+        for(const auto & v: searches.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    searches is not set\n";
+    }
+
+    if (resources.isSet()) {
+        strm << "    resources = "
+            << "QList<Resource> {";
+        for(const auto & v: resources.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    resources is not set\n";
+    }
+
+    if (expungedNotes.isSet()) {
+        strm << "    expungedNotes = "
+            << "QList<Guid> {";
+        for(const auto & v: expungedNotes.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    expungedNotes is not set\n";
+    }
+
+    if (expungedNotebooks.isSet()) {
+        strm << "    expungedNotebooks = "
+            << "QList<Guid> {";
+        for(const auto & v: expungedNotebooks.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    expungedNotebooks is not set\n";
+    }
+
+    if (expungedTags.isSet()) {
+        strm << "    expungedTags = "
+            << "QList<Guid> {";
+        for(const auto & v: expungedTags.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    expungedTags is not set\n";
+    }
+
+    if (expungedSearches.isSet()) {
+        strm << "    expungedSearches = "
+            << "QList<Guid> {";
+        for(const auto & v: expungedSearches.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    expungedSearches is not set\n";
+    }
+
+    if (linkedNotebooks.isSet()) {
+        strm << "    linkedNotebooks = "
+            << "QList<LinkedNotebook> {";
+        for(const auto & v: linkedNotebooks.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    linkedNotebooks is not set\n";
+    }
+
+    if (expungedLinkedNotebooks.isSet()) {
+        strm << "    expungedLinkedNotebooks = "
+            << "QList<Guid> {";
+        for(const auto & v: expungedLinkedNotebooks.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    expungedLinkedNotebooks is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readSyncChunkFilter(ThriftBinaryBufferReader & r, SyncChunkFilter & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeSyncChunkFilter(
+    ThriftBinaryBufferWriter & writer,
+    const SyncChunkFilter & s)
+{
+    writer.writeStructBegin(QStringLiteral("SyncChunkFilter"));
+    if (s.includeNotes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeNotes"),
+            ThriftFieldType::T_BOOL,
+            1);
+
+        writer.writeBool(s.includeNotes.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeNoteResources.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeNoteResources"),
+            ThriftFieldType::T_BOOL,
+            2);
+
+        writer.writeBool(s.includeNoteResources.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeNoteAttributes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeNoteAttributes"),
+            ThriftFieldType::T_BOOL,
+            3);
+
+        writer.writeBool(s.includeNoteAttributes.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeNotebooks.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeNotebooks"),
+            ThriftFieldType::T_BOOL,
+            4);
+
+        writer.writeBool(s.includeNotebooks.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeTags.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeTags"),
+            ThriftFieldType::T_BOOL,
+            5);
+
+        writer.writeBool(s.includeTags.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeSearches.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeSearches"),
+            ThriftFieldType::T_BOOL,
+            6);
+
+        writer.writeBool(s.includeSearches.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeResources.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeResources"),
+            ThriftFieldType::T_BOOL,
+            7);
+
+        writer.writeBool(s.includeResources.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeLinkedNotebooks.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeLinkedNotebooks"),
+            ThriftFieldType::T_BOOL,
+            8);
+
+        writer.writeBool(s.includeLinkedNotebooks.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeExpunged.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeExpunged"),
+            ThriftFieldType::T_BOOL,
+            9);
+
+        writer.writeBool(s.includeExpunged.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeNoteApplicationDataFullMap.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeNoteApplicationDataFullMap"),
+            ThriftFieldType::T_BOOL,
+            10);
+
+        writer.writeBool(s.includeNoteApplicationDataFullMap.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeResourceApplicationDataFullMap.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeResourceApplicationDataFullMap"),
+            ThriftFieldType::T_BOOL,
+            12);
+
+        writer.writeBool(s.includeResourceApplicationDataFullMap.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeNoteResourceApplicationDataFullMap.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeNoteResourceApplicationDataFullMap"),
+            ThriftFieldType::T_BOOL,
+            13);
+
+        writer.writeBool(s.includeNoteResourceApplicationDataFullMap.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeSharedNotes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeSharedNotes"),
+            ThriftFieldType::T_BOOL,
+            17);
+
+        writer.writeBool(s.includeSharedNotes.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.omitSharedNotebooks.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("omitSharedNotebooks"),
+            ThriftFieldType::T_BOOL,
+            16);
+
+        writer.writeBool(s.omitSharedNotebooks.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.requireNoteContentClass.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("requireNoteContentClass"),
+            ThriftFieldType::T_STRING,
+            11);
+
+        writer.writeString(s.requireNoteContentClass.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.notebookGuids.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("notebookGuids"),
+            ThriftFieldType::T_SET,
+            15);
+
+        writer.writeSetBegin(ThriftFieldType::T_STRING, s.notebookGuids.ref().count());
+        for(const auto & value: qAsConst(s.notebookGuids.ref())) {
+            writer.writeString(value);
+        }
+        writer.writeSetEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readSyncChunkFilter(
+    ThriftBinaryBufferReader & reader,
+    SyncChunkFilter & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeNotes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeNoteResources = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeNoteAttributes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeNotebooks = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeTags = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeSearches = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeResources = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeLinkedNotebooks = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 9) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeExpunged = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 10) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeNoteApplicationDataFullMap = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 12) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeResourceApplicationDataFullMap = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 13) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeNoteResourceApplicationDataFullMap = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 17) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeSharedNotes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 16) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.omitSharedNotebooks = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 11) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.requireNoteContentClass = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 15) {
             if (fieldType == ThriftFieldType::T_SET) {
-                QSet< QString > v;
+                QSet<QString> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readSetBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readSetBegin(elemType, size);
                 v.reserve(size);
-                if (elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect set type (SyncChunkFilter.notebookGuids)"));
+                if (elemType != ThriftFieldType::T_STRING) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect set type (SyncChunkFilter.notebookGuids)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     QString elem;
-                    r.readString(elem);
+                    reader.readString(elem);
                     v.insert(elem);
                 }
-                r.readSetEnd();
+                reader.readSetEnd();
                 s.notebookGuids = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeNoteFilter(ThriftBinaryBufferWriter & w, const NoteFilter & s) {
-    w.writeStructBegin(QStringLiteral("NoteFilter"));
-    if(s.order.isSet()) {
-        w.writeFieldBegin(QStringLiteral("order"), ThriftFieldType::T_I32, 1);
-        w.writeI32(s.order.ref());
-        w.writeFieldEnd();
+void SyncChunkFilter::print(QTextStream & strm) const
+{
+    strm << "SyncChunkFilter: {\n";
+    localData.print(strm);
+
+    if (includeNotes.isSet()) {
+        strm << "    includeNotes = "
+            << includeNotes.ref() << "\n";
     }
-    if(s.ascending.isSet()) {
-        w.writeFieldBegin(QStringLiteral("ascending"), ThriftFieldType::T_BOOL, 2);
-        w.writeBool(s.ascending.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    includeNotes is not set\n";
     }
-    if(s.words.isSet()) {
-        w.writeFieldBegin(QStringLiteral("words"), ThriftFieldType::T_STRING, 3);
-        w.writeString(s.words.ref());
-        w.writeFieldEnd();
+
+    if (includeNoteResources.isSet()) {
+        strm << "    includeNoteResources = "
+            << includeNoteResources.ref() << "\n";
     }
-    if(s.notebookGuid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("notebookGuid"), ThriftFieldType::T_STRING, 4);
-        w.writeString(s.notebookGuid.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    includeNoteResources is not set\n";
     }
-    if(s.tagGuids.isSet()) {
-        w.writeFieldBegin(QStringLiteral("tagGuids"), ThriftFieldType::T_LIST, 5);
-        w.writeListBegin(ThriftFieldType::T_STRING, s.tagGuids.ref().length());
-        for(QList< Guid >::const_iterator it = s.tagGuids.ref().constBegin(), end = s.tagGuids.ref().constEnd(); it != end; ++it) {
-            w.writeString(*it);
+
+    if (includeNoteAttributes.isSet()) {
+        strm << "    includeNoteAttributes = "
+            << includeNoteAttributes.ref() << "\n";
+    }
+    else {
+        strm << "    includeNoteAttributes is not set\n";
+    }
+
+    if (includeNotebooks.isSet()) {
+        strm << "    includeNotebooks = "
+            << includeNotebooks.ref() << "\n";
+    }
+    else {
+        strm << "    includeNotebooks is not set\n";
+    }
+
+    if (includeTags.isSet()) {
+        strm << "    includeTags = "
+            << includeTags.ref() << "\n";
+    }
+    else {
+        strm << "    includeTags is not set\n";
+    }
+
+    if (includeSearches.isSet()) {
+        strm << "    includeSearches = "
+            << includeSearches.ref() << "\n";
+    }
+    else {
+        strm << "    includeSearches is not set\n";
+    }
+
+    if (includeResources.isSet()) {
+        strm << "    includeResources = "
+            << includeResources.ref() << "\n";
+    }
+    else {
+        strm << "    includeResources is not set\n";
+    }
+
+    if (includeLinkedNotebooks.isSet()) {
+        strm << "    includeLinkedNotebooks = "
+            << includeLinkedNotebooks.ref() << "\n";
+    }
+    else {
+        strm << "    includeLinkedNotebooks is not set\n";
+    }
+
+    if (includeExpunged.isSet()) {
+        strm << "    includeExpunged = "
+            << includeExpunged.ref() << "\n";
+    }
+    else {
+        strm << "    includeExpunged is not set\n";
+    }
+
+    if (includeNoteApplicationDataFullMap.isSet()) {
+        strm << "    includeNoteApplicationDataFullMap = "
+            << includeNoteApplicationDataFullMap.ref() << "\n";
+    }
+    else {
+        strm << "    includeNoteApplicationDataFullMap is not set\n";
+    }
+
+    if (includeResourceApplicationDataFullMap.isSet()) {
+        strm << "    includeResourceApplicationDataFullMap = "
+            << includeResourceApplicationDataFullMap.ref() << "\n";
+    }
+    else {
+        strm << "    includeResourceApplicationDataFullMap is not set\n";
+    }
+
+    if (includeNoteResourceApplicationDataFullMap.isSet()) {
+        strm << "    includeNoteResourceApplicationDataFullMap = "
+            << includeNoteResourceApplicationDataFullMap.ref() << "\n";
+    }
+    else {
+        strm << "    includeNoteResourceApplicationDataFullMap is not set\n";
+    }
+
+    if (includeSharedNotes.isSet()) {
+        strm << "    includeSharedNotes = "
+            << includeSharedNotes.ref() << "\n";
+    }
+    else {
+        strm << "    includeSharedNotes is not set\n";
+    }
+
+    if (omitSharedNotebooks.isSet()) {
+        strm << "    omitSharedNotebooks = "
+            << omitSharedNotebooks.ref() << "\n";
+    }
+    else {
+        strm << "    omitSharedNotebooks is not set\n";
+    }
+
+    if (requireNoteContentClass.isSet()) {
+        strm << "    requireNoteContentClass = "
+            << requireNoteContentClass.ref() << "\n";
+    }
+    else {
+        strm << "    requireNoteContentClass is not set\n";
+    }
+
+    if (notebookGuids.isSet()) {
+        strm << "    notebookGuids = "
+            << "QSet<QString> {";
+        for(const auto & v: notebookGuids.ref()) {
+            strm << "        " << v << "\n";
         }
-        w.writeListEnd();
-        w.writeFieldEnd();
+        strm << "    }\n";
     }
-    if(s.timeZone.isSet()) {
-        w.writeFieldBegin(QStringLiteral("timeZone"), ThriftFieldType::T_STRING, 6);
-        w.writeString(s.timeZone.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    notebookGuids is not set\n";
     }
-    if(s.inactive.isSet()) {
-        w.writeFieldBegin(QStringLiteral("inactive"), ThriftFieldType::T_BOOL, 7);
-        w.writeBool(s.inactive.ref());
-        w.writeFieldEnd();
-    }
-    if(s.emphasized.isSet()) {
-        w.writeFieldBegin(QStringLiteral("emphasized"), ThriftFieldType::T_STRING, 8);
-        w.writeString(s.emphasized.ref());
-        w.writeFieldEnd();
-    }
-    if(s.includeAllReadableNotebooks.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeAllReadableNotebooks"), ThriftFieldType::T_BOOL, 9);
-        w.writeBool(s.includeAllReadableNotebooks.ref());
-        w.writeFieldEnd();
-    }
-    if(s.includeAllReadableWorkspaces.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeAllReadableWorkspaces"), ThriftFieldType::T_BOOL, 15);
-        w.writeBool(s.includeAllReadableWorkspaces.ref());
-        w.writeFieldEnd();
-    }
-    if(s.context.isSet()) {
-        w.writeFieldBegin(QStringLiteral("context"), ThriftFieldType::T_STRING, 10);
-        w.writeString(s.context.ref());
-        w.writeFieldEnd();
-    }
-    if(s.rawWords.isSet()) {
-        w.writeFieldBegin(QStringLiteral("rawWords"), ThriftFieldType::T_STRING, 11);
-        w.writeString(s.rawWords.ref());
-        w.writeFieldEnd();
-    }
-    if(s.searchContextBytes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("searchContextBytes"), ThriftFieldType::T_STRING, 12);
-        w.writeBinary(s.searchContextBytes.ref());
-        w.writeFieldEnd();
-    }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    strm << "}\n";
 }
 
-void readNoteFilter(ThriftBinaryBufferReader & r, NoteFilter & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNoteFilter(
+    ThriftBinaryBufferWriter & writer,
+    const NoteFilter & s)
+{
+    writer.writeStructBegin(QStringLiteral("NoteFilter"));
+    if (s.order.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("order"),
+            ThriftFieldType::T_I32,
+            1);
+
+        writer.writeI32(s.order.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.ascending.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("ascending"),
+            ThriftFieldType::T_BOOL,
+            2);
+
+        writer.writeBool(s.ascending.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.words.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("words"),
+            ThriftFieldType::T_STRING,
+            3);
+
+        writer.writeString(s.words.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.notebookGuid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("notebookGuid"),
+            ThriftFieldType::T_STRING,
+            4);
+
+        writer.writeString(s.notebookGuid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.tagGuids.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("tagGuids"),
+            ThriftFieldType::T_LIST,
+            5);
+
+        writer.writeListBegin(ThriftFieldType::T_STRING, s.tagGuids.ref().length());
+        for(const auto & value: qAsConst(s.tagGuids.ref())) {
+            writer.writeString(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.timeZone.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("timeZone"),
+            ThriftFieldType::T_STRING,
+            6);
+
+        writer.writeString(s.timeZone.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.inactive.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("inactive"),
+            ThriftFieldType::T_BOOL,
+            7);
+
+        writer.writeBool(s.inactive.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.emphasized.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("emphasized"),
+            ThriftFieldType::T_STRING,
+            8);
+
+        writer.writeString(s.emphasized.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeAllReadableNotebooks.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeAllReadableNotebooks"),
+            ThriftFieldType::T_BOOL,
+            9);
+
+        writer.writeBool(s.includeAllReadableNotebooks.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeAllReadableWorkspaces.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeAllReadableWorkspaces"),
+            ThriftFieldType::T_BOOL,
+            15);
+
+        writer.writeBool(s.includeAllReadableWorkspaces.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.context.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("context"),
+            ThriftFieldType::T_STRING,
+            10);
+
+        writer.writeString(s.context.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.rawWords.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("rawWords"),
+            ThriftFieldType::T_STRING,
+            11);
+
+        writer.writeString(s.rawWords.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.searchContextBytes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("searchContextBytes"),
+            ThriftFieldType::T_STRING,
+            12);
+
+        writer.writeBinary(s.searchContextBytes.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNoteFilter(
+    ThriftBinaryBufferReader & reader,
+    NoteFilter & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.order = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.ascending = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.words = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 Guid v;
-                r.readString(v);
+                reader.readString(v);
                 s.notebookGuid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< Guid > v;
+                QList<Guid> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (NoteFilter.tagGuids)"));
+                if (elemType != ThriftFieldType::T_STRING) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (NoteFilter.tagGuids)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     Guid elem;
-                    r.readString(elem);
+                    reader.readString(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.tagGuids = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.timeZone = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.inactive = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.emphasized = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 9) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeAllReadableNotebooks = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 15) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeAllReadableWorkspaces = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 10) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.context = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 11) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.rawWords = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 12) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QByteArray v;
-                r.readBinary(v);
+                reader.readBinary(v);
                 s.searchContextBytes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeNoteList(ThriftBinaryBufferWriter & w, const NoteList & s) {
-    w.writeStructBegin(QStringLiteral("NoteList"));
-    w.writeFieldBegin(QStringLiteral("startIndex"), ThriftFieldType::T_I32, 1);
-    w.writeI32(s.startIndex);
-    w.writeFieldEnd();
-    w.writeFieldBegin(QStringLiteral("totalNotes"), ThriftFieldType::T_I32, 2);
-    w.writeI32(s.totalNotes);
-    w.writeFieldEnd();
-    w.writeFieldBegin(QStringLiteral("notes"), ThriftFieldType::T_LIST, 3);
-    w.writeListBegin(ThriftFieldType::T_STRUCT, s.notes.length());
-    for(QList< Note >::const_iterator it = s.notes.constBegin(), end = s.notes.constEnd(); it != end; ++it) {
-        writeNote(w, *it);
+void NoteFilter::print(QTextStream & strm) const
+{
+    strm << "NoteFilter: {\n";
+    localData.print(strm);
+
+    if (order.isSet()) {
+        strm << "    order = "
+            << order.ref() << "\n";
     }
-    w.writeListEnd();
-    w.writeFieldEnd();
-    if(s.stoppedWords.isSet()) {
-        w.writeFieldBegin(QStringLiteral("stoppedWords"), ThriftFieldType::T_LIST, 4);
-        w.writeListBegin(ThriftFieldType::T_STRING, s.stoppedWords.ref().length());
-        for(QStringList::const_iterator it = s.stoppedWords.ref().constBegin(), end = s.stoppedWords.ref().constEnd(); it != end; ++it) {
-            w.writeString(*it);
+    else {
+        strm << "    order is not set\n";
+    }
+
+    if (ascending.isSet()) {
+        strm << "    ascending = "
+            << ascending.ref() << "\n";
+    }
+    else {
+        strm << "    ascending is not set\n";
+    }
+
+    if (words.isSet()) {
+        strm << "    words = "
+            << words.ref() << "\n";
+    }
+    else {
+        strm << "    words is not set\n";
+    }
+
+    if (notebookGuid.isSet()) {
+        strm << "    notebookGuid = "
+            << notebookGuid.ref() << "\n";
+    }
+    else {
+        strm << "    notebookGuid is not set\n";
+    }
+
+    if (tagGuids.isSet()) {
+        strm << "    tagGuids = "
+            << "QList<Guid> {";
+        for(const auto & v: tagGuids.ref()) {
+            strm << "        " << v << "\n";
         }
-        w.writeListEnd();
-        w.writeFieldEnd();
+        strm << "    }\n";
     }
-    if(s.searchedWords.isSet()) {
-        w.writeFieldBegin(QStringLiteral("searchedWords"), ThriftFieldType::T_LIST, 5);
-        w.writeListBegin(ThriftFieldType::T_STRING, s.searchedWords.ref().length());
-        for(QStringList::const_iterator it = s.searchedWords.ref().constBegin(), end = s.searchedWords.ref().constEnd(); it != end; ++it) {
-            w.writeString(*it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+    else {
+        strm << "    tagGuids is not set\n";
     }
-    if(s.updateCount.isSet()) {
-        w.writeFieldBegin(QStringLiteral("updateCount"), ThriftFieldType::T_I32, 6);
-        w.writeI32(s.updateCount.ref());
-        w.writeFieldEnd();
+
+    if (timeZone.isSet()) {
+        strm << "    timeZone = "
+            << timeZone.ref() << "\n";
     }
-    if(s.searchContextBytes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("searchContextBytes"), ThriftFieldType::T_STRING, 7);
-        w.writeBinary(s.searchContextBytes.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    timeZone is not set\n";
     }
-    if(s.debugInfo.isSet()) {
-        w.writeFieldBegin(QStringLiteral("debugInfo"), ThriftFieldType::T_STRING, 8);
-        w.writeString(s.debugInfo.ref());
-        w.writeFieldEnd();
+
+    if (inactive.isSet()) {
+        strm << "    inactive = "
+            << inactive.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    inactive is not set\n";
+    }
+
+    if (emphasized.isSet()) {
+        strm << "    emphasized = "
+            << emphasized.ref() << "\n";
+    }
+    else {
+        strm << "    emphasized is not set\n";
+    }
+
+    if (includeAllReadableNotebooks.isSet()) {
+        strm << "    includeAllReadableNotebooks = "
+            << includeAllReadableNotebooks.ref() << "\n";
+    }
+    else {
+        strm << "    includeAllReadableNotebooks is not set\n";
+    }
+
+    if (includeAllReadableWorkspaces.isSet()) {
+        strm << "    includeAllReadableWorkspaces = "
+            << includeAllReadableWorkspaces.ref() << "\n";
+    }
+    else {
+        strm << "    includeAllReadableWorkspaces is not set\n";
+    }
+
+    if (context.isSet()) {
+        strm << "    context = "
+            << context.ref() << "\n";
+    }
+    else {
+        strm << "    context is not set\n";
+    }
+
+    if (rawWords.isSet()) {
+        strm << "    rawWords = "
+            << rawWords.ref() << "\n";
+    }
+    else {
+        strm << "    rawWords is not set\n";
+    }
+
+    if (searchContextBytes.isSet()) {
+        strm << "    searchContextBytes = "
+            << searchContextBytes.ref() << "\n";
+    }
+    else {
+        strm << "    searchContextBytes is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readNoteList(ThriftBinaryBufferReader & r, NoteList & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNoteList(
+    ThriftBinaryBufferWriter & writer,
+    const NoteList & s)
+{
+    writer.writeStructBegin(QStringLiteral("NoteList"));
+    writer.writeFieldBegin(
+        QStringLiteral("startIndex"),
+        ThriftFieldType::T_I32,
+        1);
+
+    writer.writeI32(s.startIndex);
+    writer.writeFieldEnd();
+
+    writer.writeFieldBegin(
+        QStringLiteral("totalNotes"),
+        ThriftFieldType::T_I32,
+        2);
+
+    writer.writeI32(s.totalNotes);
+    writer.writeFieldEnd();
+
+    writer.writeFieldBegin(
+        QStringLiteral("notes"),
+        ThriftFieldType::T_LIST,
+        3);
+
+    writer.writeListBegin(ThriftFieldType::T_STRUCT, s.notes.length());
+    for(const auto & value: qAsConst(s.notes)) {
+        writeNote(writer, value);
+    }
+    writer.writeListEnd();
+
+    writer.writeFieldEnd();
+
+    if (s.stoppedWords.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("stoppedWords"),
+            ThriftFieldType::T_LIST,
+            4);
+
+        writer.writeListBegin(ThriftFieldType::T_STRING, s.stoppedWords.ref().length());
+        for(const auto & value: qAsConst(s.stoppedWords.ref())) {
+            writer.writeString(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.searchedWords.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("searchedWords"),
+            ThriftFieldType::T_LIST,
+            5);
+
+        writer.writeListBegin(ThriftFieldType::T_STRING, s.searchedWords.ref().length());
+        for(const auto & value: qAsConst(s.searchedWords.ref())) {
+            writer.writeString(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.updateCount.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("updateCount"),
+            ThriftFieldType::T_I32,
+            6);
+
+        writer.writeI32(s.updateCount.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.searchContextBytes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("searchContextBytes"),
+            ThriftFieldType::T_STRING,
+            7);
+
+        writer.writeBinary(s.searchContextBytes.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.debugInfo.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("debugInfo"),
+            ThriftFieldType::T_STRING,
+            8);
+
+        writer.writeString(s.debugInfo.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNoteList(
+    ThriftBinaryBufferReader & reader,
+    NoteList & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
     bool startIndex_isset = false;
     bool totalNotes_isset = false;
     bool notes_isset = false;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I32) {
                 startIndex_isset = true;
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.startIndex = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_I32) {
                 totalNotes_isset = true;
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.totalNotes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_LIST) {
                 notes_isset = true;
-                QList< Note > v;
+                QList<Note> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (NoteList.notes)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (NoteList.notes)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     Note elem;
-                    readNote(r, elem);
+                    readNote(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.notes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_LIST) {
                 QStringList v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (NoteList.stoppedWords)"));
+                if (elemType != ThriftFieldType::T_STRING) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (NoteList.stoppedWords)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     QString elem;
-                    r.readString(elem);
+                    reader.readString(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.stoppedWords = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_LIST) {
                 QStringList v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (NoteList.searchedWords)"));
+                if (elemType != ThriftFieldType::T_STRING) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (NoteList.searchedWords)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     QString elem;
-                    r.readString(elem);
+                    reader.readString(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.searchedWords = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.updateCount = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QByteArray v;
-                r.readBinary(v);
+                reader.readBinary(v);
                 s.searchContextBytes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.debugInfo = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
-    if(!startIndex_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NoteList.startIndex has no value"));
-    if(!totalNotes_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NoteList.totalNotes has no value"));
-    if(!notes_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NoteList.notes has no value"));
+    reader.readStructEnd();
+    if (!startIndex_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NoteList.startIndex has no value"));
+    if (!totalNotes_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NoteList.totalNotes has no value"));
+    if (!notes_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NoteList.notes has no value"));
 }
 
-void writeNoteMetadata(ThriftBinaryBufferWriter & w, const NoteMetadata & s) {
-    w.writeStructBegin(QStringLiteral("NoteMetadata"));
-    w.writeFieldBegin(QStringLiteral("guid"), ThriftFieldType::T_STRING, 1);
-    w.writeString(s.guid);
-    w.writeFieldEnd();
-    if(s.title.isSet()) {
-        w.writeFieldBegin(QStringLiteral("title"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.title.ref());
-        w.writeFieldEnd();
+void NoteList::print(QTextStream & strm) const
+{
+    strm << "NoteList: {\n";
+    localData.print(strm);
+    strm << "    startIndex = "
+        << startIndex << "\n";
+    strm << "    totalNotes = "
+        << totalNotes << "\n";
+    strm << "    notes = "
+        << "QList<Note> {";
+    for(const auto & v: notes) {
+        strm << "    " << v << "\n";
     }
-    if(s.contentLength.isSet()) {
-        w.writeFieldBegin(QStringLiteral("contentLength"), ThriftFieldType::T_I32, 5);
-        w.writeI32(s.contentLength.ref());
-        w.writeFieldEnd();
-    }
-    if(s.created.isSet()) {
-        w.writeFieldBegin(QStringLiteral("created"), ThriftFieldType::T_I64, 6);
-        w.writeI64(s.created.ref());
-        w.writeFieldEnd();
-    }
-    if(s.updated.isSet()) {
-        w.writeFieldBegin(QStringLiteral("updated"), ThriftFieldType::T_I64, 7);
-        w.writeI64(s.updated.ref());
-        w.writeFieldEnd();
-    }
-    if(s.deleted.isSet()) {
-        w.writeFieldBegin(QStringLiteral("deleted"), ThriftFieldType::T_I64, 8);
-        w.writeI64(s.deleted.ref());
-        w.writeFieldEnd();
-    }
-    if(s.updateSequenceNum.isSet()) {
-        w.writeFieldBegin(QStringLiteral("updateSequenceNum"), ThriftFieldType::T_I32, 10);
-        w.writeI32(s.updateSequenceNum.ref());
-        w.writeFieldEnd();
-    }
-    if(s.notebookGuid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("notebookGuid"), ThriftFieldType::T_STRING, 11);
-        w.writeString(s.notebookGuid.ref());
-        w.writeFieldEnd();
-    }
-    if(s.tagGuids.isSet()) {
-        w.writeFieldBegin(QStringLiteral("tagGuids"), ThriftFieldType::T_LIST, 12);
-        w.writeListBegin(ThriftFieldType::T_STRING, s.tagGuids.ref().length());
-        for(QList< Guid >::const_iterator it = s.tagGuids.ref().constBegin(), end = s.tagGuids.ref().constEnd(); it != end; ++it) {
-            w.writeString(*it);
+    strm << "}\n";
+
+    if (stoppedWords.isSet()) {
+        strm << "    stoppedWords = "
+            << "QList<QString> {";
+        for(const auto & v: stoppedWords.ref()) {
+            strm << "        " << v << "\n";
         }
-        w.writeListEnd();
-        w.writeFieldEnd();
+        strm << "    }\n";
     }
-    if(s.attributes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("attributes"), ThriftFieldType::T_STRUCT, 14);
-        writeNoteAttributes(w, s.attributes.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    stoppedWords is not set\n";
     }
-    if(s.largestResourceMime.isSet()) {
-        w.writeFieldBegin(QStringLiteral("largestResourceMime"), ThriftFieldType::T_STRING, 20);
-        w.writeString(s.largestResourceMime.ref());
-        w.writeFieldEnd();
+
+    if (searchedWords.isSet()) {
+        strm << "    searchedWords = "
+            << "QList<QString> {";
+        for(const auto & v: searchedWords.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
     }
-    if(s.largestResourceSize.isSet()) {
-        w.writeFieldBegin(QStringLiteral("largestResourceSize"), ThriftFieldType::T_I32, 21);
-        w.writeI32(s.largestResourceSize.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    searchedWords is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (updateCount.isSet()) {
+        strm << "    updateCount = "
+            << updateCount.ref() << "\n";
+    }
+    else {
+        strm << "    updateCount is not set\n";
+    }
+
+    if (searchContextBytes.isSet()) {
+        strm << "    searchContextBytes = "
+            << searchContextBytes.ref() << "\n";
+    }
+    else {
+        strm << "    searchContextBytes is not set\n";
+    }
+
+    if (debugInfo.isSet()) {
+        strm << "    debugInfo = "
+            << debugInfo.ref() << "\n";
+    }
+    else {
+        strm << "    debugInfo is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readNoteMetadata(ThriftBinaryBufferReader & r, NoteMetadata & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNoteMetadata(
+    ThriftBinaryBufferWriter & writer,
+    const NoteMetadata & s)
+{
+    writer.writeStructBegin(QStringLiteral("NoteMetadata"));
+    writer.writeFieldBegin(
+        QStringLiteral("guid"),
+        ThriftFieldType::T_STRING,
+        1);
+
+    writer.writeString(s.guid);
+    writer.writeFieldEnd();
+
+    if (s.title.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("title"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.title.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.contentLength.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("contentLength"),
+            ThriftFieldType::T_I32,
+            5);
+
+        writer.writeI32(s.contentLength.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.created.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("created"),
+            ThriftFieldType::T_I64,
+            6);
+
+        writer.writeI64(s.created.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.updated.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("updated"),
+            ThriftFieldType::T_I64,
+            7);
+
+        writer.writeI64(s.updated.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.deleted.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("deleted"),
+            ThriftFieldType::T_I64,
+            8);
+
+        writer.writeI64(s.deleted.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.updateSequenceNum.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("updateSequenceNum"),
+            ThriftFieldType::T_I32,
+            10);
+
+        writer.writeI32(s.updateSequenceNum.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.notebookGuid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("notebookGuid"),
+            ThriftFieldType::T_STRING,
+            11);
+
+        writer.writeString(s.notebookGuid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.tagGuids.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("tagGuids"),
+            ThriftFieldType::T_LIST,
+            12);
+
+        writer.writeListBegin(ThriftFieldType::T_STRING, s.tagGuids.ref().length());
+        for(const auto & value: qAsConst(s.tagGuids.ref())) {
+            writer.writeString(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.attributes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("attributes"),
+            ThriftFieldType::T_STRUCT,
+            14);
+
+        writeNoteAttributes(writer, s.attributes.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.largestResourceMime.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("largestResourceMime"),
+            ThriftFieldType::T_STRING,
+            20);
+
+        writer.writeString(s.largestResourceMime.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.largestResourceSize.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("largestResourceSize"),
+            ThriftFieldType::T_I32,
+            21);
+
+        writer.writeI32(s.largestResourceSize.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNoteMetadata(
+    ThriftBinaryBufferReader & reader,
+    NoteMetadata & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
     bool guid_isset = false;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 guid_isset = true;
                 Guid v;
-                r.readString(v);
+                reader.readString(v);
                 s.guid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.title = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.contentLength = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.created = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.updated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.deleted = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 10) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.updateSequenceNum = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 11) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.notebookGuid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 12) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< Guid > v;
+                QList<Guid> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (NoteMetadata.tagGuids)"));
+                if (elemType != ThriftFieldType::T_STRING) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (NoteMetadata.tagGuids)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     Guid elem;
-                    r.readString(elem);
+                    reader.readString(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.tagGuids = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 14) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 NoteAttributes v;
-                readNoteAttributes(r, v);
+                readNoteAttributes(reader, v);
                 s.attributes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 20) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.largestResourceMime = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 21) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.largestResourceSize = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
-    if(!guid_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NoteMetadata.guid has no value"));
+    reader.readStructEnd();
+    if (!guid_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NoteMetadata.guid has no value"));
 }
 
-void writeNotesMetadataList(ThriftBinaryBufferWriter & w, const NotesMetadataList & s) {
-    w.writeStructBegin(QStringLiteral("NotesMetadataList"));
-    w.writeFieldBegin(QStringLiteral("startIndex"), ThriftFieldType::T_I32, 1);
-    w.writeI32(s.startIndex);
-    w.writeFieldEnd();
-    w.writeFieldBegin(QStringLiteral("totalNotes"), ThriftFieldType::T_I32, 2);
-    w.writeI32(s.totalNotes);
-    w.writeFieldEnd();
-    w.writeFieldBegin(QStringLiteral("notes"), ThriftFieldType::T_LIST, 3);
-    w.writeListBegin(ThriftFieldType::T_STRUCT, s.notes.length());
-    for(QList< NoteMetadata >::const_iterator it = s.notes.constBegin(), end = s.notes.constEnd(); it != end; ++it) {
-        writeNoteMetadata(w, *it);
+void NoteMetadata::print(QTextStream & strm) const
+{
+    strm << "NoteMetadata: {\n";
+    localData.print(strm);
+    strm << "    guid = "
+        << guid << "\n";
+
+    if (title.isSet()) {
+        strm << "    title = "
+            << title.ref() << "\n";
     }
-    w.writeListEnd();
-    w.writeFieldEnd();
-    if(s.stoppedWords.isSet()) {
-        w.writeFieldBegin(QStringLiteral("stoppedWords"), ThriftFieldType::T_LIST, 4);
-        w.writeListBegin(ThriftFieldType::T_STRING, s.stoppedWords.ref().length());
-        for(QStringList::const_iterator it = s.stoppedWords.ref().constBegin(), end = s.stoppedWords.ref().constEnd(); it != end; ++it) {
-            w.writeString(*it);
+    else {
+        strm << "    title is not set\n";
+    }
+
+    if (contentLength.isSet()) {
+        strm << "    contentLength = "
+            << contentLength.ref() << "\n";
+    }
+    else {
+        strm << "    contentLength is not set\n";
+    }
+
+    if (created.isSet()) {
+        strm << "    created = "
+            << created.ref() << "\n";
+    }
+    else {
+        strm << "    created is not set\n";
+    }
+
+    if (updated.isSet()) {
+        strm << "    updated = "
+            << updated.ref() << "\n";
+    }
+    else {
+        strm << "    updated is not set\n";
+    }
+
+    if (deleted.isSet()) {
+        strm << "    deleted = "
+            << deleted.ref() << "\n";
+    }
+    else {
+        strm << "    deleted is not set\n";
+    }
+
+    if (updateSequenceNum.isSet()) {
+        strm << "    updateSequenceNum = "
+            << updateSequenceNum.ref() << "\n";
+    }
+    else {
+        strm << "    updateSequenceNum is not set\n";
+    }
+
+    if (notebookGuid.isSet()) {
+        strm << "    notebookGuid = "
+            << notebookGuid.ref() << "\n";
+    }
+    else {
+        strm << "    notebookGuid is not set\n";
+    }
+
+    if (tagGuids.isSet()) {
+        strm << "    tagGuids = "
+            << "QList<Guid> {";
+        for(const auto & v: tagGuids.ref()) {
+            strm << "        " << v << "\n";
         }
-        w.writeListEnd();
-        w.writeFieldEnd();
+        strm << "    }\n";
     }
-    if(s.searchedWords.isSet()) {
-        w.writeFieldBegin(QStringLiteral("searchedWords"), ThriftFieldType::T_LIST, 5);
-        w.writeListBegin(ThriftFieldType::T_STRING, s.searchedWords.ref().length());
-        for(QStringList::const_iterator it = s.searchedWords.ref().constBegin(), end = s.searchedWords.ref().constEnd(); it != end; ++it) {
-            w.writeString(*it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+    else {
+        strm << "    tagGuids is not set\n";
     }
-    if(s.updateCount.isSet()) {
-        w.writeFieldBegin(QStringLiteral("updateCount"), ThriftFieldType::T_I32, 6);
-        w.writeI32(s.updateCount.ref());
-        w.writeFieldEnd();
+
+    if (attributes.isSet()) {
+        strm << "    attributes = "
+            << attributes.ref() << "\n";
     }
-    if(s.searchContextBytes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("searchContextBytes"), ThriftFieldType::T_STRING, 7);
-        w.writeBinary(s.searchContextBytes.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    attributes is not set\n";
     }
-    if(s.debugInfo.isSet()) {
-        w.writeFieldBegin(QStringLiteral("debugInfo"), ThriftFieldType::T_STRING, 9);
-        w.writeString(s.debugInfo.ref());
-        w.writeFieldEnd();
+
+    if (largestResourceMime.isSet()) {
+        strm << "    largestResourceMime = "
+            << largestResourceMime.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    largestResourceMime is not set\n";
+    }
+
+    if (largestResourceSize.isSet()) {
+        strm << "    largestResourceSize = "
+            << largestResourceSize.ref() << "\n";
+    }
+    else {
+        strm << "    largestResourceSize is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readNotesMetadataList(ThriftBinaryBufferReader & r, NotesMetadataList & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNotesMetadataList(
+    ThriftBinaryBufferWriter & writer,
+    const NotesMetadataList & s)
+{
+    writer.writeStructBegin(QStringLiteral("NotesMetadataList"));
+    writer.writeFieldBegin(
+        QStringLiteral("startIndex"),
+        ThriftFieldType::T_I32,
+        1);
+
+    writer.writeI32(s.startIndex);
+    writer.writeFieldEnd();
+
+    writer.writeFieldBegin(
+        QStringLiteral("totalNotes"),
+        ThriftFieldType::T_I32,
+        2);
+
+    writer.writeI32(s.totalNotes);
+    writer.writeFieldEnd();
+
+    writer.writeFieldBegin(
+        QStringLiteral("notes"),
+        ThriftFieldType::T_LIST,
+        3);
+
+    writer.writeListBegin(ThriftFieldType::T_STRUCT, s.notes.length());
+    for(const auto & value: qAsConst(s.notes)) {
+        writeNoteMetadata(writer, value);
+    }
+    writer.writeListEnd();
+
+    writer.writeFieldEnd();
+
+    if (s.stoppedWords.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("stoppedWords"),
+            ThriftFieldType::T_LIST,
+            4);
+
+        writer.writeListBegin(ThriftFieldType::T_STRING, s.stoppedWords.ref().length());
+        for(const auto & value: qAsConst(s.stoppedWords.ref())) {
+            writer.writeString(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.searchedWords.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("searchedWords"),
+            ThriftFieldType::T_LIST,
+            5);
+
+        writer.writeListBegin(ThriftFieldType::T_STRING, s.searchedWords.ref().length());
+        for(const auto & value: qAsConst(s.searchedWords.ref())) {
+            writer.writeString(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.updateCount.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("updateCount"),
+            ThriftFieldType::T_I32,
+            6);
+
+        writer.writeI32(s.updateCount.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.searchContextBytes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("searchContextBytes"),
+            ThriftFieldType::T_STRING,
+            7);
+
+        writer.writeBinary(s.searchContextBytes.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.debugInfo.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("debugInfo"),
+            ThriftFieldType::T_STRING,
+            9);
+
+        writer.writeString(s.debugInfo.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNotesMetadataList(
+    ThriftBinaryBufferReader & reader,
+    NotesMetadataList & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
     bool startIndex_isset = false;
     bool totalNotes_isset = false;
     bool notes_isset = false;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I32) {
                 startIndex_isset = true;
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.startIndex = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_I32) {
                 totalNotes_isset = true;
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.totalNotes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_LIST) {
                 notes_isset = true;
-                QList< NoteMetadata > v;
+                QList<NoteMetadata> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (NotesMetadataList.notes)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (NotesMetadataList.notes)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     NoteMetadata elem;
-                    readNoteMetadata(r, elem);
+                    readNoteMetadata(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.notes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_LIST) {
                 QStringList v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (NotesMetadataList.stoppedWords)"));
+                if (elemType != ThriftFieldType::T_STRING) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (NotesMetadataList.stoppedWords)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     QString elem;
-                    r.readString(elem);
+                    reader.readString(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.stoppedWords = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_LIST) {
                 QStringList v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (NotesMetadataList.searchedWords)"));
+                if (elemType != ThriftFieldType::T_STRING) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (NotesMetadataList.searchedWords)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     QString elem;
-                    r.readString(elem);
+                    reader.readString(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.searchedWords = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.updateCount = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QByteArray v;
-                r.readBinary(v);
+                reader.readBinary(v);
                 s.searchContextBytes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 9) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.debugInfo = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
-    if(!startIndex_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NotesMetadataList.startIndex has no value"));
-    if(!totalNotes_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NotesMetadataList.totalNotes has no value"));
-    if(!notes_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NotesMetadataList.notes has no value"));
+    reader.readStructEnd();
+    if (!startIndex_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NotesMetadataList.startIndex has no value"));
+    if (!totalNotes_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NotesMetadataList.totalNotes has no value"));
+    if (!notes_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NotesMetadataList.notes has no value"));
 }
 
-void writeNotesMetadataResultSpec(ThriftBinaryBufferWriter & w, const NotesMetadataResultSpec & s) {
-    w.writeStructBegin(QStringLiteral("NotesMetadataResultSpec"));
-    if(s.includeTitle.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeTitle"), ThriftFieldType::T_BOOL, 2);
-        w.writeBool(s.includeTitle.ref());
-        w.writeFieldEnd();
+void NotesMetadataList::print(QTextStream & strm) const
+{
+    strm << "NotesMetadataList: {\n";
+    localData.print(strm);
+    strm << "    startIndex = "
+        << startIndex << "\n";
+    strm << "    totalNotes = "
+        << totalNotes << "\n";
+    strm << "    notes = "
+        << "QList<NoteMetadata> {";
+    for(const auto & v: notes) {
+        strm << "    " << v << "\n";
     }
-    if(s.includeContentLength.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeContentLength"), ThriftFieldType::T_BOOL, 5);
-        w.writeBool(s.includeContentLength.ref());
-        w.writeFieldEnd();
+    strm << "}\n";
+
+    if (stoppedWords.isSet()) {
+        strm << "    stoppedWords = "
+            << "QList<QString> {";
+        for(const auto & v: stoppedWords.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
     }
-    if(s.includeCreated.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeCreated"), ThriftFieldType::T_BOOL, 6);
-        w.writeBool(s.includeCreated.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    stoppedWords is not set\n";
     }
-    if(s.includeUpdated.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeUpdated"), ThriftFieldType::T_BOOL, 7);
-        w.writeBool(s.includeUpdated.ref());
-        w.writeFieldEnd();
+
+    if (searchedWords.isSet()) {
+        strm << "    searchedWords = "
+            << "QList<QString> {";
+        for(const auto & v: searchedWords.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
     }
-    if(s.includeDeleted.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeDeleted"), ThriftFieldType::T_BOOL, 8);
-        w.writeBool(s.includeDeleted.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    searchedWords is not set\n";
     }
-    if(s.includeUpdateSequenceNum.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeUpdateSequenceNum"), ThriftFieldType::T_BOOL, 10);
-        w.writeBool(s.includeUpdateSequenceNum.ref());
-        w.writeFieldEnd();
+
+    if (updateCount.isSet()) {
+        strm << "    updateCount = "
+            << updateCount.ref() << "\n";
     }
-    if(s.includeNotebookGuid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeNotebookGuid"), ThriftFieldType::T_BOOL, 11);
-        w.writeBool(s.includeNotebookGuid.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    updateCount is not set\n";
     }
-    if(s.includeTagGuids.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeTagGuids"), ThriftFieldType::T_BOOL, 12);
-        w.writeBool(s.includeTagGuids.ref());
-        w.writeFieldEnd();
+
+    if (searchContextBytes.isSet()) {
+        strm << "    searchContextBytes = "
+            << searchContextBytes.ref() << "\n";
     }
-    if(s.includeAttributes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeAttributes"), ThriftFieldType::T_BOOL, 14);
-        w.writeBool(s.includeAttributes.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    searchContextBytes is not set\n";
     }
-    if(s.includeLargestResourceMime.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeLargestResourceMime"), ThriftFieldType::T_BOOL, 20);
-        w.writeBool(s.includeLargestResourceMime.ref());
-        w.writeFieldEnd();
+
+    if (debugInfo.isSet()) {
+        strm << "    debugInfo = "
+            << debugInfo.ref() << "\n";
     }
-    if(s.includeLargestResourceSize.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeLargestResourceSize"), ThriftFieldType::T_BOOL, 21);
-        w.writeBool(s.includeLargestResourceSize.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    debugInfo is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    strm << "}\n";
 }
 
-void readNotesMetadataResultSpec(ThriftBinaryBufferReader & r, NotesMetadataResultSpec & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNotesMetadataResultSpec(
+    ThriftBinaryBufferWriter & writer,
+    const NotesMetadataResultSpec & s)
+{
+    writer.writeStructBegin(QStringLiteral("NotesMetadataResultSpec"));
+    if (s.includeTitle.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeTitle"),
+            ThriftFieldType::T_BOOL,
+            2);
+
+        writer.writeBool(s.includeTitle.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeContentLength.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeContentLength"),
+            ThriftFieldType::T_BOOL,
+            5);
+
+        writer.writeBool(s.includeContentLength.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeCreated.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeCreated"),
+            ThriftFieldType::T_BOOL,
+            6);
+
+        writer.writeBool(s.includeCreated.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeUpdated.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeUpdated"),
+            ThriftFieldType::T_BOOL,
+            7);
+
+        writer.writeBool(s.includeUpdated.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeDeleted.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeDeleted"),
+            ThriftFieldType::T_BOOL,
+            8);
+
+        writer.writeBool(s.includeDeleted.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeUpdateSequenceNum.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeUpdateSequenceNum"),
+            ThriftFieldType::T_BOOL,
+            10);
+
+        writer.writeBool(s.includeUpdateSequenceNum.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeNotebookGuid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeNotebookGuid"),
+            ThriftFieldType::T_BOOL,
+            11);
+
+        writer.writeBool(s.includeNotebookGuid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeTagGuids.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeTagGuids"),
+            ThriftFieldType::T_BOOL,
+            12);
+
+        writer.writeBool(s.includeTagGuids.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeAttributes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeAttributes"),
+            ThriftFieldType::T_BOOL,
+            14);
+
+        writer.writeBool(s.includeAttributes.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeLargestResourceMime.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeLargestResourceMime"),
+            ThriftFieldType::T_BOOL,
+            20);
+
+        writer.writeBool(s.includeLargestResourceMime.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeLargestResourceSize.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeLargestResourceSize"),
+            ThriftFieldType::T_BOOL,
+            21);
+
+        writer.writeBool(s.includeLargestResourceSize.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNotesMetadataResultSpec(
+    ThriftBinaryBufferReader & reader,
+    NotesMetadataResultSpec & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeTitle = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeContentLength = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeCreated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeUpdated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeDeleted = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 10) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeUpdateSequenceNum = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 11) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeNotebookGuid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 12) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeTagGuids = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 14) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeAttributes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 20) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeLargestResourceMime = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 21) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeLargestResourceSize = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeNoteCollectionCounts(ThriftBinaryBufferWriter & w, const NoteCollectionCounts & s) {
-    w.writeStructBegin(QStringLiteral("NoteCollectionCounts"));
-    if(s.notebookCounts.isSet()) {
-        w.writeFieldBegin(QStringLiteral("notebookCounts"), ThriftFieldType::T_MAP, 1);
-        w.writeMapBegin(ThriftFieldType::T_STRING, ThriftFieldType::T_I32, s.notebookCounts.ref().size());
-        for(QMap< Guid, qint32 >::const_iterator it = s.notebookCounts.ref().constBegin(), end = s.notebookCounts.ref().constEnd(); it != end; ++it) {
-            w.writeString(it.key());
-            w.writeI32(it.value());
-        }
-        w.writeMapEnd();
-        w.writeFieldEnd();
+void NotesMetadataResultSpec::print(QTextStream & strm) const
+{
+    strm << "NotesMetadataResultSpec: {\n";
+    localData.print(strm);
+
+    if (includeTitle.isSet()) {
+        strm << "    includeTitle = "
+            << includeTitle.ref() << "\n";
     }
-    if(s.tagCounts.isSet()) {
-        w.writeFieldBegin(QStringLiteral("tagCounts"), ThriftFieldType::T_MAP, 2);
-        w.writeMapBegin(ThriftFieldType::T_STRING, ThriftFieldType::T_I32, s.tagCounts.ref().size());
-        for(QMap< Guid, qint32 >::const_iterator it = s.tagCounts.ref().constBegin(), end = s.tagCounts.ref().constEnd(); it != end; ++it) {
-            w.writeString(it.key());
-            w.writeI32(it.value());
-        }
-        w.writeMapEnd();
-        w.writeFieldEnd();
+    else {
+        strm << "    includeTitle is not set\n";
     }
-    if(s.trashCount.isSet()) {
-        w.writeFieldBegin(QStringLiteral("trashCount"), ThriftFieldType::T_I32, 3);
-        w.writeI32(s.trashCount.ref());
-        w.writeFieldEnd();
+
+    if (includeContentLength.isSet()) {
+        strm << "    includeContentLength = "
+            << includeContentLength.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    includeContentLength is not set\n";
+    }
+
+    if (includeCreated.isSet()) {
+        strm << "    includeCreated = "
+            << includeCreated.ref() << "\n";
+    }
+    else {
+        strm << "    includeCreated is not set\n";
+    }
+
+    if (includeUpdated.isSet()) {
+        strm << "    includeUpdated = "
+            << includeUpdated.ref() << "\n";
+    }
+    else {
+        strm << "    includeUpdated is not set\n";
+    }
+
+    if (includeDeleted.isSet()) {
+        strm << "    includeDeleted = "
+            << includeDeleted.ref() << "\n";
+    }
+    else {
+        strm << "    includeDeleted is not set\n";
+    }
+
+    if (includeUpdateSequenceNum.isSet()) {
+        strm << "    includeUpdateSequenceNum = "
+            << includeUpdateSequenceNum.ref() << "\n";
+    }
+    else {
+        strm << "    includeUpdateSequenceNum is not set\n";
+    }
+
+    if (includeNotebookGuid.isSet()) {
+        strm << "    includeNotebookGuid = "
+            << includeNotebookGuid.ref() << "\n";
+    }
+    else {
+        strm << "    includeNotebookGuid is not set\n";
+    }
+
+    if (includeTagGuids.isSet()) {
+        strm << "    includeTagGuids = "
+            << includeTagGuids.ref() << "\n";
+    }
+    else {
+        strm << "    includeTagGuids is not set\n";
+    }
+
+    if (includeAttributes.isSet()) {
+        strm << "    includeAttributes = "
+            << includeAttributes.ref() << "\n";
+    }
+    else {
+        strm << "    includeAttributes is not set\n";
+    }
+
+    if (includeLargestResourceMime.isSet()) {
+        strm << "    includeLargestResourceMime = "
+            << includeLargestResourceMime.ref() << "\n";
+    }
+    else {
+        strm << "    includeLargestResourceMime is not set\n";
+    }
+
+    if (includeLargestResourceSize.isSet()) {
+        strm << "    includeLargestResourceSize = "
+            << includeLargestResourceSize.ref() << "\n";
+    }
+    else {
+        strm << "    includeLargestResourceSize is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readNoteCollectionCounts(ThriftBinaryBufferReader & r, NoteCollectionCounts & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNoteCollectionCounts(
+    ThriftBinaryBufferWriter & writer,
+    const NoteCollectionCounts & s)
+{
+    writer.writeStructBegin(QStringLiteral("NoteCollectionCounts"));
+    if (s.notebookCounts.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("notebookCounts"),
+            ThriftFieldType::T_MAP,
+            1);
+
+        writer.writeMapBegin(ThriftFieldType::T_STRING, ThriftFieldType::T_I32, s.notebookCounts.ref().size());
+        for(const auto & it: toRange(s.notebookCounts.ref())) {
+            writer.writeString(it.key());
+            writer.writeI32(it.value());
+        }
+        writer.writeMapEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.tagCounts.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("tagCounts"),
+            ThriftFieldType::T_MAP,
+            2);
+
+        writer.writeMapBegin(ThriftFieldType::T_STRING, ThriftFieldType::T_I32, s.tagCounts.ref().size());
+        for(const auto & it: toRange(s.tagCounts.ref())) {
+            writer.writeString(it.key());
+            writer.writeI32(it.value());
+        }
+        writer.writeMapEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.trashCount.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("trashCount"),
+            ThriftFieldType::T_I32,
+            3);
+
+        writer.writeI32(s.trashCount.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNoteCollectionCounts(
+    ThriftBinaryBufferReader & reader,
+    NoteCollectionCounts & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_MAP) {
-                QMap< Guid, qint32 > v;
+                QMap<Guid, qint32> v;
                 qint32 size;
-                ThriftFieldType::type keyType;
-                ThriftFieldType::type elemType;
-                r.readMapBegin(keyType, elemType, size);
+                ThriftFieldType keyType;
+                ThriftFieldType elemType;
+                reader.readMapBegin(keyType, elemType, size);
                 if (keyType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect map key type (NoteCollectionCounts.notebookCounts)"));
                 if (elemType != ThriftFieldType::T_I32) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect map value type (NoteCollectionCounts.notebookCounts)"));
                 for(qint32 i = 0; i < size; i++) {
                     Guid key;
-                    r.readString(key);
+                    reader.readString(key);
                     qint32 value;
-                    r.readI32(value);
+                    reader.readI32(value);
                     v[key] = value;
                 }
-                r.readMapEnd();
+                reader.readMapEnd();
                 s.notebookCounts = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_MAP) {
-                QMap< Guid, qint32 > v;
+                QMap<Guid, qint32> v;
                 qint32 size;
-                ThriftFieldType::type keyType;
-                ThriftFieldType::type elemType;
-                r.readMapBegin(keyType, elemType, size);
+                ThriftFieldType keyType;
+                ThriftFieldType elemType;
+                reader.readMapBegin(keyType, elemType, size);
                 if (keyType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect map key type (NoteCollectionCounts.tagCounts)"));
                 if (elemType != ThriftFieldType::T_I32) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect map value type (NoteCollectionCounts.tagCounts)"));
                 for(qint32 i = 0; i < size; i++) {
                     Guid key;
-                    r.readString(key);
+                    reader.readString(key);
                     qint32 value;
-                    r.readI32(value);
+                    reader.readI32(value);
                     v[key] = value;
                 }
-                r.readMapEnd();
+                reader.readMapEnd();
                 s.tagCounts = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.trashCount = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeNoteResultSpec(ThriftBinaryBufferWriter & w, const NoteResultSpec & s) {
-    w.writeStructBegin(QStringLiteral("NoteResultSpec"));
-    if(s.includeContent.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeContent"), ThriftFieldType::T_BOOL, 1);
-        w.writeBool(s.includeContent.ref());
-        w.writeFieldEnd();
+void NoteCollectionCounts::print(QTextStream & strm) const
+{
+    strm << "NoteCollectionCounts: {\n";
+    localData.print(strm);
+
+    if (notebookCounts.isSet()) {
+        strm << "    notebookCounts = "
+            << "QMap<Guid, qint32> {";
+        for(const auto & it: toRange(notebookCounts.ref())) {
+            strm << "        [" << it.key() << "] = " << it.value() << "\n";
+        }
+        strm << "    }\n";
     }
-    if(s.includeResourcesData.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeResourcesData"), ThriftFieldType::T_BOOL, 2);
-        w.writeBool(s.includeResourcesData.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    notebookCounts is not set\n";
     }
-    if(s.includeResourcesRecognition.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeResourcesRecognition"), ThriftFieldType::T_BOOL, 3);
-        w.writeBool(s.includeResourcesRecognition.ref());
-        w.writeFieldEnd();
+
+    if (tagCounts.isSet()) {
+        strm << "    tagCounts = "
+            << "QMap<Guid, qint32> {";
+        for(const auto & it: toRange(tagCounts.ref())) {
+            strm << "        [" << it.key() << "] = " << it.value() << "\n";
+        }
+        strm << "    }\n";
     }
-    if(s.includeResourcesAlternateData.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeResourcesAlternateData"), ThriftFieldType::T_BOOL, 4);
-        w.writeBool(s.includeResourcesAlternateData.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    tagCounts is not set\n";
     }
-    if(s.includeSharedNotes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeSharedNotes"), ThriftFieldType::T_BOOL, 5);
-        w.writeBool(s.includeSharedNotes.ref());
-        w.writeFieldEnd();
+
+    if (trashCount.isSet()) {
+        strm << "    trashCount = "
+            << trashCount.ref() << "\n";
     }
-    if(s.includeNoteAppDataValues.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeNoteAppDataValues"), ThriftFieldType::T_BOOL, 6);
-        w.writeBool(s.includeNoteAppDataValues.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    trashCount is not set\n";
     }
-    if(s.includeResourceAppDataValues.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeResourceAppDataValues"), ThriftFieldType::T_BOOL, 7);
-        w.writeBool(s.includeResourceAppDataValues.ref());
-        w.writeFieldEnd();
-    }
-    if(s.includeAccountLimits.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeAccountLimits"), ThriftFieldType::T_BOOL, 8);
-        w.writeBool(s.includeAccountLimits.ref());
-        w.writeFieldEnd();
-    }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    strm << "}\n";
 }
 
-void readNoteResultSpec(ThriftBinaryBufferReader & r, NoteResultSpec & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNoteResultSpec(
+    ThriftBinaryBufferWriter & writer,
+    const NoteResultSpec & s)
+{
+    writer.writeStructBegin(QStringLiteral("NoteResultSpec"));
+    if (s.includeContent.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeContent"),
+            ThriftFieldType::T_BOOL,
+            1);
+
+        writer.writeBool(s.includeContent.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeResourcesData.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeResourcesData"),
+            ThriftFieldType::T_BOOL,
+            2);
+
+        writer.writeBool(s.includeResourcesData.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeResourcesRecognition.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeResourcesRecognition"),
+            ThriftFieldType::T_BOOL,
+            3);
+
+        writer.writeBool(s.includeResourcesRecognition.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeResourcesAlternateData.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeResourcesAlternateData"),
+            ThriftFieldType::T_BOOL,
+            4);
+
+        writer.writeBool(s.includeResourcesAlternateData.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeSharedNotes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeSharedNotes"),
+            ThriftFieldType::T_BOOL,
+            5);
+
+        writer.writeBool(s.includeSharedNotes.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeNoteAppDataValues.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeNoteAppDataValues"),
+            ThriftFieldType::T_BOOL,
+            6);
+
+        writer.writeBool(s.includeNoteAppDataValues.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeResourceAppDataValues.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeResourceAppDataValues"),
+            ThriftFieldType::T_BOOL,
+            7);
+
+        writer.writeBool(s.includeResourceAppDataValues.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeAccountLimits.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeAccountLimits"),
+            ThriftFieldType::T_BOOL,
+            8);
+
+        writer.writeBool(s.includeAccountLimits.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNoteResultSpec(
+    ThriftBinaryBufferReader & reader,
+    NoteResultSpec & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeContent = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeResourcesData = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeResourcesRecognition = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeResourcesAlternateData = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeSharedNotes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeNoteAppDataValues = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeResourceAppDataValues = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeAccountLimits = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeNoteEmailParameters(ThriftBinaryBufferWriter & w, const NoteEmailParameters & s) {
-    w.writeStructBegin(QStringLiteral("NoteEmailParameters"));
-    if(s.guid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("guid"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.guid.ref());
-        w.writeFieldEnd();
+void NoteResultSpec::print(QTextStream & strm) const
+{
+    strm << "NoteResultSpec: {\n";
+    localData.print(strm);
+
+    if (includeContent.isSet()) {
+        strm << "    includeContent = "
+            << includeContent.ref() << "\n";
     }
-    if(s.note.isSet()) {
-        w.writeFieldBegin(QStringLiteral("note"), ThriftFieldType::T_STRUCT, 2);
-        writeNote(w, s.note.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    includeContent is not set\n";
     }
-    if(s.toAddresses.isSet()) {
-        w.writeFieldBegin(QStringLiteral("toAddresses"), ThriftFieldType::T_LIST, 3);
-        w.writeListBegin(ThriftFieldType::T_STRING, s.toAddresses.ref().length());
-        for(QStringList::const_iterator it = s.toAddresses.ref().constBegin(), end = s.toAddresses.ref().constEnd(); it != end; ++it) {
-            w.writeString(*it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+
+    if (includeResourcesData.isSet()) {
+        strm << "    includeResourcesData = "
+            << includeResourcesData.ref() << "\n";
     }
-    if(s.ccAddresses.isSet()) {
-        w.writeFieldBegin(QStringLiteral("ccAddresses"), ThriftFieldType::T_LIST, 4);
-        w.writeListBegin(ThriftFieldType::T_STRING, s.ccAddresses.ref().length());
-        for(QStringList::const_iterator it = s.ccAddresses.ref().constBegin(), end = s.ccAddresses.ref().constEnd(); it != end; ++it) {
-            w.writeString(*it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+    else {
+        strm << "    includeResourcesData is not set\n";
     }
-    if(s.subject.isSet()) {
-        w.writeFieldBegin(QStringLiteral("subject"), ThriftFieldType::T_STRING, 5);
-        w.writeString(s.subject.ref());
-        w.writeFieldEnd();
+
+    if (includeResourcesRecognition.isSet()) {
+        strm << "    includeResourcesRecognition = "
+            << includeResourcesRecognition.ref() << "\n";
     }
-    if(s.message.isSet()) {
-        w.writeFieldBegin(QStringLiteral("message"), ThriftFieldType::T_STRING, 6);
-        w.writeString(s.message.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    includeResourcesRecognition is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (includeResourcesAlternateData.isSet()) {
+        strm << "    includeResourcesAlternateData = "
+            << includeResourcesAlternateData.ref() << "\n";
+    }
+    else {
+        strm << "    includeResourcesAlternateData is not set\n";
+    }
+
+    if (includeSharedNotes.isSet()) {
+        strm << "    includeSharedNotes = "
+            << includeSharedNotes.ref() << "\n";
+    }
+    else {
+        strm << "    includeSharedNotes is not set\n";
+    }
+
+    if (includeNoteAppDataValues.isSet()) {
+        strm << "    includeNoteAppDataValues = "
+            << includeNoteAppDataValues.ref() << "\n";
+    }
+    else {
+        strm << "    includeNoteAppDataValues is not set\n";
+    }
+
+    if (includeResourceAppDataValues.isSet()) {
+        strm << "    includeResourceAppDataValues = "
+            << includeResourceAppDataValues.ref() << "\n";
+    }
+    else {
+        strm << "    includeResourceAppDataValues is not set\n";
+    }
+
+    if (includeAccountLimits.isSet()) {
+        strm << "    includeAccountLimits = "
+            << includeAccountLimits.ref() << "\n";
+    }
+    else {
+        strm << "    includeAccountLimits is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readNoteEmailParameters(ThriftBinaryBufferReader & r, NoteEmailParameters & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNoteEmailParameters(
+    ThriftBinaryBufferWriter & writer,
+    const NoteEmailParameters & s)
+{
+    writer.writeStructBegin(QStringLiteral("NoteEmailParameters"));
+    if (s.guid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("guid"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.guid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.note.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("note"),
+            ThriftFieldType::T_STRUCT,
+            2);
+
+        writeNote(writer, s.note.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.toAddresses.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("toAddresses"),
+            ThriftFieldType::T_LIST,
+            3);
+
+        writer.writeListBegin(ThriftFieldType::T_STRING, s.toAddresses.ref().length());
+        for(const auto & value: qAsConst(s.toAddresses.ref())) {
+            writer.writeString(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.ccAddresses.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("ccAddresses"),
+            ThriftFieldType::T_LIST,
+            4);
+
+        writer.writeListBegin(ThriftFieldType::T_STRING, s.ccAddresses.ref().length());
+        for(const auto & value: qAsConst(s.ccAddresses.ref())) {
+            writer.writeString(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.subject.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("subject"),
+            ThriftFieldType::T_STRING,
+            5);
+
+        writer.writeString(s.subject.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.message.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("message"),
+            ThriftFieldType::T_STRING,
+            6);
+
+        writer.writeString(s.message.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNoteEmailParameters(
+    ThriftBinaryBufferReader & reader,
+    NoteEmailParameters & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.guid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 Note v;
-                readNote(r, v);
+                readNote(reader, v);
                 s.note = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_LIST) {
                 QStringList v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (NoteEmailParameters.toAddresses)"));
+                if (elemType != ThriftFieldType::T_STRING) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (NoteEmailParameters.toAddresses)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     QString elem;
-                    r.readString(elem);
+                    reader.readString(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.toAddresses = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_LIST) {
                 QStringList v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (NoteEmailParameters.ccAddresses)"));
+                if (elemType != ThriftFieldType::T_STRING) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (NoteEmailParameters.ccAddresses)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     QString elem;
-                    r.readString(elem);
+                    reader.readString(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.ccAddresses = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.subject = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.message = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeNoteVersionId(ThriftBinaryBufferWriter & w, const NoteVersionId & s) {
-    w.writeStructBegin(QStringLiteral("NoteVersionId"));
-    w.writeFieldBegin(QStringLiteral("updateSequenceNum"), ThriftFieldType::T_I32, 1);
-    w.writeI32(s.updateSequenceNum);
-    w.writeFieldEnd();
-    w.writeFieldBegin(QStringLiteral("updated"), ThriftFieldType::T_I64, 2);
-    w.writeI64(s.updated);
-    w.writeFieldEnd();
-    w.writeFieldBegin(QStringLiteral("saved"), ThriftFieldType::T_I64, 3);
-    w.writeI64(s.saved);
-    w.writeFieldEnd();
-    w.writeFieldBegin(QStringLiteral("title"), ThriftFieldType::T_STRING, 4);
-    w.writeString(s.title);
-    w.writeFieldEnd();
-    if(s.lastEditorId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("lastEditorId"), ThriftFieldType::T_I32, 5);
-        w.writeI32(s.lastEditorId.ref());
-        w.writeFieldEnd();
+void NoteEmailParameters::print(QTextStream & strm) const
+{
+    strm << "NoteEmailParameters: {\n";
+    localData.print(strm);
+
+    if (guid.isSet()) {
+        strm << "    guid = "
+            << guid.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    guid is not set\n";
+    }
+
+    if (note.isSet()) {
+        strm << "    note = "
+            << note.ref() << "\n";
+    }
+    else {
+        strm << "    note is not set\n";
+    }
+
+    if (toAddresses.isSet()) {
+        strm << "    toAddresses = "
+            << "QList<QString> {";
+        for(const auto & v: toAddresses.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    toAddresses is not set\n";
+    }
+
+    if (ccAddresses.isSet()) {
+        strm << "    ccAddresses = "
+            << "QList<QString> {";
+        for(const auto & v: ccAddresses.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    ccAddresses is not set\n";
+    }
+
+    if (subject.isSet()) {
+        strm << "    subject = "
+            << subject.ref() << "\n";
+    }
+    else {
+        strm << "    subject is not set\n";
+    }
+
+    if (message.isSet()) {
+        strm << "    message = "
+            << message.ref() << "\n";
+    }
+    else {
+        strm << "    message is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readNoteVersionId(ThriftBinaryBufferReader & r, NoteVersionId & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNoteVersionId(
+    ThriftBinaryBufferWriter & writer,
+    const NoteVersionId & s)
+{
+    writer.writeStructBegin(QStringLiteral("NoteVersionId"));
+    writer.writeFieldBegin(
+        QStringLiteral("updateSequenceNum"),
+        ThriftFieldType::T_I32,
+        1);
+
+    writer.writeI32(s.updateSequenceNum);
+    writer.writeFieldEnd();
+
+    writer.writeFieldBegin(
+        QStringLiteral("updated"),
+        ThriftFieldType::T_I64,
+        2);
+
+    writer.writeI64(s.updated);
+    writer.writeFieldEnd();
+
+    writer.writeFieldBegin(
+        QStringLiteral("saved"),
+        ThriftFieldType::T_I64,
+        3);
+
+    writer.writeI64(s.saved);
+    writer.writeFieldEnd();
+
+    writer.writeFieldBegin(
+        QStringLiteral("title"),
+        ThriftFieldType::T_STRING,
+        4);
+
+    writer.writeString(s.title);
+    writer.writeFieldEnd();
+
+    if (s.lastEditorId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("lastEditorId"),
+            ThriftFieldType::T_I32,
+            5);
+
+        writer.writeI32(s.lastEditorId.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNoteVersionId(
+    ThriftBinaryBufferReader & reader,
+    NoteVersionId & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
     bool updateSequenceNum_isset = false;
     bool updated_isset = false;
     bool saved_isset = false;
     bool title_isset = false;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I32) {
                 updateSequenceNum_isset = true;
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.updateSequenceNum = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_I64) {
                 updated_isset = true;
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.updated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I64) {
                 saved_isset = true;
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.saved = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 title_isset = true;
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.title = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_I32) {
                 UserID v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.lastEditorId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
-    if(!updateSequenceNum_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NoteVersionId.updateSequenceNum has no value"));
-    if(!updated_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NoteVersionId.updated has no value"));
-    if(!saved_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NoteVersionId.saved has no value"));
-    if(!title_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NoteVersionId.title has no value"));
+    reader.readStructEnd();
+    if (!updateSequenceNum_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NoteVersionId.updateSequenceNum has no value"));
+    if (!updated_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NoteVersionId.updated has no value"));
+    if (!saved_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NoteVersionId.saved has no value"));
+    if (!title_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("NoteVersionId.title has no value"));
 }
 
-void writeRelatedQuery(ThriftBinaryBufferWriter & w, const RelatedQuery & s) {
-    w.writeStructBegin(QStringLiteral("RelatedQuery"));
-    if(s.noteGuid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noteGuid"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.noteGuid.ref());
-        w.writeFieldEnd();
+void NoteVersionId::print(QTextStream & strm) const
+{
+    strm << "NoteVersionId: {\n";
+    localData.print(strm);
+    strm << "    updateSequenceNum = "
+        << updateSequenceNum << "\n";
+    strm << "    updated = "
+        << updated << "\n";
+    strm << "    saved = "
+        << saved << "\n";
+    strm << "    title = "
+        << title << "\n";
+
+    if (lastEditorId.isSet()) {
+        strm << "    lastEditorId = "
+            << lastEditorId.ref() << "\n";
     }
-    if(s.plainText.isSet()) {
-        w.writeFieldBegin(QStringLiteral("plainText"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.plainText.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    lastEditorId is not set\n";
     }
-    if(s.filter.isSet()) {
-        w.writeFieldBegin(QStringLiteral("filter"), ThriftFieldType::T_STRUCT, 3);
-        writeNoteFilter(w, s.filter.ref());
-        w.writeFieldEnd();
-    }
-    if(s.referenceUri.isSet()) {
-        w.writeFieldBegin(QStringLiteral("referenceUri"), ThriftFieldType::T_STRING, 4);
-        w.writeString(s.referenceUri.ref());
-        w.writeFieldEnd();
-    }
-    if(s.context.isSet()) {
-        w.writeFieldBegin(QStringLiteral("context"), ThriftFieldType::T_STRING, 5);
-        w.writeString(s.context.ref());
-        w.writeFieldEnd();
-    }
-    if(s.cacheKey.isSet()) {
-        w.writeFieldBegin(QStringLiteral("cacheKey"), ThriftFieldType::T_STRING, 6);
-        w.writeString(s.cacheKey.ref());
-        w.writeFieldEnd();
-    }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    strm << "}\n";
 }
 
-void readRelatedQuery(ThriftBinaryBufferReader & r, RelatedQuery & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeRelatedQuery(
+    ThriftBinaryBufferWriter & writer,
+    const RelatedQuery & s)
+{
+    writer.writeStructBegin(QStringLiteral("RelatedQuery"));
+    if (s.noteGuid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noteGuid"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.noteGuid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.plainText.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("plainText"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.plainText.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.filter.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("filter"),
+            ThriftFieldType::T_STRUCT,
+            3);
+
+        writeNoteFilter(writer, s.filter.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.referenceUri.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("referenceUri"),
+            ThriftFieldType::T_STRING,
+            4);
+
+        writer.writeString(s.referenceUri.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.context.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("context"),
+            ThriftFieldType::T_STRING,
+            5);
+
+        writer.writeString(s.context.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.cacheKey.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("cacheKey"),
+            ThriftFieldType::T_STRING,
+            6);
+
+        writer.writeString(s.cacheKey.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readRelatedQuery(
+    ThriftBinaryBufferReader & reader,
+    RelatedQuery & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.noteGuid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.plainText = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 NoteFilter v;
-                readNoteFilter(r, v);
+                readNoteFilter(reader, v);
                 s.filter = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.referenceUri = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.context = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.cacheKey = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeRelatedResult(ThriftBinaryBufferWriter & w, const RelatedResult & s) {
-    w.writeStructBegin(QStringLiteral("RelatedResult"));
-    if(s.notes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("notes"), ThriftFieldType::T_LIST, 1);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.notes.ref().length());
-        for(QList< Note >::const_iterator it = s.notes.ref().constBegin(), end = s.notes.ref().constEnd(); it != end; ++it) {
-            writeNote(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+void RelatedQuery::print(QTextStream & strm) const
+{
+    strm << "RelatedQuery: {\n";
+    localData.print(strm);
+
+    if (noteGuid.isSet()) {
+        strm << "    noteGuid = "
+            << noteGuid.ref() << "\n";
     }
-    if(s.notebooks.isSet()) {
-        w.writeFieldBegin(QStringLiteral("notebooks"), ThriftFieldType::T_LIST, 2);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.notebooks.ref().length());
-        for(QList< Notebook >::const_iterator it = s.notebooks.ref().constBegin(), end = s.notebooks.ref().constEnd(); it != end; ++it) {
-            writeNotebook(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+    else {
+        strm << "    noteGuid is not set\n";
     }
-    if(s.tags.isSet()) {
-        w.writeFieldBegin(QStringLiteral("tags"), ThriftFieldType::T_LIST, 3);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.tags.ref().length());
-        for(QList< Tag >::const_iterator it = s.tags.ref().constBegin(), end = s.tags.ref().constEnd(); it != end; ++it) {
-            writeTag(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+
+    if (plainText.isSet()) {
+        strm << "    plainText = "
+            << plainText.ref() << "\n";
     }
-    if(s.containingNotebooks.isSet()) {
-        w.writeFieldBegin(QStringLiteral("containingNotebooks"), ThriftFieldType::T_LIST, 4);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.containingNotebooks.ref().length());
-        for(QList< NotebookDescriptor >::const_iterator it = s.containingNotebooks.ref().constBegin(), end = s.containingNotebooks.ref().constEnd(); it != end; ++it) {
-            writeNotebookDescriptor(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+    else {
+        strm << "    plainText is not set\n";
     }
-    if(s.debugInfo.isSet()) {
-        w.writeFieldBegin(QStringLiteral("debugInfo"), ThriftFieldType::T_STRING, 5);
-        w.writeString(s.debugInfo.ref());
-        w.writeFieldEnd();
+
+    if (filter.isSet()) {
+        strm << "    filter = "
+            << filter.ref() << "\n";
     }
-    if(s.experts.isSet()) {
-        w.writeFieldBegin(QStringLiteral("experts"), ThriftFieldType::T_LIST, 6);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.experts.ref().length());
-        for(QList< UserProfile >::const_iterator it = s.experts.ref().constBegin(), end = s.experts.ref().constEnd(); it != end; ++it) {
-            writeUserProfile(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+    else {
+        strm << "    filter is not set\n";
     }
-    if(s.relatedContent.isSet()) {
-        w.writeFieldBegin(QStringLiteral("relatedContent"), ThriftFieldType::T_LIST, 7);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.relatedContent.ref().length());
-        for(QList< RelatedContent >::const_iterator it = s.relatedContent.ref().constBegin(), end = s.relatedContent.ref().constEnd(); it != end; ++it) {
-            writeRelatedContent(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+
+    if (referenceUri.isSet()) {
+        strm << "    referenceUri = "
+            << referenceUri.ref() << "\n";
     }
-    if(s.cacheKey.isSet()) {
-        w.writeFieldBegin(QStringLiteral("cacheKey"), ThriftFieldType::T_STRING, 8);
-        w.writeString(s.cacheKey.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    referenceUri is not set\n";
     }
-    if(s.cacheExpires.isSet()) {
-        w.writeFieldBegin(QStringLiteral("cacheExpires"), ThriftFieldType::T_I32, 9);
-        w.writeI32(s.cacheExpires.ref());
-        w.writeFieldEnd();
+
+    if (context.isSet()) {
+        strm << "    context = "
+            << context.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    context is not set\n";
+    }
+
+    if (cacheKey.isSet()) {
+        strm << "    cacheKey = "
+            << cacheKey.ref() << "\n";
+    }
+    else {
+        strm << "    cacheKey is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readRelatedResult(ThriftBinaryBufferReader & r, RelatedResult & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeRelatedResult(
+    ThriftBinaryBufferWriter & writer,
+    const RelatedResult & s)
+{
+    writer.writeStructBegin(QStringLiteral("RelatedResult"));
+    if (s.notes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("notes"),
+            ThriftFieldType::T_LIST,
+            1);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.notes.ref().length());
+        for(const auto & value: qAsConst(s.notes.ref())) {
+            writeNote(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.notebooks.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("notebooks"),
+            ThriftFieldType::T_LIST,
+            2);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.notebooks.ref().length());
+        for(const auto & value: qAsConst(s.notebooks.ref())) {
+            writeNotebook(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.tags.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("tags"),
+            ThriftFieldType::T_LIST,
+            3);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.tags.ref().length());
+        for(const auto & value: qAsConst(s.tags.ref())) {
+            writeTag(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.containingNotebooks.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("containingNotebooks"),
+            ThriftFieldType::T_LIST,
+            4);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.containingNotebooks.ref().length());
+        for(const auto & value: qAsConst(s.containingNotebooks.ref())) {
+            writeNotebookDescriptor(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.debugInfo.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("debugInfo"),
+            ThriftFieldType::T_STRING,
+            5);
+
+        writer.writeString(s.debugInfo.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.experts.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("experts"),
+            ThriftFieldType::T_LIST,
+            6);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.experts.ref().length());
+        for(const auto & value: qAsConst(s.experts.ref())) {
+            writeUserProfile(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.relatedContent.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("relatedContent"),
+            ThriftFieldType::T_LIST,
+            7);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.relatedContent.ref().length());
+        for(const auto & value: qAsConst(s.relatedContent.ref())) {
+            writeRelatedContent(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.cacheKey.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("cacheKey"),
+            ThriftFieldType::T_STRING,
+            8);
+
+        writer.writeString(s.cacheKey.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.cacheExpires.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("cacheExpires"),
+            ThriftFieldType::T_I32,
+            9);
+
+        writer.writeI32(s.cacheExpires.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readRelatedResult(
+    ThriftBinaryBufferReader & reader,
+    RelatedResult & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< Note > v;
+                QList<Note> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (RelatedResult.notes)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (RelatedResult.notes)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     Note elem;
-                    readNote(r, elem);
+                    readNote(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.notes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< Notebook > v;
+                QList<Notebook> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (RelatedResult.notebooks)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (RelatedResult.notebooks)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     Notebook elem;
-                    readNotebook(r, elem);
+                    readNotebook(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.notebooks = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< Tag > v;
+                QList<Tag> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (RelatedResult.tags)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (RelatedResult.tags)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     Tag elem;
-                    readTag(r, elem);
+                    readTag(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.tags = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< NotebookDescriptor > v;
+                QList<NotebookDescriptor> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (RelatedResult.containingNotebooks)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (RelatedResult.containingNotebooks)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     NotebookDescriptor elem;
-                    readNotebookDescriptor(r, elem);
+                    readNotebookDescriptor(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.containingNotebooks = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.debugInfo = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< UserProfile > v;
+                QList<UserProfile> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (RelatedResult.experts)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (RelatedResult.experts)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     UserProfile elem;
-                    readUserProfile(r, elem);
+                    readUserProfile(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.experts = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< RelatedContent > v;
+                QList<RelatedContent> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (RelatedResult.relatedContent)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (RelatedResult.relatedContent)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     RelatedContent elem;
-                    readRelatedContent(r, elem);
+                    readRelatedContent(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.relatedContent = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.cacheKey = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 9) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.cacheExpires = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeRelatedResultSpec(ThriftBinaryBufferWriter & w, const RelatedResultSpec & s) {
-    w.writeStructBegin(QStringLiteral("RelatedResultSpec"));
-    if(s.maxNotes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("maxNotes"), ThriftFieldType::T_I32, 1);
-        w.writeI32(s.maxNotes.ref());
-        w.writeFieldEnd();
-    }
-    if(s.maxNotebooks.isSet()) {
-        w.writeFieldBegin(QStringLiteral("maxNotebooks"), ThriftFieldType::T_I32, 2);
-        w.writeI32(s.maxNotebooks.ref());
-        w.writeFieldEnd();
-    }
-    if(s.maxTags.isSet()) {
-        w.writeFieldBegin(QStringLiteral("maxTags"), ThriftFieldType::T_I32, 3);
-        w.writeI32(s.maxTags.ref());
-        w.writeFieldEnd();
-    }
-    if(s.writableNotebooksOnly.isSet()) {
-        w.writeFieldBegin(QStringLiteral("writableNotebooksOnly"), ThriftFieldType::T_BOOL, 4);
-        w.writeBool(s.writableNotebooksOnly.ref());
-        w.writeFieldEnd();
-    }
-    if(s.includeContainingNotebooks.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeContainingNotebooks"), ThriftFieldType::T_BOOL, 5);
-        w.writeBool(s.includeContainingNotebooks.ref());
-        w.writeFieldEnd();
-    }
-    if(s.includeDebugInfo.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeDebugInfo"), ThriftFieldType::T_BOOL, 6);
-        w.writeBool(s.includeDebugInfo.ref());
-        w.writeFieldEnd();
-    }
-    if(s.maxExperts.isSet()) {
-        w.writeFieldBegin(QStringLiteral("maxExperts"), ThriftFieldType::T_I32, 7);
-        w.writeI32(s.maxExperts.ref());
-        w.writeFieldEnd();
-    }
-    if(s.maxRelatedContent.isSet()) {
-        w.writeFieldBegin(QStringLiteral("maxRelatedContent"), ThriftFieldType::T_I32, 8);
-        w.writeI32(s.maxRelatedContent.ref());
-        w.writeFieldEnd();
-    }
-    if(s.relatedContentTypes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("relatedContentTypes"), ThriftFieldType::T_SET, 9);
-        w.writeSetBegin(ThriftFieldType::T_I32, s.relatedContentTypes.ref().count());
-        for(QSet< RelatedContentType::type >::const_iterator it = s.relatedContentTypes.ref().constBegin(), end = s.relatedContentTypes.ref().constEnd(); it != end; ++it) {
-            w.writeI32(static_cast<qint32>(*it));
+void RelatedResult::print(QTextStream & strm) const
+{
+    strm << "RelatedResult: {\n";
+    localData.print(strm);
+
+    if (notes.isSet()) {
+        strm << "    notes = "
+            << "QList<Note> {";
+        for(const auto & v: notes.ref()) {
+            strm << "        " << v << "\n";
         }
-        w.writeSetEnd();
-        w.writeFieldEnd();
+        strm << "    }\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    notes is not set\n";
+    }
+
+    if (notebooks.isSet()) {
+        strm << "    notebooks = "
+            << "QList<Notebook> {";
+        for(const auto & v: notebooks.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    notebooks is not set\n";
+    }
+
+    if (tags.isSet()) {
+        strm << "    tags = "
+            << "QList<Tag> {";
+        for(const auto & v: tags.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    tags is not set\n";
+    }
+
+    if (containingNotebooks.isSet()) {
+        strm << "    containingNotebooks = "
+            << "QList<NotebookDescriptor> {";
+        for(const auto & v: containingNotebooks.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    containingNotebooks is not set\n";
+    }
+
+    if (debugInfo.isSet()) {
+        strm << "    debugInfo = "
+            << debugInfo.ref() << "\n";
+    }
+    else {
+        strm << "    debugInfo is not set\n";
+    }
+
+    if (experts.isSet()) {
+        strm << "    experts = "
+            << "QList<UserProfile> {";
+        for(const auto & v: experts.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    experts is not set\n";
+    }
+
+    if (relatedContent.isSet()) {
+        strm << "    relatedContent = "
+            << "QList<RelatedContent> {";
+        for(const auto & v: relatedContent.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    relatedContent is not set\n";
+    }
+
+    if (cacheKey.isSet()) {
+        strm << "    cacheKey = "
+            << cacheKey.ref() << "\n";
+    }
+    else {
+        strm << "    cacheKey is not set\n";
+    }
+
+    if (cacheExpires.isSet()) {
+        strm << "    cacheExpires = "
+            << cacheExpires.ref() << "\n";
+    }
+    else {
+        strm << "    cacheExpires is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readRelatedResultSpec(ThriftBinaryBufferReader & r, RelatedResultSpec & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeRelatedResultSpec(
+    ThriftBinaryBufferWriter & writer,
+    const RelatedResultSpec & s)
+{
+    writer.writeStructBegin(QStringLiteral("RelatedResultSpec"));
+    if (s.maxNotes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("maxNotes"),
+            ThriftFieldType::T_I32,
+            1);
+
+        writer.writeI32(s.maxNotes.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.maxNotebooks.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("maxNotebooks"),
+            ThriftFieldType::T_I32,
+            2);
+
+        writer.writeI32(s.maxNotebooks.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.maxTags.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("maxTags"),
+            ThriftFieldType::T_I32,
+            3);
+
+        writer.writeI32(s.maxTags.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.writableNotebooksOnly.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("writableNotebooksOnly"),
+            ThriftFieldType::T_BOOL,
+            4);
+
+        writer.writeBool(s.writableNotebooksOnly.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeContainingNotebooks.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeContainingNotebooks"),
+            ThriftFieldType::T_BOOL,
+            5);
+
+        writer.writeBool(s.includeContainingNotebooks.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeDebugInfo.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeDebugInfo"),
+            ThriftFieldType::T_BOOL,
+            6);
+
+        writer.writeBool(s.includeDebugInfo.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.maxExperts.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("maxExperts"),
+            ThriftFieldType::T_I32,
+            7);
+
+        writer.writeI32(s.maxExperts.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.maxRelatedContent.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("maxRelatedContent"),
+            ThriftFieldType::T_I32,
+            8);
+
+        writer.writeI32(s.maxRelatedContent.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.relatedContentTypes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("relatedContentTypes"),
+            ThriftFieldType::T_SET,
+            9);
+
+        writer.writeSetBegin(ThriftFieldType::T_I32, s.relatedContentTypes.ref().count());
+        for(const auto & value: qAsConst(s.relatedContentTypes.ref())) {
+            writer.writeI32(static_cast<qint32>(value));
+        }
+        writer.writeSetEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readRelatedResultSpec(
+    ThriftBinaryBufferReader & reader,
+    RelatedResultSpec & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.maxNotes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.maxNotebooks = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.maxTags = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.writableNotebooksOnly = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeContainingNotebooks = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeDebugInfo = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.maxExperts = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.maxRelatedContent = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 9) {
             if (fieldType == ThriftFieldType::T_SET) {
-                QSet< RelatedContentType::type > v;
+                QSet<RelatedContentType> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readSetBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readSetBegin(elemType, size);
                 v.reserve(size);
-                if (elemType != ThriftFieldType::T_I32) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect set type (RelatedResultSpec.relatedContentTypes)"));
+                if (elemType != ThriftFieldType::T_I32) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect set type (RelatedResultSpec.relatedContentTypes)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
-                    RelatedContentType::type elem;
-                    readEnumRelatedContentType(r, elem);
+                    RelatedContentType elem;
+                    readEnumRelatedContentType(reader, elem);
                     v.insert(elem);
                 }
-                r.readSetEnd();
+                reader.readSetEnd();
                 s.relatedContentTypes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeUpdateNoteIfUsnMatchesResult(ThriftBinaryBufferWriter & w, const UpdateNoteIfUsnMatchesResult & s) {
-    w.writeStructBegin(QStringLiteral("UpdateNoteIfUsnMatchesResult"));
-    if(s.note.isSet()) {
-        w.writeFieldBegin(QStringLiteral("note"), ThriftFieldType::T_STRUCT, 1);
-        writeNote(w, s.note.ref());
-        w.writeFieldEnd();
+void RelatedResultSpec::print(QTextStream & strm) const
+{
+    strm << "RelatedResultSpec: {\n";
+    localData.print(strm);
+
+    if (maxNotes.isSet()) {
+        strm << "    maxNotes = "
+            << maxNotes.ref() << "\n";
     }
-    if(s.updated.isSet()) {
-        w.writeFieldBegin(QStringLiteral("updated"), ThriftFieldType::T_BOOL, 2);
-        w.writeBool(s.updated.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    maxNotes is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (maxNotebooks.isSet()) {
+        strm << "    maxNotebooks = "
+            << maxNotebooks.ref() << "\n";
+    }
+    else {
+        strm << "    maxNotebooks is not set\n";
+    }
+
+    if (maxTags.isSet()) {
+        strm << "    maxTags = "
+            << maxTags.ref() << "\n";
+    }
+    else {
+        strm << "    maxTags is not set\n";
+    }
+
+    if (writableNotebooksOnly.isSet()) {
+        strm << "    writableNotebooksOnly = "
+            << writableNotebooksOnly.ref() << "\n";
+    }
+    else {
+        strm << "    writableNotebooksOnly is not set\n";
+    }
+
+    if (includeContainingNotebooks.isSet()) {
+        strm << "    includeContainingNotebooks = "
+            << includeContainingNotebooks.ref() << "\n";
+    }
+    else {
+        strm << "    includeContainingNotebooks is not set\n";
+    }
+
+    if (includeDebugInfo.isSet()) {
+        strm << "    includeDebugInfo = "
+            << includeDebugInfo.ref() << "\n";
+    }
+    else {
+        strm << "    includeDebugInfo is not set\n";
+    }
+
+    if (maxExperts.isSet()) {
+        strm << "    maxExperts = "
+            << maxExperts.ref() << "\n";
+    }
+    else {
+        strm << "    maxExperts is not set\n";
+    }
+
+    if (maxRelatedContent.isSet()) {
+        strm << "    maxRelatedContent = "
+            << maxRelatedContent.ref() << "\n";
+    }
+    else {
+        strm << "    maxRelatedContent is not set\n";
+    }
+
+    if (relatedContentTypes.isSet()) {
+        strm << "    relatedContentTypes = "
+            << "QSet<RelatedContentType> {";
+        for(const auto & v: relatedContentTypes.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    relatedContentTypes is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readUpdateNoteIfUsnMatchesResult(ThriftBinaryBufferReader & r, UpdateNoteIfUsnMatchesResult & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeUpdateNoteIfUsnMatchesResult(
+    ThriftBinaryBufferWriter & writer,
+    const UpdateNoteIfUsnMatchesResult & s)
+{
+    writer.writeStructBegin(QStringLiteral("UpdateNoteIfUsnMatchesResult"));
+    if (s.note.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("note"),
+            ThriftFieldType::T_STRUCT,
+            1);
+
+        writeNote(writer, s.note.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.updated.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("updated"),
+            ThriftFieldType::T_BOOL,
+            2);
+
+        writer.writeBool(s.updated.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readUpdateNoteIfUsnMatchesResult(
+    ThriftBinaryBufferReader & reader,
+    UpdateNoteIfUsnMatchesResult & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 Note v;
-                readNote(r, v);
+                readNote(reader, v);
                 s.note = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.updated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeShareRelationshipRestrictions(ThriftBinaryBufferWriter & w, const ShareRelationshipRestrictions & s) {
-    w.writeStructBegin(QStringLiteral("ShareRelationshipRestrictions"));
-    if(s.noSetReadOnly.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noSetReadOnly"), ThriftFieldType::T_BOOL, 1);
-        w.writeBool(s.noSetReadOnly.ref());
-        w.writeFieldEnd();
+void UpdateNoteIfUsnMatchesResult::print(QTextStream & strm) const
+{
+    strm << "UpdateNoteIfUsnMatchesResult: {\n";
+    localData.print(strm);
+
+    if (note.isSet()) {
+        strm << "    note = "
+            << note.ref() << "\n";
     }
-    if(s.noSetReadPlusActivity.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noSetReadPlusActivity"), ThriftFieldType::T_BOOL, 2);
-        w.writeBool(s.noSetReadPlusActivity.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    note is not set\n";
     }
-    if(s.noSetModify.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noSetModify"), ThriftFieldType::T_BOOL, 3);
-        w.writeBool(s.noSetModify.ref());
-        w.writeFieldEnd();
+
+    if (updated.isSet()) {
+        strm << "    updated = "
+            << updated.ref() << "\n";
     }
-    if(s.noSetFullAccess.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noSetFullAccess"), ThriftFieldType::T_BOOL, 4);
-        w.writeBool(s.noSetFullAccess.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    updated is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    strm << "}\n";
 }
 
-void readShareRelationshipRestrictions(ThriftBinaryBufferReader & r, ShareRelationshipRestrictions & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeShareRelationshipRestrictions(
+    ThriftBinaryBufferWriter & writer,
+    const ShareRelationshipRestrictions & s)
+{
+    writer.writeStructBegin(QStringLiteral("ShareRelationshipRestrictions"));
+    if (s.noSetReadOnly.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noSetReadOnly"),
+            ThriftFieldType::T_BOOL,
+            1);
+
+        writer.writeBool(s.noSetReadOnly.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noSetReadPlusActivity.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noSetReadPlusActivity"),
+            ThriftFieldType::T_BOOL,
+            2);
+
+        writer.writeBool(s.noSetReadPlusActivity.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noSetModify.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noSetModify"),
+            ThriftFieldType::T_BOOL,
+            3);
+
+        writer.writeBool(s.noSetModify.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noSetFullAccess.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noSetFullAccess"),
+            ThriftFieldType::T_BOOL,
+            4);
+
+        writer.writeBool(s.noSetFullAccess.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readShareRelationshipRestrictions(
+    ThriftBinaryBufferReader & reader,
+    ShareRelationshipRestrictions & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noSetReadOnly = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noSetReadPlusActivity = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noSetModify = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noSetFullAccess = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeInvitationShareRelationship(ThriftBinaryBufferWriter & w, const InvitationShareRelationship & s) {
-    w.writeStructBegin(QStringLiteral("InvitationShareRelationship"));
-    if(s.displayName.isSet()) {
-        w.writeFieldBegin(QStringLiteral("displayName"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.displayName.ref());
-        w.writeFieldEnd();
+void ShareRelationshipRestrictions::print(QTextStream & strm) const
+{
+    strm << "ShareRelationshipRestrictions: {\n";
+    localData.print(strm);
+
+    if (noSetReadOnly.isSet()) {
+        strm << "    noSetReadOnly = "
+            << noSetReadOnly.ref() << "\n";
     }
-    if(s.recipientUserIdentity.isSet()) {
-        w.writeFieldBegin(QStringLiteral("recipientUserIdentity"), ThriftFieldType::T_STRUCT, 2);
-        writeUserIdentity(w, s.recipientUserIdentity.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noSetReadOnly is not set\n";
     }
-    if(s.privilege.isSet()) {
-        w.writeFieldBegin(QStringLiteral("privilege"), ThriftFieldType::T_I32, 3);
-        w.writeI32(static_cast<qint32>(s.privilege.ref()));
-        w.writeFieldEnd();
+
+    if (noSetReadPlusActivity.isSet()) {
+        strm << "    noSetReadPlusActivity = "
+            << noSetReadPlusActivity.ref() << "\n";
     }
-    if(s.sharerUserId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sharerUserId"), ThriftFieldType::T_I32, 5);
-        w.writeI32(s.sharerUserId.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noSetReadPlusActivity is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (noSetModify.isSet()) {
+        strm << "    noSetModify = "
+            << noSetModify.ref() << "\n";
+    }
+    else {
+        strm << "    noSetModify is not set\n";
+    }
+
+    if (noSetFullAccess.isSet()) {
+        strm << "    noSetFullAccess = "
+            << noSetFullAccess.ref() << "\n";
+    }
+    else {
+        strm << "    noSetFullAccess is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readInvitationShareRelationship(ThriftBinaryBufferReader & r, InvitationShareRelationship & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeInvitationShareRelationship(
+    ThriftBinaryBufferWriter & writer,
+    const InvitationShareRelationship & s)
+{
+    writer.writeStructBegin(QStringLiteral("InvitationShareRelationship"));
+    if (s.displayName.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("displayName"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.displayName.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.recipientUserIdentity.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("recipientUserIdentity"),
+            ThriftFieldType::T_STRUCT,
+            2);
+
+        writeUserIdentity(writer, s.recipientUserIdentity.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.privilege.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("privilege"),
+            ThriftFieldType::T_I32,
+            3);
+
+        writer.writeI32(static_cast<qint32>(s.privilege.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.sharerUserId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sharerUserId"),
+            ThriftFieldType::T_I32,
+            5);
+
+        writer.writeI32(s.sharerUserId.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readInvitationShareRelationship(
+    ThriftBinaryBufferReader & reader,
+    InvitationShareRelationship & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.displayName = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 UserIdentity v;
-                readUserIdentity(r, v);
+                readUserIdentity(reader, v);
                 s.recipientUserIdentity = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I32) {
-                ShareRelationshipPrivilegeLevel::type v;
-                readEnumShareRelationshipPrivilegeLevel(r, v);
+                ShareRelationshipPrivilegeLevel v;
+                readEnumShareRelationshipPrivilegeLevel(reader, v);
                 s.privilege = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_I32) {
                 UserID v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.sharerUserId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeMemberShareRelationship(ThriftBinaryBufferWriter & w, const MemberShareRelationship & s) {
-    w.writeStructBegin(QStringLiteral("MemberShareRelationship"));
-    if(s.displayName.isSet()) {
-        w.writeFieldBegin(QStringLiteral("displayName"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.displayName.ref());
-        w.writeFieldEnd();
+void InvitationShareRelationship::print(QTextStream & strm) const
+{
+    strm << "InvitationShareRelationship: {\n";
+    localData.print(strm);
+
+    if (displayName.isSet()) {
+        strm << "    displayName = "
+            << displayName.ref() << "\n";
     }
-    if(s.recipientUserId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("recipientUserId"), ThriftFieldType::T_I32, 2);
-        w.writeI32(s.recipientUserId.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    displayName is not set\n";
     }
-    if(s.bestPrivilege.isSet()) {
-        w.writeFieldBegin(QStringLiteral("bestPrivilege"), ThriftFieldType::T_I32, 3);
-        w.writeI32(static_cast<qint32>(s.bestPrivilege.ref()));
-        w.writeFieldEnd();
+
+    if (recipientUserIdentity.isSet()) {
+        strm << "    recipientUserIdentity = "
+            << recipientUserIdentity.ref() << "\n";
     }
-    if(s.individualPrivilege.isSet()) {
-        w.writeFieldBegin(QStringLiteral("individualPrivilege"), ThriftFieldType::T_I32, 4);
-        w.writeI32(static_cast<qint32>(s.individualPrivilege.ref()));
-        w.writeFieldEnd();
+    else {
+        strm << "    recipientUserIdentity is not set\n";
     }
-    if(s.restrictions.isSet()) {
-        w.writeFieldBegin(QStringLiteral("restrictions"), ThriftFieldType::T_STRUCT, 5);
-        writeShareRelationshipRestrictions(w, s.restrictions.ref());
-        w.writeFieldEnd();
+
+    if (privilege.isSet()) {
+        strm << "    privilege = "
+            << privilege.ref() << "\n";
     }
-    if(s.sharerUserId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sharerUserId"), ThriftFieldType::T_I32, 6);
-        w.writeI32(s.sharerUserId.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    privilege is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (sharerUserId.isSet()) {
+        strm << "    sharerUserId = "
+            << sharerUserId.ref() << "\n";
+    }
+    else {
+        strm << "    sharerUserId is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readMemberShareRelationship(ThriftBinaryBufferReader & r, MemberShareRelationship & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeMemberShareRelationship(
+    ThriftBinaryBufferWriter & writer,
+    const MemberShareRelationship & s)
+{
+    writer.writeStructBegin(QStringLiteral("MemberShareRelationship"));
+    if (s.displayName.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("displayName"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.displayName.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.recipientUserId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("recipientUserId"),
+            ThriftFieldType::T_I32,
+            2);
+
+        writer.writeI32(s.recipientUserId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.bestPrivilege.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("bestPrivilege"),
+            ThriftFieldType::T_I32,
+            3);
+
+        writer.writeI32(static_cast<qint32>(s.bestPrivilege.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.individualPrivilege.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("individualPrivilege"),
+            ThriftFieldType::T_I32,
+            4);
+
+        writer.writeI32(static_cast<qint32>(s.individualPrivilege.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.restrictions.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("restrictions"),
+            ThriftFieldType::T_STRUCT,
+            5);
+
+        writeShareRelationshipRestrictions(writer, s.restrictions.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.sharerUserId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sharerUserId"),
+            ThriftFieldType::T_I32,
+            6);
+
+        writer.writeI32(s.sharerUserId.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readMemberShareRelationship(
+    ThriftBinaryBufferReader & reader,
+    MemberShareRelationship & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.displayName = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_I32) {
                 UserID v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.recipientUserId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I32) {
-                ShareRelationshipPrivilegeLevel::type v;
-                readEnumShareRelationshipPrivilegeLevel(r, v);
+                ShareRelationshipPrivilegeLevel v;
+                readEnumShareRelationshipPrivilegeLevel(reader, v);
                 s.bestPrivilege = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_I32) {
-                ShareRelationshipPrivilegeLevel::type v;
-                readEnumShareRelationshipPrivilegeLevel(r, v);
+                ShareRelationshipPrivilegeLevel v;
+                readEnumShareRelationshipPrivilegeLevel(reader, v);
                 s.individualPrivilege = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 ShareRelationshipRestrictions v;
-                readShareRelationshipRestrictions(r, v);
+                readShareRelationshipRestrictions(reader, v);
                 s.restrictions = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_I32) {
                 UserID v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.sharerUserId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeShareRelationships(ThriftBinaryBufferWriter & w, const ShareRelationships & s) {
-    w.writeStructBegin(QStringLiteral("ShareRelationships"));
-    if(s.invitations.isSet()) {
-        w.writeFieldBegin(QStringLiteral("invitations"), ThriftFieldType::T_LIST, 1);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.invitations.ref().length());
-        for(QList< InvitationShareRelationship >::const_iterator it = s.invitations.ref().constBegin(), end = s.invitations.ref().constEnd(); it != end; ++it) {
-            writeInvitationShareRelationship(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+void MemberShareRelationship::print(QTextStream & strm) const
+{
+    strm << "MemberShareRelationship: {\n";
+    localData.print(strm);
+
+    if (displayName.isSet()) {
+        strm << "    displayName = "
+            << displayName.ref() << "\n";
     }
-    if(s.memberships.isSet()) {
-        w.writeFieldBegin(QStringLiteral("memberships"), ThriftFieldType::T_LIST, 2);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.memberships.ref().length());
-        for(QList< MemberShareRelationship >::const_iterator it = s.memberships.ref().constBegin(), end = s.memberships.ref().constEnd(); it != end; ++it) {
-            writeMemberShareRelationship(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+    else {
+        strm << "    displayName is not set\n";
     }
-    if(s.invitationRestrictions.isSet()) {
-        w.writeFieldBegin(QStringLiteral("invitationRestrictions"), ThriftFieldType::T_STRUCT, 3);
-        writeShareRelationshipRestrictions(w, s.invitationRestrictions.ref());
-        w.writeFieldEnd();
+
+    if (recipientUserId.isSet()) {
+        strm << "    recipientUserId = "
+            << recipientUserId.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    recipientUserId is not set\n";
+    }
+
+    if (bestPrivilege.isSet()) {
+        strm << "    bestPrivilege = "
+            << bestPrivilege.ref() << "\n";
+    }
+    else {
+        strm << "    bestPrivilege is not set\n";
+    }
+
+    if (individualPrivilege.isSet()) {
+        strm << "    individualPrivilege = "
+            << individualPrivilege.ref() << "\n";
+    }
+    else {
+        strm << "    individualPrivilege is not set\n";
+    }
+
+    if (restrictions.isSet()) {
+        strm << "    restrictions = "
+            << restrictions.ref() << "\n";
+    }
+    else {
+        strm << "    restrictions is not set\n";
+    }
+
+    if (sharerUserId.isSet()) {
+        strm << "    sharerUserId = "
+            << sharerUserId.ref() << "\n";
+    }
+    else {
+        strm << "    sharerUserId is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readShareRelationships(ThriftBinaryBufferReader & r, ShareRelationships & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeShareRelationships(
+    ThriftBinaryBufferWriter & writer,
+    const ShareRelationships & s)
+{
+    writer.writeStructBegin(QStringLiteral("ShareRelationships"));
+    if (s.invitations.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("invitations"),
+            ThriftFieldType::T_LIST,
+            1);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.invitations.ref().length());
+        for(const auto & value: qAsConst(s.invitations.ref())) {
+            writeInvitationShareRelationship(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.memberships.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("memberships"),
+            ThriftFieldType::T_LIST,
+            2);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.memberships.ref().length());
+        for(const auto & value: qAsConst(s.memberships.ref())) {
+            writeMemberShareRelationship(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.invitationRestrictions.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("invitationRestrictions"),
+            ThriftFieldType::T_STRUCT,
+            3);
+
+        writeShareRelationshipRestrictions(writer, s.invitationRestrictions.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readShareRelationships(
+    ThriftBinaryBufferReader & reader,
+    ShareRelationships & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< InvitationShareRelationship > v;
+                QList<InvitationShareRelationship> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (ShareRelationships.invitations)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (ShareRelationships.invitations)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     InvitationShareRelationship elem;
-                    readInvitationShareRelationship(r, elem);
+                    readInvitationShareRelationship(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.invitations = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< MemberShareRelationship > v;
+                QList<MemberShareRelationship> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (ShareRelationships.memberships)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (ShareRelationships.memberships)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     MemberShareRelationship elem;
-                    readMemberShareRelationship(r, elem);
+                    readMemberShareRelationship(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.memberships = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 ShareRelationshipRestrictions v;
-                readShareRelationshipRestrictions(r, v);
+                readShareRelationshipRestrictions(reader, v);
                 s.invitationRestrictions = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeManageNotebookSharesParameters(ThriftBinaryBufferWriter & w, const ManageNotebookSharesParameters & s) {
-    w.writeStructBegin(QStringLiteral("ManageNotebookSharesParameters"));
-    if(s.notebookGuid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("notebookGuid"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.notebookGuid.ref());
-        w.writeFieldEnd();
-    }
-    if(s.inviteMessage.isSet()) {
-        w.writeFieldBegin(QStringLiteral("inviteMessage"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.inviteMessage.ref());
-        w.writeFieldEnd();
-    }
-    if(s.membershipsToUpdate.isSet()) {
-        w.writeFieldBegin(QStringLiteral("membershipsToUpdate"), ThriftFieldType::T_LIST, 3);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.membershipsToUpdate.ref().length());
-        for(QList< MemberShareRelationship >::const_iterator it = s.membershipsToUpdate.ref().constBegin(), end = s.membershipsToUpdate.ref().constEnd(); it != end; ++it) {
-            writeMemberShareRelationship(w, *it);
+void ShareRelationships::print(QTextStream & strm) const
+{
+    strm << "ShareRelationships: {\n";
+    localData.print(strm);
+
+    if (invitations.isSet()) {
+        strm << "    invitations = "
+            << "QList<InvitationShareRelationship> {";
+        for(const auto & v: invitations.ref()) {
+            strm << "        " << v << "\n";
         }
-        w.writeListEnd();
-        w.writeFieldEnd();
+        strm << "    }\n";
     }
-    if(s.invitationsToCreateOrUpdate.isSet()) {
-        w.writeFieldBegin(QStringLiteral("invitationsToCreateOrUpdate"), ThriftFieldType::T_LIST, 4);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.invitationsToCreateOrUpdate.ref().length());
-        for(QList< InvitationShareRelationship >::const_iterator it = s.invitationsToCreateOrUpdate.ref().constBegin(), end = s.invitationsToCreateOrUpdate.ref().constEnd(); it != end; ++it) {
-            writeInvitationShareRelationship(w, *it);
+    else {
+        strm << "    invitations is not set\n";
+    }
+
+    if (memberships.isSet()) {
+        strm << "    memberships = "
+            << "QList<MemberShareRelationship> {";
+        for(const auto & v: memberships.ref()) {
+            strm << "        " << v << "\n";
         }
-        w.writeListEnd();
-        w.writeFieldEnd();
+        strm << "    }\n";
     }
-    if(s.unshares.isSet()) {
-        w.writeFieldBegin(QStringLiteral("unshares"), ThriftFieldType::T_LIST, 5);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.unshares.ref().length());
-        for(QList< UserIdentity >::const_iterator it = s.unshares.ref().constBegin(), end = s.unshares.ref().constEnd(); it != end; ++it) {
-            writeUserIdentity(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+    else {
+        strm << "    memberships is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (invitationRestrictions.isSet()) {
+        strm << "    invitationRestrictions = "
+            << invitationRestrictions.ref() << "\n";
+    }
+    else {
+        strm << "    invitationRestrictions is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readManageNotebookSharesParameters(ThriftBinaryBufferReader & r, ManageNotebookSharesParameters & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeManageNotebookSharesParameters(
+    ThriftBinaryBufferWriter & writer,
+    const ManageNotebookSharesParameters & s)
+{
+    writer.writeStructBegin(QStringLiteral("ManageNotebookSharesParameters"));
+    if (s.notebookGuid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("notebookGuid"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.notebookGuid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.inviteMessage.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("inviteMessage"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.inviteMessage.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.membershipsToUpdate.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("membershipsToUpdate"),
+            ThriftFieldType::T_LIST,
+            3);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.membershipsToUpdate.ref().length());
+        for(const auto & value: qAsConst(s.membershipsToUpdate.ref())) {
+            writeMemberShareRelationship(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.invitationsToCreateOrUpdate.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("invitationsToCreateOrUpdate"),
+            ThriftFieldType::T_LIST,
+            4);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.invitationsToCreateOrUpdate.ref().length());
+        for(const auto & value: qAsConst(s.invitationsToCreateOrUpdate.ref())) {
+            writeInvitationShareRelationship(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.unshares.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("unshares"),
+            ThriftFieldType::T_LIST,
+            5);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.unshares.ref().length());
+        for(const auto & value: qAsConst(s.unshares.ref())) {
+            writeUserIdentity(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readManageNotebookSharesParameters(
+    ThriftBinaryBufferReader & reader,
+    ManageNotebookSharesParameters & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.notebookGuid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.inviteMessage = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< MemberShareRelationship > v;
+                QList<MemberShareRelationship> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (ManageNotebookSharesParameters.membershipsToUpdate)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (ManageNotebookSharesParameters.membershipsToUpdate)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     MemberShareRelationship elem;
-                    readMemberShareRelationship(r, elem);
+                    readMemberShareRelationship(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.membershipsToUpdate = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< InvitationShareRelationship > v;
+                QList<InvitationShareRelationship> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (ManageNotebookSharesParameters.invitationsToCreateOrUpdate)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (ManageNotebookSharesParameters.invitationsToCreateOrUpdate)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     InvitationShareRelationship elem;
-                    readInvitationShareRelationship(r, elem);
+                    readInvitationShareRelationship(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.invitationsToCreateOrUpdate = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< UserIdentity > v;
+                QList<UserIdentity> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (ManageNotebookSharesParameters.unshares)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (ManageNotebookSharesParameters.unshares)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     UserIdentity elem;
-                    readUserIdentity(r, elem);
+                    readUserIdentity(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.unshares = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeManageNotebookSharesError(ThriftBinaryBufferWriter & w, const ManageNotebookSharesError & s) {
-    w.writeStructBegin(QStringLiteral("ManageNotebookSharesError"));
-    if(s.userIdentity.isSet()) {
-        w.writeFieldBegin(QStringLiteral("userIdentity"), ThriftFieldType::T_STRUCT, 1);
-        writeUserIdentity(w, s.userIdentity.ref());
-        w.writeFieldEnd();
+void ManageNotebookSharesParameters::print(QTextStream & strm) const
+{
+    strm << "ManageNotebookSharesParameters: {\n";
+    localData.print(strm);
+
+    if (notebookGuid.isSet()) {
+        strm << "    notebookGuid = "
+            << notebookGuid.ref() << "\n";
     }
-    if(s.userException.isSet()) {
-        w.writeFieldBegin(QStringLiteral("userException"), ThriftFieldType::T_STRUCT, 2);
-        writeEDAMUserException(w, s.userException.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    notebookGuid is not set\n";
     }
-    if(s.notFoundException.isSet()) {
-        w.writeFieldBegin(QStringLiteral("notFoundException"), ThriftFieldType::T_STRUCT, 3);
-        writeEDAMNotFoundException(w, s.notFoundException.ref());
-        w.writeFieldEnd();
+
+    if (inviteMessage.isSet()) {
+        strm << "    inviteMessage = "
+            << inviteMessage.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    inviteMessage is not set\n";
+    }
+
+    if (membershipsToUpdate.isSet()) {
+        strm << "    membershipsToUpdate = "
+            << "QList<MemberShareRelationship> {";
+        for(const auto & v: membershipsToUpdate.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    membershipsToUpdate is not set\n";
+    }
+
+    if (invitationsToCreateOrUpdate.isSet()) {
+        strm << "    invitationsToCreateOrUpdate = "
+            << "QList<InvitationShareRelationship> {";
+        for(const auto & v: invitationsToCreateOrUpdate.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    invitationsToCreateOrUpdate is not set\n";
+    }
+
+    if (unshares.isSet()) {
+        strm << "    unshares = "
+            << "QList<UserIdentity> {";
+        for(const auto & v: unshares.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    unshares is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readManageNotebookSharesError(ThriftBinaryBufferReader & r, ManageNotebookSharesError & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeManageNotebookSharesError(
+    ThriftBinaryBufferWriter & writer,
+    const ManageNotebookSharesError & s)
+{
+    writer.writeStructBegin(QStringLiteral("ManageNotebookSharesError"));
+    if (s.userIdentity.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("userIdentity"),
+            ThriftFieldType::T_STRUCT,
+            1);
+
+        writeUserIdentity(writer, s.userIdentity.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.userException.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("userException"),
+            ThriftFieldType::T_STRUCT,
+            2);
+
+        writeEDAMUserException(writer, s.userException.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.notFoundException.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("notFoundException"),
+            ThriftFieldType::T_STRUCT,
+            3);
+
+        writeEDAMNotFoundException(writer, s.notFoundException.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readManageNotebookSharesError(
+    ThriftBinaryBufferReader & reader,
+    ManageNotebookSharesError & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 UserIdentity v;
-                readUserIdentity(r, v);
+                readUserIdentity(reader, v);
                 s.userIdentity = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 EDAMUserException v;
-                readEDAMUserException(r, v);
+                readEDAMUserException(reader, v);
                 s.userException = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 EDAMNotFoundException v;
-                readEDAMNotFoundException(r, v);
+                readEDAMNotFoundException(reader, v);
                 s.notFoundException = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeManageNotebookSharesResult(ThriftBinaryBufferWriter & w, const ManageNotebookSharesResult & s) {
-    w.writeStructBegin(QStringLiteral("ManageNotebookSharesResult"));
-    if(s.errors.isSet()) {
-        w.writeFieldBegin(QStringLiteral("errors"), ThriftFieldType::T_LIST, 1);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.errors.ref().length());
-        for(QList< ManageNotebookSharesError >::const_iterator it = s.errors.ref().constBegin(), end = s.errors.ref().constEnd(); it != end; ++it) {
-            writeManageNotebookSharesError(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+void ManageNotebookSharesError::print(QTextStream & strm) const
+{
+    strm << "ManageNotebookSharesError: {\n";
+    localData.print(strm);
+
+    if (userIdentity.isSet()) {
+        strm << "    userIdentity = "
+            << userIdentity.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    userIdentity is not set\n";
+    }
+
+    if (userException.isSet()) {
+        strm << "    userException = "
+            << userException.ref() << "\n";
+    }
+    else {
+        strm << "    userException is not set\n";
+    }
+
+    if (notFoundException.isSet()) {
+        strm << "    notFoundException = "
+            << notFoundException.ref() << "\n";
+    }
+    else {
+        strm << "    notFoundException is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readManageNotebookSharesResult(ThriftBinaryBufferReader & r, ManageNotebookSharesResult & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeManageNotebookSharesResult(
+    ThriftBinaryBufferWriter & writer,
+    const ManageNotebookSharesResult & s)
+{
+    writer.writeStructBegin(QStringLiteral("ManageNotebookSharesResult"));
+    if (s.errors.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("errors"),
+            ThriftFieldType::T_LIST,
+            1);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.errors.ref().length());
+        for(const auto & value: qAsConst(s.errors.ref())) {
+            writeManageNotebookSharesError(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readManageNotebookSharesResult(
+    ThriftBinaryBufferReader & reader,
+    ManageNotebookSharesResult & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< ManageNotebookSharesError > v;
+                QList<ManageNotebookSharesError> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (ManageNotebookSharesResult.errors)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (ManageNotebookSharesResult.errors)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     ManageNotebookSharesError elem;
-                    readManageNotebookSharesError(r, elem);
+                    readManageNotebookSharesError(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.errors = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeSharedNoteTemplate(ThriftBinaryBufferWriter & w, const SharedNoteTemplate & s) {
-    w.writeStructBegin(QStringLiteral("SharedNoteTemplate"));
-    if(s.noteGuid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noteGuid"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.noteGuid.ref());
-        w.writeFieldEnd();
-    }
-    if(s.recipientThreadId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("recipientThreadId"), ThriftFieldType::T_I64, 4);
-        w.writeI64(s.recipientThreadId.ref());
-        w.writeFieldEnd();
-    }
-    if(s.recipientContacts.isSet()) {
-        w.writeFieldBegin(QStringLiteral("recipientContacts"), ThriftFieldType::T_LIST, 2);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.recipientContacts.ref().length());
-        for(QList< Contact >::const_iterator it = s.recipientContacts.ref().constBegin(), end = s.recipientContacts.ref().constEnd(); it != end; ++it) {
-            writeContact(w, *it);
+void ManageNotebookSharesResult::print(QTextStream & strm) const
+{
+    strm << "ManageNotebookSharesResult: {\n";
+    localData.print(strm);
+
+    if (errors.isSet()) {
+        strm << "    errors = "
+            << "QList<ManageNotebookSharesError> {";
+        for(const auto & v: errors.ref()) {
+            strm << "        " << v << "\n";
         }
-        w.writeListEnd();
-        w.writeFieldEnd();
+        strm << "    }\n";
     }
-    if(s.privilege.isSet()) {
-        w.writeFieldBegin(QStringLiteral("privilege"), ThriftFieldType::T_I32, 3);
-        w.writeI32(static_cast<qint32>(s.privilege.ref()));
-        w.writeFieldEnd();
+    else {
+        strm << "    errors is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    strm << "}\n";
 }
 
-void readSharedNoteTemplate(ThriftBinaryBufferReader & r, SharedNoteTemplate & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeSharedNoteTemplate(
+    ThriftBinaryBufferWriter & writer,
+    const SharedNoteTemplate & s)
+{
+    writer.writeStructBegin(QStringLiteral("SharedNoteTemplate"));
+    if (s.noteGuid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noteGuid"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.noteGuid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.recipientThreadId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("recipientThreadId"),
+            ThriftFieldType::T_I64,
+            4);
+
+        writer.writeI64(s.recipientThreadId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.recipientContacts.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("recipientContacts"),
+            ThriftFieldType::T_LIST,
+            2);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.recipientContacts.ref().length());
+        for(const auto & value: qAsConst(s.recipientContacts.ref())) {
+            writeContact(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.privilege.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("privilege"),
+            ThriftFieldType::T_I32,
+            3);
+
+        writer.writeI32(static_cast<qint32>(s.privilege.ref()));
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readSharedNoteTemplate(
+    ThriftBinaryBufferReader & reader,
+    SharedNoteTemplate & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 Guid v;
-                r.readString(v);
+                reader.readString(v);
                 s.noteGuid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_I64) {
                 MessageThreadID v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.recipientThreadId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< Contact > v;
+                QList<Contact> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (SharedNoteTemplate.recipientContacts)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (SharedNoteTemplate.recipientContacts)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     Contact elem;
-                    readContact(r, elem);
+                    readContact(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.recipientContacts = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I32) {
-                SharedNotePrivilegeLevel::type v;
-                readEnumSharedNotePrivilegeLevel(r, v);
+                SharedNotePrivilegeLevel v;
+                readEnumSharedNotePrivilegeLevel(reader, v);
                 s.privilege = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeNotebookShareTemplate(ThriftBinaryBufferWriter & w, const NotebookShareTemplate & s) {
-    w.writeStructBegin(QStringLiteral("NotebookShareTemplate"));
-    if(s.notebookGuid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("notebookGuid"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.notebookGuid.ref());
-        w.writeFieldEnd();
+void SharedNoteTemplate::print(QTextStream & strm) const
+{
+    strm << "SharedNoteTemplate: {\n";
+    localData.print(strm);
+
+    if (noteGuid.isSet()) {
+        strm << "    noteGuid = "
+            << noteGuid.ref() << "\n";
     }
-    if(s.recipientThreadId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("recipientThreadId"), ThriftFieldType::T_I64, 4);
-        w.writeI64(s.recipientThreadId.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noteGuid is not set\n";
     }
-    if(s.recipientContacts.isSet()) {
-        w.writeFieldBegin(QStringLiteral("recipientContacts"), ThriftFieldType::T_LIST, 2);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.recipientContacts.ref().length());
-        for(QList< Contact >::const_iterator it = s.recipientContacts.ref().constBegin(), end = s.recipientContacts.ref().constEnd(); it != end; ++it) {
-            writeContact(w, *it);
+
+    if (recipientThreadId.isSet()) {
+        strm << "    recipientThreadId = "
+            << recipientThreadId.ref() << "\n";
+    }
+    else {
+        strm << "    recipientThreadId is not set\n";
+    }
+
+    if (recipientContacts.isSet()) {
+        strm << "    recipientContacts = "
+            << "QList<Contact> {";
+        for(const auto & v: recipientContacts.ref()) {
+            strm << "        " << v << "\n";
         }
-        w.writeListEnd();
-        w.writeFieldEnd();
+        strm << "    }\n";
     }
-    if(s.privilege.isSet()) {
-        w.writeFieldBegin(QStringLiteral("privilege"), ThriftFieldType::T_I32, 3);
-        w.writeI32(static_cast<qint32>(s.privilege.ref()));
-        w.writeFieldEnd();
+    else {
+        strm << "    recipientContacts is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (privilege.isSet()) {
+        strm << "    privilege = "
+            << privilege.ref() << "\n";
+    }
+    else {
+        strm << "    privilege is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readNotebookShareTemplate(ThriftBinaryBufferReader & r, NotebookShareTemplate & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNotebookShareTemplate(
+    ThriftBinaryBufferWriter & writer,
+    const NotebookShareTemplate & s)
+{
+    writer.writeStructBegin(QStringLiteral("NotebookShareTemplate"));
+    if (s.notebookGuid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("notebookGuid"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.notebookGuid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.recipientThreadId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("recipientThreadId"),
+            ThriftFieldType::T_I64,
+            4);
+
+        writer.writeI64(s.recipientThreadId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.recipientContacts.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("recipientContacts"),
+            ThriftFieldType::T_LIST,
+            2);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.recipientContacts.ref().length());
+        for(const auto & value: qAsConst(s.recipientContacts.ref())) {
+            writeContact(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.privilege.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("privilege"),
+            ThriftFieldType::T_I32,
+            3);
+
+        writer.writeI32(static_cast<qint32>(s.privilege.ref()));
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNotebookShareTemplate(
+    ThriftBinaryBufferReader & reader,
+    NotebookShareTemplate & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 Guid v;
-                r.readString(v);
+                reader.readString(v);
                 s.notebookGuid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_I64) {
                 MessageThreadID v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.recipientThreadId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< Contact > v;
+                QList<Contact> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (NotebookShareTemplate.recipientContacts)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (NotebookShareTemplate.recipientContacts)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     Contact elem;
-                    readContact(r, elem);
+                    readContact(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.recipientContacts = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I32) {
-                SharedNotebookPrivilegeLevel::type v;
-                readEnumSharedNotebookPrivilegeLevel(r, v);
+                SharedNotebookPrivilegeLevel v;
+                readEnumSharedNotebookPrivilegeLevel(reader, v);
                 s.privilege = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeCreateOrUpdateNotebookSharesResult(ThriftBinaryBufferWriter & w, const CreateOrUpdateNotebookSharesResult & s) {
-    w.writeStructBegin(QStringLiteral("CreateOrUpdateNotebookSharesResult"));
-    if(s.updateSequenceNum.isSet()) {
-        w.writeFieldBegin(QStringLiteral("updateSequenceNum"), ThriftFieldType::T_I32, 1);
-        w.writeI32(s.updateSequenceNum.ref());
-        w.writeFieldEnd();
+void NotebookShareTemplate::print(QTextStream & strm) const
+{
+    strm << "NotebookShareTemplate: {\n";
+    localData.print(strm);
+
+    if (notebookGuid.isSet()) {
+        strm << "    notebookGuid = "
+            << notebookGuid.ref() << "\n";
     }
-    if(s.matchingShares.isSet()) {
-        w.writeFieldBegin(QStringLiteral("matchingShares"), ThriftFieldType::T_LIST, 2);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.matchingShares.ref().length());
-        for(QList< SharedNotebook >::const_iterator it = s.matchingShares.ref().constBegin(), end = s.matchingShares.ref().constEnd(); it != end; ++it) {
-            writeSharedNotebook(w, *it);
+    else {
+        strm << "    notebookGuid is not set\n";
+    }
+
+    if (recipientThreadId.isSet()) {
+        strm << "    recipientThreadId = "
+            << recipientThreadId.ref() << "\n";
+    }
+    else {
+        strm << "    recipientThreadId is not set\n";
+    }
+
+    if (recipientContacts.isSet()) {
+        strm << "    recipientContacts = "
+            << "QList<Contact> {";
+        for(const auto & v: recipientContacts.ref()) {
+            strm << "        " << v << "\n";
         }
-        w.writeListEnd();
-        w.writeFieldEnd();
+        strm << "    }\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    recipientContacts is not set\n";
+    }
+
+    if (privilege.isSet()) {
+        strm << "    privilege = "
+            << privilege.ref() << "\n";
+    }
+    else {
+        strm << "    privilege is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readCreateOrUpdateNotebookSharesResult(ThriftBinaryBufferReader & r, CreateOrUpdateNotebookSharesResult & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeCreateOrUpdateNotebookSharesResult(
+    ThriftBinaryBufferWriter & writer,
+    const CreateOrUpdateNotebookSharesResult & s)
+{
+    writer.writeStructBegin(QStringLiteral("CreateOrUpdateNotebookSharesResult"));
+    if (s.updateSequenceNum.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("updateSequenceNum"),
+            ThriftFieldType::T_I32,
+            1);
+
+        writer.writeI32(s.updateSequenceNum.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.matchingShares.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("matchingShares"),
+            ThriftFieldType::T_LIST,
+            2);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.matchingShares.ref().length());
+        for(const auto & value: qAsConst(s.matchingShares.ref())) {
+            writeSharedNotebook(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readCreateOrUpdateNotebookSharesResult(
+    ThriftBinaryBufferReader & reader,
+    CreateOrUpdateNotebookSharesResult & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.updateSequenceNum = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< SharedNotebook > v;
+                QList<SharedNotebook> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (CreateOrUpdateNotebookSharesResult.matchingShares)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (CreateOrUpdateNotebookSharesResult.matchingShares)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     SharedNotebook elem;
-                    readSharedNotebook(r, elem);
+                    readSharedNotebook(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.matchingShares = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeNoteShareRelationshipRestrictions(ThriftBinaryBufferWriter & w, const NoteShareRelationshipRestrictions & s) {
-    w.writeStructBegin(QStringLiteral("NoteShareRelationshipRestrictions"));
-    if(s.noSetReadNote.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noSetReadNote"), ThriftFieldType::T_BOOL, 1);
-        w.writeBool(s.noSetReadNote.ref());
-        w.writeFieldEnd();
+void CreateOrUpdateNotebookSharesResult::print(QTextStream & strm) const
+{
+    strm << "CreateOrUpdateNotebookSharesResult: {\n";
+    localData.print(strm);
+
+    if (updateSequenceNum.isSet()) {
+        strm << "    updateSequenceNum = "
+            << updateSequenceNum.ref() << "\n";
     }
-    if(s.noSetModifyNote.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noSetModifyNote"), ThriftFieldType::T_BOOL, 2);
-        w.writeBool(s.noSetModifyNote.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    updateSequenceNum is not set\n";
     }
-    if(s.noSetFullAccess.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noSetFullAccess"), ThriftFieldType::T_BOOL, 3);
-        w.writeBool(s.noSetFullAccess.ref());
-        w.writeFieldEnd();
+
+    if (matchingShares.isSet()) {
+        strm << "    matchingShares = "
+            << "QList<SharedNotebook> {";
+        for(const auto & v: matchingShares.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    matchingShares is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readNoteShareRelationshipRestrictions(ThriftBinaryBufferReader & r, NoteShareRelationshipRestrictions & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNoteShareRelationshipRestrictions(
+    ThriftBinaryBufferWriter & writer,
+    const NoteShareRelationshipRestrictions & s)
+{
+    writer.writeStructBegin(QStringLiteral("NoteShareRelationshipRestrictions"));
+    if (s.noSetReadNote.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noSetReadNote"),
+            ThriftFieldType::T_BOOL,
+            1);
+
+        writer.writeBool(s.noSetReadNote.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noSetModifyNote.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noSetModifyNote"),
+            ThriftFieldType::T_BOOL,
+            2);
+
+        writer.writeBool(s.noSetModifyNote.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noSetFullAccess.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noSetFullAccess"),
+            ThriftFieldType::T_BOOL,
+            3);
+
+        writer.writeBool(s.noSetFullAccess.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNoteShareRelationshipRestrictions(
+    ThriftBinaryBufferReader & reader,
+    NoteShareRelationshipRestrictions & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noSetReadNote = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noSetModifyNote = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noSetFullAccess = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeNoteMemberShareRelationship(ThriftBinaryBufferWriter & w, const NoteMemberShareRelationship & s) {
-    w.writeStructBegin(QStringLiteral("NoteMemberShareRelationship"));
-    if(s.displayName.isSet()) {
-        w.writeFieldBegin(QStringLiteral("displayName"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.displayName.ref());
-        w.writeFieldEnd();
+void NoteShareRelationshipRestrictions::print(QTextStream & strm) const
+{
+    strm << "NoteShareRelationshipRestrictions: {\n";
+    localData.print(strm);
+
+    if (noSetReadNote.isSet()) {
+        strm << "    noSetReadNote = "
+            << noSetReadNote.ref() << "\n";
     }
-    if(s.recipientUserId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("recipientUserId"), ThriftFieldType::T_I32, 2);
-        w.writeI32(s.recipientUserId.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noSetReadNote is not set\n";
     }
-    if(s.privilege.isSet()) {
-        w.writeFieldBegin(QStringLiteral("privilege"), ThriftFieldType::T_I32, 3);
-        w.writeI32(static_cast<qint32>(s.privilege.ref()));
-        w.writeFieldEnd();
+
+    if (noSetModifyNote.isSet()) {
+        strm << "    noSetModifyNote = "
+            << noSetModifyNote.ref() << "\n";
     }
-    if(s.restrictions.isSet()) {
-        w.writeFieldBegin(QStringLiteral("restrictions"), ThriftFieldType::T_STRUCT, 4);
-        writeNoteShareRelationshipRestrictions(w, s.restrictions.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noSetModifyNote is not set\n";
     }
-    if(s.sharerUserId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sharerUserId"), ThriftFieldType::T_I32, 5);
-        w.writeI32(s.sharerUserId.ref());
-        w.writeFieldEnd();
+
+    if (noSetFullAccess.isSet()) {
+        strm << "    noSetFullAccess = "
+            << noSetFullAccess.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    noSetFullAccess is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readNoteMemberShareRelationship(ThriftBinaryBufferReader & r, NoteMemberShareRelationship & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNoteMemberShareRelationship(
+    ThriftBinaryBufferWriter & writer,
+    const NoteMemberShareRelationship & s)
+{
+    writer.writeStructBegin(QStringLiteral("NoteMemberShareRelationship"));
+    if (s.displayName.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("displayName"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.displayName.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.recipientUserId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("recipientUserId"),
+            ThriftFieldType::T_I32,
+            2);
+
+        writer.writeI32(s.recipientUserId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.privilege.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("privilege"),
+            ThriftFieldType::T_I32,
+            3);
+
+        writer.writeI32(static_cast<qint32>(s.privilege.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.restrictions.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("restrictions"),
+            ThriftFieldType::T_STRUCT,
+            4);
+
+        writeNoteShareRelationshipRestrictions(writer, s.restrictions.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.sharerUserId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sharerUserId"),
+            ThriftFieldType::T_I32,
+            5);
+
+        writer.writeI32(s.sharerUserId.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNoteMemberShareRelationship(
+    ThriftBinaryBufferReader & reader,
+    NoteMemberShareRelationship & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.displayName = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_I32) {
                 UserID v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.recipientUserId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I32) {
-                SharedNotePrivilegeLevel::type v;
-                readEnumSharedNotePrivilegeLevel(r, v);
+                SharedNotePrivilegeLevel v;
+                readEnumSharedNotePrivilegeLevel(reader, v);
                 s.privilege = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 NoteShareRelationshipRestrictions v;
-                readNoteShareRelationshipRestrictions(r, v);
+                readNoteShareRelationshipRestrictions(reader, v);
                 s.restrictions = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_I32) {
                 UserID v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.sharerUserId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeNoteInvitationShareRelationship(ThriftBinaryBufferWriter & w, const NoteInvitationShareRelationship & s) {
-    w.writeStructBegin(QStringLiteral("NoteInvitationShareRelationship"));
-    if(s.displayName.isSet()) {
-        w.writeFieldBegin(QStringLiteral("displayName"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.displayName.ref());
-        w.writeFieldEnd();
+void NoteMemberShareRelationship::print(QTextStream & strm) const
+{
+    strm << "NoteMemberShareRelationship: {\n";
+    localData.print(strm);
+
+    if (displayName.isSet()) {
+        strm << "    displayName = "
+            << displayName.ref() << "\n";
     }
-    if(s.recipientIdentityId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("recipientIdentityId"), ThriftFieldType::T_I64, 2);
-        w.writeI64(s.recipientIdentityId.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    displayName is not set\n";
     }
-    if(s.privilege.isSet()) {
-        w.writeFieldBegin(QStringLiteral("privilege"), ThriftFieldType::T_I32, 3);
-        w.writeI32(static_cast<qint32>(s.privilege.ref()));
-        w.writeFieldEnd();
+
+    if (recipientUserId.isSet()) {
+        strm << "    recipientUserId = "
+            << recipientUserId.ref() << "\n";
     }
-    if(s.sharerUserId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sharerUserId"), ThriftFieldType::T_I32, 5);
-        w.writeI32(s.sharerUserId.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    recipientUserId is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (privilege.isSet()) {
+        strm << "    privilege = "
+            << privilege.ref() << "\n";
+    }
+    else {
+        strm << "    privilege is not set\n";
+    }
+
+    if (restrictions.isSet()) {
+        strm << "    restrictions = "
+            << restrictions.ref() << "\n";
+    }
+    else {
+        strm << "    restrictions is not set\n";
+    }
+
+    if (sharerUserId.isSet()) {
+        strm << "    sharerUserId = "
+            << sharerUserId.ref() << "\n";
+    }
+    else {
+        strm << "    sharerUserId is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readNoteInvitationShareRelationship(ThriftBinaryBufferReader & r, NoteInvitationShareRelationship & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNoteInvitationShareRelationship(
+    ThriftBinaryBufferWriter & writer,
+    const NoteInvitationShareRelationship & s)
+{
+    writer.writeStructBegin(QStringLiteral("NoteInvitationShareRelationship"));
+    if (s.displayName.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("displayName"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.displayName.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.recipientIdentityId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("recipientIdentityId"),
+            ThriftFieldType::T_I64,
+            2);
+
+        writer.writeI64(s.recipientIdentityId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.privilege.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("privilege"),
+            ThriftFieldType::T_I32,
+            3);
+
+        writer.writeI32(static_cast<qint32>(s.privilege.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.sharerUserId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sharerUserId"),
+            ThriftFieldType::T_I32,
+            5);
+
+        writer.writeI32(s.sharerUserId.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNoteInvitationShareRelationship(
+    ThriftBinaryBufferReader & reader,
+    NoteInvitationShareRelationship & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.displayName = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_I64) {
                 IdentityID v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.recipientIdentityId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I32) {
-                SharedNotePrivilegeLevel::type v;
-                readEnumSharedNotePrivilegeLevel(r, v);
+                SharedNotePrivilegeLevel v;
+                readEnumSharedNotePrivilegeLevel(reader, v);
                 s.privilege = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_I32) {
                 UserID v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.sharerUserId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeNoteShareRelationships(ThriftBinaryBufferWriter & w, const NoteShareRelationships & s) {
-    w.writeStructBegin(QStringLiteral("NoteShareRelationships"));
-    if(s.invitations.isSet()) {
-        w.writeFieldBegin(QStringLiteral("invitations"), ThriftFieldType::T_LIST, 1);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.invitations.ref().length());
-        for(QList< NoteInvitationShareRelationship >::const_iterator it = s.invitations.ref().constBegin(), end = s.invitations.ref().constEnd(); it != end; ++it) {
-            writeNoteInvitationShareRelationship(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+void NoteInvitationShareRelationship::print(QTextStream & strm) const
+{
+    strm << "NoteInvitationShareRelationship: {\n";
+    localData.print(strm);
+
+    if (displayName.isSet()) {
+        strm << "    displayName = "
+            << displayName.ref() << "\n";
     }
-    if(s.memberships.isSet()) {
-        w.writeFieldBegin(QStringLiteral("memberships"), ThriftFieldType::T_LIST, 2);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.memberships.ref().length());
-        for(QList< NoteMemberShareRelationship >::const_iterator it = s.memberships.ref().constBegin(), end = s.memberships.ref().constEnd(); it != end; ++it) {
-            writeNoteMemberShareRelationship(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+    else {
+        strm << "    displayName is not set\n";
     }
-    if(s.invitationRestrictions.isSet()) {
-        w.writeFieldBegin(QStringLiteral("invitationRestrictions"), ThriftFieldType::T_STRUCT, 3);
-        writeNoteShareRelationshipRestrictions(w, s.invitationRestrictions.ref());
-        w.writeFieldEnd();
+
+    if (recipientIdentityId.isSet()) {
+        strm << "    recipientIdentityId = "
+            << recipientIdentityId.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    recipientIdentityId is not set\n";
+    }
+
+    if (privilege.isSet()) {
+        strm << "    privilege = "
+            << privilege.ref() << "\n";
+    }
+    else {
+        strm << "    privilege is not set\n";
+    }
+
+    if (sharerUserId.isSet()) {
+        strm << "    sharerUserId = "
+            << sharerUserId.ref() << "\n";
+    }
+    else {
+        strm << "    sharerUserId is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readNoteShareRelationships(ThriftBinaryBufferReader & r, NoteShareRelationships & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNoteShareRelationships(
+    ThriftBinaryBufferWriter & writer,
+    const NoteShareRelationships & s)
+{
+    writer.writeStructBegin(QStringLiteral("NoteShareRelationships"));
+    if (s.invitations.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("invitations"),
+            ThriftFieldType::T_LIST,
+            1);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.invitations.ref().length());
+        for(const auto & value: qAsConst(s.invitations.ref())) {
+            writeNoteInvitationShareRelationship(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.memberships.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("memberships"),
+            ThriftFieldType::T_LIST,
+            2);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.memberships.ref().length());
+        for(const auto & value: qAsConst(s.memberships.ref())) {
+            writeNoteMemberShareRelationship(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.invitationRestrictions.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("invitationRestrictions"),
+            ThriftFieldType::T_STRUCT,
+            3);
+
+        writeNoteShareRelationshipRestrictions(writer, s.invitationRestrictions.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNoteShareRelationships(
+    ThriftBinaryBufferReader & reader,
+    NoteShareRelationships & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< NoteInvitationShareRelationship > v;
+                QList<NoteInvitationShareRelationship> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (NoteShareRelationships.invitations)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (NoteShareRelationships.invitations)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     NoteInvitationShareRelationship elem;
-                    readNoteInvitationShareRelationship(r, elem);
+                    readNoteInvitationShareRelationship(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.invitations = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< NoteMemberShareRelationship > v;
+                QList<NoteMemberShareRelationship> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (NoteShareRelationships.memberships)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (NoteShareRelationships.memberships)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     NoteMemberShareRelationship elem;
-                    readNoteMemberShareRelationship(r, elem);
+                    readNoteMemberShareRelationship(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.memberships = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 NoteShareRelationshipRestrictions v;
-                readNoteShareRelationshipRestrictions(r, v);
+                readNoteShareRelationshipRestrictions(reader, v);
                 s.invitationRestrictions = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeManageNoteSharesParameters(ThriftBinaryBufferWriter & w, const ManageNoteSharesParameters & s) {
-    w.writeStructBegin(QStringLiteral("ManageNoteSharesParameters"));
-    if(s.noteGuid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noteGuid"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.noteGuid.ref());
-        w.writeFieldEnd();
-    }
-    if(s.membershipsToUpdate.isSet()) {
-        w.writeFieldBegin(QStringLiteral("membershipsToUpdate"), ThriftFieldType::T_LIST, 2);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.membershipsToUpdate.ref().length());
-        for(QList< NoteMemberShareRelationship >::const_iterator it = s.membershipsToUpdate.ref().constBegin(), end = s.membershipsToUpdate.ref().constEnd(); it != end; ++it) {
-            writeNoteMemberShareRelationship(w, *it);
+void NoteShareRelationships::print(QTextStream & strm) const
+{
+    strm << "NoteShareRelationships: {\n";
+    localData.print(strm);
+
+    if (invitations.isSet()) {
+        strm << "    invitations = "
+            << "QList<NoteInvitationShareRelationship> {";
+        for(const auto & v: invitations.ref()) {
+            strm << "        " << v << "\n";
         }
-        w.writeListEnd();
-        w.writeFieldEnd();
+        strm << "    }\n";
     }
-    if(s.invitationsToUpdate.isSet()) {
-        w.writeFieldBegin(QStringLiteral("invitationsToUpdate"), ThriftFieldType::T_LIST, 3);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.invitationsToUpdate.ref().length());
-        for(QList< NoteInvitationShareRelationship >::const_iterator it = s.invitationsToUpdate.ref().constBegin(), end = s.invitationsToUpdate.ref().constEnd(); it != end; ++it) {
-            writeNoteInvitationShareRelationship(w, *it);
+    else {
+        strm << "    invitations is not set\n";
+    }
+
+    if (memberships.isSet()) {
+        strm << "    memberships = "
+            << "QList<NoteMemberShareRelationship> {";
+        for(const auto & v: memberships.ref()) {
+            strm << "        " << v << "\n";
         }
-        w.writeListEnd();
-        w.writeFieldEnd();
+        strm << "    }\n";
     }
-    if(s.membershipsToUnshare.isSet()) {
-        w.writeFieldBegin(QStringLiteral("membershipsToUnshare"), ThriftFieldType::T_LIST, 4);
-        w.writeListBegin(ThriftFieldType::T_I32, s.membershipsToUnshare.ref().length());
-        for(QList< UserID >::const_iterator it = s.membershipsToUnshare.ref().constBegin(), end = s.membershipsToUnshare.ref().constEnd(); it != end; ++it) {
-            w.writeI32(*it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+    else {
+        strm << "    memberships is not set\n";
     }
-    if(s.invitationsToUnshare.isSet()) {
-        w.writeFieldBegin(QStringLiteral("invitationsToUnshare"), ThriftFieldType::T_LIST, 5);
-        w.writeListBegin(ThriftFieldType::T_I64, s.invitationsToUnshare.ref().length());
-        for(QList< IdentityID >::const_iterator it = s.invitationsToUnshare.ref().constBegin(), end = s.invitationsToUnshare.ref().constEnd(); it != end; ++it) {
-            w.writeI64(*it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+
+    if (invitationRestrictions.isSet()) {
+        strm << "    invitationRestrictions = "
+            << invitationRestrictions.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    invitationRestrictions is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readManageNoteSharesParameters(ThriftBinaryBufferReader & r, ManageNoteSharesParameters & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeManageNoteSharesParameters(
+    ThriftBinaryBufferWriter & writer,
+    const ManageNoteSharesParameters & s)
+{
+    writer.writeStructBegin(QStringLiteral("ManageNoteSharesParameters"));
+    if (s.noteGuid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noteGuid"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.noteGuid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.membershipsToUpdate.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("membershipsToUpdate"),
+            ThriftFieldType::T_LIST,
+            2);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.membershipsToUpdate.ref().length());
+        for(const auto & value: qAsConst(s.membershipsToUpdate.ref())) {
+            writeNoteMemberShareRelationship(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.invitationsToUpdate.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("invitationsToUpdate"),
+            ThriftFieldType::T_LIST,
+            3);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.invitationsToUpdate.ref().length());
+        for(const auto & value: qAsConst(s.invitationsToUpdate.ref())) {
+            writeNoteInvitationShareRelationship(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.membershipsToUnshare.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("membershipsToUnshare"),
+            ThriftFieldType::T_LIST,
+            4);
+
+        writer.writeListBegin(ThriftFieldType::T_I32, s.membershipsToUnshare.ref().length());
+        for(const auto & value: qAsConst(s.membershipsToUnshare.ref())) {
+            writer.writeI32(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.invitationsToUnshare.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("invitationsToUnshare"),
+            ThriftFieldType::T_LIST,
+            5);
+
+        writer.writeListBegin(ThriftFieldType::T_I64, s.invitationsToUnshare.ref().length());
+        for(const auto & value: qAsConst(s.invitationsToUnshare.ref())) {
+            writer.writeI64(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readManageNoteSharesParameters(
+    ThriftBinaryBufferReader & reader,
+    ManageNoteSharesParameters & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.noteGuid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< NoteMemberShareRelationship > v;
+                QList<NoteMemberShareRelationship> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (ManageNoteSharesParameters.membershipsToUpdate)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (ManageNoteSharesParameters.membershipsToUpdate)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     NoteMemberShareRelationship elem;
-                    readNoteMemberShareRelationship(r, elem);
+                    readNoteMemberShareRelationship(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.membershipsToUpdate = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< NoteInvitationShareRelationship > v;
+                QList<NoteInvitationShareRelationship> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (ManageNoteSharesParameters.invitationsToUpdate)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (ManageNoteSharesParameters.invitationsToUpdate)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     NoteInvitationShareRelationship elem;
-                    readNoteInvitationShareRelationship(r, elem);
+                    readNoteInvitationShareRelationship(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.invitationsToUpdate = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< UserID > v;
+                QList<UserID> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_I32) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (ManageNoteSharesParameters.membershipsToUnshare)"));
+                if (elemType != ThriftFieldType::T_I32) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (ManageNoteSharesParameters.membershipsToUnshare)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     UserID elem;
-                    r.readI32(elem);
+                    reader.readI32(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.membershipsToUnshare = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< IdentityID > v;
+                QList<IdentityID> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_I64) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (ManageNoteSharesParameters.invitationsToUnshare)"));
+                if (elemType != ThriftFieldType::T_I64) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (ManageNoteSharesParameters.invitationsToUnshare)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     IdentityID elem;
-                    r.readI64(elem);
+                    reader.readI64(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.invitationsToUnshare = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeManageNoteSharesError(ThriftBinaryBufferWriter & w, const ManageNoteSharesError & s) {
-    w.writeStructBegin(QStringLiteral("ManageNoteSharesError"));
-    if(s.identityID.isSet()) {
-        w.writeFieldBegin(QStringLiteral("identityID"), ThriftFieldType::T_I64, 1);
-        w.writeI64(s.identityID.ref());
-        w.writeFieldEnd();
+void ManageNoteSharesParameters::print(QTextStream & strm) const
+{
+    strm << "ManageNoteSharesParameters: {\n";
+    localData.print(strm);
+
+    if (noteGuid.isSet()) {
+        strm << "    noteGuid = "
+            << noteGuid.ref() << "\n";
     }
-    if(s.userID.isSet()) {
-        w.writeFieldBegin(QStringLiteral("userID"), ThriftFieldType::T_I32, 2);
-        w.writeI32(s.userID.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noteGuid is not set\n";
     }
-    if(s.userException.isSet()) {
-        w.writeFieldBegin(QStringLiteral("userException"), ThriftFieldType::T_STRUCT, 3);
-        writeEDAMUserException(w, s.userException.ref());
-        w.writeFieldEnd();
+
+    if (membershipsToUpdate.isSet()) {
+        strm << "    membershipsToUpdate = "
+            << "QList<NoteMemberShareRelationship> {";
+        for(const auto & v: membershipsToUpdate.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
     }
-    if(s.notFoundException.isSet()) {
-        w.writeFieldBegin(QStringLiteral("notFoundException"), ThriftFieldType::T_STRUCT, 4);
-        writeEDAMNotFoundException(w, s.notFoundException.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    membershipsToUpdate is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (invitationsToUpdate.isSet()) {
+        strm << "    invitationsToUpdate = "
+            << "QList<NoteInvitationShareRelationship> {";
+        for(const auto & v: invitationsToUpdate.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    invitationsToUpdate is not set\n";
+    }
+
+    if (membershipsToUnshare.isSet()) {
+        strm << "    membershipsToUnshare = "
+            << "QList<UserID> {";
+        for(const auto & v: membershipsToUnshare.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    membershipsToUnshare is not set\n";
+    }
+
+    if (invitationsToUnshare.isSet()) {
+        strm << "    invitationsToUnshare = "
+            << "QList<IdentityID> {";
+        for(const auto & v: invitationsToUnshare.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    invitationsToUnshare is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readManageNoteSharesError(ThriftBinaryBufferReader & r, ManageNoteSharesError & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeManageNoteSharesError(
+    ThriftBinaryBufferWriter & writer,
+    const ManageNoteSharesError & s)
+{
+    writer.writeStructBegin(QStringLiteral("ManageNoteSharesError"));
+    if (s.identityID.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("identityID"),
+            ThriftFieldType::T_I64,
+            1);
+
+        writer.writeI64(s.identityID.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.userID.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("userID"),
+            ThriftFieldType::T_I32,
+            2);
+
+        writer.writeI32(s.userID.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.userException.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("userException"),
+            ThriftFieldType::T_STRUCT,
+            3);
+
+        writeEDAMUserException(writer, s.userException.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.notFoundException.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("notFoundException"),
+            ThriftFieldType::T_STRUCT,
+            4);
+
+        writeEDAMNotFoundException(writer, s.notFoundException.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readManageNoteSharesError(
+    ThriftBinaryBufferReader & reader,
+    ManageNoteSharesError & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I64) {
                 IdentityID v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.identityID = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_I32) {
                 UserID v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.userID = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 EDAMUserException v;
-                readEDAMUserException(r, v);
+                readEDAMUserException(reader, v);
                 s.userException = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 EDAMNotFoundException v;
-                readEDAMNotFoundException(r, v);
+                readEDAMNotFoundException(reader, v);
                 s.notFoundException = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeManageNoteSharesResult(ThriftBinaryBufferWriter & w, const ManageNoteSharesResult & s) {
-    w.writeStructBegin(QStringLiteral("ManageNoteSharesResult"));
-    if(s.errors.isSet()) {
-        w.writeFieldBegin(QStringLiteral("errors"), ThriftFieldType::T_LIST, 1);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.errors.ref().length());
-        for(QList< ManageNoteSharesError >::const_iterator it = s.errors.ref().constBegin(), end = s.errors.ref().constEnd(); it != end; ++it) {
-            writeManageNoteSharesError(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+void ManageNoteSharesError::print(QTextStream & strm) const
+{
+    strm << "ManageNoteSharesError: {\n";
+    localData.print(strm);
+
+    if (identityID.isSet()) {
+        strm << "    identityID = "
+            << identityID.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    identityID is not set\n";
+    }
+
+    if (userID.isSet()) {
+        strm << "    userID = "
+            << userID.ref() << "\n";
+    }
+    else {
+        strm << "    userID is not set\n";
+    }
+
+    if (userException.isSet()) {
+        strm << "    userException = "
+            << userException.ref() << "\n";
+    }
+    else {
+        strm << "    userException is not set\n";
+    }
+
+    if (notFoundException.isSet()) {
+        strm << "    notFoundException = "
+            << notFoundException.ref() << "\n";
+    }
+    else {
+        strm << "    notFoundException is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readManageNoteSharesResult(ThriftBinaryBufferReader & r, ManageNoteSharesResult & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeManageNoteSharesResult(
+    ThriftBinaryBufferWriter & writer,
+    const ManageNoteSharesResult & s)
+{
+    writer.writeStructBegin(QStringLiteral("ManageNoteSharesResult"));
+    if (s.errors.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("errors"),
+            ThriftFieldType::T_LIST,
+            1);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.errors.ref().length());
+        for(const auto & value: qAsConst(s.errors.ref())) {
+            writeManageNoteSharesError(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readManageNoteSharesResult(
+    ThriftBinaryBufferReader & reader,
+    ManageNoteSharesResult & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< ManageNoteSharesError > v;
+                QList<ManageNoteSharesError> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (ManageNoteSharesResult.errors)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (ManageNoteSharesResult.errors)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     ManageNoteSharesError elem;
-                    readManageNoteSharesError(r, elem);
+                    readManageNoteSharesError(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.errors = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeData(ThriftBinaryBufferWriter & w, const Data & s) {
-    w.writeStructBegin(QStringLiteral("Data"));
-    if(s.bodyHash.isSet()) {
-        w.writeFieldBegin(QStringLiteral("bodyHash"), ThriftFieldType::T_STRING, 1);
-        w.writeBinary(s.bodyHash.ref());
-        w.writeFieldEnd();
+void ManageNoteSharesResult::print(QTextStream & strm) const
+{
+    strm << "ManageNoteSharesResult: {\n";
+    localData.print(strm);
+
+    if (errors.isSet()) {
+        strm << "    errors = "
+            << "QList<ManageNoteSharesError> {";
+        for(const auto & v: errors.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
     }
-    if(s.size.isSet()) {
-        w.writeFieldBegin(QStringLiteral("size"), ThriftFieldType::T_I32, 2);
-        w.writeI32(s.size.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    errors is not set\n";
     }
-    if(s.body.isSet()) {
-        w.writeFieldBegin(QStringLiteral("body"), ThriftFieldType::T_STRING, 3);
-        w.writeBinary(s.body.ref());
-        w.writeFieldEnd();
-    }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    strm << "}\n";
 }
 
-void readData(ThriftBinaryBufferReader & r, Data & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeData(
+    ThriftBinaryBufferWriter & writer,
+    const Data & s)
+{
+    writer.writeStructBegin(QStringLiteral("Data"));
+    if (s.bodyHash.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("bodyHash"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeBinary(s.bodyHash.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.size.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("size"),
+            ThriftFieldType::T_I32,
+            2);
+
+        writer.writeI32(s.size.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.body.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("body"),
+            ThriftFieldType::T_STRING,
+            3);
+
+        writer.writeBinary(s.body.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readData(
+    ThriftBinaryBufferReader & reader,
+    Data & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QByteArray v;
-                r.readBinary(v);
+                reader.readBinary(v);
                 s.bodyHash = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.size = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QByteArray v;
-                r.readBinary(v);
+                reader.readBinary(v);
                 s.body = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeUserAttributes(ThriftBinaryBufferWriter & w, const UserAttributes & s) {
-    w.writeStructBegin(QStringLiteral("UserAttributes"));
-    if(s.defaultLocationName.isSet()) {
-        w.writeFieldBegin(QStringLiteral("defaultLocationName"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.defaultLocationName.ref());
-        w.writeFieldEnd();
+void Data::print(QTextStream & strm) const
+{
+    strm << "Data: {\n";
+    localData.print(strm);
+
+    if (bodyHash.isSet()) {
+        strm << "    bodyHash = "
+            << bodyHash.ref() << "\n";
     }
-    if(s.defaultLatitude.isSet()) {
-        w.writeFieldBegin(QStringLiteral("defaultLatitude"), ThriftFieldType::T_DOUBLE, 2);
-        w.writeDouble(s.defaultLatitude.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    bodyHash is not set\n";
     }
-    if(s.defaultLongitude.isSet()) {
-        w.writeFieldBegin(QStringLiteral("defaultLongitude"), ThriftFieldType::T_DOUBLE, 3);
-        w.writeDouble(s.defaultLongitude.ref());
-        w.writeFieldEnd();
+
+    if (size.isSet()) {
+        strm << "    size = "
+            << size.ref() << "\n";
     }
-    if(s.preactivation.isSet()) {
-        w.writeFieldBegin(QStringLiteral("preactivation"), ThriftFieldType::T_BOOL, 4);
-        w.writeBool(s.preactivation.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    size is not set\n";
     }
-    if(s.viewedPromotions.isSet()) {
-        w.writeFieldBegin(QStringLiteral("viewedPromotions"), ThriftFieldType::T_LIST, 5);
-        w.writeListBegin(ThriftFieldType::T_STRING, s.viewedPromotions.ref().length());
-        for(QStringList::const_iterator it = s.viewedPromotions.ref().constBegin(), end = s.viewedPromotions.ref().constEnd(); it != end; ++it) {
-            w.writeString(*it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+
+    if (body.isSet()) {
+        strm << "    body = "
+            << body.ref() << "\n";
     }
-    if(s.incomingEmailAddress.isSet()) {
-        w.writeFieldBegin(QStringLiteral("incomingEmailAddress"), ThriftFieldType::T_STRING, 6);
-        w.writeString(s.incomingEmailAddress.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    body is not set\n";
     }
-    if(s.recentMailedAddresses.isSet()) {
-        w.writeFieldBegin(QStringLiteral("recentMailedAddresses"), ThriftFieldType::T_LIST, 7);
-        w.writeListBegin(ThriftFieldType::T_STRING, s.recentMailedAddresses.ref().length());
-        for(QStringList::const_iterator it = s.recentMailedAddresses.ref().constBegin(), end = s.recentMailedAddresses.ref().constEnd(); it != end; ++it) {
-            w.writeString(*it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
-    }
-    if(s.comments.isSet()) {
-        w.writeFieldBegin(QStringLiteral("comments"), ThriftFieldType::T_STRING, 9);
-        w.writeString(s.comments.ref());
-        w.writeFieldEnd();
-    }
-    if(s.dateAgreedToTermsOfService.isSet()) {
-        w.writeFieldBegin(QStringLiteral("dateAgreedToTermsOfService"), ThriftFieldType::T_I64, 11);
-        w.writeI64(s.dateAgreedToTermsOfService.ref());
-        w.writeFieldEnd();
-    }
-    if(s.maxReferrals.isSet()) {
-        w.writeFieldBegin(QStringLiteral("maxReferrals"), ThriftFieldType::T_I32, 12);
-        w.writeI32(s.maxReferrals.ref());
-        w.writeFieldEnd();
-    }
-    if(s.referralCount.isSet()) {
-        w.writeFieldBegin(QStringLiteral("referralCount"), ThriftFieldType::T_I32, 13);
-        w.writeI32(s.referralCount.ref());
-        w.writeFieldEnd();
-    }
-    if(s.refererCode.isSet()) {
-        w.writeFieldBegin(QStringLiteral("refererCode"), ThriftFieldType::T_STRING, 14);
-        w.writeString(s.refererCode.ref());
-        w.writeFieldEnd();
-    }
-    if(s.sentEmailDate.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sentEmailDate"), ThriftFieldType::T_I64, 15);
-        w.writeI64(s.sentEmailDate.ref());
-        w.writeFieldEnd();
-    }
-    if(s.sentEmailCount.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sentEmailCount"), ThriftFieldType::T_I32, 16);
-        w.writeI32(s.sentEmailCount.ref());
-        w.writeFieldEnd();
-    }
-    if(s.dailyEmailLimit.isSet()) {
-        w.writeFieldBegin(QStringLiteral("dailyEmailLimit"), ThriftFieldType::T_I32, 17);
-        w.writeI32(s.dailyEmailLimit.ref());
-        w.writeFieldEnd();
-    }
-    if(s.emailOptOutDate.isSet()) {
-        w.writeFieldBegin(QStringLiteral("emailOptOutDate"), ThriftFieldType::T_I64, 18);
-        w.writeI64(s.emailOptOutDate.ref());
-        w.writeFieldEnd();
-    }
-    if(s.partnerEmailOptInDate.isSet()) {
-        w.writeFieldBegin(QStringLiteral("partnerEmailOptInDate"), ThriftFieldType::T_I64, 19);
-        w.writeI64(s.partnerEmailOptInDate.ref());
-        w.writeFieldEnd();
-    }
-    if(s.preferredLanguage.isSet()) {
-        w.writeFieldBegin(QStringLiteral("preferredLanguage"), ThriftFieldType::T_STRING, 20);
-        w.writeString(s.preferredLanguage.ref());
-        w.writeFieldEnd();
-    }
-    if(s.preferredCountry.isSet()) {
-        w.writeFieldBegin(QStringLiteral("preferredCountry"), ThriftFieldType::T_STRING, 21);
-        w.writeString(s.preferredCountry.ref());
-        w.writeFieldEnd();
-    }
-    if(s.clipFullPage.isSet()) {
-        w.writeFieldBegin(QStringLiteral("clipFullPage"), ThriftFieldType::T_BOOL, 22);
-        w.writeBool(s.clipFullPage.ref());
-        w.writeFieldEnd();
-    }
-    if(s.twitterUserName.isSet()) {
-        w.writeFieldBegin(QStringLiteral("twitterUserName"), ThriftFieldType::T_STRING, 23);
-        w.writeString(s.twitterUserName.ref());
-        w.writeFieldEnd();
-    }
-    if(s.twitterId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("twitterId"), ThriftFieldType::T_STRING, 24);
-        w.writeString(s.twitterId.ref());
-        w.writeFieldEnd();
-    }
-    if(s.groupName.isSet()) {
-        w.writeFieldBegin(QStringLiteral("groupName"), ThriftFieldType::T_STRING, 25);
-        w.writeString(s.groupName.ref());
-        w.writeFieldEnd();
-    }
-    if(s.recognitionLanguage.isSet()) {
-        w.writeFieldBegin(QStringLiteral("recognitionLanguage"), ThriftFieldType::T_STRING, 26);
-        w.writeString(s.recognitionLanguage.ref());
-        w.writeFieldEnd();
-    }
-    if(s.referralProof.isSet()) {
-        w.writeFieldBegin(QStringLiteral("referralProof"), ThriftFieldType::T_STRING, 28);
-        w.writeString(s.referralProof.ref());
-        w.writeFieldEnd();
-    }
-    if(s.educationalDiscount.isSet()) {
-        w.writeFieldBegin(QStringLiteral("educationalDiscount"), ThriftFieldType::T_BOOL, 29);
-        w.writeBool(s.educationalDiscount.ref());
-        w.writeFieldEnd();
-    }
-    if(s.businessAddress.isSet()) {
-        w.writeFieldBegin(QStringLiteral("businessAddress"), ThriftFieldType::T_STRING, 30);
-        w.writeString(s.businessAddress.ref());
-        w.writeFieldEnd();
-    }
-    if(s.hideSponsorBilling.isSet()) {
-        w.writeFieldBegin(QStringLiteral("hideSponsorBilling"), ThriftFieldType::T_BOOL, 31);
-        w.writeBool(s.hideSponsorBilling.ref());
-        w.writeFieldEnd();
-    }
-    if(s.useEmailAutoFiling.isSet()) {
-        w.writeFieldBegin(QStringLiteral("useEmailAutoFiling"), ThriftFieldType::T_BOOL, 33);
-        w.writeBool(s.useEmailAutoFiling.ref());
-        w.writeFieldEnd();
-    }
-    if(s.reminderEmailConfig.isSet()) {
-        w.writeFieldBegin(QStringLiteral("reminderEmailConfig"), ThriftFieldType::T_I32, 34);
-        w.writeI32(static_cast<qint32>(s.reminderEmailConfig.ref()));
-        w.writeFieldEnd();
-    }
-    if(s.emailAddressLastConfirmed.isSet()) {
-        w.writeFieldBegin(QStringLiteral("emailAddressLastConfirmed"), ThriftFieldType::T_I64, 35);
-        w.writeI64(s.emailAddressLastConfirmed.ref());
-        w.writeFieldEnd();
-    }
-    if(s.passwordUpdated.isSet()) {
-        w.writeFieldBegin(QStringLiteral("passwordUpdated"), ThriftFieldType::T_I64, 36);
-        w.writeI64(s.passwordUpdated.ref());
-        w.writeFieldEnd();
-    }
-    if(s.salesforcePushEnabled.isSet()) {
-        w.writeFieldBegin(QStringLiteral("salesforcePushEnabled"), ThriftFieldType::T_BOOL, 37);
-        w.writeBool(s.salesforcePushEnabled.ref());
-        w.writeFieldEnd();
-    }
-    if(s.shouldLogClientEvent.isSet()) {
-        w.writeFieldBegin(QStringLiteral("shouldLogClientEvent"), ThriftFieldType::T_BOOL, 38);
-        w.writeBool(s.shouldLogClientEvent.ref());
-        w.writeFieldEnd();
-    }
-    if(s.optOutMachineLearning.isSet()) {
-        w.writeFieldBegin(QStringLiteral("optOutMachineLearning"), ThriftFieldType::T_BOOL, 39);
-        w.writeBool(s.optOutMachineLearning.ref());
-        w.writeFieldEnd();
-    }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    strm << "}\n";
 }
 
-void readUserAttributes(ThriftBinaryBufferReader & r, UserAttributes & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeUserAttributes(
+    ThriftBinaryBufferWriter & writer,
+    const UserAttributes & s)
+{
+    writer.writeStructBegin(QStringLiteral("UserAttributes"));
+    if (s.defaultLocationName.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("defaultLocationName"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.defaultLocationName.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.defaultLatitude.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("defaultLatitude"),
+            ThriftFieldType::T_DOUBLE,
+            2);
+
+        writer.writeDouble(s.defaultLatitude.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.defaultLongitude.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("defaultLongitude"),
+            ThriftFieldType::T_DOUBLE,
+            3);
+
+        writer.writeDouble(s.defaultLongitude.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.preactivation.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("preactivation"),
+            ThriftFieldType::T_BOOL,
+            4);
+
+        writer.writeBool(s.preactivation.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.viewedPromotions.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("viewedPromotions"),
+            ThriftFieldType::T_LIST,
+            5);
+
+        writer.writeListBegin(ThriftFieldType::T_STRING, s.viewedPromotions.ref().length());
+        for(const auto & value: qAsConst(s.viewedPromotions.ref())) {
+            writer.writeString(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.incomingEmailAddress.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("incomingEmailAddress"),
+            ThriftFieldType::T_STRING,
+            6);
+
+        writer.writeString(s.incomingEmailAddress.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.recentMailedAddresses.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("recentMailedAddresses"),
+            ThriftFieldType::T_LIST,
+            7);
+
+        writer.writeListBegin(ThriftFieldType::T_STRING, s.recentMailedAddresses.ref().length());
+        for(const auto & value: qAsConst(s.recentMailedAddresses.ref())) {
+            writer.writeString(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.comments.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("comments"),
+            ThriftFieldType::T_STRING,
+            9);
+
+        writer.writeString(s.comments.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.dateAgreedToTermsOfService.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("dateAgreedToTermsOfService"),
+            ThriftFieldType::T_I64,
+            11);
+
+        writer.writeI64(s.dateAgreedToTermsOfService.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.maxReferrals.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("maxReferrals"),
+            ThriftFieldType::T_I32,
+            12);
+
+        writer.writeI32(s.maxReferrals.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.referralCount.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("referralCount"),
+            ThriftFieldType::T_I32,
+            13);
+
+        writer.writeI32(s.referralCount.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.refererCode.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("refererCode"),
+            ThriftFieldType::T_STRING,
+            14);
+
+        writer.writeString(s.refererCode.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.sentEmailDate.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sentEmailDate"),
+            ThriftFieldType::T_I64,
+            15);
+
+        writer.writeI64(s.sentEmailDate.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.sentEmailCount.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sentEmailCount"),
+            ThriftFieldType::T_I32,
+            16);
+
+        writer.writeI32(s.sentEmailCount.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.dailyEmailLimit.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("dailyEmailLimit"),
+            ThriftFieldType::T_I32,
+            17);
+
+        writer.writeI32(s.dailyEmailLimit.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.emailOptOutDate.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("emailOptOutDate"),
+            ThriftFieldType::T_I64,
+            18);
+
+        writer.writeI64(s.emailOptOutDate.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.partnerEmailOptInDate.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("partnerEmailOptInDate"),
+            ThriftFieldType::T_I64,
+            19);
+
+        writer.writeI64(s.partnerEmailOptInDate.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.preferredLanguage.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("preferredLanguage"),
+            ThriftFieldType::T_STRING,
+            20);
+
+        writer.writeString(s.preferredLanguage.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.preferredCountry.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("preferredCountry"),
+            ThriftFieldType::T_STRING,
+            21);
+
+        writer.writeString(s.preferredCountry.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.clipFullPage.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("clipFullPage"),
+            ThriftFieldType::T_BOOL,
+            22);
+
+        writer.writeBool(s.clipFullPage.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.twitterUserName.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("twitterUserName"),
+            ThriftFieldType::T_STRING,
+            23);
+
+        writer.writeString(s.twitterUserName.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.twitterId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("twitterId"),
+            ThriftFieldType::T_STRING,
+            24);
+
+        writer.writeString(s.twitterId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.groupName.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("groupName"),
+            ThriftFieldType::T_STRING,
+            25);
+
+        writer.writeString(s.groupName.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.recognitionLanguage.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("recognitionLanguage"),
+            ThriftFieldType::T_STRING,
+            26);
+
+        writer.writeString(s.recognitionLanguage.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.referralProof.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("referralProof"),
+            ThriftFieldType::T_STRING,
+            28);
+
+        writer.writeString(s.referralProof.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.educationalDiscount.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("educationalDiscount"),
+            ThriftFieldType::T_BOOL,
+            29);
+
+        writer.writeBool(s.educationalDiscount.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.businessAddress.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("businessAddress"),
+            ThriftFieldType::T_STRING,
+            30);
+
+        writer.writeString(s.businessAddress.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.hideSponsorBilling.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("hideSponsorBilling"),
+            ThriftFieldType::T_BOOL,
+            31);
+
+        writer.writeBool(s.hideSponsorBilling.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.useEmailAutoFiling.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("useEmailAutoFiling"),
+            ThriftFieldType::T_BOOL,
+            33);
+
+        writer.writeBool(s.useEmailAutoFiling.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.reminderEmailConfig.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("reminderEmailConfig"),
+            ThriftFieldType::T_I32,
+            34);
+
+        writer.writeI32(static_cast<qint32>(s.reminderEmailConfig.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.emailAddressLastConfirmed.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("emailAddressLastConfirmed"),
+            ThriftFieldType::T_I64,
+            35);
+
+        writer.writeI64(s.emailAddressLastConfirmed.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.passwordUpdated.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("passwordUpdated"),
+            ThriftFieldType::T_I64,
+            36);
+
+        writer.writeI64(s.passwordUpdated.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.salesforcePushEnabled.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("salesforcePushEnabled"),
+            ThriftFieldType::T_BOOL,
+            37);
+
+        writer.writeBool(s.salesforcePushEnabled.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.shouldLogClientEvent.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("shouldLogClientEvent"),
+            ThriftFieldType::T_BOOL,
+            38);
+
+        writer.writeBool(s.shouldLogClientEvent.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.optOutMachineLearning.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("optOutMachineLearning"),
+            ThriftFieldType::T_BOOL,
+            39);
+
+        writer.writeBool(s.optOutMachineLearning.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readUserAttributes(
+    ThriftBinaryBufferReader & reader,
+    UserAttributes & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.defaultLocationName = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_DOUBLE) {
                 double v;
-                r.readDouble(v);
+                reader.readDouble(v);
                 s.defaultLatitude = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_DOUBLE) {
                 double v;
-                r.readDouble(v);
+                reader.readDouble(v);
                 s.defaultLongitude = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.preactivation = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_LIST) {
                 QStringList v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (UserAttributes.viewedPromotions)"));
+                if (elemType != ThriftFieldType::T_STRING) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (UserAttributes.viewedPromotions)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     QString elem;
-                    r.readString(elem);
+                    reader.readString(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.viewedPromotions = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.incomingEmailAddress = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_LIST) {
                 QStringList v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (UserAttributes.recentMailedAddresses)"));
+                if (elemType != ThriftFieldType::T_STRING) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (UserAttributes.recentMailedAddresses)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     QString elem;
-                    r.readString(elem);
+                    reader.readString(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.recentMailedAddresses = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 9) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.comments = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 11) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.dateAgreedToTermsOfService = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 12) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.maxReferrals = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 13) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.referralCount = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 14) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.refererCode = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 15) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.sentEmailDate = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 16) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.sentEmailCount = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 17) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.dailyEmailLimit = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 18) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.emailOptOutDate = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 19) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.partnerEmailOptInDate = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 20) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.preferredLanguage = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 21) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.preferredCountry = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 22) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.clipFullPage = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 23) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.twitterUserName = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 24) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.twitterId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 25) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.groupName = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 26) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.recognitionLanguage = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 28) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.referralProof = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 29) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.educationalDiscount = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 30) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.businessAddress = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 31) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.hideSponsorBilling = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 33) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.useEmailAutoFiling = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 34) {
             if (fieldType == ThriftFieldType::T_I32) {
-                ReminderEmailConfig::type v;
-                readEnumReminderEmailConfig(r, v);
+                ReminderEmailConfig v;
+                readEnumReminderEmailConfig(reader, v);
                 s.reminderEmailConfig = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 35) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.emailAddressLastConfirmed = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 36) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.passwordUpdated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 37) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.salesforcePushEnabled = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 38) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.shouldLogClientEvent = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 39) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.optOutMachineLearning = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeBusinessUserAttributes(ThriftBinaryBufferWriter & w, const BusinessUserAttributes & s) {
-    w.writeStructBegin(QStringLiteral("BusinessUserAttributes"));
-    if(s.title.isSet()) {
-        w.writeFieldBegin(QStringLiteral("title"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.title.ref());
-        w.writeFieldEnd();
+void UserAttributes::print(QTextStream & strm) const
+{
+    strm << "UserAttributes: {\n";
+    localData.print(strm);
+
+    if (defaultLocationName.isSet()) {
+        strm << "    defaultLocationName = "
+            << defaultLocationName.ref() << "\n";
     }
-    if(s.location.isSet()) {
-        w.writeFieldBegin(QStringLiteral("location"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.location.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    defaultLocationName is not set\n";
     }
-    if(s.department.isSet()) {
-        w.writeFieldBegin(QStringLiteral("department"), ThriftFieldType::T_STRING, 3);
-        w.writeString(s.department.ref());
-        w.writeFieldEnd();
+
+    if (defaultLatitude.isSet()) {
+        strm << "    defaultLatitude = "
+            << defaultLatitude.ref() << "\n";
     }
-    if(s.mobilePhone.isSet()) {
-        w.writeFieldBegin(QStringLiteral("mobilePhone"), ThriftFieldType::T_STRING, 4);
-        w.writeString(s.mobilePhone.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    defaultLatitude is not set\n";
     }
-    if(s.linkedInProfileUrl.isSet()) {
-        w.writeFieldBegin(QStringLiteral("linkedInProfileUrl"), ThriftFieldType::T_STRING, 5);
-        w.writeString(s.linkedInProfileUrl.ref());
-        w.writeFieldEnd();
+
+    if (defaultLongitude.isSet()) {
+        strm << "    defaultLongitude = "
+            << defaultLongitude.ref() << "\n";
     }
-    if(s.workPhone.isSet()) {
-        w.writeFieldBegin(QStringLiteral("workPhone"), ThriftFieldType::T_STRING, 6);
-        w.writeString(s.workPhone.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    defaultLongitude is not set\n";
     }
-    if(s.companyStartDate.isSet()) {
-        w.writeFieldBegin(QStringLiteral("companyStartDate"), ThriftFieldType::T_I64, 7);
-        w.writeI64(s.companyStartDate.ref());
-        w.writeFieldEnd();
+
+    if (preactivation.isSet()) {
+        strm << "    preactivation = "
+            << preactivation.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    preactivation is not set\n";
+    }
+
+    if (viewedPromotions.isSet()) {
+        strm << "    viewedPromotions = "
+            << "QList<QString> {";
+        for(const auto & v: viewedPromotions.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    viewedPromotions is not set\n";
+    }
+
+    if (incomingEmailAddress.isSet()) {
+        strm << "    incomingEmailAddress = "
+            << incomingEmailAddress.ref() << "\n";
+    }
+    else {
+        strm << "    incomingEmailAddress is not set\n";
+    }
+
+    if (recentMailedAddresses.isSet()) {
+        strm << "    recentMailedAddresses = "
+            << "QList<QString> {";
+        for(const auto & v: recentMailedAddresses.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    recentMailedAddresses is not set\n";
+    }
+
+    if (comments.isSet()) {
+        strm << "    comments = "
+            << comments.ref() << "\n";
+    }
+    else {
+        strm << "    comments is not set\n";
+    }
+
+    if (dateAgreedToTermsOfService.isSet()) {
+        strm << "    dateAgreedToTermsOfService = "
+            << dateAgreedToTermsOfService.ref() << "\n";
+    }
+    else {
+        strm << "    dateAgreedToTermsOfService is not set\n";
+    }
+
+    if (maxReferrals.isSet()) {
+        strm << "    maxReferrals = "
+            << maxReferrals.ref() << "\n";
+    }
+    else {
+        strm << "    maxReferrals is not set\n";
+    }
+
+    if (referralCount.isSet()) {
+        strm << "    referralCount = "
+            << referralCount.ref() << "\n";
+    }
+    else {
+        strm << "    referralCount is not set\n";
+    }
+
+    if (refererCode.isSet()) {
+        strm << "    refererCode = "
+            << refererCode.ref() << "\n";
+    }
+    else {
+        strm << "    refererCode is not set\n";
+    }
+
+    if (sentEmailDate.isSet()) {
+        strm << "    sentEmailDate = "
+            << sentEmailDate.ref() << "\n";
+    }
+    else {
+        strm << "    sentEmailDate is not set\n";
+    }
+
+    if (sentEmailCount.isSet()) {
+        strm << "    sentEmailCount = "
+            << sentEmailCount.ref() << "\n";
+    }
+    else {
+        strm << "    sentEmailCount is not set\n";
+    }
+
+    if (dailyEmailLimit.isSet()) {
+        strm << "    dailyEmailLimit = "
+            << dailyEmailLimit.ref() << "\n";
+    }
+    else {
+        strm << "    dailyEmailLimit is not set\n";
+    }
+
+    if (emailOptOutDate.isSet()) {
+        strm << "    emailOptOutDate = "
+            << emailOptOutDate.ref() << "\n";
+    }
+    else {
+        strm << "    emailOptOutDate is not set\n";
+    }
+
+    if (partnerEmailOptInDate.isSet()) {
+        strm << "    partnerEmailOptInDate = "
+            << partnerEmailOptInDate.ref() << "\n";
+    }
+    else {
+        strm << "    partnerEmailOptInDate is not set\n";
+    }
+
+    if (preferredLanguage.isSet()) {
+        strm << "    preferredLanguage = "
+            << preferredLanguage.ref() << "\n";
+    }
+    else {
+        strm << "    preferredLanguage is not set\n";
+    }
+
+    if (preferredCountry.isSet()) {
+        strm << "    preferredCountry = "
+            << preferredCountry.ref() << "\n";
+    }
+    else {
+        strm << "    preferredCountry is not set\n";
+    }
+
+    if (clipFullPage.isSet()) {
+        strm << "    clipFullPage = "
+            << clipFullPage.ref() << "\n";
+    }
+    else {
+        strm << "    clipFullPage is not set\n";
+    }
+
+    if (twitterUserName.isSet()) {
+        strm << "    twitterUserName = "
+            << twitterUserName.ref() << "\n";
+    }
+    else {
+        strm << "    twitterUserName is not set\n";
+    }
+
+    if (twitterId.isSet()) {
+        strm << "    twitterId = "
+            << twitterId.ref() << "\n";
+    }
+    else {
+        strm << "    twitterId is not set\n";
+    }
+
+    if (groupName.isSet()) {
+        strm << "    groupName = "
+            << groupName.ref() << "\n";
+    }
+    else {
+        strm << "    groupName is not set\n";
+    }
+
+    if (recognitionLanguage.isSet()) {
+        strm << "    recognitionLanguage = "
+            << recognitionLanguage.ref() << "\n";
+    }
+    else {
+        strm << "    recognitionLanguage is not set\n";
+    }
+
+    if (referralProof.isSet()) {
+        strm << "    referralProof = "
+            << referralProof.ref() << "\n";
+    }
+    else {
+        strm << "    referralProof is not set\n";
+    }
+
+    if (educationalDiscount.isSet()) {
+        strm << "    educationalDiscount = "
+            << educationalDiscount.ref() << "\n";
+    }
+    else {
+        strm << "    educationalDiscount is not set\n";
+    }
+
+    if (businessAddress.isSet()) {
+        strm << "    businessAddress = "
+            << businessAddress.ref() << "\n";
+    }
+    else {
+        strm << "    businessAddress is not set\n";
+    }
+
+    if (hideSponsorBilling.isSet()) {
+        strm << "    hideSponsorBilling = "
+            << hideSponsorBilling.ref() << "\n";
+    }
+    else {
+        strm << "    hideSponsorBilling is not set\n";
+    }
+
+    if (useEmailAutoFiling.isSet()) {
+        strm << "    useEmailAutoFiling = "
+            << useEmailAutoFiling.ref() << "\n";
+    }
+    else {
+        strm << "    useEmailAutoFiling is not set\n";
+    }
+
+    if (reminderEmailConfig.isSet()) {
+        strm << "    reminderEmailConfig = "
+            << reminderEmailConfig.ref() << "\n";
+    }
+    else {
+        strm << "    reminderEmailConfig is not set\n";
+    }
+
+    if (emailAddressLastConfirmed.isSet()) {
+        strm << "    emailAddressLastConfirmed = "
+            << emailAddressLastConfirmed.ref() << "\n";
+    }
+    else {
+        strm << "    emailAddressLastConfirmed is not set\n";
+    }
+
+    if (passwordUpdated.isSet()) {
+        strm << "    passwordUpdated = "
+            << passwordUpdated.ref() << "\n";
+    }
+    else {
+        strm << "    passwordUpdated is not set\n";
+    }
+
+    if (salesforcePushEnabled.isSet()) {
+        strm << "    salesforcePushEnabled = "
+            << salesforcePushEnabled.ref() << "\n";
+    }
+    else {
+        strm << "    salesforcePushEnabled is not set\n";
+    }
+
+    if (shouldLogClientEvent.isSet()) {
+        strm << "    shouldLogClientEvent = "
+            << shouldLogClientEvent.ref() << "\n";
+    }
+    else {
+        strm << "    shouldLogClientEvent is not set\n";
+    }
+
+    if (optOutMachineLearning.isSet()) {
+        strm << "    optOutMachineLearning = "
+            << optOutMachineLearning.ref() << "\n";
+    }
+    else {
+        strm << "    optOutMachineLearning is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readBusinessUserAttributes(ThriftBinaryBufferReader & r, BusinessUserAttributes & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeBusinessUserAttributes(
+    ThriftBinaryBufferWriter & writer,
+    const BusinessUserAttributes & s)
+{
+    writer.writeStructBegin(QStringLiteral("BusinessUserAttributes"));
+    if (s.title.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("title"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.title.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.location.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("location"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.location.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.department.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("department"),
+            ThriftFieldType::T_STRING,
+            3);
+
+        writer.writeString(s.department.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.mobilePhone.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("mobilePhone"),
+            ThriftFieldType::T_STRING,
+            4);
+
+        writer.writeString(s.mobilePhone.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.linkedInProfileUrl.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("linkedInProfileUrl"),
+            ThriftFieldType::T_STRING,
+            5);
+
+        writer.writeString(s.linkedInProfileUrl.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.workPhone.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("workPhone"),
+            ThriftFieldType::T_STRING,
+            6);
+
+        writer.writeString(s.workPhone.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.companyStartDate.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("companyStartDate"),
+            ThriftFieldType::T_I64,
+            7);
+
+        writer.writeI64(s.companyStartDate.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readBusinessUserAttributes(
+    ThriftBinaryBufferReader & reader,
+    BusinessUserAttributes & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.title = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.location = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.department = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.mobilePhone = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.linkedInProfileUrl = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.workPhone = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.companyStartDate = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeAccounting(ThriftBinaryBufferWriter & w, const Accounting & s) {
-    w.writeStructBegin(QStringLiteral("Accounting"));
-    if(s.uploadLimitEnd.isSet()) {
-        w.writeFieldBegin(QStringLiteral("uploadLimitEnd"), ThriftFieldType::T_I64, 2);
-        w.writeI64(s.uploadLimitEnd.ref());
-        w.writeFieldEnd();
+void BusinessUserAttributes::print(QTextStream & strm) const
+{
+    strm << "BusinessUserAttributes: {\n";
+    localData.print(strm);
+
+    if (title.isSet()) {
+        strm << "    title = "
+            << title.ref() << "\n";
     }
-    if(s.uploadLimitNextMonth.isSet()) {
-        w.writeFieldBegin(QStringLiteral("uploadLimitNextMonth"), ThriftFieldType::T_I64, 3);
-        w.writeI64(s.uploadLimitNextMonth.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    title is not set\n";
     }
-    if(s.premiumServiceStatus.isSet()) {
-        w.writeFieldBegin(QStringLiteral("premiumServiceStatus"), ThriftFieldType::T_I32, 4);
-        w.writeI32(static_cast<qint32>(s.premiumServiceStatus.ref()));
-        w.writeFieldEnd();
+
+    if (location.isSet()) {
+        strm << "    location = "
+            << location.ref() << "\n";
     }
-    if(s.premiumOrderNumber.isSet()) {
-        w.writeFieldBegin(QStringLiteral("premiumOrderNumber"), ThriftFieldType::T_STRING, 5);
-        w.writeString(s.premiumOrderNumber.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    location is not set\n";
     }
-    if(s.premiumCommerceService.isSet()) {
-        w.writeFieldBegin(QStringLiteral("premiumCommerceService"), ThriftFieldType::T_STRING, 6);
-        w.writeString(s.premiumCommerceService.ref());
-        w.writeFieldEnd();
+
+    if (department.isSet()) {
+        strm << "    department = "
+            << department.ref() << "\n";
     }
-    if(s.premiumServiceStart.isSet()) {
-        w.writeFieldBegin(QStringLiteral("premiumServiceStart"), ThriftFieldType::T_I64, 7);
-        w.writeI64(s.premiumServiceStart.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    department is not set\n";
     }
-    if(s.premiumServiceSKU.isSet()) {
-        w.writeFieldBegin(QStringLiteral("premiumServiceSKU"), ThriftFieldType::T_STRING, 8);
-        w.writeString(s.premiumServiceSKU.ref());
-        w.writeFieldEnd();
+
+    if (mobilePhone.isSet()) {
+        strm << "    mobilePhone = "
+            << mobilePhone.ref() << "\n";
     }
-    if(s.lastSuccessfulCharge.isSet()) {
-        w.writeFieldBegin(QStringLiteral("lastSuccessfulCharge"), ThriftFieldType::T_I64, 9);
-        w.writeI64(s.lastSuccessfulCharge.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    mobilePhone is not set\n";
     }
-    if(s.lastFailedCharge.isSet()) {
-        w.writeFieldBegin(QStringLiteral("lastFailedCharge"), ThriftFieldType::T_I64, 10);
-        w.writeI64(s.lastFailedCharge.ref());
-        w.writeFieldEnd();
+
+    if (linkedInProfileUrl.isSet()) {
+        strm << "    linkedInProfileUrl = "
+            << linkedInProfileUrl.ref() << "\n";
     }
-    if(s.lastFailedChargeReason.isSet()) {
-        w.writeFieldBegin(QStringLiteral("lastFailedChargeReason"), ThriftFieldType::T_STRING, 11);
-        w.writeString(s.lastFailedChargeReason.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    linkedInProfileUrl is not set\n";
     }
-    if(s.nextPaymentDue.isSet()) {
-        w.writeFieldBegin(QStringLiteral("nextPaymentDue"), ThriftFieldType::T_I64, 12);
-        w.writeI64(s.nextPaymentDue.ref());
-        w.writeFieldEnd();
+
+    if (workPhone.isSet()) {
+        strm << "    workPhone = "
+            << workPhone.ref() << "\n";
     }
-    if(s.premiumLockUntil.isSet()) {
-        w.writeFieldBegin(QStringLiteral("premiumLockUntil"), ThriftFieldType::T_I64, 13);
-        w.writeI64(s.premiumLockUntil.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    workPhone is not set\n";
     }
-    if(s.updated.isSet()) {
-        w.writeFieldBegin(QStringLiteral("updated"), ThriftFieldType::T_I64, 14);
-        w.writeI64(s.updated.ref());
-        w.writeFieldEnd();
+
+    if (companyStartDate.isSet()) {
+        strm << "    companyStartDate = "
+            << companyStartDate.ref() << "\n";
     }
-    if(s.premiumSubscriptionNumber.isSet()) {
-        w.writeFieldBegin(QStringLiteral("premiumSubscriptionNumber"), ThriftFieldType::T_STRING, 16);
-        w.writeString(s.premiumSubscriptionNumber.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    companyStartDate is not set\n";
     }
-    if(s.lastRequestedCharge.isSet()) {
-        w.writeFieldBegin(QStringLiteral("lastRequestedCharge"), ThriftFieldType::T_I64, 17);
-        w.writeI64(s.lastRequestedCharge.ref());
-        w.writeFieldEnd();
-    }
-    if(s.currency.isSet()) {
-        w.writeFieldBegin(QStringLiteral("currency"), ThriftFieldType::T_STRING, 18);
-        w.writeString(s.currency.ref());
-        w.writeFieldEnd();
-    }
-    if(s.unitPrice.isSet()) {
-        w.writeFieldBegin(QStringLiteral("unitPrice"), ThriftFieldType::T_I32, 19);
-        w.writeI32(s.unitPrice.ref());
-        w.writeFieldEnd();
-    }
-    if(s.businessId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("businessId"), ThriftFieldType::T_I32, 20);
-        w.writeI32(s.businessId.ref());
-        w.writeFieldEnd();
-    }
-    if(s.businessName.isSet()) {
-        w.writeFieldBegin(QStringLiteral("businessName"), ThriftFieldType::T_STRING, 21);
-        w.writeString(s.businessName.ref());
-        w.writeFieldEnd();
-    }
-    if(s.businessRole.isSet()) {
-        w.writeFieldBegin(QStringLiteral("businessRole"), ThriftFieldType::T_I32, 22);
-        w.writeI32(static_cast<qint32>(s.businessRole.ref()));
-        w.writeFieldEnd();
-    }
-    if(s.unitDiscount.isSet()) {
-        w.writeFieldBegin(QStringLiteral("unitDiscount"), ThriftFieldType::T_I32, 23);
-        w.writeI32(s.unitDiscount.ref());
-        w.writeFieldEnd();
-    }
-    if(s.nextChargeDate.isSet()) {
-        w.writeFieldBegin(QStringLiteral("nextChargeDate"), ThriftFieldType::T_I64, 24);
-        w.writeI64(s.nextChargeDate.ref());
-        w.writeFieldEnd();
-    }
-    if(s.availablePoints.isSet()) {
-        w.writeFieldBegin(QStringLiteral("availablePoints"), ThriftFieldType::T_I32, 25);
-        w.writeI32(s.availablePoints.ref());
-        w.writeFieldEnd();
-    }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    strm << "}\n";
 }
 
-void readAccounting(ThriftBinaryBufferReader & r, Accounting & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeAccounting(
+    ThriftBinaryBufferWriter & writer,
+    const Accounting & s)
+{
+    writer.writeStructBegin(QStringLiteral("Accounting"));
+    if (s.uploadLimitEnd.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("uploadLimitEnd"),
+            ThriftFieldType::T_I64,
+            2);
+
+        writer.writeI64(s.uploadLimitEnd.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.uploadLimitNextMonth.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("uploadLimitNextMonth"),
+            ThriftFieldType::T_I64,
+            3);
+
+        writer.writeI64(s.uploadLimitNextMonth.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.premiumServiceStatus.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("premiumServiceStatus"),
+            ThriftFieldType::T_I32,
+            4);
+
+        writer.writeI32(static_cast<qint32>(s.premiumServiceStatus.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.premiumOrderNumber.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("premiumOrderNumber"),
+            ThriftFieldType::T_STRING,
+            5);
+
+        writer.writeString(s.premiumOrderNumber.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.premiumCommerceService.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("premiumCommerceService"),
+            ThriftFieldType::T_STRING,
+            6);
+
+        writer.writeString(s.premiumCommerceService.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.premiumServiceStart.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("premiumServiceStart"),
+            ThriftFieldType::T_I64,
+            7);
+
+        writer.writeI64(s.premiumServiceStart.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.premiumServiceSKU.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("premiumServiceSKU"),
+            ThriftFieldType::T_STRING,
+            8);
+
+        writer.writeString(s.premiumServiceSKU.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.lastSuccessfulCharge.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("lastSuccessfulCharge"),
+            ThriftFieldType::T_I64,
+            9);
+
+        writer.writeI64(s.lastSuccessfulCharge.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.lastFailedCharge.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("lastFailedCharge"),
+            ThriftFieldType::T_I64,
+            10);
+
+        writer.writeI64(s.lastFailedCharge.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.lastFailedChargeReason.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("lastFailedChargeReason"),
+            ThriftFieldType::T_STRING,
+            11);
+
+        writer.writeString(s.lastFailedChargeReason.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.nextPaymentDue.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("nextPaymentDue"),
+            ThriftFieldType::T_I64,
+            12);
+
+        writer.writeI64(s.nextPaymentDue.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.premiumLockUntil.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("premiumLockUntil"),
+            ThriftFieldType::T_I64,
+            13);
+
+        writer.writeI64(s.premiumLockUntil.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.updated.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("updated"),
+            ThriftFieldType::T_I64,
+            14);
+
+        writer.writeI64(s.updated.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.premiumSubscriptionNumber.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("premiumSubscriptionNumber"),
+            ThriftFieldType::T_STRING,
+            16);
+
+        writer.writeString(s.premiumSubscriptionNumber.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.lastRequestedCharge.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("lastRequestedCharge"),
+            ThriftFieldType::T_I64,
+            17);
+
+        writer.writeI64(s.lastRequestedCharge.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.currency.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("currency"),
+            ThriftFieldType::T_STRING,
+            18);
+
+        writer.writeString(s.currency.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.unitPrice.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("unitPrice"),
+            ThriftFieldType::T_I32,
+            19);
+
+        writer.writeI32(s.unitPrice.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.businessId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("businessId"),
+            ThriftFieldType::T_I32,
+            20);
+
+        writer.writeI32(s.businessId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.businessName.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("businessName"),
+            ThriftFieldType::T_STRING,
+            21);
+
+        writer.writeString(s.businessName.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.businessRole.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("businessRole"),
+            ThriftFieldType::T_I32,
+            22);
+
+        writer.writeI32(static_cast<qint32>(s.businessRole.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.unitDiscount.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("unitDiscount"),
+            ThriftFieldType::T_I32,
+            23);
+
+        writer.writeI32(s.unitDiscount.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.nextChargeDate.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("nextChargeDate"),
+            ThriftFieldType::T_I64,
+            24);
+
+        writer.writeI64(s.nextChargeDate.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.availablePoints.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("availablePoints"),
+            ThriftFieldType::T_I32,
+            25);
+
+        writer.writeI32(s.availablePoints.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readAccounting(
+    ThriftBinaryBufferReader & reader,
+    Accounting & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.uploadLimitEnd = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.uploadLimitNextMonth = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_I32) {
-                PremiumOrderStatus::type v;
-                readEnumPremiumOrderStatus(r, v);
+                PremiumOrderStatus v;
+                readEnumPremiumOrderStatus(reader, v);
                 s.premiumServiceStatus = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.premiumOrderNumber = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.premiumCommerceService = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.premiumServiceStart = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.premiumServiceSKU = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 9) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.lastSuccessfulCharge = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 10) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.lastFailedCharge = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 11) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.lastFailedChargeReason = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 12) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.nextPaymentDue = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 13) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.premiumLockUntil = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 14) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.updated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 16) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.premiumSubscriptionNumber = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 17) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.lastRequestedCharge = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 18) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.currency = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 19) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.unitPrice = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 20) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.businessId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 21) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.businessName = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 22) {
             if (fieldType == ThriftFieldType::T_I32) {
-                BusinessUserRole::type v;
-                readEnumBusinessUserRole(r, v);
+                BusinessUserRole v;
+                readEnumBusinessUserRole(reader, v);
                 s.businessRole = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 23) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.unitDiscount = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 24) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.nextChargeDate = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 25) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.availablePoints = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeBusinessUserInfo(ThriftBinaryBufferWriter & w, const BusinessUserInfo & s) {
-    w.writeStructBegin(QStringLiteral("BusinessUserInfo"));
-    if(s.businessId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("businessId"), ThriftFieldType::T_I32, 1);
-        w.writeI32(s.businessId.ref());
-        w.writeFieldEnd();
+void Accounting::print(QTextStream & strm) const
+{
+    strm << "Accounting: {\n";
+    localData.print(strm);
+
+    if (uploadLimitEnd.isSet()) {
+        strm << "    uploadLimitEnd = "
+            << uploadLimitEnd.ref() << "\n";
     }
-    if(s.businessName.isSet()) {
-        w.writeFieldBegin(QStringLiteral("businessName"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.businessName.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    uploadLimitEnd is not set\n";
     }
-    if(s.role.isSet()) {
-        w.writeFieldBegin(QStringLiteral("role"), ThriftFieldType::T_I32, 3);
-        w.writeI32(static_cast<qint32>(s.role.ref()));
-        w.writeFieldEnd();
+
+    if (uploadLimitNextMonth.isSet()) {
+        strm << "    uploadLimitNextMonth = "
+            << uploadLimitNextMonth.ref() << "\n";
     }
-    if(s.email.isSet()) {
-        w.writeFieldBegin(QStringLiteral("email"), ThriftFieldType::T_STRING, 4);
-        w.writeString(s.email.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    uploadLimitNextMonth is not set\n";
     }
-    if(s.updated.isSet()) {
-        w.writeFieldBegin(QStringLiteral("updated"), ThriftFieldType::T_I64, 5);
-        w.writeI64(s.updated.ref());
-        w.writeFieldEnd();
+
+    if (premiumServiceStatus.isSet()) {
+        strm << "    premiumServiceStatus = "
+            << premiumServiceStatus.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    premiumServiceStatus is not set\n";
+    }
+
+    if (premiumOrderNumber.isSet()) {
+        strm << "    premiumOrderNumber = "
+            << premiumOrderNumber.ref() << "\n";
+    }
+    else {
+        strm << "    premiumOrderNumber is not set\n";
+    }
+
+    if (premiumCommerceService.isSet()) {
+        strm << "    premiumCommerceService = "
+            << premiumCommerceService.ref() << "\n";
+    }
+    else {
+        strm << "    premiumCommerceService is not set\n";
+    }
+
+    if (premiumServiceStart.isSet()) {
+        strm << "    premiumServiceStart = "
+            << premiumServiceStart.ref() << "\n";
+    }
+    else {
+        strm << "    premiumServiceStart is not set\n";
+    }
+
+    if (premiumServiceSKU.isSet()) {
+        strm << "    premiumServiceSKU = "
+            << premiumServiceSKU.ref() << "\n";
+    }
+    else {
+        strm << "    premiumServiceSKU is not set\n";
+    }
+
+    if (lastSuccessfulCharge.isSet()) {
+        strm << "    lastSuccessfulCharge = "
+            << lastSuccessfulCharge.ref() << "\n";
+    }
+    else {
+        strm << "    lastSuccessfulCharge is not set\n";
+    }
+
+    if (lastFailedCharge.isSet()) {
+        strm << "    lastFailedCharge = "
+            << lastFailedCharge.ref() << "\n";
+    }
+    else {
+        strm << "    lastFailedCharge is not set\n";
+    }
+
+    if (lastFailedChargeReason.isSet()) {
+        strm << "    lastFailedChargeReason = "
+            << lastFailedChargeReason.ref() << "\n";
+    }
+    else {
+        strm << "    lastFailedChargeReason is not set\n";
+    }
+
+    if (nextPaymentDue.isSet()) {
+        strm << "    nextPaymentDue = "
+            << nextPaymentDue.ref() << "\n";
+    }
+    else {
+        strm << "    nextPaymentDue is not set\n";
+    }
+
+    if (premiumLockUntil.isSet()) {
+        strm << "    premiumLockUntil = "
+            << premiumLockUntil.ref() << "\n";
+    }
+    else {
+        strm << "    premiumLockUntil is not set\n";
+    }
+
+    if (updated.isSet()) {
+        strm << "    updated = "
+            << updated.ref() << "\n";
+    }
+    else {
+        strm << "    updated is not set\n";
+    }
+
+    if (premiumSubscriptionNumber.isSet()) {
+        strm << "    premiumSubscriptionNumber = "
+            << premiumSubscriptionNumber.ref() << "\n";
+    }
+    else {
+        strm << "    premiumSubscriptionNumber is not set\n";
+    }
+
+    if (lastRequestedCharge.isSet()) {
+        strm << "    lastRequestedCharge = "
+            << lastRequestedCharge.ref() << "\n";
+    }
+    else {
+        strm << "    lastRequestedCharge is not set\n";
+    }
+
+    if (currency.isSet()) {
+        strm << "    currency = "
+            << currency.ref() << "\n";
+    }
+    else {
+        strm << "    currency is not set\n";
+    }
+
+    if (unitPrice.isSet()) {
+        strm << "    unitPrice = "
+            << unitPrice.ref() << "\n";
+    }
+    else {
+        strm << "    unitPrice is not set\n";
+    }
+
+    if (businessId.isSet()) {
+        strm << "    businessId = "
+            << businessId.ref() << "\n";
+    }
+    else {
+        strm << "    businessId is not set\n";
+    }
+
+    if (businessName.isSet()) {
+        strm << "    businessName = "
+            << businessName.ref() << "\n";
+    }
+    else {
+        strm << "    businessName is not set\n";
+    }
+
+    if (businessRole.isSet()) {
+        strm << "    businessRole = "
+            << businessRole.ref() << "\n";
+    }
+    else {
+        strm << "    businessRole is not set\n";
+    }
+
+    if (unitDiscount.isSet()) {
+        strm << "    unitDiscount = "
+            << unitDiscount.ref() << "\n";
+    }
+    else {
+        strm << "    unitDiscount is not set\n";
+    }
+
+    if (nextChargeDate.isSet()) {
+        strm << "    nextChargeDate = "
+            << nextChargeDate.ref() << "\n";
+    }
+    else {
+        strm << "    nextChargeDate is not set\n";
+    }
+
+    if (availablePoints.isSet()) {
+        strm << "    availablePoints = "
+            << availablePoints.ref() << "\n";
+    }
+    else {
+        strm << "    availablePoints is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readBusinessUserInfo(ThriftBinaryBufferReader & r, BusinessUserInfo & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeBusinessUserInfo(
+    ThriftBinaryBufferWriter & writer,
+    const BusinessUserInfo & s)
+{
+    writer.writeStructBegin(QStringLiteral("BusinessUserInfo"));
+    if (s.businessId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("businessId"),
+            ThriftFieldType::T_I32,
+            1);
+
+        writer.writeI32(s.businessId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.businessName.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("businessName"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.businessName.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.role.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("role"),
+            ThriftFieldType::T_I32,
+            3);
+
+        writer.writeI32(static_cast<qint32>(s.role.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.email.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("email"),
+            ThriftFieldType::T_STRING,
+            4);
+
+        writer.writeString(s.email.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.updated.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("updated"),
+            ThriftFieldType::T_I64,
+            5);
+
+        writer.writeI64(s.updated.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readBusinessUserInfo(
+    ThriftBinaryBufferReader & reader,
+    BusinessUserInfo & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.businessId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.businessName = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I32) {
-                BusinessUserRole::type v;
-                readEnumBusinessUserRole(r, v);
+                BusinessUserRole v;
+                readEnumBusinessUserRole(reader, v);
                 s.role = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.email = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.updated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeAccountLimits(ThriftBinaryBufferWriter & w, const AccountLimits & s) {
-    w.writeStructBegin(QStringLiteral("AccountLimits"));
-    if(s.userMailLimitDaily.isSet()) {
-        w.writeFieldBegin(QStringLiteral("userMailLimitDaily"), ThriftFieldType::T_I32, 1);
-        w.writeI32(s.userMailLimitDaily.ref());
-        w.writeFieldEnd();
+void BusinessUserInfo::print(QTextStream & strm) const
+{
+    strm << "BusinessUserInfo: {\n";
+    localData.print(strm);
+
+    if (businessId.isSet()) {
+        strm << "    businessId = "
+            << businessId.ref() << "\n";
     }
-    if(s.noteSizeMax.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noteSizeMax"), ThriftFieldType::T_I64, 2);
-        w.writeI64(s.noteSizeMax.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    businessId is not set\n";
     }
-    if(s.resourceSizeMax.isSet()) {
-        w.writeFieldBegin(QStringLiteral("resourceSizeMax"), ThriftFieldType::T_I64, 3);
-        w.writeI64(s.resourceSizeMax.ref());
-        w.writeFieldEnd();
+
+    if (businessName.isSet()) {
+        strm << "    businessName = "
+            << businessName.ref() << "\n";
     }
-    if(s.userLinkedNotebookMax.isSet()) {
-        w.writeFieldBegin(QStringLiteral("userLinkedNotebookMax"), ThriftFieldType::T_I32, 4);
-        w.writeI32(s.userLinkedNotebookMax.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    businessName is not set\n";
     }
-    if(s.uploadLimit.isSet()) {
-        w.writeFieldBegin(QStringLiteral("uploadLimit"), ThriftFieldType::T_I64, 5);
-        w.writeI64(s.uploadLimit.ref());
-        w.writeFieldEnd();
+
+    if (role.isSet()) {
+        strm << "    role = "
+            << role.ref() << "\n";
     }
-    if(s.userNoteCountMax.isSet()) {
-        w.writeFieldBegin(QStringLiteral("userNoteCountMax"), ThriftFieldType::T_I32, 6);
-        w.writeI32(s.userNoteCountMax.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    role is not set\n";
     }
-    if(s.userNotebookCountMax.isSet()) {
-        w.writeFieldBegin(QStringLiteral("userNotebookCountMax"), ThriftFieldType::T_I32, 7);
-        w.writeI32(s.userNotebookCountMax.ref());
-        w.writeFieldEnd();
+
+    if (email.isSet()) {
+        strm << "    email = "
+            << email.ref() << "\n";
     }
-    if(s.userTagCountMax.isSet()) {
-        w.writeFieldBegin(QStringLiteral("userTagCountMax"), ThriftFieldType::T_I32, 8);
-        w.writeI32(s.userTagCountMax.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    email is not set\n";
     }
-    if(s.noteTagCountMax.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noteTagCountMax"), ThriftFieldType::T_I32, 9);
-        w.writeI32(s.noteTagCountMax.ref());
-        w.writeFieldEnd();
+
+    if (updated.isSet()) {
+        strm << "    updated = "
+            << updated.ref() << "\n";
     }
-    if(s.userSavedSearchesMax.isSet()) {
-        w.writeFieldBegin(QStringLiteral("userSavedSearchesMax"), ThriftFieldType::T_I32, 10);
-        w.writeI32(s.userSavedSearchesMax.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    updated is not set\n";
     }
-    if(s.noteResourceCountMax.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noteResourceCountMax"), ThriftFieldType::T_I32, 11);
-        w.writeI32(s.noteResourceCountMax.ref());
-        w.writeFieldEnd();
-    }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    strm << "}\n";
 }
 
-void readAccountLimits(ThriftBinaryBufferReader & r, AccountLimits & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeAccountLimits(
+    ThriftBinaryBufferWriter & writer,
+    const AccountLimits & s)
+{
+    writer.writeStructBegin(QStringLiteral("AccountLimits"));
+    if (s.userMailLimitDaily.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("userMailLimitDaily"),
+            ThriftFieldType::T_I32,
+            1);
+
+        writer.writeI32(s.userMailLimitDaily.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noteSizeMax.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noteSizeMax"),
+            ThriftFieldType::T_I64,
+            2);
+
+        writer.writeI64(s.noteSizeMax.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.resourceSizeMax.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("resourceSizeMax"),
+            ThriftFieldType::T_I64,
+            3);
+
+        writer.writeI64(s.resourceSizeMax.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.userLinkedNotebookMax.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("userLinkedNotebookMax"),
+            ThriftFieldType::T_I32,
+            4);
+
+        writer.writeI32(s.userLinkedNotebookMax.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.uploadLimit.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("uploadLimit"),
+            ThriftFieldType::T_I64,
+            5);
+
+        writer.writeI64(s.uploadLimit.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.userNoteCountMax.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("userNoteCountMax"),
+            ThriftFieldType::T_I32,
+            6);
+
+        writer.writeI32(s.userNoteCountMax.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.userNotebookCountMax.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("userNotebookCountMax"),
+            ThriftFieldType::T_I32,
+            7);
+
+        writer.writeI32(s.userNotebookCountMax.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.userTagCountMax.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("userTagCountMax"),
+            ThriftFieldType::T_I32,
+            8);
+
+        writer.writeI32(s.userTagCountMax.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noteTagCountMax.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noteTagCountMax"),
+            ThriftFieldType::T_I32,
+            9);
+
+        writer.writeI32(s.noteTagCountMax.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.userSavedSearchesMax.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("userSavedSearchesMax"),
+            ThriftFieldType::T_I32,
+            10);
+
+        writer.writeI32(s.userSavedSearchesMax.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noteResourceCountMax.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noteResourceCountMax"),
+            ThriftFieldType::T_I32,
+            11);
+
+        writer.writeI32(s.noteResourceCountMax.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readAccountLimits(
+    ThriftBinaryBufferReader & reader,
+    AccountLimits & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.userMailLimitDaily = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.noteSizeMax = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.resourceSizeMax = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.userLinkedNotebookMax = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.uploadLimit = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.userNoteCountMax = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.userNotebookCountMax = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.userTagCountMax = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 9) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.noteTagCountMax = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 10) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.userSavedSearchesMax = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 11) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.noteResourceCountMax = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeUser(ThriftBinaryBufferWriter & w, const User & s) {
-    w.writeStructBegin(QStringLiteral("User"));
-    if(s.id.isSet()) {
-        w.writeFieldBegin(QStringLiteral("id"), ThriftFieldType::T_I32, 1);
-        w.writeI32(s.id.ref());
-        w.writeFieldEnd();
+void AccountLimits::print(QTextStream & strm) const
+{
+    strm << "AccountLimits: {\n";
+    localData.print(strm);
+
+    if (userMailLimitDaily.isSet()) {
+        strm << "    userMailLimitDaily = "
+            << userMailLimitDaily.ref() << "\n";
     }
-    if(s.username.isSet()) {
-        w.writeFieldBegin(QStringLiteral("username"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.username.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    userMailLimitDaily is not set\n";
     }
-    if(s.email.isSet()) {
-        w.writeFieldBegin(QStringLiteral("email"), ThriftFieldType::T_STRING, 3);
-        w.writeString(s.email.ref());
-        w.writeFieldEnd();
+
+    if (noteSizeMax.isSet()) {
+        strm << "    noteSizeMax = "
+            << noteSizeMax.ref() << "\n";
     }
-    if(s.name.isSet()) {
-        w.writeFieldBegin(QStringLiteral("name"), ThriftFieldType::T_STRING, 4);
-        w.writeString(s.name.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noteSizeMax is not set\n";
     }
-    if(s.timezone.isSet()) {
-        w.writeFieldBegin(QStringLiteral("timezone"), ThriftFieldType::T_STRING, 6);
-        w.writeString(s.timezone.ref());
-        w.writeFieldEnd();
+
+    if (resourceSizeMax.isSet()) {
+        strm << "    resourceSizeMax = "
+            << resourceSizeMax.ref() << "\n";
     }
-    if(s.privilege.isSet()) {
-        w.writeFieldBegin(QStringLiteral("privilege"), ThriftFieldType::T_I32, 7);
-        w.writeI32(static_cast<qint32>(s.privilege.ref()));
-        w.writeFieldEnd();
+    else {
+        strm << "    resourceSizeMax is not set\n";
     }
-    if(s.serviceLevel.isSet()) {
-        w.writeFieldBegin(QStringLiteral("serviceLevel"), ThriftFieldType::T_I32, 21);
-        w.writeI32(static_cast<qint32>(s.serviceLevel.ref()));
-        w.writeFieldEnd();
+
+    if (userLinkedNotebookMax.isSet()) {
+        strm << "    userLinkedNotebookMax = "
+            << userLinkedNotebookMax.ref() << "\n";
     }
-    if(s.created.isSet()) {
-        w.writeFieldBegin(QStringLiteral("created"), ThriftFieldType::T_I64, 9);
-        w.writeI64(s.created.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    userLinkedNotebookMax is not set\n";
     }
-    if(s.updated.isSet()) {
-        w.writeFieldBegin(QStringLiteral("updated"), ThriftFieldType::T_I64, 10);
-        w.writeI64(s.updated.ref());
-        w.writeFieldEnd();
+
+    if (uploadLimit.isSet()) {
+        strm << "    uploadLimit = "
+            << uploadLimit.ref() << "\n";
     }
-    if(s.deleted.isSet()) {
-        w.writeFieldBegin(QStringLiteral("deleted"), ThriftFieldType::T_I64, 11);
-        w.writeI64(s.deleted.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    uploadLimit is not set\n";
     }
-    if(s.active.isSet()) {
-        w.writeFieldBegin(QStringLiteral("active"), ThriftFieldType::T_BOOL, 13);
-        w.writeBool(s.active.ref());
-        w.writeFieldEnd();
+
+    if (userNoteCountMax.isSet()) {
+        strm << "    userNoteCountMax = "
+            << userNoteCountMax.ref() << "\n";
     }
-    if(s.shardId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("shardId"), ThriftFieldType::T_STRING, 14);
-        w.writeString(s.shardId.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    userNoteCountMax is not set\n";
     }
-    if(s.attributes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("attributes"), ThriftFieldType::T_STRUCT, 15);
-        writeUserAttributes(w, s.attributes.ref());
-        w.writeFieldEnd();
+
+    if (userNotebookCountMax.isSet()) {
+        strm << "    userNotebookCountMax = "
+            << userNotebookCountMax.ref() << "\n";
     }
-    if(s.accounting.isSet()) {
-        w.writeFieldBegin(QStringLiteral("accounting"), ThriftFieldType::T_STRUCT, 16);
-        writeAccounting(w, s.accounting.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    userNotebookCountMax is not set\n";
     }
-    if(s.businessUserInfo.isSet()) {
-        w.writeFieldBegin(QStringLiteral("businessUserInfo"), ThriftFieldType::T_STRUCT, 18);
-        writeBusinessUserInfo(w, s.businessUserInfo.ref());
-        w.writeFieldEnd();
+
+    if (userTagCountMax.isSet()) {
+        strm << "    userTagCountMax = "
+            << userTagCountMax.ref() << "\n";
     }
-    if(s.photoUrl.isSet()) {
-        w.writeFieldBegin(QStringLiteral("photoUrl"), ThriftFieldType::T_STRING, 19);
-        w.writeString(s.photoUrl.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    userTagCountMax is not set\n";
     }
-    if(s.photoLastUpdated.isSet()) {
-        w.writeFieldBegin(QStringLiteral("photoLastUpdated"), ThriftFieldType::T_I64, 20);
-        w.writeI64(s.photoLastUpdated.ref());
-        w.writeFieldEnd();
+
+    if (noteTagCountMax.isSet()) {
+        strm << "    noteTagCountMax = "
+            << noteTagCountMax.ref() << "\n";
     }
-    if(s.accountLimits.isSet()) {
-        w.writeFieldBegin(QStringLiteral("accountLimits"), ThriftFieldType::T_STRUCT, 22);
-        writeAccountLimits(w, s.accountLimits.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noteTagCountMax is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (userSavedSearchesMax.isSet()) {
+        strm << "    userSavedSearchesMax = "
+            << userSavedSearchesMax.ref() << "\n";
+    }
+    else {
+        strm << "    userSavedSearchesMax is not set\n";
+    }
+
+    if (noteResourceCountMax.isSet()) {
+        strm << "    noteResourceCountMax = "
+            << noteResourceCountMax.ref() << "\n";
+    }
+    else {
+        strm << "    noteResourceCountMax is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readUser(ThriftBinaryBufferReader & r, User & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeUser(
+    ThriftBinaryBufferWriter & writer,
+    const User & s)
+{
+    writer.writeStructBegin(QStringLiteral("User"));
+    if (s.id.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("id"),
+            ThriftFieldType::T_I32,
+            1);
+
+        writer.writeI32(s.id.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.username.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("username"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.username.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.email.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("email"),
+            ThriftFieldType::T_STRING,
+            3);
+
+        writer.writeString(s.email.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.name.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("name"),
+            ThriftFieldType::T_STRING,
+            4);
+
+        writer.writeString(s.name.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.timezone.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("timezone"),
+            ThriftFieldType::T_STRING,
+            6);
+
+        writer.writeString(s.timezone.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.privilege.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("privilege"),
+            ThriftFieldType::T_I32,
+            7);
+
+        writer.writeI32(static_cast<qint32>(s.privilege.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.serviceLevel.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("serviceLevel"),
+            ThriftFieldType::T_I32,
+            21);
+
+        writer.writeI32(static_cast<qint32>(s.serviceLevel.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.created.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("created"),
+            ThriftFieldType::T_I64,
+            9);
+
+        writer.writeI64(s.created.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.updated.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("updated"),
+            ThriftFieldType::T_I64,
+            10);
+
+        writer.writeI64(s.updated.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.deleted.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("deleted"),
+            ThriftFieldType::T_I64,
+            11);
+
+        writer.writeI64(s.deleted.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.active.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("active"),
+            ThriftFieldType::T_BOOL,
+            13);
+
+        writer.writeBool(s.active.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.shardId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("shardId"),
+            ThriftFieldType::T_STRING,
+            14);
+
+        writer.writeString(s.shardId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.attributes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("attributes"),
+            ThriftFieldType::T_STRUCT,
+            15);
+
+        writeUserAttributes(writer, s.attributes.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.accounting.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("accounting"),
+            ThriftFieldType::T_STRUCT,
+            16);
+
+        writeAccounting(writer, s.accounting.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.businessUserInfo.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("businessUserInfo"),
+            ThriftFieldType::T_STRUCT,
+            18);
+
+        writeBusinessUserInfo(writer, s.businessUserInfo.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.photoUrl.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("photoUrl"),
+            ThriftFieldType::T_STRING,
+            19);
+
+        writer.writeString(s.photoUrl.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.photoLastUpdated.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("photoLastUpdated"),
+            ThriftFieldType::T_I64,
+            20);
+
+        writer.writeI64(s.photoLastUpdated.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.accountLimits.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("accountLimits"),
+            ThriftFieldType::T_STRUCT,
+            22);
+
+        writeAccountLimits(writer, s.accountLimits.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readUser(
+    ThriftBinaryBufferReader & reader,
+    User & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I32) {
                 UserID v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.id = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.username = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.email = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.name = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.timezone = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_I32) {
-                PrivilegeLevel::type v;
-                readEnumPrivilegeLevel(r, v);
+                PrivilegeLevel v;
+                readEnumPrivilegeLevel(reader, v);
                 s.privilege = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 21) {
             if (fieldType == ThriftFieldType::T_I32) {
-                ServiceLevel::type v;
-                readEnumServiceLevel(r, v);
+                ServiceLevel v;
+                readEnumServiceLevel(reader, v);
                 s.serviceLevel = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 9) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.created = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 10) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.updated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 11) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.deleted = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 13) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.active = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 14) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.shardId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 15) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 UserAttributes v;
-                readUserAttributes(r, v);
+                readUserAttributes(reader, v);
                 s.attributes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 16) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 Accounting v;
-                readAccounting(r, v);
+                readAccounting(reader, v);
                 s.accounting = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 18) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 BusinessUserInfo v;
-                readBusinessUserInfo(r, v);
+                readBusinessUserInfo(reader, v);
                 s.businessUserInfo = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 19) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.photoUrl = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 20) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.photoLastUpdated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 22) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 AccountLimits v;
-                readAccountLimits(r, v);
+                readAccountLimits(reader, v);
                 s.accountLimits = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeContact(ThriftBinaryBufferWriter & w, const Contact & s) {
-    w.writeStructBegin(QStringLiteral("Contact"));
-    if(s.name.isSet()) {
-        w.writeFieldBegin(QStringLiteral("name"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.name.ref());
-        w.writeFieldEnd();
+void User::print(QTextStream & strm) const
+{
+    strm << "User: {\n";
+    localData.print(strm);
+
+    if (id.isSet()) {
+        strm << "    id = "
+            << id.ref() << "\n";
     }
-    if(s.id.isSet()) {
-        w.writeFieldBegin(QStringLiteral("id"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.id.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    id is not set\n";
     }
-    if(s.type.isSet()) {
-        w.writeFieldBegin(QStringLiteral("type"), ThriftFieldType::T_I32, 3);
-        w.writeI32(static_cast<qint32>(s.type.ref()));
-        w.writeFieldEnd();
+
+    if (username.isSet()) {
+        strm << "    username = "
+            << username.ref() << "\n";
     }
-    if(s.photoUrl.isSet()) {
-        w.writeFieldBegin(QStringLiteral("photoUrl"), ThriftFieldType::T_STRING, 4);
-        w.writeString(s.photoUrl.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    username is not set\n";
     }
-    if(s.photoLastUpdated.isSet()) {
-        w.writeFieldBegin(QStringLiteral("photoLastUpdated"), ThriftFieldType::T_I64, 5);
-        w.writeI64(s.photoLastUpdated.ref());
-        w.writeFieldEnd();
+
+    if (email.isSet()) {
+        strm << "    email = "
+            << email.ref() << "\n";
     }
-    if(s.messagingPermit.isSet()) {
-        w.writeFieldBegin(QStringLiteral("messagingPermit"), ThriftFieldType::T_STRING, 6);
-        w.writeBinary(s.messagingPermit.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    email is not set\n";
     }
-    if(s.messagingPermitExpires.isSet()) {
-        w.writeFieldBegin(QStringLiteral("messagingPermitExpires"), ThriftFieldType::T_I64, 7);
-        w.writeI64(s.messagingPermitExpires.ref());
-        w.writeFieldEnd();
+
+    if (name.isSet()) {
+        strm << "    name = "
+            << name.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    name is not set\n";
+    }
+
+    if (timezone.isSet()) {
+        strm << "    timezone = "
+            << timezone.ref() << "\n";
+    }
+    else {
+        strm << "    timezone is not set\n";
+    }
+
+    if (privilege.isSet()) {
+        strm << "    privilege = "
+            << privilege.ref() << "\n";
+    }
+    else {
+        strm << "    privilege is not set\n";
+    }
+
+    if (serviceLevel.isSet()) {
+        strm << "    serviceLevel = "
+            << serviceLevel.ref() << "\n";
+    }
+    else {
+        strm << "    serviceLevel is not set\n";
+    }
+
+    if (created.isSet()) {
+        strm << "    created = "
+            << created.ref() << "\n";
+    }
+    else {
+        strm << "    created is not set\n";
+    }
+
+    if (updated.isSet()) {
+        strm << "    updated = "
+            << updated.ref() << "\n";
+    }
+    else {
+        strm << "    updated is not set\n";
+    }
+
+    if (deleted.isSet()) {
+        strm << "    deleted = "
+            << deleted.ref() << "\n";
+    }
+    else {
+        strm << "    deleted is not set\n";
+    }
+
+    if (active.isSet()) {
+        strm << "    active = "
+            << active.ref() << "\n";
+    }
+    else {
+        strm << "    active is not set\n";
+    }
+
+    if (shardId.isSet()) {
+        strm << "    shardId = "
+            << shardId.ref() << "\n";
+    }
+    else {
+        strm << "    shardId is not set\n";
+    }
+
+    if (attributes.isSet()) {
+        strm << "    attributes = "
+            << attributes.ref() << "\n";
+    }
+    else {
+        strm << "    attributes is not set\n";
+    }
+
+    if (accounting.isSet()) {
+        strm << "    accounting = "
+            << accounting.ref() << "\n";
+    }
+    else {
+        strm << "    accounting is not set\n";
+    }
+
+    if (businessUserInfo.isSet()) {
+        strm << "    businessUserInfo = "
+            << businessUserInfo.ref() << "\n";
+    }
+    else {
+        strm << "    businessUserInfo is not set\n";
+    }
+
+    if (photoUrl.isSet()) {
+        strm << "    photoUrl = "
+            << photoUrl.ref() << "\n";
+    }
+    else {
+        strm << "    photoUrl is not set\n";
+    }
+
+    if (photoLastUpdated.isSet()) {
+        strm << "    photoLastUpdated = "
+            << photoLastUpdated.ref() << "\n";
+    }
+    else {
+        strm << "    photoLastUpdated is not set\n";
+    }
+
+    if (accountLimits.isSet()) {
+        strm << "    accountLimits = "
+            << accountLimits.ref() << "\n";
+    }
+    else {
+        strm << "    accountLimits is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readContact(ThriftBinaryBufferReader & r, Contact & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeContact(
+    ThriftBinaryBufferWriter & writer,
+    const Contact & s)
+{
+    writer.writeStructBegin(QStringLiteral("Contact"));
+    if (s.name.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("name"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.name.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.id.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("id"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.id.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.type.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("type"),
+            ThriftFieldType::T_I32,
+            3);
+
+        writer.writeI32(static_cast<qint32>(s.type.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.photoUrl.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("photoUrl"),
+            ThriftFieldType::T_STRING,
+            4);
+
+        writer.writeString(s.photoUrl.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.photoLastUpdated.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("photoLastUpdated"),
+            ThriftFieldType::T_I64,
+            5);
+
+        writer.writeI64(s.photoLastUpdated.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.messagingPermit.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("messagingPermit"),
+            ThriftFieldType::T_STRING,
+            6);
+
+        writer.writeBinary(s.messagingPermit.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.messagingPermitExpires.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("messagingPermitExpires"),
+            ThriftFieldType::T_I64,
+            7);
+
+        writer.writeI64(s.messagingPermitExpires.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readContact(
+    ThriftBinaryBufferReader & reader,
+    Contact & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.name = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.id = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I32) {
-                ContactType::type v;
-                readEnumContactType(r, v);
+                ContactType v;
+                readEnumContactType(reader, v);
                 s.type = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.photoUrl = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.photoLastUpdated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QByteArray v;
-                r.readBinary(v);
+                reader.readBinary(v);
                 s.messagingPermit = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.messagingPermitExpires = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeIdentity(ThriftBinaryBufferWriter & w, const Identity & s) {
-    w.writeStructBegin(QStringLiteral("Identity"));
-    w.writeFieldBegin(QStringLiteral("id"), ThriftFieldType::T_I64, 1);
-    w.writeI64(s.id);
-    w.writeFieldEnd();
-    if(s.contact.isSet()) {
-        w.writeFieldBegin(QStringLiteral("contact"), ThriftFieldType::T_STRUCT, 2);
-        writeContact(w, s.contact.ref());
-        w.writeFieldEnd();
+void Contact::print(QTextStream & strm) const
+{
+    strm << "Contact: {\n";
+    localData.print(strm);
+
+    if (name.isSet()) {
+        strm << "    name = "
+            << name.ref() << "\n";
     }
-    if(s.userId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("userId"), ThriftFieldType::T_I32, 3);
-        w.writeI32(s.userId.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    name is not set\n";
     }
-    if(s.deactivated.isSet()) {
-        w.writeFieldBegin(QStringLiteral("deactivated"), ThriftFieldType::T_BOOL, 4);
-        w.writeBool(s.deactivated.ref());
-        w.writeFieldEnd();
+
+    if (id.isSet()) {
+        strm << "    id = "
+            << id.ref() << "\n";
     }
-    if(s.sameBusiness.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sameBusiness"), ThriftFieldType::T_BOOL, 5);
-        w.writeBool(s.sameBusiness.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    id is not set\n";
     }
-    if(s.blocked.isSet()) {
-        w.writeFieldBegin(QStringLiteral("blocked"), ThriftFieldType::T_BOOL, 6);
-        w.writeBool(s.blocked.ref());
-        w.writeFieldEnd();
+
+    if (type.isSet()) {
+        strm << "    type = "
+            << type.ref() << "\n";
     }
-    if(s.userConnected.isSet()) {
-        w.writeFieldBegin(QStringLiteral("userConnected"), ThriftFieldType::T_BOOL, 7);
-        w.writeBool(s.userConnected.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    type is not set\n";
     }
-    if(s.eventId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("eventId"), ThriftFieldType::T_I64, 8);
-        w.writeI64(s.eventId.ref());
-        w.writeFieldEnd();
+
+    if (photoUrl.isSet()) {
+        strm << "    photoUrl = "
+            << photoUrl.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    photoUrl is not set\n";
+    }
+
+    if (photoLastUpdated.isSet()) {
+        strm << "    photoLastUpdated = "
+            << photoLastUpdated.ref() << "\n";
+    }
+    else {
+        strm << "    photoLastUpdated is not set\n";
+    }
+
+    if (messagingPermit.isSet()) {
+        strm << "    messagingPermit = "
+            << messagingPermit.ref() << "\n";
+    }
+    else {
+        strm << "    messagingPermit is not set\n";
+    }
+
+    if (messagingPermitExpires.isSet()) {
+        strm << "    messagingPermitExpires = "
+            << messagingPermitExpires.ref() << "\n";
+    }
+    else {
+        strm << "    messagingPermitExpires is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readIdentity(ThriftBinaryBufferReader & r, Identity & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeIdentity(
+    ThriftBinaryBufferWriter & writer,
+    const Identity & s)
+{
+    writer.writeStructBegin(QStringLiteral("Identity"));
+    writer.writeFieldBegin(
+        QStringLiteral("id"),
+        ThriftFieldType::T_I64,
+        1);
+
+    writer.writeI64(s.id);
+    writer.writeFieldEnd();
+
+    if (s.contact.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("contact"),
+            ThriftFieldType::T_STRUCT,
+            2);
+
+        writeContact(writer, s.contact.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.userId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("userId"),
+            ThriftFieldType::T_I32,
+            3);
+
+        writer.writeI32(s.userId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.deactivated.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("deactivated"),
+            ThriftFieldType::T_BOOL,
+            4);
+
+        writer.writeBool(s.deactivated.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.sameBusiness.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sameBusiness"),
+            ThriftFieldType::T_BOOL,
+            5);
+
+        writer.writeBool(s.sameBusiness.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.blocked.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("blocked"),
+            ThriftFieldType::T_BOOL,
+            6);
+
+        writer.writeBool(s.blocked.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.userConnected.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("userConnected"),
+            ThriftFieldType::T_BOOL,
+            7);
+
+        writer.writeBool(s.userConnected.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.eventId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("eventId"),
+            ThriftFieldType::T_I64,
+            8);
+
+        writer.writeI64(s.eventId.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readIdentity(
+    ThriftBinaryBufferReader & reader,
+    Identity & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
     bool id_isset = false;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I64) {
                 id_isset = true;
                 IdentityID v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.id = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 Contact v;
-                readContact(r, v);
+                readContact(reader, v);
                 s.contact = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I32) {
                 UserID v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.userId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.deactivated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.sameBusiness = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.blocked = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.userConnected = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_I64) {
                 MessageEventID v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.eventId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
-    if(!id_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Identity.id has no value"));
+    reader.readStructEnd();
+    if (!id_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Identity.id has no value"));
 }
 
-void writeTag(ThriftBinaryBufferWriter & w, const Tag & s) {
-    w.writeStructBegin(QStringLiteral("Tag"));
-    if(s.guid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("guid"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.guid.ref());
-        w.writeFieldEnd();
+void Identity::print(QTextStream & strm) const
+{
+    strm << "Identity: {\n";
+    localData.print(strm);
+    strm << "    id = "
+        << id << "\n";
+
+    if (contact.isSet()) {
+        strm << "    contact = "
+            << contact.ref() << "\n";
     }
-    if(s.name.isSet()) {
-        w.writeFieldBegin(QStringLiteral("name"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.name.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    contact is not set\n";
     }
-    if(s.parentGuid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("parentGuid"), ThriftFieldType::T_STRING, 3);
-        w.writeString(s.parentGuid.ref());
-        w.writeFieldEnd();
+
+    if (userId.isSet()) {
+        strm << "    userId = "
+            << userId.ref() << "\n";
     }
-    if(s.updateSequenceNum.isSet()) {
-        w.writeFieldBegin(QStringLiteral("updateSequenceNum"), ThriftFieldType::T_I32, 4);
-        w.writeI32(s.updateSequenceNum.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    userId is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (deactivated.isSet()) {
+        strm << "    deactivated = "
+            << deactivated.ref() << "\n";
+    }
+    else {
+        strm << "    deactivated is not set\n";
+    }
+
+    if (sameBusiness.isSet()) {
+        strm << "    sameBusiness = "
+            << sameBusiness.ref() << "\n";
+    }
+    else {
+        strm << "    sameBusiness is not set\n";
+    }
+
+    if (blocked.isSet()) {
+        strm << "    blocked = "
+            << blocked.ref() << "\n";
+    }
+    else {
+        strm << "    blocked is not set\n";
+    }
+
+    if (userConnected.isSet()) {
+        strm << "    userConnected = "
+            << userConnected.ref() << "\n";
+    }
+    else {
+        strm << "    userConnected is not set\n";
+    }
+
+    if (eventId.isSet()) {
+        strm << "    eventId = "
+            << eventId.ref() << "\n";
+    }
+    else {
+        strm << "    eventId is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readTag(ThriftBinaryBufferReader & r, Tag & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeTag(
+    ThriftBinaryBufferWriter & writer,
+    const Tag & s)
+{
+    writer.writeStructBegin(QStringLiteral("Tag"));
+    if (s.guid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("guid"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.guid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.name.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("name"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.name.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.parentGuid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("parentGuid"),
+            ThriftFieldType::T_STRING,
+            3);
+
+        writer.writeString(s.parentGuid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.updateSequenceNum.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("updateSequenceNum"),
+            ThriftFieldType::T_I32,
+            4);
+
+        writer.writeI32(s.updateSequenceNum.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readTag(
+    ThriftBinaryBufferReader & reader,
+    Tag & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 Guid v;
-                r.readString(v);
+                reader.readString(v);
                 s.guid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.name = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 Guid v;
-                r.readString(v);
+                reader.readString(v);
                 s.parentGuid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.updateSequenceNum = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeLazyMap(ThriftBinaryBufferWriter & w, const LazyMap & s) {
-    w.writeStructBegin(QStringLiteral("LazyMap"));
-    if(s.keysOnly.isSet()) {
-        w.writeFieldBegin(QStringLiteral("keysOnly"), ThriftFieldType::T_SET, 1);
-        w.writeSetBegin(ThriftFieldType::T_STRING, s.keysOnly.ref().count());
-        for(QSet< QString >::const_iterator it = s.keysOnly.ref().constBegin(), end = s.keysOnly.ref().constEnd(); it != end; ++it) {
-            w.writeString(*it);
-        }
-        w.writeSetEnd();
-        w.writeFieldEnd();
+void Tag::print(QTextStream & strm) const
+{
+    strm << "Tag: {\n";
+    localData.print(strm);
+
+    if (guid.isSet()) {
+        strm << "    guid = "
+            << guid.ref() << "\n";
     }
-    if(s.fullMap.isSet()) {
-        w.writeFieldBegin(QStringLiteral("fullMap"), ThriftFieldType::T_MAP, 2);
-        w.writeMapBegin(ThriftFieldType::T_STRING, ThriftFieldType::T_STRING, s.fullMap.ref().size());
-        for(QMap< QString, QString >::const_iterator it = s.fullMap.ref().constBegin(), end = s.fullMap.ref().constEnd(); it != end; ++it) {
-            w.writeString(it.key());
-            w.writeString(it.value());
-        }
-        w.writeMapEnd();
-        w.writeFieldEnd();
+    else {
+        strm << "    guid is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (name.isSet()) {
+        strm << "    name = "
+            << name.ref() << "\n";
+    }
+    else {
+        strm << "    name is not set\n";
+    }
+
+    if (parentGuid.isSet()) {
+        strm << "    parentGuid = "
+            << parentGuid.ref() << "\n";
+    }
+    else {
+        strm << "    parentGuid is not set\n";
+    }
+
+    if (updateSequenceNum.isSet()) {
+        strm << "    updateSequenceNum = "
+            << updateSequenceNum.ref() << "\n";
+    }
+    else {
+        strm << "    updateSequenceNum is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readLazyMap(ThriftBinaryBufferReader & r, LazyMap & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeLazyMap(
+    ThriftBinaryBufferWriter & writer,
+    const LazyMap & s)
+{
+    writer.writeStructBegin(QStringLiteral("LazyMap"));
+    if (s.keysOnly.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("keysOnly"),
+            ThriftFieldType::T_SET,
+            1);
+
+        writer.writeSetBegin(ThriftFieldType::T_STRING, s.keysOnly.ref().count());
+        for(const auto & value: qAsConst(s.keysOnly.ref())) {
+            writer.writeString(value);
+        }
+        writer.writeSetEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.fullMap.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("fullMap"),
+            ThriftFieldType::T_MAP,
+            2);
+
+        writer.writeMapBegin(ThriftFieldType::T_STRING, ThriftFieldType::T_STRING, s.fullMap.ref().size());
+        for(const auto & it: toRange(s.fullMap.ref())) {
+            writer.writeString(it.key());
+            writer.writeString(it.value());
+        }
+        writer.writeMapEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readLazyMap(
+    ThriftBinaryBufferReader & reader,
+    LazyMap & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_SET) {
-                QSet< QString > v;
+                QSet<QString> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readSetBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readSetBegin(elemType, size);
                 v.reserve(size);
-                if (elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect set type (LazyMap.keysOnly)"));
+                if (elemType != ThriftFieldType::T_STRING) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect set type (LazyMap.keysOnly)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     QString elem;
-                    r.readString(elem);
+                    reader.readString(elem);
                     v.insert(elem);
                 }
-                r.readSetEnd();
+                reader.readSetEnd();
                 s.keysOnly = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_MAP) {
-                QMap< QString, QString > v;
+                QMap<QString, QString> v;
                 qint32 size;
-                ThriftFieldType::type keyType;
-                ThriftFieldType::type elemType;
-                r.readMapBegin(keyType, elemType, size);
+                ThriftFieldType keyType;
+                ThriftFieldType elemType;
+                reader.readMapBegin(keyType, elemType, size);
                 if (keyType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect map key type (LazyMap.fullMap)"));
                 if (elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect map value type (LazyMap.fullMap)"));
                 for(qint32 i = 0; i < size; i++) {
                     QString key;
-                    r.readString(key);
+                    reader.readString(key);
                     QString value;
-                    r.readString(value);
+                    reader.readString(value);
                     v[key] = value;
                 }
-                r.readMapEnd();
+                reader.readMapEnd();
                 s.fullMap = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeResourceAttributes(ThriftBinaryBufferWriter & w, const ResourceAttributes & s) {
-    w.writeStructBegin(QStringLiteral("ResourceAttributes"));
-    if(s.sourceURL.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sourceURL"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.sourceURL.ref());
-        w.writeFieldEnd();
+void LazyMap::print(QTextStream & strm) const
+{
+    strm << "LazyMap: {\n";
+    localData.print(strm);
+
+    if (keysOnly.isSet()) {
+        strm << "    keysOnly = "
+            << "QSet<QString> {";
+        for(const auto & v: keysOnly.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
     }
-    if(s.timestamp.isSet()) {
-        w.writeFieldBegin(QStringLiteral("timestamp"), ThriftFieldType::T_I64, 2);
-        w.writeI64(s.timestamp.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    keysOnly is not set\n";
     }
-    if(s.latitude.isSet()) {
-        w.writeFieldBegin(QStringLiteral("latitude"), ThriftFieldType::T_DOUBLE, 3);
-        w.writeDouble(s.latitude.ref());
-        w.writeFieldEnd();
+
+    if (fullMap.isSet()) {
+        strm << "    fullMap = "
+            << "QMap<QString, QString> {";
+        for(const auto & it: toRange(fullMap.ref())) {
+            strm << "        [" << it.key() << "] = " << it.value() << "\n";
+        }
+        strm << "    }\n";
     }
-    if(s.longitude.isSet()) {
-        w.writeFieldBegin(QStringLiteral("longitude"), ThriftFieldType::T_DOUBLE, 4);
-        w.writeDouble(s.longitude.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    fullMap is not set\n";
     }
-    if(s.altitude.isSet()) {
-        w.writeFieldBegin(QStringLiteral("altitude"), ThriftFieldType::T_DOUBLE, 5);
-        w.writeDouble(s.altitude.ref());
-        w.writeFieldEnd();
-    }
-    if(s.cameraMake.isSet()) {
-        w.writeFieldBegin(QStringLiteral("cameraMake"), ThriftFieldType::T_STRING, 6);
-        w.writeString(s.cameraMake.ref());
-        w.writeFieldEnd();
-    }
-    if(s.cameraModel.isSet()) {
-        w.writeFieldBegin(QStringLiteral("cameraModel"), ThriftFieldType::T_STRING, 7);
-        w.writeString(s.cameraModel.ref());
-        w.writeFieldEnd();
-    }
-    if(s.clientWillIndex.isSet()) {
-        w.writeFieldBegin(QStringLiteral("clientWillIndex"), ThriftFieldType::T_BOOL, 8);
-        w.writeBool(s.clientWillIndex.ref());
-        w.writeFieldEnd();
-    }
-    if(s.recoType.isSet()) {
-        w.writeFieldBegin(QStringLiteral("recoType"), ThriftFieldType::T_STRING, 9);
-        w.writeString(s.recoType.ref());
-        w.writeFieldEnd();
-    }
-    if(s.fileName.isSet()) {
-        w.writeFieldBegin(QStringLiteral("fileName"), ThriftFieldType::T_STRING, 10);
-        w.writeString(s.fileName.ref());
-        w.writeFieldEnd();
-    }
-    if(s.attachment.isSet()) {
-        w.writeFieldBegin(QStringLiteral("attachment"), ThriftFieldType::T_BOOL, 11);
-        w.writeBool(s.attachment.ref());
-        w.writeFieldEnd();
-    }
-    if(s.applicationData.isSet()) {
-        w.writeFieldBegin(QStringLiteral("applicationData"), ThriftFieldType::T_STRUCT, 12);
-        writeLazyMap(w, s.applicationData.ref());
-        w.writeFieldEnd();
-    }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    strm << "}\n";
 }
 
-void readResourceAttributes(ThriftBinaryBufferReader & r, ResourceAttributes & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeResourceAttributes(
+    ThriftBinaryBufferWriter & writer,
+    const ResourceAttributes & s)
+{
+    writer.writeStructBegin(QStringLiteral("ResourceAttributes"));
+    if (s.sourceURL.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sourceURL"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.sourceURL.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.timestamp.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("timestamp"),
+            ThriftFieldType::T_I64,
+            2);
+
+        writer.writeI64(s.timestamp.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.latitude.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("latitude"),
+            ThriftFieldType::T_DOUBLE,
+            3);
+
+        writer.writeDouble(s.latitude.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.longitude.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("longitude"),
+            ThriftFieldType::T_DOUBLE,
+            4);
+
+        writer.writeDouble(s.longitude.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.altitude.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("altitude"),
+            ThriftFieldType::T_DOUBLE,
+            5);
+
+        writer.writeDouble(s.altitude.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.cameraMake.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("cameraMake"),
+            ThriftFieldType::T_STRING,
+            6);
+
+        writer.writeString(s.cameraMake.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.cameraModel.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("cameraModel"),
+            ThriftFieldType::T_STRING,
+            7);
+
+        writer.writeString(s.cameraModel.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.clientWillIndex.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("clientWillIndex"),
+            ThriftFieldType::T_BOOL,
+            8);
+
+        writer.writeBool(s.clientWillIndex.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.recoType.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("recoType"),
+            ThriftFieldType::T_STRING,
+            9);
+
+        writer.writeString(s.recoType.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.fileName.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("fileName"),
+            ThriftFieldType::T_STRING,
+            10);
+
+        writer.writeString(s.fileName.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.attachment.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("attachment"),
+            ThriftFieldType::T_BOOL,
+            11);
+
+        writer.writeBool(s.attachment.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.applicationData.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("applicationData"),
+            ThriftFieldType::T_STRUCT,
+            12);
+
+        writeLazyMap(writer, s.applicationData.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readResourceAttributes(
+    ThriftBinaryBufferReader & reader,
+    ResourceAttributes & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.sourceURL = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.timestamp = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_DOUBLE) {
                 double v;
-                r.readDouble(v);
+                reader.readDouble(v);
                 s.latitude = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_DOUBLE) {
                 double v;
-                r.readDouble(v);
+                reader.readDouble(v);
                 s.longitude = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_DOUBLE) {
                 double v;
-                r.readDouble(v);
+                reader.readDouble(v);
                 s.altitude = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.cameraMake = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.cameraModel = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.clientWillIndex = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 9) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.recoType = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 10) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.fileName = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 11) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.attachment = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 12) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 LazyMap v;
-                readLazyMap(r, v);
+                readLazyMap(reader, v);
                 s.applicationData = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeResource(ThriftBinaryBufferWriter & w, const Resource & s) {
-    w.writeStructBegin(QStringLiteral("Resource"));
-    if(s.guid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("guid"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.guid.ref());
-        w.writeFieldEnd();
+void ResourceAttributes::print(QTextStream & strm) const
+{
+    strm << "ResourceAttributes: {\n";
+    localData.print(strm);
+
+    if (sourceURL.isSet()) {
+        strm << "    sourceURL = "
+            << sourceURL.ref() << "\n";
     }
-    if(s.noteGuid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noteGuid"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.noteGuid.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    sourceURL is not set\n";
     }
-    if(s.data.isSet()) {
-        w.writeFieldBegin(QStringLiteral("data"), ThriftFieldType::T_STRUCT, 3);
-        writeData(w, s.data.ref());
-        w.writeFieldEnd();
+
+    if (timestamp.isSet()) {
+        strm << "    timestamp = "
+            << timestamp.ref() << "\n";
     }
-    if(s.mime.isSet()) {
-        w.writeFieldBegin(QStringLiteral("mime"), ThriftFieldType::T_STRING, 4);
-        w.writeString(s.mime.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    timestamp is not set\n";
     }
-    if(s.width.isSet()) {
-        w.writeFieldBegin(QStringLiteral("width"), ThriftFieldType::T_I16, 5);
-        w.writeI16(s.width.ref());
-        w.writeFieldEnd();
+
+    if (latitude.isSet()) {
+        strm << "    latitude = "
+            << latitude.ref() << "\n";
     }
-    if(s.height.isSet()) {
-        w.writeFieldBegin(QStringLiteral("height"), ThriftFieldType::T_I16, 6);
-        w.writeI16(s.height.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    latitude is not set\n";
     }
-    if(s.duration.isSet()) {
-        w.writeFieldBegin(QStringLiteral("duration"), ThriftFieldType::T_I16, 7);
-        w.writeI16(s.duration.ref());
-        w.writeFieldEnd();
+
+    if (longitude.isSet()) {
+        strm << "    longitude = "
+            << longitude.ref() << "\n";
     }
-    if(s.active.isSet()) {
-        w.writeFieldBegin(QStringLiteral("active"), ThriftFieldType::T_BOOL, 8);
-        w.writeBool(s.active.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    longitude is not set\n";
     }
-    if(s.recognition.isSet()) {
-        w.writeFieldBegin(QStringLiteral("recognition"), ThriftFieldType::T_STRUCT, 9);
-        writeData(w, s.recognition.ref());
-        w.writeFieldEnd();
+
+    if (altitude.isSet()) {
+        strm << "    altitude = "
+            << altitude.ref() << "\n";
     }
-    if(s.attributes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("attributes"), ThriftFieldType::T_STRUCT, 11);
-        writeResourceAttributes(w, s.attributes.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    altitude is not set\n";
     }
-    if(s.updateSequenceNum.isSet()) {
-        w.writeFieldBegin(QStringLiteral("updateSequenceNum"), ThriftFieldType::T_I32, 12);
-        w.writeI32(s.updateSequenceNum.ref());
-        w.writeFieldEnd();
+
+    if (cameraMake.isSet()) {
+        strm << "    cameraMake = "
+            << cameraMake.ref() << "\n";
     }
-    if(s.alternateData.isSet()) {
-        w.writeFieldBegin(QStringLiteral("alternateData"), ThriftFieldType::T_STRUCT, 13);
-        writeData(w, s.alternateData.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    cameraMake is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (cameraModel.isSet()) {
+        strm << "    cameraModel = "
+            << cameraModel.ref() << "\n";
+    }
+    else {
+        strm << "    cameraModel is not set\n";
+    }
+
+    if (clientWillIndex.isSet()) {
+        strm << "    clientWillIndex = "
+            << clientWillIndex.ref() << "\n";
+    }
+    else {
+        strm << "    clientWillIndex is not set\n";
+    }
+
+    if (recoType.isSet()) {
+        strm << "    recoType = "
+            << recoType.ref() << "\n";
+    }
+    else {
+        strm << "    recoType is not set\n";
+    }
+
+    if (fileName.isSet()) {
+        strm << "    fileName = "
+            << fileName.ref() << "\n";
+    }
+    else {
+        strm << "    fileName is not set\n";
+    }
+
+    if (attachment.isSet()) {
+        strm << "    attachment = "
+            << attachment.ref() << "\n";
+    }
+    else {
+        strm << "    attachment is not set\n";
+    }
+
+    if (applicationData.isSet()) {
+        strm << "    applicationData = "
+            << applicationData.ref() << "\n";
+    }
+    else {
+        strm << "    applicationData is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readResource(ThriftBinaryBufferReader & r, Resource & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeResource(
+    ThriftBinaryBufferWriter & writer,
+    const Resource & s)
+{
+    writer.writeStructBegin(QStringLiteral("Resource"));
+    if (s.guid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("guid"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.guid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noteGuid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noteGuid"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.noteGuid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.data.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("data"),
+            ThriftFieldType::T_STRUCT,
+            3);
+
+        writeData(writer, s.data.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.mime.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("mime"),
+            ThriftFieldType::T_STRING,
+            4);
+
+        writer.writeString(s.mime.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.width.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("width"),
+            ThriftFieldType::T_I16,
+            5);
+
+        writer.writeI16(s.width.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.height.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("height"),
+            ThriftFieldType::T_I16,
+            6);
+
+        writer.writeI16(s.height.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.duration.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("duration"),
+            ThriftFieldType::T_I16,
+            7);
+
+        writer.writeI16(s.duration.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.active.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("active"),
+            ThriftFieldType::T_BOOL,
+            8);
+
+        writer.writeBool(s.active.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.recognition.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("recognition"),
+            ThriftFieldType::T_STRUCT,
+            9);
+
+        writeData(writer, s.recognition.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.attributes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("attributes"),
+            ThriftFieldType::T_STRUCT,
+            11);
+
+        writeResourceAttributes(writer, s.attributes.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.updateSequenceNum.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("updateSequenceNum"),
+            ThriftFieldType::T_I32,
+            12);
+
+        writer.writeI32(s.updateSequenceNum.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.alternateData.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("alternateData"),
+            ThriftFieldType::T_STRUCT,
+            13);
+
+        writeData(writer, s.alternateData.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readResource(
+    ThriftBinaryBufferReader & reader,
+    Resource & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 Guid v;
-                r.readString(v);
+                reader.readString(v);
                 s.guid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 Guid v;
-                r.readString(v);
+                reader.readString(v);
                 s.noteGuid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 Data v;
-                readData(r, v);
+                readData(reader, v);
                 s.data = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.mime = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_I16) {
                 qint16 v;
-                r.readI16(v);
+                reader.readI16(v);
                 s.width = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_I16) {
                 qint16 v;
-                r.readI16(v);
+                reader.readI16(v);
                 s.height = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_I16) {
                 qint16 v;
-                r.readI16(v);
+                reader.readI16(v);
                 s.duration = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.active = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 9) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 Data v;
-                readData(r, v);
+                readData(reader, v);
                 s.recognition = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 11) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 ResourceAttributes v;
-                readResourceAttributes(r, v);
+                readResourceAttributes(reader, v);
                 s.attributes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 12) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.updateSequenceNum = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 13) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 Data v;
-                readData(r, v);
+                readData(reader, v);
                 s.alternateData = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeNoteAttributes(ThriftBinaryBufferWriter & w, const NoteAttributes & s) {
-    w.writeStructBegin(QStringLiteral("NoteAttributes"));
-    if(s.subjectDate.isSet()) {
-        w.writeFieldBegin(QStringLiteral("subjectDate"), ThriftFieldType::T_I64, 1);
-        w.writeI64(s.subjectDate.ref());
-        w.writeFieldEnd();
+void Resource::print(QTextStream & strm) const
+{
+    strm << "Resource: {\n";
+    localData.print(strm);
+
+    if (guid.isSet()) {
+        strm << "    guid = "
+            << guid.ref() << "\n";
     }
-    if(s.latitude.isSet()) {
-        w.writeFieldBegin(QStringLiteral("latitude"), ThriftFieldType::T_DOUBLE, 10);
-        w.writeDouble(s.latitude.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    guid is not set\n";
     }
-    if(s.longitude.isSet()) {
-        w.writeFieldBegin(QStringLiteral("longitude"), ThriftFieldType::T_DOUBLE, 11);
-        w.writeDouble(s.longitude.ref());
-        w.writeFieldEnd();
+
+    if (noteGuid.isSet()) {
+        strm << "    noteGuid = "
+            << noteGuid.ref() << "\n";
     }
-    if(s.altitude.isSet()) {
-        w.writeFieldBegin(QStringLiteral("altitude"), ThriftFieldType::T_DOUBLE, 12);
-        w.writeDouble(s.altitude.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noteGuid is not set\n";
     }
-    if(s.author.isSet()) {
-        w.writeFieldBegin(QStringLiteral("author"), ThriftFieldType::T_STRING, 13);
-        w.writeString(s.author.ref());
-        w.writeFieldEnd();
+
+    if (data.isSet()) {
+        strm << "    data = "
+            << data.ref() << "\n";
     }
-    if(s.source.isSet()) {
-        w.writeFieldBegin(QStringLiteral("source"), ThriftFieldType::T_STRING, 14);
-        w.writeString(s.source.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    data is not set\n";
     }
-    if(s.sourceURL.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sourceURL"), ThriftFieldType::T_STRING, 15);
-        w.writeString(s.sourceURL.ref());
-        w.writeFieldEnd();
+
+    if (mime.isSet()) {
+        strm << "    mime = "
+            << mime.ref() << "\n";
     }
-    if(s.sourceApplication.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sourceApplication"), ThriftFieldType::T_STRING, 16);
-        w.writeString(s.sourceApplication.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    mime is not set\n";
     }
-    if(s.shareDate.isSet()) {
-        w.writeFieldBegin(QStringLiteral("shareDate"), ThriftFieldType::T_I64, 17);
-        w.writeI64(s.shareDate.ref());
-        w.writeFieldEnd();
+
+    if (width.isSet()) {
+        strm << "    width = "
+            << width.ref() << "\n";
     }
-    if(s.reminderOrder.isSet()) {
-        w.writeFieldBegin(QStringLiteral("reminderOrder"), ThriftFieldType::T_I64, 18);
-        w.writeI64(s.reminderOrder.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    width is not set\n";
     }
-    if(s.reminderDoneTime.isSet()) {
-        w.writeFieldBegin(QStringLiteral("reminderDoneTime"), ThriftFieldType::T_I64, 19);
-        w.writeI64(s.reminderDoneTime.ref());
-        w.writeFieldEnd();
+
+    if (height.isSet()) {
+        strm << "    height = "
+            << height.ref() << "\n";
     }
-    if(s.reminderTime.isSet()) {
-        w.writeFieldBegin(QStringLiteral("reminderTime"), ThriftFieldType::T_I64, 20);
-        w.writeI64(s.reminderTime.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    height is not set\n";
     }
-    if(s.placeName.isSet()) {
-        w.writeFieldBegin(QStringLiteral("placeName"), ThriftFieldType::T_STRING, 21);
-        w.writeString(s.placeName.ref());
-        w.writeFieldEnd();
+
+    if (duration.isSet()) {
+        strm << "    duration = "
+            << duration.ref() << "\n";
     }
-    if(s.contentClass.isSet()) {
-        w.writeFieldBegin(QStringLiteral("contentClass"), ThriftFieldType::T_STRING, 22);
-        w.writeString(s.contentClass.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    duration is not set\n";
     }
-    if(s.applicationData.isSet()) {
-        w.writeFieldBegin(QStringLiteral("applicationData"), ThriftFieldType::T_STRUCT, 23);
-        writeLazyMap(w, s.applicationData.ref());
-        w.writeFieldEnd();
+
+    if (active.isSet()) {
+        strm << "    active = "
+            << active.ref() << "\n";
     }
-    if(s.lastEditedBy.isSet()) {
-        w.writeFieldBegin(QStringLiteral("lastEditedBy"), ThriftFieldType::T_STRING, 24);
-        w.writeString(s.lastEditedBy.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    active is not set\n";
     }
-    if(s.classifications.isSet()) {
-        w.writeFieldBegin(QStringLiteral("classifications"), ThriftFieldType::T_MAP, 26);
-        w.writeMapBegin(ThriftFieldType::T_STRING, ThriftFieldType::T_STRING, s.classifications.ref().size());
-        for(QMap< QString, QString >::const_iterator it = s.classifications.ref().constBegin(), end = s.classifications.ref().constEnd(); it != end; ++it) {
-            w.writeString(it.key());
-            w.writeString(it.value());
-        }
-        w.writeMapEnd();
-        w.writeFieldEnd();
+
+    if (recognition.isSet()) {
+        strm << "    recognition = "
+            << recognition.ref() << "\n";
     }
-    if(s.creatorId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("creatorId"), ThriftFieldType::T_I32, 27);
-        w.writeI32(s.creatorId.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    recognition is not set\n";
     }
-    if(s.lastEditorId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("lastEditorId"), ThriftFieldType::T_I32, 28);
-        w.writeI32(s.lastEditorId.ref());
-        w.writeFieldEnd();
+
+    if (attributes.isSet()) {
+        strm << "    attributes = "
+            << attributes.ref() << "\n";
     }
-    if(s.sharedWithBusiness.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sharedWithBusiness"), ThriftFieldType::T_BOOL, 29);
-        w.writeBool(s.sharedWithBusiness.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    attributes is not set\n";
     }
-    if(s.conflictSourceNoteGuid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("conflictSourceNoteGuid"), ThriftFieldType::T_STRING, 30);
-        w.writeString(s.conflictSourceNoteGuid.ref());
-        w.writeFieldEnd();
+
+    if (updateSequenceNum.isSet()) {
+        strm << "    updateSequenceNum = "
+            << updateSequenceNum.ref() << "\n";
     }
-    if(s.noteTitleQuality.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noteTitleQuality"), ThriftFieldType::T_I32, 31);
-        w.writeI32(s.noteTitleQuality.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    updateSequenceNum is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (alternateData.isSet()) {
+        strm << "    alternateData = "
+            << alternateData.ref() << "\n";
+    }
+    else {
+        strm << "    alternateData is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readNoteAttributes(ThriftBinaryBufferReader & r, NoteAttributes & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNoteAttributes(
+    ThriftBinaryBufferWriter & writer,
+    const NoteAttributes & s)
+{
+    writer.writeStructBegin(QStringLiteral("NoteAttributes"));
+    if (s.subjectDate.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("subjectDate"),
+            ThriftFieldType::T_I64,
+            1);
+
+        writer.writeI64(s.subjectDate.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.latitude.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("latitude"),
+            ThriftFieldType::T_DOUBLE,
+            10);
+
+        writer.writeDouble(s.latitude.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.longitude.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("longitude"),
+            ThriftFieldType::T_DOUBLE,
+            11);
+
+        writer.writeDouble(s.longitude.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.altitude.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("altitude"),
+            ThriftFieldType::T_DOUBLE,
+            12);
+
+        writer.writeDouble(s.altitude.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.author.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("author"),
+            ThriftFieldType::T_STRING,
+            13);
+
+        writer.writeString(s.author.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.source.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("source"),
+            ThriftFieldType::T_STRING,
+            14);
+
+        writer.writeString(s.source.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.sourceURL.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sourceURL"),
+            ThriftFieldType::T_STRING,
+            15);
+
+        writer.writeString(s.sourceURL.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.sourceApplication.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sourceApplication"),
+            ThriftFieldType::T_STRING,
+            16);
+
+        writer.writeString(s.sourceApplication.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.shareDate.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("shareDate"),
+            ThriftFieldType::T_I64,
+            17);
+
+        writer.writeI64(s.shareDate.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.reminderOrder.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("reminderOrder"),
+            ThriftFieldType::T_I64,
+            18);
+
+        writer.writeI64(s.reminderOrder.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.reminderDoneTime.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("reminderDoneTime"),
+            ThriftFieldType::T_I64,
+            19);
+
+        writer.writeI64(s.reminderDoneTime.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.reminderTime.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("reminderTime"),
+            ThriftFieldType::T_I64,
+            20);
+
+        writer.writeI64(s.reminderTime.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.placeName.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("placeName"),
+            ThriftFieldType::T_STRING,
+            21);
+
+        writer.writeString(s.placeName.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.contentClass.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("contentClass"),
+            ThriftFieldType::T_STRING,
+            22);
+
+        writer.writeString(s.contentClass.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.applicationData.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("applicationData"),
+            ThriftFieldType::T_STRUCT,
+            23);
+
+        writeLazyMap(writer, s.applicationData.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.lastEditedBy.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("lastEditedBy"),
+            ThriftFieldType::T_STRING,
+            24);
+
+        writer.writeString(s.lastEditedBy.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.classifications.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("classifications"),
+            ThriftFieldType::T_MAP,
+            26);
+
+        writer.writeMapBegin(ThriftFieldType::T_STRING, ThriftFieldType::T_STRING, s.classifications.ref().size());
+        for(const auto & it: toRange(s.classifications.ref())) {
+            writer.writeString(it.key());
+            writer.writeString(it.value());
+        }
+        writer.writeMapEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.creatorId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("creatorId"),
+            ThriftFieldType::T_I32,
+            27);
+
+        writer.writeI32(s.creatorId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.lastEditorId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("lastEditorId"),
+            ThriftFieldType::T_I32,
+            28);
+
+        writer.writeI32(s.lastEditorId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.sharedWithBusiness.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sharedWithBusiness"),
+            ThriftFieldType::T_BOOL,
+            29);
+
+        writer.writeBool(s.sharedWithBusiness.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.conflictSourceNoteGuid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("conflictSourceNoteGuid"),
+            ThriftFieldType::T_STRING,
+            30);
+
+        writer.writeString(s.conflictSourceNoteGuid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noteTitleQuality.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noteTitleQuality"),
+            ThriftFieldType::T_I32,
+            31);
+
+        writer.writeI32(s.noteTitleQuality.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNoteAttributes(
+    ThriftBinaryBufferReader & reader,
+    NoteAttributes & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.subjectDate = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 10) {
             if (fieldType == ThriftFieldType::T_DOUBLE) {
                 double v;
-                r.readDouble(v);
+                reader.readDouble(v);
                 s.latitude = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 11) {
             if (fieldType == ThriftFieldType::T_DOUBLE) {
                 double v;
-                r.readDouble(v);
+                reader.readDouble(v);
                 s.longitude = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 12) {
             if (fieldType == ThriftFieldType::T_DOUBLE) {
                 double v;
-                r.readDouble(v);
+                reader.readDouble(v);
                 s.altitude = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 13) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.author = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 14) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.source = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 15) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.sourceURL = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 16) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.sourceApplication = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 17) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.shareDate = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 18) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.reminderOrder = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 19) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.reminderDoneTime = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 20) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.reminderTime = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 21) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.placeName = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 22) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.contentClass = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 23) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 LazyMap v;
-                readLazyMap(r, v);
+                readLazyMap(reader, v);
                 s.applicationData = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 24) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.lastEditedBy = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 26) {
             if (fieldType == ThriftFieldType::T_MAP) {
-                QMap< QString, QString > v;
+                QMap<QString, QString> v;
                 qint32 size;
-                ThriftFieldType::type keyType;
-                ThriftFieldType::type elemType;
-                r.readMapBegin(keyType, elemType, size);
+                ThriftFieldType keyType;
+                ThriftFieldType elemType;
+                reader.readMapBegin(keyType, elemType, size);
                 if (keyType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect map key type (NoteAttributes.classifications)"));
                 if (elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect map value type (NoteAttributes.classifications)"));
                 for(qint32 i = 0; i < size; i++) {
                     QString key;
-                    r.readString(key);
+                    reader.readString(key);
                     QString value;
-                    r.readString(value);
+                    reader.readString(value);
                     v[key] = value;
                 }
-                r.readMapEnd();
+                reader.readMapEnd();
                 s.classifications = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 27) {
             if (fieldType == ThriftFieldType::T_I32) {
                 UserID v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.creatorId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 28) {
             if (fieldType == ThriftFieldType::T_I32) {
                 UserID v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.lastEditorId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 29) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.sharedWithBusiness = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 30) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 Guid v;
-                r.readString(v);
+                reader.readString(v);
                 s.conflictSourceNoteGuid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 31) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.noteTitleQuality = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeSharedNote(ThriftBinaryBufferWriter & w, const SharedNote & s) {
-    w.writeStructBegin(QStringLiteral("SharedNote"));
-    if(s.sharerUserID.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sharerUserID"), ThriftFieldType::T_I32, 1);
-        w.writeI32(s.sharerUserID.ref());
-        w.writeFieldEnd();
+void NoteAttributes::print(QTextStream & strm) const
+{
+    strm << "NoteAttributes: {\n";
+    localData.print(strm);
+
+    if (subjectDate.isSet()) {
+        strm << "    subjectDate = "
+            << subjectDate.ref() << "\n";
     }
-    if(s.recipientIdentity.isSet()) {
-        w.writeFieldBegin(QStringLiteral("recipientIdentity"), ThriftFieldType::T_STRUCT, 2);
-        writeIdentity(w, s.recipientIdentity.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    subjectDate is not set\n";
     }
-    if(s.privilege.isSet()) {
-        w.writeFieldBegin(QStringLiteral("privilege"), ThriftFieldType::T_I32, 3);
-        w.writeI32(static_cast<qint32>(s.privilege.ref()));
-        w.writeFieldEnd();
+
+    if (latitude.isSet()) {
+        strm << "    latitude = "
+            << latitude.ref() << "\n";
     }
-    if(s.serviceCreated.isSet()) {
-        w.writeFieldBegin(QStringLiteral("serviceCreated"), ThriftFieldType::T_I64, 4);
-        w.writeI64(s.serviceCreated.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    latitude is not set\n";
     }
-    if(s.serviceUpdated.isSet()) {
-        w.writeFieldBegin(QStringLiteral("serviceUpdated"), ThriftFieldType::T_I64, 5);
-        w.writeI64(s.serviceUpdated.ref());
-        w.writeFieldEnd();
+
+    if (longitude.isSet()) {
+        strm << "    longitude = "
+            << longitude.ref() << "\n";
     }
-    if(s.serviceAssigned.isSet()) {
-        w.writeFieldBegin(QStringLiteral("serviceAssigned"), ThriftFieldType::T_I64, 6);
-        w.writeI64(s.serviceAssigned.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    longitude is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (altitude.isSet()) {
+        strm << "    altitude = "
+            << altitude.ref() << "\n";
+    }
+    else {
+        strm << "    altitude is not set\n";
+    }
+
+    if (author.isSet()) {
+        strm << "    author = "
+            << author.ref() << "\n";
+    }
+    else {
+        strm << "    author is not set\n";
+    }
+
+    if (source.isSet()) {
+        strm << "    source = "
+            << source.ref() << "\n";
+    }
+    else {
+        strm << "    source is not set\n";
+    }
+
+    if (sourceURL.isSet()) {
+        strm << "    sourceURL = "
+            << sourceURL.ref() << "\n";
+    }
+    else {
+        strm << "    sourceURL is not set\n";
+    }
+
+    if (sourceApplication.isSet()) {
+        strm << "    sourceApplication = "
+            << sourceApplication.ref() << "\n";
+    }
+    else {
+        strm << "    sourceApplication is not set\n";
+    }
+
+    if (shareDate.isSet()) {
+        strm << "    shareDate = "
+            << shareDate.ref() << "\n";
+    }
+    else {
+        strm << "    shareDate is not set\n";
+    }
+
+    if (reminderOrder.isSet()) {
+        strm << "    reminderOrder = "
+            << reminderOrder.ref() << "\n";
+    }
+    else {
+        strm << "    reminderOrder is not set\n";
+    }
+
+    if (reminderDoneTime.isSet()) {
+        strm << "    reminderDoneTime = "
+            << reminderDoneTime.ref() << "\n";
+    }
+    else {
+        strm << "    reminderDoneTime is not set\n";
+    }
+
+    if (reminderTime.isSet()) {
+        strm << "    reminderTime = "
+            << reminderTime.ref() << "\n";
+    }
+    else {
+        strm << "    reminderTime is not set\n";
+    }
+
+    if (placeName.isSet()) {
+        strm << "    placeName = "
+            << placeName.ref() << "\n";
+    }
+    else {
+        strm << "    placeName is not set\n";
+    }
+
+    if (contentClass.isSet()) {
+        strm << "    contentClass = "
+            << contentClass.ref() << "\n";
+    }
+    else {
+        strm << "    contentClass is not set\n";
+    }
+
+    if (applicationData.isSet()) {
+        strm << "    applicationData = "
+            << applicationData.ref() << "\n";
+    }
+    else {
+        strm << "    applicationData is not set\n";
+    }
+
+    if (lastEditedBy.isSet()) {
+        strm << "    lastEditedBy = "
+            << lastEditedBy.ref() << "\n";
+    }
+    else {
+        strm << "    lastEditedBy is not set\n";
+    }
+
+    if (classifications.isSet()) {
+        strm << "    classifications = "
+            << "QMap<QString, QString> {";
+        for(const auto & it: toRange(classifications.ref())) {
+            strm << "        [" << it.key() << "] = " << it.value() << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    classifications is not set\n";
+    }
+
+    if (creatorId.isSet()) {
+        strm << "    creatorId = "
+            << creatorId.ref() << "\n";
+    }
+    else {
+        strm << "    creatorId is not set\n";
+    }
+
+    if (lastEditorId.isSet()) {
+        strm << "    lastEditorId = "
+            << lastEditorId.ref() << "\n";
+    }
+    else {
+        strm << "    lastEditorId is not set\n";
+    }
+
+    if (sharedWithBusiness.isSet()) {
+        strm << "    sharedWithBusiness = "
+            << sharedWithBusiness.ref() << "\n";
+    }
+    else {
+        strm << "    sharedWithBusiness is not set\n";
+    }
+
+    if (conflictSourceNoteGuid.isSet()) {
+        strm << "    conflictSourceNoteGuid = "
+            << conflictSourceNoteGuid.ref() << "\n";
+    }
+    else {
+        strm << "    conflictSourceNoteGuid is not set\n";
+    }
+
+    if (noteTitleQuality.isSet()) {
+        strm << "    noteTitleQuality = "
+            << noteTitleQuality.ref() << "\n";
+    }
+    else {
+        strm << "    noteTitleQuality is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readSharedNote(ThriftBinaryBufferReader & r, SharedNote & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeSharedNote(
+    ThriftBinaryBufferWriter & writer,
+    const SharedNote & s)
+{
+    writer.writeStructBegin(QStringLiteral("SharedNote"));
+    if (s.sharerUserID.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sharerUserID"),
+            ThriftFieldType::T_I32,
+            1);
+
+        writer.writeI32(s.sharerUserID.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.recipientIdentity.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("recipientIdentity"),
+            ThriftFieldType::T_STRUCT,
+            2);
+
+        writeIdentity(writer, s.recipientIdentity.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.privilege.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("privilege"),
+            ThriftFieldType::T_I32,
+            3);
+
+        writer.writeI32(static_cast<qint32>(s.privilege.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.serviceCreated.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("serviceCreated"),
+            ThriftFieldType::T_I64,
+            4);
+
+        writer.writeI64(s.serviceCreated.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.serviceUpdated.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("serviceUpdated"),
+            ThriftFieldType::T_I64,
+            5);
+
+        writer.writeI64(s.serviceUpdated.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.serviceAssigned.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("serviceAssigned"),
+            ThriftFieldType::T_I64,
+            6);
+
+        writer.writeI64(s.serviceAssigned.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readSharedNote(
+    ThriftBinaryBufferReader & reader,
+    SharedNote & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I32) {
                 UserID v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.sharerUserID = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 Identity v;
-                readIdentity(r, v);
+                readIdentity(reader, v);
                 s.recipientIdentity = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I32) {
-                SharedNotePrivilegeLevel::type v;
-                readEnumSharedNotePrivilegeLevel(r, v);
+                SharedNotePrivilegeLevel v;
+                readEnumSharedNotePrivilegeLevel(reader, v);
                 s.privilege = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.serviceCreated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.serviceUpdated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.serviceAssigned = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeNoteRestrictions(ThriftBinaryBufferWriter & w, const NoteRestrictions & s) {
-    w.writeStructBegin(QStringLiteral("NoteRestrictions"));
-    if(s.noUpdateTitle.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noUpdateTitle"), ThriftFieldType::T_BOOL, 1);
-        w.writeBool(s.noUpdateTitle.ref());
-        w.writeFieldEnd();
+void SharedNote::print(QTextStream & strm) const
+{
+    strm << "SharedNote: {\n";
+    localData.print(strm);
+
+    if (sharerUserID.isSet()) {
+        strm << "    sharerUserID = "
+            << sharerUserID.ref() << "\n";
     }
-    if(s.noUpdateContent.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noUpdateContent"), ThriftFieldType::T_BOOL, 2);
-        w.writeBool(s.noUpdateContent.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    sharerUserID is not set\n";
     }
-    if(s.noEmail.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noEmail"), ThriftFieldType::T_BOOL, 3);
-        w.writeBool(s.noEmail.ref());
-        w.writeFieldEnd();
+
+    if (recipientIdentity.isSet()) {
+        strm << "    recipientIdentity = "
+            << recipientIdentity.ref() << "\n";
     }
-    if(s.noShare.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noShare"), ThriftFieldType::T_BOOL, 4);
-        w.writeBool(s.noShare.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    recipientIdentity is not set\n";
     }
-    if(s.noSharePublicly.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noSharePublicly"), ThriftFieldType::T_BOOL, 5);
-        w.writeBool(s.noSharePublicly.ref());
-        w.writeFieldEnd();
+
+    if (privilege.isSet()) {
+        strm << "    privilege = "
+            << privilege.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    privilege is not set\n";
+    }
+
+    if (serviceCreated.isSet()) {
+        strm << "    serviceCreated = "
+            << serviceCreated.ref() << "\n";
+    }
+    else {
+        strm << "    serviceCreated is not set\n";
+    }
+
+    if (serviceUpdated.isSet()) {
+        strm << "    serviceUpdated = "
+            << serviceUpdated.ref() << "\n";
+    }
+    else {
+        strm << "    serviceUpdated is not set\n";
+    }
+
+    if (serviceAssigned.isSet()) {
+        strm << "    serviceAssigned = "
+            << serviceAssigned.ref() << "\n";
+    }
+    else {
+        strm << "    serviceAssigned is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readNoteRestrictions(ThriftBinaryBufferReader & r, NoteRestrictions & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNoteRestrictions(
+    ThriftBinaryBufferWriter & writer,
+    const NoteRestrictions & s)
+{
+    writer.writeStructBegin(QStringLiteral("NoteRestrictions"));
+    if (s.noUpdateTitle.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noUpdateTitle"),
+            ThriftFieldType::T_BOOL,
+            1);
+
+        writer.writeBool(s.noUpdateTitle.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noUpdateContent.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noUpdateContent"),
+            ThriftFieldType::T_BOOL,
+            2);
+
+        writer.writeBool(s.noUpdateContent.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noEmail.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noEmail"),
+            ThriftFieldType::T_BOOL,
+            3);
+
+        writer.writeBool(s.noEmail.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noShare.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noShare"),
+            ThriftFieldType::T_BOOL,
+            4);
+
+        writer.writeBool(s.noShare.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noSharePublicly.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noSharePublicly"),
+            ThriftFieldType::T_BOOL,
+            5);
+
+        writer.writeBool(s.noSharePublicly.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNoteRestrictions(
+    ThriftBinaryBufferReader & reader,
+    NoteRestrictions & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noUpdateTitle = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noUpdateContent = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noEmail = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noShare = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noSharePublicly = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeNoteLimits(ThriftBinaryBufferWriter & w, const NoteLimits & s) {
-    w.writeStructBegin(QStringLiteral("NoteLimits"));
-    if(s.noteResourceCountMax.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noteResourceCountMax"), ThriftFieldType::T_I32, 1);
-        w.writeI32(s.noteResourceCountMax.ref());
-        w.writeFieldEnd();
+void NoteRestrictions::print(QTextStream & strm) const
+{
+    strm << "NoteRestrictions: {\n";
+    localData.print(strm);
+
+    if (noUpdateTitle.isSet()) {
+        strm << "    noUpdateTitle = "
+            << noUpdateTitle.ref() << "\n";
     }
-    if(s.uploadLimit.isSet()) {
-        w.writeFieldBegin(QStringLiteral("uploadLimit"), ThriftFieldType::T_I64, 2);
-        w.writeI64(s.uploadLimit.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noUpdateTitle is not set\n";
     }
-    if(s.resourceSizeMax.isSet()) {
-        w.writeFieldBegin(QStringLiteral("resourceSizeMax"), ThriftFieldType::T_I64, 3);
-        w.writeI64(s.resourceSizeMax.ref());
-        w.writeFieldEnd();
+
+    if (noUpdateContent.isSet()) {
+        strm << "    noUpdateContent = "
+            << noUpdateContent.ref() << "\n";
     }
-    if(s.noteSizeMax.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noteSizeMax"), ThriftFieldType::T_I64, 4);
-        w.writeI64(s.noteSizeMax.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noUpdateContent is not set\n";
     }
-    if(s.uploaded.isSet()) {
-        w.writeFieldBegin(QStringLiteral("uploaded"), ThriftFieldType::T_I64, 5);
-        w.writeI64(s.uploaded.ref());
-        w.writeFieldEnd();
+
+    if (noEmail.isSet()) {
+        strm << "    noEmail = "
+            << noEmail.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    noEmail is not set\n";
+    }
+
+    if (noShare.isSet()) {
+        strm << "    noShare = "
+            << noShare.ref() << "\n";
+    }
+    else {
+        strm << "    noShare is not set\n";
+    }
+
+    if (noSharePublicly.isSet()) {
+        strm << "    noSharePublicly = "
+            << noSharePublicly.ref() << "\n";
+    }
+    else {
+        strm << "    noSharePublicly is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readNoteLimits(ThriftBinaryBufferReader & r, NoteLimits & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNoteLimits(
+    ThriftBinaryBufferWriter & writer,
+    const NoteLimits & s)
+{
+    writer.writeStructBegin(QStringLiteral("NoteLimits"));
+    if (s.noteResourceCountMax.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noteResourceCountMax"),
+            ThriftFieldType::T_I32,
+            1);
+
+        writer.writeI32(s.noteResourceCountMax.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.uploadLimit.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("uploadLimit"),
+            ThriftFieldType::T_I64,
+            2);
+
+        writer.writeI64(s.uploadLimit.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.resourceSizeMax.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("resourceSizeMax"),
+            ThriftFieldType::T_I64,
+            3);
+
+        writer.writeI64(s.resourceSizeMax.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noteSizeMax.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noteSizeMax"),
+            ThriftFieldType::T_I64,
+            4);
+
+        writer.writeI64(s.noteSizeMax.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.uploaded.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("uploaded"),
+            ThriftFieldType::T_I64,
+            5);
+
+        writer.writeI64(s.uploaded.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNoteLimits(
+    ThriftBinaryBufferReader & reader,
+    NoteLimits & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.noteResourceCountMax = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.uploadLimit = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.resourceSizeMax = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.noteSizeMax = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.uploaded = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeNote(ThriftBinaryBufferWriter & w, const Note & s) {
-    w.writeStructBegin(QStringLiteral("Note"));
-    if(s.guid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("guid"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.guid.ref());
-        w.writeFieldEnd();
+void NoteLimits::print(QTextStream & strm) const
+{
+    strm << "NoteLimits: {\n";
+    localData.print(strm);
+
+    if (noteResourceCountMax.isSet()) {
+        strm << "    noteResourceCountMax = "
+            << noteResourceCountMax.ref() << "\n";
     }
-    if(s.title.isSet()) {
-        w.writeFieldBegin(QStringLiteral("title"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.title.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noteResourceCountMax is not set\n";
     }
-    if(s.content.isSet()) {
-        w.writeFieldBegin(QStringLiteral("content"), ThriftFieldType::T_STRING, 3);
-        w.writeString(s.content.ref());
-        w.writeFieldEnd();
+
+    if (uploadLimit.isSet()) {
+        strm << "    uploadLimit = "
+            << uploadLimit.ref() << "\n";
     }
-    if(s.contentHash.isSet()) {
-        w.writeFieldBegin(QStringLiteral("contentHash"), ThriftFieldType::T_STRING, 4);
-        w.writeBinary(s.contentHash.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    uploadLimit is not set\n";
     }
-    if(s.contentLength.isSet()) {
-        w.writeFieldBegin(QStringLiteral("contentLength"), ThriftFieldType::T_I32, 5);
-        w.writeI32(s.contentLength.ref());
-        w.writeFieldEnd();
+
+    if (resourceSizeMax.isSet()) {
+        strm << "    resourceSizeMax = "
+            << resourceSizeMax.ref() << "\n";
     }
-    if(s.created.isSet()) {
-        w.writeFieldBegin(QStringLiteral("created"), ThriftFieldType::T_I64, 6);
-        w.writeI64(s.created.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    resourceSizeMax is not set\n";
     }
-    if(s.updated.isSet()) {
-        w.writeFieldBegin(QStringLiteral("updated"), ThriftFieldType::T_I64, 7);
-        w.writeI64(s.updated.ref());
-        w.writeFieldEnd();
+
+    if (noteSizeMax.isSet()) {
+        strm << "    noteSizeMax = "
+            << noteSizeMax.ref() << "\n";
     }
-    if(s.deleted.isSet()) {
-        w.writeFieldBegin(QStringLiteral("deleted"), ThriftFieldType::T_I64, 8);
-        w.writeI64(s.deleted.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noteSizeMax is not set\n";
     }
-    if(s.active.isSet()) {
-        w.writeFieldBegin(QStringLiteral("active"), ThriftFieldType::T_BOOL, 9);
-        w.writeBool(s.active.ref());
-        w.writeFieldEnd();
+
+    if (uploaded.isSet()) {
+        strm << "    uploaded = "
+            << uploaded.ref() << "\n";
     }
-    if(s.updateSequenceNum.isSet()) {
-        w.writeFieldBegin(QStringLiteral("updateSequenceNum"), ThriftFieldType::T_I32, 10);
-        w.writeI32(s.updateSequenceNum.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    uploaded is not set\n";
     }
-    if(s.notebookGuid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("notebookGuid"), ThriftFieldType::T_STRING, 11);
-        w.writeString(s.notebookGuid.ref());
-        w.writeFieldEnd();
-    }
-    if(s.tagGuids.isSet()) {
-        w.writeFieldBegin(QStringLiteral("tagGuids"), ThriftFieldType::T_LIST, 12);
-        w.writeListBegin(ThriftFieldType::T_STRING, s.tagGuids.ref().length());
-        for(QList< Guid >::const_iterator it = s.tagGuids.ref().constBegin(), end = s.tagGuids.ref().constEnd(); it != end; ++it) {
-            w.writeString(*it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
-    }
-    if(s.resources.isSet()) {
-        w.writeFieldBegin(QStringLiteral("resources"), ThriftFieldType::T_LIST, 13);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.resources.ref().length());
-        for(QList< Resource >::const_iterator it = s.resources.ref().constBegin(), end = s.resources.ref().constEnd(); it != end; ++it) {
-            writeResource(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
-    }
-    if(s.attributes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("attributes"), ThriftFieldType::T_STRUCT, 14);
-        writeNoteAttributes(w, s.attributes.ref());
-        w.writeFieldEnd();
-    }
-    if(s.tagNames.isSet()) {
-        w.writeFieldBegin(QStringLiteral("tagNames"), ThriftFieldType::T_LIST, 15);
-        w.writeListBegin(ThriftFieldType::T_STRING, s.tagNames.ref().length());
-        for(QStringList::const_iterator it = s.tagNames.ref().constBegin(), end = s.tagNames.ref().constEnd(); it != end; ++it) {
-            w.writeString(*it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
-    }
-    if(s.sharedNotes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sharedNotes"), ThriftFieldType::T_LIST, 16);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.sharedNotes.ref().length());
-        for(QList< SharedNote >::const_iterator it = s.sharedNotes.ref().constBegin(), end = s.sharedNotes.ref().constEnd(); it != end; ++it) {
-            writeSharedNote(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
-    }
-    if(s.restrictions.isSet()) {
-        w.writeFieldBegin(QStringLiteral("restrictions"), ThriftFieldType::T_STRUCT, 17);
-        writeNoteRestrictions(w, s.restrictions.ref());
-        w.writeFieldEnd();
-    }
-    if(s.limits.isSet()) {
-        w.writeFieldBegin(QStringLiteral("limits"), ThriftFieldType::T_STRUCT, 18);
-        writeNoteLimits(w, s.limits.ref());
-        w.writeFieldEnd();
-    }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    strm << "}\n";
 }
 
-void readNote(ThriftBinaryBufferReader & r, Note & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNote(
+    ThriftBinaryBufferWriter & writer,
+    const Note & s)
+{
+    writer.writeStructBegin(QStringLiteral("Note"));
+    if (s.guid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("guid"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.guid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.title.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("title"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.title.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.content.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("content"),
+            ThriftFieldType::T_STRING,
+            3);
+
+        writer.writeString(s.content.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.contentHash.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("contentHash"),
+            ThriftFieldType::T_STRING,
+            4);
+
+        writer.writeBinary(s.contentHash.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.contentLength.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("contentLength"),
+            ThriftFieldType::T_I32,
+            5);
+
+        writer.writeI32(s.contentLength.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.created.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("created"),
+            ThriftFieldType::T_I64,
+            6);
+
+        writer.writeI64(s.created.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.updated.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("updated"),
+            ThriftFieldType::T_I64,
+            7);
+
+        writer.writeI64(s.updated.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.deleted.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("deleted"),
+            ThriftFieldType::T_I64,
+            8);
+
+        writer.writeI64(s.deleted.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.active.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("active"),
+            ThriftFieldType::T_BOOL,
+            9);
+
+        writer.writeBool(s.active.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.updateSequenceNum.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("updateSequenceNum"),
+            ThriftFieldType::T_I32,
+            10);
+
+        writer.writeI32(s.updateSequenceNum.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.notebookGuid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("notebookGuid"),
+            ThriftFieldType::T_STRING,
+            11);
+
+        writer.writeString(s.notebookGuid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.tagGuids.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("tagGuids"),
+            ThriftFieldType::T_LIST,
+            12);
+
+        writer.writeListBegin(ThriftFieldType::T_STRING, s.tagGuids.ref().length());
+        for(const auto & value: qAsConst(s.tagGuids.ref())) {
+            writer.writeString(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.resources.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("resources"),
+            ThriftFieldType::T_LIST,
+            13);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.resources.ref().length());
+        for(const auto & value: qAsConst(s.resources.ref())) {
+            writeResource(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.attributes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("attributes"),
+            ThriftFieldType::T_STRUCT,
+            14);
+
+        writeNoteAttributes(writer, s.attributes.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.tagNames.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("tagNames"),
+            ThriftFieldType::T_LIST,
+            15);
+
+        writer.writeListBegin(ThriftFieldType::T_STRING, s.tagNames.ref().length());
+        for(const auto & value: qAsConst(s.tagNames.ref())) {
+            writer.writeString(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.sharedNotes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sharedNotes"),
+            ThriftFieldType::T_LIST,
+            16);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.sharedNotes.ref().length());
+        for(const auto & value: qAsConst(s.sharedNotes.ref())) {
+            writeSharedNote(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.restrictions.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("restrictions"),
+            ThriftFieldType::T_STRUCT,
+            17);
+
+        writeNoteRestrictions(writer, s.restrictions.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.limits.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("limits"),
+            ThriftFieldType::T_STRUCT,
+            18);
+
+        writeNoteLimits(writer, s.limits.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNote(
+    ThriftBinaryBufferReader & reader,
+    Note & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 Guid v;
-                r.readString(v);
+                reader.readString(v);
                 s.guid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.title = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.content = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QByteArray v;
-                r.readBinary(v);
+                reader.readBinary(v);
                 s.contentHash = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.contentLength = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.created = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.updated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.deleted = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 9) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.active = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 10) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.updateSequenceNum = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 11) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.notebookGuid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 12) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< Guid > v;
+                QList<Guid> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (Note.tagGuids)"));
+                if (elemType != ThriftFieldType::T_STRING) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (Note.tagGuids)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     Guid elem;
-                    r.readString(elem);
+                    reader.readString(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.tagGuids = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 13) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< Resource > v;
+                QList<Resource> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (Note.resources)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (Note.resources)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     Resource elem;
-                    readResource(r, elem);
+                    readResource(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.resources = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 14) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 NoteAttributes v;
-                readNoteAttributes(r, v);
+                readNoteAttributes(reader, v);
                 s.attributes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 15) {
             if (fieldType == ThriftFieldType::T_LIST) {
                 QStringList v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (Note.tagNames)"));
+                if (elemType != ThriftFieldType::T_STRING) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (Note.tagNames)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     QString elem;
-                    r.readString(elem);
+                    reader.readString(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.tagNames = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 16) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< SharedNote > v;
+                QList<SharedNote> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (Note.sharedNotes)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (Note.sharedNotes)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     SharedNote elem;
-                    readSharedNote(r, elem);
+                    readSharedNote(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.sharedNotes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 17) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 NoteRestrictions v;
-                readNoteRestrictions(r, v);
+                readNoteRestrictions(reader, v);
                 s.restrictions = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 18) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 NoteLimits v;
-                readNoteLimits(r, v);
+                readNoteLimits(reader, v);
                 s.limits = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writePublishing(ThriftBinaryBufferWriter & w, const Publishing & s) {
-    w.writeStructBegin(QStringLiteral("Publishing"));
-    if(s.uri.isSet()) {
-        w.writeFieldBegin(QStringLiteral("uri"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.uri.ref());
-        w.writeFieldEnd();
+void Note::print(QTextStream & strm) const
+{
+    strm << "Note: {\n";
+    localData.print(strm);
+
+    if (guid.isSet()) {
+        strm << "    guid = "
+            << guid.ref() << "\n";
     }
-    if(s.order.isSet()) {
-        w.writeFieldBegin(QStringLiteral("order"), ThriftFieldType::T_I32, 2);
-        w.writeI32(static_cast<qint32>(s.order.ref()));
-        w.writeFieldEnd();
+    else {
+        strm << "    guid is not set\n";
     }
-    if(s.ascending.isSet()) {
-        w.writeFieldBegin(QStringLiteral("ascending"), ThriftFieldType::T_BOOL, 3);
-        w.writeBool(s.ascending.ref());
-        w.writeFieldEnd();
+
+    if (title.isSet()) {
+        strm << "    title = "
+            << title.ref() << "\n";
     }
-    if(s.publicDescription.isSet()) {
-        w.writeFieldBegin(QStringLiteral("publicDescription"), ThriftFieldType::T_STRING, 4);
-        w.writeString(s.publicDescription.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    title is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (content.isSet()) {
+        strm << "    content = "
+            << content.ref() << "\n";
+    }
+    else {
+        strm << "    content is not set\n";
+    }
+
+    if (contentHash.isSet()) {
+        strm << "    contentHash = "
+            << contentHash.ref() << "\n";
+    }
+    else {
+        strm << "    contentHash is not set\n";
+    }
+
+    if (contentLength.isSet()) {
+        strm << "    contentLength = "
+            << contentLength.ref() << "\n";
+    }
+    else {
+        strm << "    contentLength is not set\n";
+    }
+
+    if (created.isSet()) {
+        strm << "    created = "
+            << created.ref() << "\n";
+    }
+    else {
+        strm << "    created is not set\n";
+    }
+
+    if (updated.isSet()) {
+        strm << "    updated = "
+            << updated.ref() << "\n";
+    }
+    else {
+        strm << "    updated is not set\n";
+    }
+
+    if (deleted.isSet()) {
+        strm << "    deleted = "
+            << deleted.ref() << "\n";
+    }
+    else {
+        strm << "    deleted is not set\n";
+    }
+
+    if (active.isSet()) {
+        strm << "    active = "
+            << active.ref() << "\n";
+    }
+    else {
+        strm << "    active is not set\n";
+    }
+
+    if (updateSequenceNum.isSet()) {
+        strm << "    updateSequenceNum = "
+            << updateSequenceNum.ref() << "\n";
+    }
+    else {
+        strm << "    updateSequenceNum is not set\n";
+    }
+
+    if (notebookGuid.isSet()) {
+        strm << "    notebookGuid = "
+            << notebookGuid.ref() << "\n";
+    }
+    else {
+        strm << "    notebookGuid is not set\n";
+    }
+
+    if (tagGuids.isSet()) {
+        strm << "    tagGuids = "
+            << "QList<Guid> {";
+        for(const auto & v: tagGuids.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    tagGuids is not set\n";
+    }
+
+    if (resources.isSet()) {
+        strm << "    resources = "
+            << "QList<Resource> {";
+        for(const auto & v: resources.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    resources is not set\n";
+    }
+
+    if (attributes.isSet()) {
+        strm << "    attributes = "
+            << attributes.ref() << "\n";
+    }
+    else {
+        strm << "    attributes is not set\n";
+    }
+
+    if (tagNames.isSet()) {
+        strm << "    tagNames = "
+            << "QList<QString> {";
+        for(const auto & v: tagNames.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    tagNames is not set\n";
+    }
+
+    if (sharedNotes.isSet()) {
+        strm << "    sharedNotes = "
+            << "QList<SharedNote> {";
+        for(const auto & v: sharedNotes.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    sharedNotes is not set\n";
+    }
+
+    if (restrictions.isSet()) {
+        strm << "    restrictions = "
+            << restrictions.ref() << "\n";
+    }
+    else {
+        strm << "    restrictions is not set\n";
+    }
+
+    if (limits.isSet()) {
+        strm << "    limits = "
+            << limits.ref() << "\n";
+    }
+    else {
+        strm << "    limits is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readPublishing(ThriftBinaryBufferReader & r, Publishing & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writePublishing(
+    ThriftBinaryBufferWriter & writer,
+    const Publishing & s)
+{
+    writer.writeStructBegin(QStringLiteral("Publishing"));
+    if (s.uri.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("uri"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.uri.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.order.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("order"),
+            ThriftFieldType::T_I32,
+            2);
+
+        writer.writeI32(static_cast<qint32>(s.order.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.ascending.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("ascending"),
+            ThriftFieldType::T_BOOL,
+            3);
+
+        writer.writeBool(s.ascending.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.publicDescription.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("publicDescription"),
+            ThriftFieldType::T_STRING,
+            4);
+
+        writer.writeString(s.publicDescription.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readPublishing(
+    ThriftBinaryBufferReader & reader,
+    Publishing & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.uri = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_I32) {
-                NoteSortOrder::type v;
-                readEnumNoteSortOrder(r, v);
+                NoteSortOrder v;
+                readEnumNoteSortOrder(reader, v);
                 s.order = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.ascending = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.publicDescription = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeBusinessNotebook(ThriftBinaryBufferWriter & w, const BusinessNotebook & s) {
-    w.writeStructBegin(QStringLiteral("BusinessNotebook"));
-    if(s.notebookDescription.isSet()) {
-        w.writeFieldBegin(QStringLiteral("notebookDescription"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.notebookDescription.ref());
-        w.writeFieldEnd();
+void Publishing::print(QTextStream & strm) const
+{
+    strm << "Publishing: {\n";
+    localData.print(strm);
+
+    if (uri.isSet()) {
+        strm << "    uri = "
+            << uri.ref() << "\n";
     }
-    if(s.privilege.isSet()) {
-        w.writeFieldBegin(QStringLiteral("privilege"), ThriftFieldType::T_I32, 2);
-        w.writeI32(static_cast<qint32>(s.privilege.ref()));
-        w.writeFieldEnd();
+    else {
+        strm << "    uri is not set\n";
     }
-    if(s.recommended.isSet()) {
-        w.writeFieldBegin(QStringLiteral("recommended"), ThriftFieldType::T_BOOL, 3);
-        w.writeBool(s.recommended.ref());
-        w.writeFieldEnd();
+
+    if (order.isSet()) {
+        strm << "    order = "
+            << order.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    order is not set\n";
+    }
+
+    if (ascending.isSet()) {
+        strm << "    ascending = "
+            << ascending.ref() << "\n";
+    }
+    else {
+        strm << "    ascending is not set\n";
+    }
+
+    if (publicDescription.isSet()) {
+        strm << "    publicDescription = "
+            << publicDescription.ref() << "\n";
+    }
+    else {
+        strm << "    publicDescription is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readBusinessNotebook(ThriftBinaryBufferReader & r, BusinessNotebook & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeBusinessNotebook(
+    ThriftBinaryBufferWriter & writer,
+    const BusinessNotebook & s)
+{
+    writer.writeStructBegin(QStringLiteral("BusinessNotebook"));
+    if (s.notebookDescription.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("notebookDescription"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.notebookDescription.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.privilege.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("privilege"),
+            ThriftFieldType::T_I32,
+            2);
+
+        writer.writeI32(static_cast<qint32>(s.privilege.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.recommended.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("recommended"),
+            ThriftFieldType::T_BOOL,
+            3);
+
+        writer.writeBool(s.recommended.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readBusinessNotebook(
+    ThriftBinaryBufferReader & reader,
+    BusinessNotebook & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.notebookDescription = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_I32) {
-                SharedNotebookPrivilegeLevel::type v;
-                readEnumSharedNotebookPrivilegeLevel(r, v);
+                SharedNotebookPrivilegeLevel v;
+                readEnumSharedNotebookPrivilegeLevel(reader, v);
                 s.privilege = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.recommended = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeSavedSearchScope(ThriftBinaryBufferWriter & w, const SavedSearchScope & s) {
-    w.writeStructBegin(QStringLiteral("SavedSearchScope"));
-    if(s.includeAccount.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeAccount"), ThriftFieldType::T_BOOL, 1);
-        w.writeBool(s.includeAccount.ref());
-        w.writeFieldEnd();
+void BusinessNotebook::print(QTextStream & strm) const
+{
+    strm << "BusinessNotebook: {\n";
+    localData.print(strm);
+
+    if (notebookDescription.isSet()) {
+        strm << "    notebookDescription = "
+            << notebookDescription.ref() << "\n";
     }
-    if(s.includePersonalLinkedNotebooks.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includePersonalLinkedNotebooks"), ThriftFieldType::T_BOOL, 2);
-        w.writeBool(s.includePersonalLinkedNotebooks.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    notebookDescription is not set\n";
     }
-    if(s.includeBusinessLinkedNotebooks.isSet()) {
-        w.writeFieldBegin(QStringLiteral("includeBusinessLinkedNotebooks"), ThriftFieldType::T_BOOL, 3);
-        w.writeBool(s.includeBusinessLinkedNotebooks.ref());
-        w.writeFieldEnd();
+
+    if (privilege.isSet()) {
+        strm << "    privilege = "
+            << privilege.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    privilege is not set\n";
+    }
+
+    if (recommended.isSet()) {
+        strm << "    recommended = "
+            << recommended.ref() << "\n";
+    }
+    else {
+        strm << "    recommended is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readSavedSearchScope(ThriftBinaryBufferReader & r, SavedSearchScope & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeSavedSearchScope(
+    ThriftBinaryBufferWriter & writer,
+    const SavedSearchScope & s)
+{
+    writer.writeStructBegin(QStringLiteral("SavedSearchScope"));
+    if (s.includeAccount.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeAccount"),
+            ThriftFieldType::T_BOOL,
+            1);
+
+        writer.writeBool(s.includeAccount.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includePersonalLinkedNotebooks.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includePersonalLinkedNotebooks"),
+            ThriftFieldType::T_BOOL,
+            2);
+
+        writer.writeBool(s.includePersonalLinkedNotebooks.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.includeBusinessLinkedNotebooks.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("includeBusinessLinkedNotebooks"),
+            ThriftFieldType::T_BOOL,
+            3);
+
+        writer.writeBool(s.includeBusinessLinkedNotebooks.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readSavedSearchScope(
+    ThriftBinaryBufferReader & reader,
+    SavedSearchScope & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeAccount = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includePersonalLinkedNotebooks = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.includeBusinessLinkedNotebooks = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeSavedSearch(ThriftBinaryBufferWriter & w, const SavedSearch & s) {
-    w.writeStructBegin(QStringLiteral("SavedSearch"));
-    if(s.guid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("guid"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.guid.ref());
-        w.writeFieldEnd();
+void SavedSearchScope::print(QTextStream & strm) const
+{
+    strm << "SavedSearchScope: {\n";
+    localData.print(strm);
+
+    if (includeAccount.isSet()) {
+        strm << "    includeAccount = "
+            << includeAccount.ref() << "\n";
     }
-    if(s.name.isSet()) {
-        w.writeFieldBegin(QStringLiteral("name"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.name.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    includeAccount is not set\n";
     }
-    if(s.query.isSet()) {
-        w.writeFieldBegin(QStringLiteral("query"), ThriftFieldType::T_STRING, 3);
-        w.writeString(s.query.ref());
-        w.writeFieldEnd();
+
+    if (includePersonalLinkedNotebooks.isSet()) {
+        strm << "    includePersonalLinkedNotebooks = "
+            << includePersonalLinkedNotebooks.ref() << "\n";
     }
-    if(s.format.isSet()) {
-        w.writeFieldBegin(QStringLiteral("format"), ThriftFieldType::T_I32, 4);
-        w.writeI32(static_cast<qint32>(s.format.ref()));
-        w.writeFieldEnd();
+    else {
+        strm << "    includePersonalLinkedNotebooks is not set\n";
     }
-    if(s.updateSequenceNum.isSet()) {
-        w.writeFieldBegin(QStringLiteral("updateSequenceNum"), ThriftFieldType::T_I32, 5);
-        w.writeI32(s.updateSequenceNum.ref());
-        w.writeFieldEnd();
+
+    if (includeBusinessLinkedNotebooks.isSet()) {
+        strm << "    includeBusinessLinkedNotebooks = "
+            << includeBusinessLinkedNotebooks.ref() << "\n";
     }
-    if(s.scope.isSet()) {
-        w.writeFieldBegin(QStringLiteral("scope"), ThriftFieldType::T_STRUCT, 6);
-        writeSavedSearchScope(w, s.scope.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    includeBusinessLinkedNotebooks is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    strm << "}\n";
 }
 
-void readSavedSearch(ThriftBinaryBufferReader & r, SavedSearch & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeSavedSearch(
+    ThriftBinaryBufferWriter & writer,
+    const SavedSearch & s)
+{
+    writer.writeStructBegin(QStringLiteral("SavedSearch"));
+    if (s.guid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("guid"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.guid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.name.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("name"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.name.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.query.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("query"),
+            ThriftFieldType::T_STRING,
+            3);
+
+        writer.writeString(s.query.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.format.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("format"),
+            ThriftFieldType::T_I32,
+            4);
+
+        writer.writeI32(static_cast<qint32>(s.format.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.updateSequenceNum.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("updateSequenceNum"),
+            ThriftFieldType::T_I32,
+            5);
+
+        writer.writeI32(s.updateSequenceNum.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.scope.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("scope"),
+            ThriftFieldType::T_STRUCT,
+            6);
+
+        writeSavedSearchScope(writer, s.scope.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readSavedSearch(
+    ThriftBinaryBufferReader & reader,
+    SavedSearch & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 Guid v;
-                r.readString(v);
+                reader.readString(v);
                 s.guid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.name = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.query = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_I32) {
-                QueryFormat::type v;
-                readEnumQueryFormat(r, v);
+                QueryFormat v;
+                readEnumQueryFormat(reader, v);
                 s.format = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.updateSequenceNum = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 SavedSearchScope v;
-                readSavedSearchScope(r, v);
+                readSavedSearchScope(reader, v);
                 s.scope = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeSharedNotebookRecipientSettings(ThriftBinaryBufferWriter & w, const SharedNotebookRecipientSettings & s) {
-    w.writeStructBegin(QStringLiteral("SharedNotebookRecipientSettings"));
-    if(s.reminderNotifyEmail.isSet()) {
-        w.writeFieldBegin(QStringLiteral("reminderNotifyEmail"), ThriftFieldType::T_BOOL, 1);
-        w.writeBool(s.reminderNotifyEmail.ref());
-        w.writeFieldEnd();
+void SavedSearch::print(QTextStream & strm) const
+{
+    strm << "SavedSearch: {\n";
+    localData.print(strm);
+
+    if (guid.isSet()) {
+        strm << "    guid = "
+            << guid.ref() << "\n";
     }
-    if(s.reminderNotifyInApp.isSet()) {
-        w.writeFieldBegin(QStringLiteral("reminderNotifyInApp"), ThriftFieldType::T_BOOL, 2);
-        w.writeBool(s.reminderNotifyInApp.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    guid is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (name.isSet()) {
+        strm << "    name = "
+            << name.ref() << "\n";
+    }
+    else {
+        strm << "    name is not set\n";
+    }
+
+    if (query.isSet()) {
+        strm << "    query = "
+            << query.ref() << "\n";
+    }
+    else {
+        strm << "    query is not set\n";
+    }
+
+    if (format.isSet()) {
+        strm << "    format = "
+            << format.ref() << "\n";
+    }
+    else {
+        strm << "    format is not set\n";
+    }
+
+    if (updateSequenceNum.isSet()) {
+        strm << "    updateSequenceNum = "
+            << updateSequenceNum.ref() << "\n";
+    }
+    else {
+        strm << "    updateSequenceNum is not set\n";
+    }
+
+    if (scope.isSet()) {
+        strm << "    scope = "
+            << scope.ref() << "\n";
+    }
+    else {
+        strm << "    scope is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readSharedNotebookRecipientSettings(ThriftBinaryBufferReader & r, SharedNotebookRecipientSettings & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeSharedNotebookRecipientSettings(
+    ThriftBinaryBufferWriter & writer,
+    const SharedNotebookRecipientSettings & s)
+{
+    writer.writeStructBegin(QStringLiteral("SharedNotebookRecipientSettings"));
+    if (s.reminderNotifyEmail.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("reminderNotifyEmail"),
+            ThriftFieldType::T_BOOL,
+            1);
+
+        writer.writeBool(s.reminderNotifyEmail.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.reminderNotifyInApp.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("reminderNotifyInApp"),
+            ThriftFieldType::T_BOOL,
+            2);
+
+        writer.writeBool(s.reminderNotifyInApp.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readSharedNotebookRecipientSettings(
+    ThriftBinaryBufferReader & reader,
+    SharedNotebookRecipientSettings & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.reminderNotifyEmail = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.reminderNotifyInApp = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeNotebookRecipientSettings(ThriftBinaryBufferWriter & w, const NotebookRecipientSettings & s) {
-    w.writeStructBegin(QStringLiteral("NotebookRecipientSettings"));
-    if(s.reminderNotifyEmail.isSet()) {
-        w.writeFieldBegin(QStringLiteral("reminderNotifyEmail"), ThriftFieldType::T_BOOL, 1);
-        w.writeBool(s.reminderNotifyEmail.ref());
-        w.writeFieldEnd();
+void SharedNotebookRecipientSettings::print(QTextStream & strm) const
+{
+    strm << "SharedNotebookRecipientSettings: {\n";
+    localData.print(strm);
+
+    if (reminderNotifyEmail.isSet()) {
+        strm << "    reminderNotifyEmail = "
+            << reminderNotifyEmail.ref() << "\n";
     }
-    if(s.reminderNotifyInApp.isSet()) {
-        w.writeFieldBegin(QStringLiteral("reminderNotifyInApp"), ThriftFieldType::T_BOOL, 2);
-        w.writeBool(s.reminderNotifyInApp.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    reminderNotifyEmail is not set\n";
     }
-    if(s.inMyList.isSet()) {
-        w.writeFieldBegin(QStringLiteral("inMyList"), ThriftFieldType::T_BOOL, 3);
-        w.writeBool(s.inMyList.ref());
-        w.writeFieldEnd();
+
+    if (reminderNotifyInApp.isSet()) {
+        strm << "    reminderNotifyInApp = "
+            << reminderNotifyInApp.ref() << "\n";
     }
-    if(s.stack.isSet()) {
-        w.writeFieldBegin(QStringLiteral("stack"), ThriftFieldType::T_STRING, 4);
-        w.writeString(s.stack.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    reminderNotifyInApp is not set\n";
     }
-    if(s.recipientStatus.isSet()) {
-        w.writeFieldBegin(QStringLiteral("recipientStatus"), ThriftFieldType::T_I32, 5);
-        w.writeI32(static_cast<qint32>(s.recipientStatus.ref()));
-        w.writeFieldEnd();
-    }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    strm << "}\n";
 }
 
-void readNotebookRecipientSettings(ThriftBinaryBufferReader & r, NotebookRecipientSettings & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNotebookRecipientSettings(
+    ThriftBinaryBufferWriter & writer,
+    const NotebookRecipientSettings & s)
+{
+    writer.writeStructBegin(QStringLiteral("NotebookRecipientSettings"));
+    if (s.reminderNotifyEmail.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("reminderNotifyEmail"),
+            ThriftFieldType::T_BOOL,
+            1);
+
+        writer.writeBool(s.reminderNotifyEmail.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.reminderNotifyInApp.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("reminderNotifyInApp"),
+            ThriftFieldType::T_BOOL,
+            2);
+
+        writer.writeBool(s.reminderNotifyInApp.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.inMyList.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("inMyList"),
+            ThriftFieldType::T_BOOL,
+            3);
+
+        writer.writeBool(s.inMyList.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.stack.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("stack"),
+            ThriftFieldType::T_STRING,
+            4);
+
+        writer.writeString(s.stack.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.recipientStatus.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("recipientStatus"),
+            ThriftFieldType::T_I32,
+            5);
+
+        writer.writeI32(static_cast<qint32>(s.recipientStatus.ref()));
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNotebookRecipientSettings(
+    ThriftBinaryBufferReader & reader,
+    NotebookRecipientSettings & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.reminderNotifyEmail = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.reminderNotifyInApp = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.inMyList = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.stack = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_I32) {
-                RecipientStatus::type v;
-                readEnumRecipientStatus(r, v);
+                RecipientStatus v;
+                readEnumRecipientStatus(reader, v);
                 s.recipientStatus = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeSharedNotebook(ThriftBinaryBufferWriter & w, const SharedNotebook & s) {
-    w.writeStructBegin(QStringLiteral("SharedNotebook"));
-    if(s.id.isSet()) {
-        w.writeFieldBegin(QStringLiteral("id"), ThriftFieldType::T_I64, 1);
-        w.writeI64(s.id.ref());
-        w.writeFieldEnd();
+void NotebookRecipientSettings::print(QTextStream & strm) const
+{
+    strm << "NotebookRecipientSettings: {\n";
+    localData.print(strm);
+
+    if (reminderNotifyEmail.isSet()) {
+        strm << "    reminderNotifyEmail = "
+            << reminderNotifyEmail.ref() << "\n";
     }
-    if(s.userId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("userId"), ThriftFieldType::T_I32, 2);
-        w.writeI32(s.userId.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    reminderNotifyEmail is not set\n";
     }
-    if(s.notebookGuid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("notebookGuid"), ThriftFieldType::T_STRING, 3);
-        w.writeString(s.notebookGuid.ref());
-        w.writeFieldEnd();
+
+    if (reminderNotifyInApp.isSet()) {
+        strm << "    reminderNotifyInApp = "
+            << reminderNotifyInApp.ref() << "\n";
     }
-    if(s.email.isSet()) {
-        w.writeFieldBegin(QStringLiteral("email"), ThriftFieldType::T_STRING, 4);
-        w.writeString(s.email.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    reminderNotifyInApp is not set\n";
     }
-    if(s.recipientIdentityId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("recipientIdentityId"), ThriftFieldType::T_I64, 18);
-        w.writeI64(s.recipientIdentityId.ref());
-        w.writeFieldEnd();
+
+    if (inMyList.isSet()) {
+        strm << "    inMyList = "
+            << inMyList.ref() << "\n";
     }
-    if(s.notebookModifiable.isSet()) {
-        w.writeFieldBegin(QStringLiteral("notebookModifiable"), ThriftFieldType::T_BOOL, 5);
-        w.writeBool(s.notebookModifiable.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    inMyList is not set\n";
     }
-    if(s.serviceCreated.isSet()) {
-        w.writeFieldBegin(QStringLiteral("serviceCreated"), ThriftFieldType::T_I64, 7);
-        w.writeI64(s.serviceCreated.ref());
-        w.writeFieldEnd();
+
+    if (stack.isSet()) {
+        strm << "    stack = "
+            << stack.ref() << "\n";
     }
-    if(s.serviceUpdated.isSet()) {
-        w.writeFieldBegin(QStringLiteral("serviceUpdated"), ThriftFieldType::T_I64, 10);
-        w.writeI64(s.serviceUpdated.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    stack is not set\n";
     }
-    if(s.globalId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("globalId"), ThriftFieldType::T_STRING, 8);
-        w.writeString(s.globalId.ref());
-        w.writeFieldEnd();
+
+    if (recipientStatus.isSet()) {
+        strm << "    recipientStatus = "
+            << recipientStatus.ref() << "\n";
     }
-    if(s.username.isSet()) {
-        w.writeFieldBegin(QStringLiteral("username"), ThriftFieldType::T_STRING, 9);
-        w.writeString(s.username.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    recipientStatus is not set\n";
     }
-    if(s.privilege.isSet()) {
-        w.writeFieldBegin(QStringLiteral("privilege"), ThriftFieldType::T_I32, 11);
-        w.writeI32(static_cast<qint32>(s.privilege.ref()));
-        w.writeFieldEnd();
-    }
-    if(s.recipientSettings.isSet()) {
-        w.writeFieldBegin(QStringLiteral("recipientSettings"), ThriftFieldType::T_STRUCT, 13);
-        writeSharedNotebookRecipientSettings(w, s.recipientSettings.ref());
-        w.writeFieldEnd();
-    }
-    if(s.sharerUserId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sharerUserId"), ThriftFieldType::T_I32, 14);
-        w.writeI32(s.sharerUserId.ref());
-        w.writeFieldEnd();
-    }
-    if(s.recipientUsername.isSet()) {
-        w.writeFieldBegin(QStringLiteral("recipientUsername"), ThriftFieldType::T_STRING, 15);
-        w.writeString(s.recipientUsername.ref());
-        w.writeFieldEnd();
-    }
-    if(s.recipientUserId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("recipientUserId"), ThriftFieldType::T_I32, 17);
-        w.writeI32(s.recipientUserId.ref());
-        w.writeFieldEnd();
-    }
-    if(s.serviceAssigned.isSet()) {
-        w.writeFieldBegin(QStringLiteral("serviceAssigned"), ThriftFieldType::T_I64, 16);
-        w.writeI64(s.serviceAssigned.ref());
-        w.writeFieldEnd();
-    }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    strm << "}\n";
 }
 
-void readSharedNotebook(ThriftBinaryBufferReader & r, SharedNotebook & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeSharedNotebook(
+    ThriftBinaryBufferWriter & writer,
+    const SharedNotebook & s)
+{
+    writer.writeStructBegin(QStringLiteral("SharedNotebook"));
+    if (s.id.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("id"),
+            ThriftFieldType::T_I64,
+            1);
+
+        writer.writeI64(s.id.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.userId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("userId"),
+            ThriftFieldType::T_I32,
+            2);
+
+        writer.writeI32(s.userId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.notebookGuid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("notebookGuid"),
+            ThriftFieldType::T_STRING,
+            3);
+
+        writer.writeString(s.notebookGuid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.email.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("email"),
+            ThriftFieldType::T_STRING,
+            4);
+
+        writer.writeString(s.email.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.recipientIdentityId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("recipientIdentityId"),
+            ThriftFieldType::T_I64,
+            18);
+
+        writer.writeI64(s.recipientIdentityId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.notebookModifiable.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("notebookModifiable"),
+            ThriftFieldType::T_BOOL,
+            5);
+
+        writer.writeBool(s.notebookModifiable.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.serviceCreated.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("serviceCreated"),
+            ThriftFieldType::T_I64,
+            7);
+
+        writer.writeI64(s.serviceCreated.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.serviceUpdated.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("serviceUpdated"),
+            ThriftFieldType::T_I64,
+            10);
+
+        writer.writeI64(s.serviceUpdated.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.globalId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("globalId"),
+            ThriftFieldType::T_STRING,
+            8);
+
+        writer.writeString(s.globalId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.username.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("username"),
+            ThriftFieldType::T_STRING,
+            9);
+
+        writer.writeString(s.username.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.privilege.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("privilege"),
+            ThriftFieldType::T_I32,
+            11);
+
+        writer.writeI32(static_cast<qint32>(s.privilege.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.recipientSettings.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("recipientSettings"),
+            ThriftFieldType::T_STRUCT,
+            13);
+
+        writeSharedNotebookRecipientSettings(writer, s.recipientSettings.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.sharerUserId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sharerUserId"),
+            ThriftFieldType::T_I32,
+            14);
+
+        writer.writeI32(s.sharerUserId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.recipientUsername.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("recipientUsername"),
+            ThriftFieldType::T_STRING,
+            15);
+
+        writer.writeString(s.recipientUsername.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.recipientUserId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("recipientUserId"),
+            ThriftFieldType::T_I32,
+            17);
+
+        writer.writeI32(s.recipientUserId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.serviceAssigned.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("serviceAssigned"),
+            ThriftFieldType::T_I64,
+            16);
+
+        writer.writeI64(s.serviceAssigned.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readSharedNotebook(
+    ThriftBinaryBufferReader & reader,
+    SharedNotebook & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.id = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_I32) {
                 UserID v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.userId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 Guid v;
-                r.readString(v);
+                reader.readString(v);
                 s.notebookGuid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.email = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 18) {
             if (fieldType == ThriftFieldType::T_I64) {
                 IdentityID v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.recipientIdentityId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.notebookModifiable = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.serviceCreated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 10) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.serviceUpdated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.globalId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 9) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.username = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 11) {
             if (fieldType == ThriftFieldType::T_I32) {
-                SharedNotebookPrivilegeLevel::type v;
-                readEnumSharedNotebookPrivilegeLevel(r, v);
+                SharedNotebookPrivilegeLevel v;
+                readEnumSharedNotebookPrivilegeLevel(reader, v);
                 s.privilege = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 13) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 SharedNotebookRecipientSettings v;
-                readSharedNotebookRecipientSettings(r, v);
+                readSharedNotebookRecipientSettings(reader, v);
                 s.recipientSettings = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 14) {
             if (fieldType == ThriftFieldType::T_I32) {
                 UserID v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.sharerUserId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 15) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.recipientUsername = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 17) {
             if (fieldType == ThriftFieldType::T_I32) {
                 UserID v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.recipientUserId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 16) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.serviceAssigned = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeCanMoveToContainerRestrictions(ThriftBinaryBufferWriter & w, const CanMoveToContainerRestrictions & s) {
-    w.writeStructBegin(QStringLiteral("CanMoveToContainerRestrictions"));
-    if(s.canMoveToContainer.isSet()) {
-        w.writeFieldBegin(QStringLiteral("canMoveToContainer"), ThriftFieldType::T_I32, 1);
-        w.writeI32(static_cast<qint32>(s.canMoveToContainer.ref()));
-        w.writeFieldEnd();
+void SharedNotebook::print(QTextStream & strm) const
+{
+    strm << "SharedNotebook: {\n";
+    localData.print(strm);
+
+    if (id.isSet()) {
+        strm << "    id = "
+            << id.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    id is not set\n";
+    }
+
+    if (userId.isSet()) {
+        strm << "    userId = "
+            << userId.ref() << "\n";
+    }
+    else {
+        strm << "    userId is not set\n";
+    }
+
+    if (notebookGuid.isSet()) {
+        strm << "    notebookGuid = "
+            << notebookGuid.ref() << "\n";
+    }
+    else {
+        strm << "    notebookGuid is not set\n";
+    }
+
+    if (email.isSet()) {
+        strm << "    email = "
+            << email.ref() << "\n";
+    }
+    else {
+        strm << "    email is not set\n";
+    }
+
+    if (recipientIdentityId.isSet()) {
+        strm << "    recipientIdentityId = "
+            << recipientIdentityId.ref() << "\n";
+    }
+    else {
+        strm << "    recipientIdentityId is not set\n";
+    }
+
+    if (notebookModifiable.isSet()) {
+        strm << "    notebookModifiable = "
+            << notebookModifiable.ref() << "\n";
+    }
+    else {
+        strm << "    notebookModifiable is not set\n";
+    }
+
+    if (serviceCreated.isSet()) {
+        strm << "    serviceCreated = "
+            << serviceCreated.ref() << "\n";
+    }
+    else {
+        strm << "    serviceCreated is not set\n";
+    }
+
+    if (serviceUpdated.isSet()) {
+        strm << "    serviceUpdated = "
+            << serviceUpdated.ref() << "\n";
+    }
+    else {
+        strm << "    serviceUpdated is not set\n";
+    }
+
+    if (globalId.isSet()) {
+        strm << "    globalId = "
+            << globalId.ref() << "\n";
+    }
+    else {
+        strm << "    globalId is not set\n";
+    }
+
+    if (username.isSet()) {
+        strm << "    username = "
+            << username.ref() << "\n";
+    }
+    else {
+        strm << "    username is not set\n";
+    }
+
+    if (privilege.isSet()) {
+        strm << "    privilege = "
+            << privilege.ref() << "\n";
+    }
+    else {
+        strm << "    privilege is not set\n";
+    }
+
+    if (recipientSettings.isSet()) {
+        strm << "    recipientSettings = "
+            << recipientSettings.ref() << "\n";
+    }
+    else {
+        strm << "    recipientSettings is not set\n";
+    }
+
+    if (sharerUserId.isSet()) {
+        strm << "    sharerUserId = "
+            << sharerUserId.ref() << "\n";
+    }
+    else {
+        strm << "    sharerUserId is not set\n";
+    }
+
+    if (recipientUsername.isSet()) {
+        strm << "    recipientUsername = "
+            << recipientUsername.ref() << "\n";
+    }
+    else {
+        strm << "    recipientUsername is not set\n";
+    }
+
+    if (recipientUserId.isSet()) {
+        strm << "    recipientUserId = "
+            << recipientUserId.ref() << "\n";
+    }
+    else {
+        strm << "    recipientUserId is not set\n";
+    }
+
+    if (serviceAssigned.isSet()) {
+        strm << "    serviceAssigned = "
+            << serviceAssigned.ref() << "\n";
+    }
+    else {
+        strm << "    serviceAssigned is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readCanMoveToContainerRestrictions(ThriftBinaryBufferReader & r, CanMoveToContainerRestrictions & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeCanMoveToContainerRestrictions(
+    ThriftBinaryBufferWriter & writer,
+    const CanMoveToContainerRestrictions & s)
+{
+    writer.writeStructBegin(QStringLiteral("CanMoveToContainerRestrictions"));
+    if (s.canMoveToContainer.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("canMoveToContainer"),
+            ThriftFieldType::T_I32,
+            1);
+
+        writer.writeI32(static_cast<qint32>(s.canMoveToContainer.ref()));
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readCanMoveToContainerRestrictions(
+    ThriftBinaryBufferReader & reader,
+    CanMoveToContainerRestrictions & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I32) {
-                CanMoveToContainerStatus::type v;
-                readEnumCanMoveToContainerStatus(r, v);
+                CanMoveToContainerStatus v;
+                readEnumCanMoveToContainerStatus(reader, v);
                 s.canMoveToContainer = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeNotebookRestrictions(ThriftBinaryBufferWriter & w, const NotebookRestrictions & s) {
-    w.writeStructBegin(QStringLiteral("NotebookRestrictions"));
-    if(s.noReadNotes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noReadNotes"), ThriftFieldType::T_BOOL, 1);
-        w.writeBool(s.noReadNotes.ref());
-        w.writeFieldEnd();
+void CanMoveToContainerRestrictions::print(QTextStream & strm) const
+{
+    strm << "CanMoveToContainerRestrictions: {\n";
+    localData.print(strm);
+
+    if (canMoveToContainer.isSet()) {
+        strm << "    canMoveToContainer = "
+            << canMoveToContainer.ref() << "\n";
     }
-    if(s.noCreateNotes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noCreateNotes"), ThriftFieldType::T_BOOL, 2);
-        w.writeBool(s.noCreateNotes.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    canMoveToContainer is not set\n";
     }
-    if(s.noUpdateNotes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noUpdateNotes"), ThriftFieldType::T_BOOL, 3);
-        w.writeBool(s.noUpdateNotes.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noExpungeNotes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noExpungeNotes"), ThriftFieldType::T_BOOL, 4);
-        w.writeBool(s.noExpungeNotes.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noShareNotes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noShareNotes"), ThriftFieldType::T_BOOL, 5);
-        w.writeBool(s.noShareNotes.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noEmailNotes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noEmailNotes"), ThriftFieldType::T_BOOL, 6);
-        w.writeBool(s.noEmailNotes.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noSendMessageToRecipients.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noSendMessageToRecipients"), ThriftFieldType::T_BOOL, 7);
-        w.writeBool(s.noSendMessageToRecipients.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noUpdateNotebook.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noUpdateNotebook"), ThriftFieldType::T_BOOL, 8);
-        w.writeBool(s.noUpdateNotebook.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noExpungeNotebook.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noExpungeNotebook"), ThriftFieldType::T_BOOL, 9);
-        w.writeBool(s.noExpungeNotebook.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noSetDefaultNotebook.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noSetDefaultNotebook"), ThriftFieldType::T_BOOL, 10);
-        w.writeBool(s.noSetDefaultNotebook.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noSetNotebookStack.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noSetNotebookStack"), ThriftFieldType::T_BOOL, 11);
-        w.writeBool(s.noSetNotebookStack.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noPublishToPublic.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noPublishToPublic"), ThriftFieldType::T_BOOL, 12);
-        w.writeBool(s.noPublishToPublic.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noPublishToBusinessLibrary.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noPublishToBusinessLibrary"), ThriftFieldType::T_BOOL, 13);
-        w.writeBool(s.noPublishToBusinessLibrary.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noCreateTags.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noCreateTags"), ThriftFieldType::T_BOOL, 14);
-        w.writeBool(s.noCreateTags.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noUpdateTags.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noUpdateTags"), ThriftFieldType::T_BOOL, 15);
-        w.writeBool(s.noUpdateTags.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noExpungeTags.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noExpungeTags"), ThriftFieldType::T_BOOL, 16);
-        w.writeBool(s.noExpungeTags.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noSetParentTag.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noSetParentTag"), ThriftFieldType::T_BOOL, 17);
-        w.writeBool(s.noSetParentTag.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noCreateSharedNotebooks.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noCreateSharedNotebooks"), ThriftFieldType::T_BOOL, 18);
-        w.writeBool(s.noCreateSharedNotebooks.ref());
-        w.writeFieldEnd();
-    }
-    if(s.updateWhichSharedNotebookRestrictions.isSet()) {
-        w.writeFieldBegin(QStringLiteral("updateWhichSharedNotebookRestrictions"), ThriftFieldType::T_I32, 19);
-        w.writeI32(static_cast<qint32>(s.updateWhichSharedNotebookRestrictions.ref()));
-        w.writeFieldEnd();
-    }
-    if(s.expungeWhichSharedNotebookRestrictions.isSet()) {
-        w.writeFieldBegin(QStringLiteral("expungeWhichSharedNotebookRestrictions"), ThriftFieldType::T_I32, 20);
-        w.writeI32(static_cast<qint32>(s.expungeWhichSharedNotebookRestrictions.ref()));
-        w.writeFieldEnd();
-    }
-    if(s.noShareNotesWithBusiness.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noShareNotesWithBusiness"), ThriftFieldType::T_BOOL, 21);
-        w.writeBool(s.noShareNotesWithBusiness.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noRenameNotebook.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noRenameNotebook"), ThriftFieldType::T_BOOL, 22);
-        w.writeBool(s.noRenameNotebook.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noSetInMyList.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noSetInMyList"), ThriftFieldType::T_BOOL, 23);
-        w.writeBool(s.noSetInMyList.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noChangeContact.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noChangeContact"), ThriftFieldType::T_BOOL, 24);
-        w.writeBool(s.noChangeContact.ref());
-        w.writeFieldEnd();
-    }
-    if(s.canMoveToContainerRestrictions.isSet()) {
-        w.writeFieldBegin(QStringLiteral("canMoveToContainerRestrictions"), ThriftFieldType::T_STRUCT, 26);
-        writeCanMoveToContainerRestrictions(w, s.canMoveToContainerRestrictions.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noSetReminderNotifyEmail.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noSetReminderNotifyEmail"), ThriftFieldType::T_BOOL, 27);
-        w.writeBool(s.noSetReminderNotifyEmail.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noSetReminderNotifyInApp.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noSetReminderNotifyInApp"), ThriftFieldType::T_BOOL, 28);
-        w.writeBool(s.noSetReminderNotifyInApp.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noSetRecipientSettingsStack.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noSetRecipientSettingsStack"), ThriftFieldType::T_BOOL, 29);
-        w.writeBool(s.noSetRecipientSettingsStack.ref());
-        w.writeFieldEnd();
-    }
-    if(s.noCanMoveNote.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noCanMoveNote"), ThriftFieldType::T_BOOL, 30);
-        w.writeBool(s.noCanMoveNote.ref());
-        w.writeFieldEnd();
-    }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    strm << "}\n";
 }
 
-void readNotebookRestrictions(ThriftBinaryBufferReader & r, NotebookRestrictions & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNotebookRestrictions(
+    ThriftBinaryBufferWriter & writer,
+    const NotebookRestrictions & s)
+{
+    writer.writeStructBegin(QStringLiteral("NotebookRestrictions"));
+    if (s.noReadNotes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noReadNotes"),
+            ThriftFieldType::T_BOOL,
+            1);
+
+        writer.writeBool(s.noReadNotes.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noCreateNotes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noCreateNotes"),
+            ThriftFieldType::T_BOOL,
+            2);
+
+        writer.writeBool(s.noCreateNotes.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noUpdateNotes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noUpdateNotes"),
+            ThriftFieldType::T_BOOL,
+            3);
+
+        writer.writeBool(s.noUpdateNotes.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noExpungeNotes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noExpungeNotes"),
+            ThriftFieldType::T_BOOL,
+            4);
+
+        writer.writeBool(s.noExpungeNotes.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noShareNotes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noShareNotes"),
+            ThriftFieldType::T_BOOL,
+            5);
+
+        writer.writeBool(s.noShareNotes.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noEmailNotes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noEmailNotes"),
+            ThriftFieldType::T_BOOL,
+            6);
+
+        writer.writeBool(s.noEmailNotes.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noSendMessageToRecipients.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noSendMessageToRecipients"),
+            ThriftFieldType::T_BOOL,
+            7);
+
+        writer.writeBool(s.noSendMessageToRecipients.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noUpdateNotebook.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noUpdateNotebook"),
+            ThriftFieldType::T_BOOL,
+            8);
+
+        writer.writeBool(s.noUpdateNotebook.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noExpungeNotebook.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noExpungeNotebook"),
+            ThriftFieldType::T_BOOL,
+            9);
+
+        writer.writeBool(s.noExpungeNotebook.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noSetDefaultNotebook.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noSetDefaultNotebook"),
+            ThriftFieldType::T_BOOL,
+            10);
+
+        writer.writeBool(s.noSetDefaultNotebook.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noSetNotebookStack.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noSetNotebookStack"),
+            ThriftFieldType::T_BOOL,
+            11);
+
+        writer.writeBool(s.noSetNotebookStack.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noPublishToPublic.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noPublishToPublic"),
+            ThriftFieldType::T_BOOL,
+            12);
+
+        writer.writeBool(s.noPublishToPublic.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noPublishToBusinessLibrary.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noPublishToBusinessLibrary"),
+            ThriftFieldType::T_BOOL,
+            13);
+
+        writer.writeBool(s.noPublishToBusinessLibrary.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noCreateTags.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noCreateTags"),
+            ThriftFieldType::T_BOOL,
+            14);
+
+        writer.writeBool(s.noCreateTags.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noUpdateTags.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noUpdateTags"),
+            ThriftFieldType::T_BOOL,
+            15);
+
+        writer.writeBool(s.noUpdateTags.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noExpungeTags.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noExpungeTags"),
+            ThriftFieldType::T_BOOL,
+            16);
+
+        writer.writeBool(s.noExpungeTags.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noSetParentTag.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noSetParentTag"),
+            ThriftFieldType::T_BOOL,
+            17);
+
+        writer.writeBool(s.noSetParentTag.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noCreateSharedNotebooks.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noCreateSharedNotebooks"),
+            ThriftFieldType::T_BOOL,
+            18);
+
+        writer.writeBool(s.noCreateSharedNotebooks.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.updateWhichSharedNotebookRestrictions.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("updateWhichSharedNotebookRestrictions"),
+            ThriftFieldType::T_I32,
+            19);
+
+        writer.writeI32(static_cast<qint32>(s.updateWhichSharedNotebookRestrictions.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.expungeWhichSharedNotebookRestrictions.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("expungeWhichSharedNotebookRestrictions"),
+            ThriftFieldType::T_I32,
+            20);
+
+        writer.writeI32(static_cast<qint32>(s.expungeWhichSharedNotebookRestrictions.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.noShareNotesWithBusiness.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noShareNotesWithBusiness"),
+            ThriftFieldType::T_BOOL,
+            21);
+
+        writer.writeBool(s.noShareNotesWithBusiness.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noRenameNotebook.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noRenameNotebook"),
+            ThriftFieldType::T_BOOL,
+            22);
+
+        writer.writeBool(s.noRenameNotebook.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noSetInMyList.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noSetInMyList"),
+            ThriftFieldType::T_BOOL,
+            23);
+
+        writer.writeBool(s.noSetInMyList.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noChangeContact.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noChangeContact"),
+            ThriftFieldType::T_BOOL,
+            24);
+
+        writer.writeBool(s.noChangeContact.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.canMoveToContainerRestrictions.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("canMoveToContainerRestrictions"),
+            ThriftFieldType::T_STRUCT,
+            26);
+
+        writeCanMoveToContainerRestrictions(writer, s.canMoveToContainerRestrictions.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noSetReminderNotifyEmail.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noSetReminderNotifyEmail"),
+            ThriftFieldType::T_BOOL,
+            27);
+
+        writer.writeBool(s.noSetReminderNotifyEmail.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noSetReminderNotifyInApp.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noSetReminderNotifyInApp"),
+            ThriftFieldType::T_BOOL,
+            28);
+
+        writer.writeBool(s.noSetReminderNotifyInApp.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noSetRecipientSettingsStack.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noSetRecipientSettingsStack"),
+            ThriftFieldType::T_BOOL,
+            29);
+
+        writer.writeBool(s.noSetRecipientSettingsStack.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noCanMoveNote.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noCanMoveNote"),
+            ThriftFieldType::T_BOOL,
+            30);
+
+        writer.writeBool(s.noCanMoveNote.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNotebookRestrictions(
+    ThriftBinaryBufferReader & reader,
+    NotebookRestrictions & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noReadNotes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noCreateNotes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noUpdateNotes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noExpungeNotes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noShareNotes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noEmailNotes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noSendMessageToRecipients = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noUpdateNotebook = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 9) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noExpungeNotebook = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 10) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noSetDefaultNotebook = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 11) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noSetNotebookStack = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 12) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noPublishToPublic = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 13) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noPublishToBusinessLibrary = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 14) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noCreateTags = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 15) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noUpdateTags = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 16) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noExpungeTags = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 17) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noSetParentTag = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 18) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noCreateSharedNotebooks = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 19) {
             if (fieldType == ThriftFieldType::T_I32) {
-                SharedNotebookInstanceRestrictions::type v;
-                readEnumSharedNotebookInstanceRestrictions(r, v);
+                SharedNotebookInstanceRestrictions v;
+                readEnumSharedNotebookInstanceRestrictions(reader, v);
                 s.updateWhichSharedNotebookRestrictions = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 20) {
             if (fieldType == ThriftFieldType::T_I32) {
-                SharedNotebookInstanceRestrictions::type v;
-                readEnumSharedNotebookInstanceRestrictions(r, v);
+                SharedNotebookInstanceRestrictions v;
+                readEnumSharedNotebookInstanceRestrictions(reader, v);
                 s.expungeWhichSharedNotebookRestrictions = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 21) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noShareNotesWithBusiness = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 22) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noRenameNotebook = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 23) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noSetInMyList = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 24) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noChangeContact = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 26) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 CanMoveToContainerRestrictions v;
-                readCanMoveToContainerRestrictions(r, v);
+                readCanMoveToContainerRestrictions(reader, v);
                 s.canMoveToContainerRestrictions = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 27) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noSetReminderNotifyEmail = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 28) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noSetReminderNotifyInApp = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 29) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noSetRecipientSettingsStack = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 30) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.noCanMoveNote = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeNotebook(ThriftBinaryBufferWriter & w, const Notebook & s) {
-    w.writeStructBegin(QStringLiteral("Notebook"));
-    if(s.guid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("guid"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.guid.ref());
-        w.writeFieldEnd();
+void NotebookRestrictions::print(QTextStream & strm) const
+{
+    strm << "NotebookRestrictions: {\n";
+    localData.print(strm);
+
+    if (noReadNotes.isSet()) {
+        strm << "    noReadNotes = "
+            << noReadNotes.ref() << "\n";
     }
-    if(s.name.isSet()) {
-        w.writeFieldBegin(QStringLiteral("name"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.name.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noReadNotes is not set\n";
     }
-    if(s.updateSequenceNum.isSet()) {
-        w.writeFieldBegin(QStringLiteral("updateSequenceNum"), ThriftFieldType::T_I32, 5);
-        w.writeI32(s.updateSequenceNum.ref());
-        w.writeFieldEnd();
+
+    if (noCreateNotes.isSet()) {
+        strm << "    noCreateNotes = "
+            << noCreateNotes.ref() << "\n";
     }
-    if(s.defaultNotebook.isSet()) {
-        w.writeFieldBegin(QStringLiteral("defaultNotebook"), ThriftFieldType::T_BOOL, 6);
-        w.writeBool(s.defaultNotebook.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noCreateNotes is not set\n";
     }
-    if(s.serviceCreated.isSet()) {
-        w.writeFieldBegin(QStringLiteral("serviceCreated"), ThriftFieldType::T_I64, 7);
-        w.writeI64(s.serviceCreated.ref());
-        w.writeFieldEnd();
+
+    if (noUpdateNotes.isSet()) {
+        strm << "    noUpdateNotes = "
+            << noUpdateNotes.ref() << "\n";
     }
-    if(s.serviceUpdated.isSet()) {
-        w.writeFieldBegin(QStringLiteral("serviceUpdated"), ThriftFieldType::T_I64, 8);
-        w.writeI64(s.serviceUpdated.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noUpdateNotes is not set\n";
     }
-    if(s.publishing.isSet()) {
-        w.writeFieldBegin(QStringLiteral("publishing"), ThriftFieldType::T_STRUCT, 10);
-        writePublishing(w, s.publishing.ref());
-        w.writeFieldEnd();
+
+    if (noExpungeNotes.isSet()) {
+        strm << "    noExpungeNotes = "
+            << noExpungeNotes.ref() << "\n";
     }
-    if(s.published.isSet()) {
-        w.writeFieldBegin(QStringLiteral("published"), ThriftFieldType::T_BOOL, 11);
-        w.writeBool(s.published.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noExpungeNotes is not set\n";
     }
-    if(s.stack.isSet()) {
-        w.writeFieldBegin(QStringLiteral("stack"), ThriftFieldType::T_STRING, 12);
-        w.writeString(s.stack.ref());
-        w.writeFieldEnd();
+
+    if (noShareNotes.isSet()) {
+        strm << "    noShareNotes = "
+            << noShareNotes.ref() << "\n";
     }
-    if(s.sharedNotebookIds.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sharedNotebookIds"), ThriftFieldType::T_LIST, 13);
-        w.writeListBegin(ThriftFieldType::T_I64, s.sharedNotebookIds.ref().length());
-        for(QList< qint64 >::const_iterator it = s.sharedNotebookIds.ref().constBegin(), end = s.sharedNotebookIds.ref().constEnd(); it != end; ++it) {
-            w.writeI64(*it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+    else {
+        strm << "    noShareNotes is not set\n";
     }
-    if(s.sharedNotebooks.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sharedNotebooks"), ThriftFieldType::T_LIST, 14);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.sharedNotebooks.ref().length());
-        for(QList< SharedNotebook >::const_iterator it = s.sharedNotebooks.ref().constBegin(), end = s.sharedNotebooks.ref().constEnd(); it != end; ++it) {
-            writeSharedNotebook(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+
+    if (noEmailNotes.isSet()) {
+        strm << "    noEmailNotes = "
+            << noEmailNotes.ref() << "\n";
     }
-    if(s.businessNotebook.isSet()) {
-        w.writeFieldBegin(QStringLiteral("businessNotebook"), ThriftFieldType::T_STRUCT, 15);
-        writeBusinessNotebook(w, s.businessNotebook.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noEmailNotes is not set\n";
     }
-    if(s.contact.isSet()) {
-        w.writeFieldBegin(QStringLiteral("contact"), ThriftFieldType::T_STRUCT, 16);
-        writeUser(w, s.contact.ref());
-        w.writeFieldEnd();
+
+    if (noSendMessageToRecipients.isSet()) {
+        strm << "    noSendMessageToRecipients = "
+            << noSendMessageToRecipients.ref() << "\n";
     }
-    if(s.restrictions.isSet()) {
-        w.writeFieldBegin(QStringLiteral("restrictions"), ThriftFieldType::T_STRUCT, 17);
-        writeNotebookRestrictions(w, s.restrictions.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noSendMessageToRecipients is not set\n";
     }
-    if(s.recipientSettings.isSet()) {
-        w.writeFieldBegin(QStringLiteral("recipientSettings"), ThriftFieldType::T_STRUCT, 18);
-        writeNotebookRecipientSettings(w, s.recipientSettings.ref());
-        w.writeFieldEnd();
+
+    if (noUpdateNotebook.isSet()) {
+        strm << "    noUpdateNotebook = "
+            << noUpdateNotebook.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    noUpdateNotebook is not set\n";
+    }
+
+    if (noExpungeNotebook.isSet()) {
+        strm << "    noExpungeNotebook = "
+            << noExpungeNotebook.ref() << "\n";
+    }
+    else {
+        strm << "    noExpungeNotebook is not set\n";
+    }
+
+    if (noSetDefaultNotebook.isSet()) {
+        strm << "    noSetDefaultNotebook = "
+            << noSetDefaultNotebook.ref() << "\n";
+    }
+    else {
+        strm << "    noSetDefaultNotebook is not set\n";
+    }
+
+    if (noSetNotebookStack.isSet()) {
+        strm << "    noSetNotebookStack = "
+            << noSetNotebookStack.ref() << "\n";
+    }
+    else {
+        strm << "    noSetNotebookStack is not set\n";
+    }
+
+    if (noPublishToPublic.isSet()) {
+        strm << "    noPublishToPublic = "
+            << noPublishToPublic.ref() << "\n";
+    }
+    else {
+        strm << "    noPublishToPublic is not set\n";
+    }
+
+    if (noPublishToBusinessLibrary.isSet()) {
+        strm << "    noPublishToBusinessLibrary = "
+            << noPublishToBusinessLibrary.ref() << "\n";
+    }
+    else {
+        strm << "    noPublishToBusinessLibrary is not set\n";
+    }
+
+    if (noCreateTags.isSet()) {
+        strm << "    noCreateTags = "
+            << noCreateTags.ref() << "\n";
+    }
+    else {
+        strm << "    noCreateTags is not set\n";
+    }
+
+    if (noUpdateTags.isSet()) {
+        strm << "    noUpdateTags = "
+            << noUpdateTags.ref() << "\n";
+    }
+    else {
+        strm << "    noUpdateTags is not set\n";
+    }
+
+    if (noExpungeTags.isSet()) {
+        strm << "    noExpungeTags = "
+            << noExpungeTags.ref() << "\n";
+    }
+    else {
+        strm << "    noExpungeTags is not set\n";
+    }
+
+    if (noSetParentTag.isSet()) {
+        strm << "    noSetParentTag = "
+            << noSetParentTag.ref() << "\n";
+    }
+    else {
+        strm << "    noSetParentTag is not set\n";
+    }
+
+    if (noCreateSharedNotebooks.isSet()) {
+        strm << "    noCreateSharedNotebooks = "
+            << noCreateSharedNotebooks.ref() << "\n";
+    }
+    else {
+        strm << "    noCreateSharedNotebooks is not set\n";
+    }
+
+    if (updateWhichSharedNotebookRestrictions.isSet()) {
+        strm << "    updateWhichSharedNotebookRestrictions = "
+            << updateWhichSharedNotebookRestrictions.ref() << "\n";
+    }
+    else {
+        strm << "    updateWhichSharedNotebookRestrictions is not set\n";
+    }
+
+    if (expungeWhichSharedNotebookRestrictions.isSet()) {
+        strm << "    expungeWhichSharedNotebookRestrictions = "
+            << expungeWhichSharedNotebookRestrictions.ref() << "\n";
+    }
+    else {
+        strm << "    expungeWhichSharedNotebookRestrictions is not set\n";
+    }
+
+    if (noShareNotesWithBusiness.isSet()) {
+        strm << "    noShareNotesWithBusiness = "
+            << noShareNotesWithBusiness.ref() << "\n";
+    }
+    else {
+        strm << "    noShareNotesWithBusiness is not set\n";
+    }
+
+    if (noRenameNotebook.isSet()) {
+        strm << "    noRenameNotebook = "
+            << noRenameNotebook.ref() << "\n";
+    }
+    else {
+        strm << "    noRenameNotebook is not set\n";
+    }
+
+    if (noSetInMyList.isSet()) {
+        strm << "    noSetInMyList = "
+            << noSetInMyList.ref() << "\n";
+    }
+    else {
+        strm << "    noSetInMyList is not set\n";
+    }
+
+    if (noChangeContact.isSet()) {
+        strm << "    noChangeContact = "
+            << noChangeContact.ref() << "\n";
+    }
+    else {
+        strm << "    noChangeContact is not set\n";
+    }
+
+    if (canMoveToContainerRestrictions.isSet()) {
+        strm << "    canMoveToContainerRestrictions = "
+            << canMoveToContainerRestrictions.ref() << "\n";
+    }
+    else {
+        strm << "    canMoveToContainerRestrictions is not set\n";
+    }
+
+    if (noSetReminderNotifyEmail.isSet()) {
+        strm << "    noSetReminderNotifyEmail = "
+            << noSetReminderNotifyEmail.ref() << "\n";
+    }
+    else {
+        strm << "    noSetReminderNotifyEmail is not set\n";
+    }
+
+    if (noSetReminderNotifyInApp.isSet()) {
+        strm << "    noSetReminderNotifyInApp = "
+            << noSetReminderNotifyInApp.ref() << "\n";
+    }
+    else {
+        strm << "    noSetReminderNotifyInApp is not set\n";
+    }
+
+    if (noSetRecipientSettingsStack.isSet()) {
+        strm << "    noSetRecipientSettingsStack = "
+            << noSetRecipientSettingsStack.ref() << "\n";
+    }
+    else {
+        strm << "    noSetRecipientSettingsStack is not set\n";
+    }
+
+    if (noCanMoveNote.isSet()) {
+        strm << "    noCanMoveNote = "
+            << noCanMoveNote.ref() << "\n";
+    }
+    else {
+        strm << "    noCanMoveNote is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readNotebook(ThriftBinaryBufferReader & r, Notebook & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNotebook(
+    ThriftBinaryBufferWriter & writer,
+    const Notebook & s)
+{
+    writer.writeStructBegin(QStringLiteral("Notebook"));
+    if (s.guid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("guid"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.guid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.name.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("name"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.name.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.updateSequenceNum.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("updateSequenceNum"),
+            ThriftFieldType::T_I32,
+            5);
+
+        writer.writeI32(s.updateSequenceNum.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.defaultNotebook.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("defaultNotebook"),
+            ThriftFieldType::T_BOOL,
+            6);
+
+        writer.writeBool(s.defaultNotebook.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.serviceCreated.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("serviceCreated"),
+            ThriftFieldType::T_I64,
+            7);
+
+        writer.writeI64(s.serviceCreated.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.serviceUpdated.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("serviceUpdated"),
+            ThriftFieldType::T_I64,
+            8);
+
+        writer.writeI64(s.serviceUpdated.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.publishing.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("publishing"),
+            ThriftFieldType::T_STRUCT,
+            10);
+
+        writePublishing(writer, s.publishing.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.published.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("published"),
+            ThriftFieldType::T_BOOL,
+            11);
+
+        writer.writeBool(s.published.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.stack.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("stack"),
+            ThriftFieldType::T_STRING,
+            12);
+
+        writer.writeString(s.stack.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.sharedNotebookIds.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sharedNotebookIds"),
+            ThriftFieldType::T_LIST,
+            13);
+
+        writer.writeListBegin(ThriftFieldType::T_I64, s.sharedNotebookIds.ref().length());
+        for(const auto & value: qAsConst(s.sharedNotebookIds.ref())) {
+            writer.writeI64(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.sharedNotebooks.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sharedNotebooks"),
+            ThriftFieldType::T_LIST,
+            14);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.sharedNotebooks.ref().length());
+        for(const auto & value: qAsConst(s.sharedNotebooks.ref())) {
+            writeSharedNotebook(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.businessNotebook.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("businessNotebook"),
+            ThriftFieldType::T_STRUCT,
+            15);
+
+        writeBusinessNotebook(writer, s.businessNotebook.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.contact.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("contact"),
+            ThriftFieldType::T_STRUCT,
+            16);
+
+        writeUser(writer, s.contact.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.restrictions.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("restrictions"),
+            ThriftFieldType::T_STRUCT,
+            17);
+
+        writeNotebookRestrictions(writer, s.restrictions.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.recipientSettings.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("recipientSettings"),
+            ThriftFieldType::T_STRUCT,
+            18);
+
+        writeNotebookRecipientSettings(writer, s.recipientSettings.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNotebook(
+    ThriftBinaryBufferReader & reader,
+    Notebook & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 Guid v;
-                r.readString(v);
+                reader.readString(v);
                 s.guid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.name = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.updateSequenceNum = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.defaultNotebook = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.serviceCreated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.serviceUpdated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 10) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 Publishing v;
-                readPublishing(r, v);
+                readPublishing(reader, v);
                 s.publishing = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 11) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.published = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 12) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.stack = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 13) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< qint64 > v;
+                QList<qint64> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_I64) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (Notebook.sharedNotebookIds)"));
+                if (elemType != ThriftFieldType::T_I64) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (Notebook.sharedNotebookIds)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     qint64 elem;
-                    r.readI64(elem);
+                    reader.readI64(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.sharedNotebookIds = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 14) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< SharedNotebook > v;
+                QList<SharedNotebook> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (Notebook.sharedNotebooks)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (Notebook.sharedNotebooks)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     SharedNotebook elem;
-                    readSharedNotebook(r, elem);
+                    readSharedNotebook(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.sharedNotebooks = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 15) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 BusinessNotebook v;
-                readBusinessNotebook(r, v);
+                readBusinessNotebook(reader, v);
                 s.businessNotebook = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 16) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 User v;
-                readUser(r, v);
+                readUser(reader, v);
                 s.contact = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 17) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 NotebookRestrictions v;
-                readNotebookRestrictions(r, v);
+                readNotebookRestrictions(reader, v);
                 s.restrictions = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 18) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 NotebookRecipientSettings v;
-                readNotebookRecipientSettings(r, v);
+                readNotebookRecipientSettings(reader, v);
                 s.recipientSettings = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeLinkedNotebook(ThriftBinaryBufferWriter & w, const LinkedNotebook & s) {
-    w.writeStructBegin(QStringLiteral("LinkedNotebook"));
-    if(s.shareName.isSet()) {
-        w.writeFieldBegin(QStringLiteral("shareName"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.shareName.ref());
-        w.writeFieldEnd();
+void Notebook::print(QTextStream & strm) const
+{
+    strm << "Notebook: {\n";
+    localData.print(strm);
+
+    if (guid.isSet()) {
+        strm << "    guid = "
+            << guid.ref() << "\n";
     }
-    if(s.username.isSet()) {
-        w.writeFieldBegin(QStringLiteral("username"), ThriftFieldType::T_STRING, 3);
-        w.writeString(s.username.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    guid is not set\n";
     }
-    if(s.shardId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("shardId"), ThriftFieldType::T_STRING, 4);
-        w.writeString(s.shardId.ref());
-        w.writeFieldEnd();
+
+    if (name.isSet()) {
+        strm << "    name = "
+            << name.ref() << "\n";
     }
-    if(s.sharedNotebookGlobalId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sharedNotebookGlobalId"), ThriftFieldType::T_STRING, 5);
-        w.writeString(s.sharedNotebookGlobalId.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    name is not set\n";
     }
-    if(s.uri.isSet()) {
-        w.writeFieldBegin(QStringLiteral("uri"), ThriftFieldType::T_STRING, 6);
-        w.writeString(s.uri.ref());
-        w.writeFieldEnd();
+
+    if (updateSequenceNum.isSet()) {
+        strm << "    updateSequenceNum = "
+            << updateSequenceNum.ref() << "\n";
     }
-    if(s.guid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("guid"), ThriftFieldType::T_STRING, 7);
-        w.writeString(s.guid.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    updateSequenceNum is not set\n";
     }
-    if(s.updateSequenceNum.isSet()) {
-        w.writeFieldBegin(QStringLiteral("updateSequenceNum"), ThriftFieldType::T_I32, 8);
-        w.writeI32(s.updateSequenceNum.ref());
-        w.writeFieldEnd();
+
+    if (defaultNotebook.isSet()) {
+        strm << "    defaultNotebook = "
+            << defaultNotebook.ref() << "\n";
     }
-    if(s.noteStoreUrl.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noteStoreUrl"), ThriftFieldType::T_STRING, 9);
-        w.writeString(s.noteStoreUrl.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    defaultNotebook is not set\n";
     }
-    if(s.webApiUrlPrefix.isSet()) {
-        w.writeFieldBegin(QStringLiteral("webApiUrlPrefix"), ThriftFieldType::T_STRING, 10);
-        w.writeString(s.webApiUrlPrefix.ref());
-        w.writeFieldEnd();
+
+    if (serviceCreated.isSet()) {
+        strm << "    serviceCreated = "
+            << serviceCreated.ref() << "\n";
     }
-    if(s.stack.isSet()) {
-        w.writeFieldBegin(QStringLiteral("stack"), ThriftFieldType::T_STRING, 11);
-        w.writeString(s.stack.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    serviceCreated is not set\n";
     }
-    if(s.businessId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("businessId"), ThriftFieldType::T_I32, 12);
-        w.writeI32(s.businessId.ref());
-        w.writeFieldEnd();
+
+    if (serviceUpdated.isSet()) {
+        strm << "    serviceUpdated = "
+            << serviceUpdated.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    serviceUpdated is not set\n";
+    }
+
+    if (publishing.isSet()) {
+        strm << "    publishing = "
+            << publishing.ref() << "\n";
+    }
+    else {
+        strm << "    publishing is not set\n";
+    }
+
+    if (published.isSet()) {
+        strm << "    published = "
+            << published.ref() << "\n";
+    }
+    else {
+        strm << "    published is not set\n";
+    }
+
+    if (stack.isSet()) {
+        strm << "    stack = "
+            << stack.ref() << "\n";
+    }
+    else {
+        strm << "    stack is not set\n";
+    }
+
+    if (sharedNotebookIds.isSet()) {
+        strm << "    sharedNotebookIds = "
+            << "QList<qint64> {";
+        for(const auto & v: sharedNotebookIds.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    sharedNotebookIds is not set\n";
+    }
+
+    if (sharedNotebooks.isSet()) {
+        strm << "    sharedNotebooks = "
+            << "QList<SharedNotebook> {";
+        for(const auto & v: sharedNotebooks.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    sharedNotebooks is not set\n";
+    }
+
+    if (businessNotebook.isSet()) {
+        strm << "    businessNotebook = "
+            << businessNotebook.ref() << "\n";
+    }
+    else {
+        strm << "    businessNotebook is not set\n";
+    }
+
+    if (contact.isSet()) {
+        strm << "    contact = "
+            << contact.ref() << "\n";
+    }
+    else {
+        strm << "    contact is not set\n";
+    }
+
+    if (restrictions.isSet()) {
+        strm << "    restrictions = "
+            << restrictions.ref() << "\n";
+    }
+    else {
+        strm << "    restrictions is not set\n";
+    }
+
+    if (recipientSettings.isSet()) {
+        strm << "    recipientSettings = "
+            << recipientSettings.ref() << "\n";
+    }
+    else {
+        strm << "    recipientSettings is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readLinkedNotebook(ThriftBinaryBufferReader & r, LinkedNotebook & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeLinkedNotebook(
+    ThriftBinaryBufferWriter & writer,
+    const LinkedNotebook & s)
+{
+    writer.writeStructBegin(QStringLiteral("LinkedNotebook"));
+    if (s.shareName.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("shareName"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.shareName.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.username.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("username"),
+            ThriftFieldType::T_STRING,
+            3);
+
+        writer.writeString(s.username.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.shardId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("shardId"),
+            ThriftFieldType::T_STRING,
+            4);
+
+        writer.writeString(s.shardId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.sharedNotebookGlobalId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sharedNotebookGlobalId"),
+            ThriftFieldType::T_STRING,
+            5);
+
+        writer.writeString(s.sharedNotebookGlobalId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.uri.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("uri"),
+            ThriftFieldType::T_STRING,
+            6);
+
+        writer.writeString(s.uri.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.guid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("guid"),
+            ThriftFieldType::T_STRING,
+            7);
+
+        writer.writeString(s.guid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.updateSequenceNum.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("updateSequenceNum"),
+            ThriftFieldType::T_I32,
+            8);
+
+        writer.writeI32(s.updateSequenceNum.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noteStoreUrl.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noteStoreUrl"),
+            ThriftFieldType::T_STRING,
+            9);
+
+        writer.writeString(s.noteStoreUrl.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.webApiUrlPrefix.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("webApiUrlPrefix"),
+            ThriftFieldType::T_STRING,
+            10);
+
+        writer.writeString(s.webApiUrlPrefix.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.stack.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("stack"),
+            ThriftFieldType::T_STRING,
+            11);
+
+        writer.writeString(s.stack.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.businessId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("businessId"),
+            ThriftFieldType::T_I32,
+            12);
+
+        writer.writeI32(s.businessId.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readLinkedNotebook(
+    ThriftBinaryBufferReader & reader,
+    LinkedNotebook & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.shareName = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.username = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.shardId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.sharedNotebookGlobalId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.uri = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 Guid v;
-                r.readString(v);
+                reader.readString(v);
                 s.guid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.updateSequenceNum = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 9) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.noteStoreUrl = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 10) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.webApiUrlPrefix = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 11) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.stack = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 12) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.businessId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeNotebookDescriptor(ThriftBinaryBufferWriter & w, const NotebookDescriptor & s) {
-    w.writeStructBegin(QStringLiteral("NotebookDescriptor"));
-    if(s.guid.isSet()) {
-        w.writeFieldBegin(QStringLiteral("guid"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.guid.ref());
-        w.writeFieldEnd();
+void LinkedNotebook::print(QTextStream & strm) const
+{
+    strm << "LinkedNotebook: {\n";
+    localData.print(strm);
+
+    if (shareName.isSet()) {
+        strm << "    shareName = "
+            << shareName.ref() << "\n";
     }
-    if(s.notebookDisplayName.isSet()) {
-        w.writeFieldBegin(QStringLiteral("notebookDisplayName"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.notebookDisplayName.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    shareName is not set\n";
     }
-    if(s.contactName.isSet()) {
-        w.writeFieldBegin(QStringLiteral("contactName"), ThriftFieldType::T_STRING, 3);
-        w.writeString(s.contactName.ref());
-        w.writeFieldEnd();
+
+    if (username.isSet()) {
+        strm << "    username = "
+            << username.ref() << "\n";
     }
-    if(s.hasSharedNotebook.isSet()) {
-        w.writeFieldBegin(QStringLiteral("hasSharedNotebook"), ThriftFieldType::T_BOOL, 4);
-        w.writeBool(s.hasSharedNotebook.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    username is not set\n";
     }
-    if(s.joinedUserCount.isSet()) {
-        w.writeFieldBegin(QStringLiteral("joinedUserCount"), ThriftFieldType::T_I32, 5);
-        w.writeI32(s.joinedUserCount.ref());
-        w.writeFieldEnd();
+
+    if (shardId.isSet()) {
+        strm << "    shardId = "
+            << shardId.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    shardId is not set\n";
+    }
+
+    if (sharedNotebookGlobalId.isSet()) {
+        strm << "    sharedNotebookGlobalId = "
+            << sharedNotebookGlobalId.ref() << "\n";
+    }
+    else {
+        strm << "    sharedNotebookGlobalId is not set\n";
+    }
+
+    if (uri.isSet()) {
+        strm << "    uri = "
+            << uri.ref() << "\n";
+    }
+    else {
+        strm << "    uri is not set\n";
+    }
+
+    if (guid.isSet()) {
+        strm << "    guid = "
+            << guid.ref() << "\n";
+    }
+    else {
+        strm << "    guid is not set\n";
+    }
+
+    if (updateSequenceNum.isSet()) {
+        strm << "    updateSequenceNum = "
+            << updateSequenceNum.ref() << "\n";
+    }
+    else {
+        strm << "    updateSequenceNum is not set\n";
+    }
+
+    if (noteStoreUrl.isSet()) {
+        strm << "    noteStoreUrl = "
+            << noteStoreUrl.ref() << "\n";
+    }
+    else {
+        strm << "    noteStoreUrl is not set\n";
+    }
+
+    if (webApiUrlPrefix.isSet()) {
+        strm << "    webApiUrlPrefix = "
+            << webApiUrlPrefix.ref() << "\n";
+    }
+    else {
+        strm << "    webApiUrlPrefix is not set\n";
+    }
+
+    if (stack.isSet()) {
+        strm << "    stack = "
+            << stack.ref() << "\n";
+    }
+    else {
+        strm << "    stack is not set\n";
+    }
+
+    if (businessId.isSet()) {
+        strm << "    businessId = "
+            << businessId.ref() << "\n";
+    }
+    else {
+        strm << "    businessId is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readNotebookDescriptor(ThriftBinaryBufferReader & r, NotebookDescriptor & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeNotebookDescriptor(
+    ThriftBinaryBufferWriter & writer,
+    const NotebookDescriptor & s)
+{
+    writer.writeStructBegin(QStringLiteral("NotebookDescriptor"));
+    if (s.guid.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("guid"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.guid.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.notebookDisplayName.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("notebookDisplayName"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.notebookDisplayName.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.contactName.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("contactName"),
+            ThriftFieldType::T_STRING,
+            3);
+
+        writer.writeString(s.contactName.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.hasSharedNotebook.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("hasSharedNotebook"),
+            ThriftFieldType::T_BOOL,
+            4);
+
+        writer.writeBool(s.hasSharedNotebook.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.joinedUserCount.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("joinedUserCount"),
+            ThriftFieldType::T_I32,
+            5);
+
+        writer.writeI32(s.joinedUserCount.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readNotebookDescriptor(
+    ThriftBinaryBufferReader & reader,
+    NotebookDescriptor & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 Guid v;
-                r.readString(v);
+                reader.readString(v);
                 s.guid = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.notebookDisplayName = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.contactName = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.hasSharedNotebook = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.joinedUserCount = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeUserProfile(ThriftBinaryBufferWriter & w, const UserProfile & s) {
-    w.writeStructBegin(QStringLiteral("UserProfile"));
-    if(s.id.isSet()) {
-        w.writeFieldBegin(QStringLiteral("id"), ThriftFieldType::T_I32, 1);
-        w.writeI32(s.id.ref());
-        w.writeFieldEnd();
+void NotebookDescriptor::print(QTextStream & strm) const
+{
+    strm << "NotebookDescriptor: {\n";
+    localData.print(strm);
+
+    if (guid.isSet()) {
+        strm << "    guid = "
+            << guid.ref() << "\n";
     }
-    if(s.name.isSet()) {
-        w.writeFieldBegin(QStringLiteral("name"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.name.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    guid is not set\n";
     }
-    if(s.email.isSet()) {
-        w.writeFieldBegin(QStringLiteral("email"), ThriftFieldType::T_STRING, 3);
-        w.writeString(s.email.ref());
-        w.writeFieldEnd();
+
+    if (notebookDisplayName.isSet()) {
+        strm << "    notebookDisplayName = "
+            << notebookDisplayName.ref() << "\n";
     }
-    if(s.username.isSet()) {
-        w.writeFieldBegin(QStringLiteral("username"), ThriftFieldType::T_STRING, 4);
-        w.writeString(s.username.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    notebookDisplayName is not set\n";
     }
-    if(s.attributes.isSet()) {
-        w.writeFieldBegin(QStringLiteral("attributes"), ThriftFieldType::T_STRUCT, 5);
-        writeBusinessUserAttributes(w, s.attributes.ref());
-        w.writeFieldEnd();
+
+    if (contactName.isSet()) {
+        strm << "    contactName = "
+            << contactName.ref() << "\n";
     }
-    if(s.joined.isSet()) {
-        w.writeFieldBegin(QStringLiteral("joined"), ThriftFieldType::T_I64, 6);
-        w.writeI64(s.joined.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    contactName is not set\n";
     }
-    if(s.photoLastUpdated.isSet()) {
-        w.writeFieldBegin(QStringLiteral("photoLastUpdated"), ThriftFieldType::T_I64, 7);
-        w.writeI64(s.photoLastUpdated.ref());
-        w.writeFieldEnd();
+
+    if (hasSharedNotebook.isSet()) {
+        strm << "    hasSharedNotebook = "
+            << hasSharedNotebook.ref() << "\n";
     }
-    if(s.photoUrl.isSet()) {
-        w.writeFieldBegin(QStringLiteral("photoUrl"), ThriftFieldType::T_STRING, 8);
-        w.writeString(s.photoUrl.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    hasSharedNotebook is not set\n";
     }
-    if(s.role.isSet()) {
-        w.writeFieldBegin(QStringLiteral("role"), ThriftFieldType::T_I32, 9);
-        w.writeI32(static_cast<qint32>(s.role.ref()));
-        w.writeFieldEnd();
+
+    if (joinedUserCount.isSet()) {
+        strm << "    joinedUserCount = "
+            << joinedUserCount.ref() << "\n";
     }
-    if(s.status.isSet()) {
-        w.writeFieldBegin(QStringLiteral("status"), ThriftFieldType::T_I32, 10);
-        w.writeI32(static_cast<qint32>(s.status.ref()));
-        w.writeFieldEnd();
+    else {
+        strm << "    joinedUserCount is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    strm << "}\n";
 }
 
-void readUserProfile(ThriftBinaryBufferReader & r, UserProfile & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeUserProfile(
+    ThriftBinaryBufferWriter & writer,
+    const UserProfile & s)
+{
+    writer.writeStructBegin(QStringLiteral("UserProfile"));
+    if (s.id.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("id"),
+            ThriftFieldType::T_I32,
+            1);
+
+        writer.writeI32(s.id.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.name.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("name"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.name.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.email.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("email"),
+            ThriftFieldType::T_STRING,
+            3);
+
+        writer.writeString(s.email.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.username.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("username"),
+            ThriftFieldType::T_STRING,
+            4);
+
+        writer.writeString(s.username.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.attributes.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("attributes"),
+            ThriftFieldType::T_STRUCT,
+            5);
+
+        writeBusinessUserAttributes(writer, s.attributes.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.joined.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("joined"),
+            ThriftFieldType::T_I64,
+            6);
+
+        writer.writeI64(s.joined.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.photoLastUpdated.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("photoLastUpdated"),
+            ThriftFieldType::T_I64,
+            7);
+
+        writer.writeI64(s.photoLastUpdated.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.photoUrl.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("photoUrl"),
+            ThriftFieldType::T_STRING,
+            8);
+
+        writer.writeString(s.photoUrl.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.role.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("role"),
+            ThriftFieldType::T_I32,
+            9);
+
+        writer.writeI32(static_cast<qint32>(s.role.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.status.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("status"),
+            ThriftFieldType::T_I32,
+            10);
+
+        writer.writeI32(static_cast<qint32>(s.status.ref()));
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readUserProfile(
+    ThriftBinaryBufferReader & reader,
+    UserProfile & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I32) {
                 UserID v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.id = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.name = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.email = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.username = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 BusinessUserAttributes v;
-                readBusinessUserAttributes(r, v);
+                readBusinessUserAttributes(reader, v);
                 s.attributes = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.joined = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.photoLastUpdated = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.photoUrl = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 9) {
             if (fieldType == ThriftFieldType::T_I32) {
-                BusinessUserRole::type v;
-                readEnumBusinessUserRole(r, v);
+                BusinessUserRole v;
+                readEnumBusinessUserRole(reader, v);
                 s.role = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 10) {
             if (fieldType == ThriftFieldType::T_I32) {
-                BusinessUserStatus::type v;
-                readEnumBusinessUserStatus(r, v);
+                BusinessUserStatus v;
+                readEnumBusinessUserStatus(reader, v);
                 s.status = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeRelatedContentImage(ThriftBinaryBufferWriter & w, const RelatedContentImage & s) {
-    w.writeStructBegin(QStringLiteral("RelatedContentImage"));
-    if(s.url.isSet()) {
-        w.writeFieldBegin(QStringLiteral("url"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.url.ref());
-        w.writeFieldEnd();
+void UserProfile::print(QTextStream & strm) const
+{
+    strm << "UserProfile: {\n";
+    localData.print(strm);
+
+    if (id.isSet()) {
+        strm << "    id = "
+            << id.ref() << "\n";
     }
-    if(s.width.isSet()) {
-        w.writeFieldBegin(QStringLiteral("width"), ThriftFieldType::T_I32, 2);
-        w.writeI32(s.width.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    id is not set\n";
     }
-    if(s.height.isSet()) {
-        w.writeFieldBegin(QStringLiteral("height"), ThriftFieldType::T_I32, 3);
-        w.writeI32(s.height.ref());
-        w.writeFieldEnd();
+
+    if (name.isSet()) {
+        strm << "    name = "
+            << name.ref() << "\n";
     }
-    if(s.pixelRatio.isSet()) {
-        w.writeFieldBegin(QStringLiteral("pixelRatio"), ThriftFieldType::T_DOUBLE, 4);
-        w.writeDouble(s.pixelRatio.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    name is not set\n";
     }
-    if(s.fileSize.isSet()) {
-        w.writeFieldBegin(QStringLiteral("fileSize"), ThriftFieldType::T_I32, 5);
-        w.writeI32(s.fileSize.ref());
-        w.writeFieldEnd();
+
+    if (email.isSet()) {
+        strm << "    email = "
+            << email.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    email is not set\n";
+    }
+
+    if (username.isSet()) {
+        strm << "    username = "
+            << username.ref() << "\n";
+    }
+    else {
+        strm << "    username is not set\n";
+    }
+
+    if (attributes.isSet()) {
+        strm << "    attributes = "
+            << attributes.ref() << "\n";
+    }
+    else {
+        strm << "    attributes is not set\n";
+    }
+
+    if (joined.isSet()) {
+        strm << "    joined = "
+            << joined.ref() << "\n";
+    }
+    else {
+        strm << "    joined is not set\n";
+    }
+
+    if (photoLastUpdated.isSet()) {
+        strm << "    photoLastUpdated = "
+            << photoLastUpdated.ref() << "\n";
+    }
+    else {
+        strm << "    photoLastUpdated is not set\n";
+    }
+
+    if (photoUrl.isSet()) {
+        strm << "    photoUrl = "
+            << photoUrl.ref() << "\n";
+    }
+    else {
+        strm << "    photoUrl is not set\n";
+    }
+
+    if (role.isSet()) {
+        strm << "    role = "
+            << role.ref() << "\n";
+    }
+    else {
+        strm << "    role is not set\n";
+    }
+
+    if (status.isSet()) {
+        strm << "    status = "
+            << status.ref() << "\n";
+    }
+    else {
+        strm << "    status is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readRelatedContentImage(ThriftBinaryBufferReader & r, RelatedContentImage & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeRelatedContentImage(
+    ThriftBinaryBufferWriter & writer,
+    const RelatedContentImage & s)
+{
+    writer.writeStructBegin(QStringLiteral("RelatedContentImage"));
+    if (s.url.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("url"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.url.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.width.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("width"),
+            ThriftFieldType::T_I32,
+            2);
+
+        writer.writeI32(s.width.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.height.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("height"),
+            ThriftFieldType::T_I32,
+            3);
+
+        writer.writeI32(s.height.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.pixelRatio.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("pixelRatio"),
+            ThriftFieldType::T_DOUBLE,
+            4);
+
+        writer.writeDouble(s.pixelRatio.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.fileSize.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("fileSize"),
+            ThriftFieldType::T_I32,
+            5);
+
+        writer.writeI32(s.fileSize.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readRelatedContentImage(
+    ThriftBinaryBufferReader & reader,
+    RelatedContentImage & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.url = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.width = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.height = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_DOUBLE) {
                 double v;
-                r.readDouble(v);
+                reader.readDouble(v);
                 s.pixelRatio = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.fileSize = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         {
-            r.skip(fieldType);
+            reader.skip(fieldType);
         }
-        r.readFieldEnd();
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeRelatedContent(ThriftBinaryBufferWriter & w, const RelatedContent & s) {
-    w.writeStructBegin(QStringLiteral("RelatedContent"));
-    if(s.contentId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("contentId"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.contentId.ref());
-        w.writeFieldEnd();
+void RelatedContentImage::print(QTextStream & strm) const
+{
+    strm << "RelatedContentImage: {\n";
+    localData.print(strm);
+
+    if (url.isSet()) {
+        strm << "    url = "
+            << url.ref() << "\n";
     }
-    if(s.title.isSet()) {
-        w.writeFieldBegin(QStringLiteral("title"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.title.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    url is not set\n";
     }
-    if(s.url.isSet()) {
-        w.writeFieldBegin(QStringLiteral("url"), ThriftFieldType::T_STRING, 3);
-        w.writeString(s.url.ref());
-        w.writeFieldEnd();
+
+    if (width.isSet()) {
+        strm << "    width = "
+            << width.ref() << "\n";
     }
-    if(s.sourceId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sourceId"), ThriftFieldType::T_STRING, 4);
-        w.writeString(s.sourceId.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    width is not set\n";
     }
-    if(s.sourceUrl.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sourceUrl"), ThriftFieldType::T_STRING, 5);
-        w.writeString(s.sourceUrl.ref());
-        w.writeFieldEnd();
+
+    if (height.isSet()) {
+        strm << "    height = "
+            << height.ref() << "\n";
     }
-    if(s.sourceFaviconUrl.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sourceFaviconUrl"), ThriftFieldType::T_STRING, 6);
-        w.writeString(s.sourceFaviconUrl.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    height is not set\n";
     }
-    if(s.sourceName.isSet()) {
-        w.writeFieldBegin(QStringLiteral("sourceName"), ThriftFieldType::T_STRING, 7);
-        w.writeString(s.sourceName.ref());
-        w.writeFieldEnd();
+
+    if (pixelRatio.isSet()) {
+        strm << "    pixelRatio = "
+            << pixelRatio.ref() << "\n";
     }
-    if(s.date.isSet()) {
-        w.writeFieldBegin(QStringLiteral("date"), ThriftFieldType::T_I64, 8);
-        w.writeI64(s.date.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    pixelRatio is not set\n";
     }
-    if(s.teaser.isSet()) {
-        w.writeFieldBegin(QStringLiteral("teaser"), ThriftFieldType::T_STRING, 9);
-        w.writeString(s.teaser.ref());
-        w.writeFieldEnd();
+
+    if (fileSize.isSet()) {
+        strm << "    fileSize = "
+            << fileSize.ref() << "\n";
     }
-    if(s.thumbnails.isSet()) {
-        w.writeFieldBegin(QStringLiteral("thumbnails"), ThriftFieldType::T_LIST, 10);
-        w.writeListBegin(ThriftFieldType::T_STRUCT, s.thumbnails.ref().length());
-        for(QList< RelatedContentImage >::const_iterator it = s.thumbnails.ref().constBegin(), end = s.thumbnails.ref().constEnd(); it != end; ++it) {
-            writeRelatedContentImage(w, *it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
+    else {
+        strm << "    fileSize is not set\n";
     }
-    if(s.contentType.isSet()) {
-        w.writeFieldBegin(QStringLiteral("contentType"), ThriftFieldType::T_I32, 11);
-        w.writeI32(static_cast<qint32>(s.contentType.ref()));
-        w.writeFieldEnd();
-    }
-    if(s.accessType.isSet()) {
-        w.writeFieldBegin(QStringLiteral("accessType"), ThriftFieldType::T_I32, 12);
-        w.writeI32(static_cast<qint32>(s.accessType.ref()));
-        w.writeFieldEnd();
-    }
-    if(s.visibleUrl.isSet()) {
-        w.writeFieldBegin(QStringLiteral("visibleUrl"), ThriftFieldType::T_STRING, 13);
-        w.writeString(s.visibleUrl.ref());
-        w.writeFieldEnd();
-    }
-    if(s.clipUrl.isSet()) {
-        w.writeFieldBegin(QStringLiteral("clipUrl"), ThriftFieldType::T_STRING, 14);
-        w.writeString(s.clipUrl.ref());
-        w.writeFieldEnd();
-    }
-    if(s.contact.isSet()) {
-        w.writeFieldBegin(QStringLiteral("contact"), ThriftFieldType::T_STRUCT, 15);
-        writeContact(w, s.contact.ref());
-        w.writeFieldEnd();
-    }
-    if(s.authors.isSet()) {
-        w.writeFieldBegin(QStringLiteral("authors"), ThriftFieldType::T_LIST, 16);
-        w.writeListBegin(ThriftFieldType::T_STRING, s.authors.ref().length());
-        for(QStringList::const_iterator it = s.authors.ref().constBegin(), end = s.authors.ref().constEnd(); it != end; ++it) {
-            w.writeString(*it);
-        }
-        w.writeListEnd();
-        w.writeFieldEnd();
-    }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    strm << "}\n";
 }
 
-void readRelatedContent(ThriftBinaryBufferReader & r, RelatedContent & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeRelatedContent(
+    ThriftBinaryBufferWriter & writer,
+    const RelatedContent & s)
+{
+    writer.writeStructBegin(QStringLiteral("RelatedContent"));
+    if (s.contentId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("contentId"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.contentId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.title.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("title"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.title.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.url.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("url"),
+            ThriftFieldType::T_STRING,
+            3);
+
+        writer.writeString(s.url.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.sourceId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sourceId"),
+            ThriftFieldType::T_STRING,
+            4);
+
+        writer.writeString(s.sourceId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.sourceUrl.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sourceUrl"),
+            ThriftFieldType::T_STRING,
+            5);
+
+        writer.writeString(s.sourceUrl.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.sourceFaviconUrl.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sourceFaviconUrl"),
+            ThriftFieldType::T_STRING,
+            6);
+
+        writer.writeString(s.sourceFaviconUrl.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.sourceName.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("sourceName"),
+            ThriftFieldType::T_STRING,
+            7);
+
+        writer.writeString(s.sourceName.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.date.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("date"),
+            ThriftFieldType::T_I64,
+            8);
+
+        writer.writeI64(s.date.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.teaser.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("teaser"),
+            ThriftFieldType::T_STRING,
+            9);
+
+        writer.writeString(s.teaser.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.thumbnails.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("thumbnails"),
+            ThriftFieldType::T_LIST,
+            10);
+
+        writer.writeListBegin(ThriftFieldType::T_STRUCT, s.thumbnails.ref().length());
+        for(const auto & value: qAsConst(s.thumbnails.ref())) {
+            writeRelatedContentImage(writer, value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    if (s.contentType.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("contentType"),
+            ThriftFieldType::T_I32,
+            11);
+
+        writer.writeI32(static_cast<qint32>(s.contentType.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.accessType.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("accessType"),
+            ThriftFieldType::T_I32,
+            12);
+
+        writer.writeI32(static_cast<qint32>(s.accessType.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.visibleUrl.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("visibleUrl"),
+            ThriftFieldType::T_STRING,
+            13);
+
+        writer.writeString(s.visibleUrl.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.clipUrl.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("clipUrl"),
+            ThriftFieldType::T_STRING,
+            14);
+
+        writer.writeString(s.clipUrl.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.contact.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("contact"),
+            ThriftFieldType::T_STRUCT,
+            15);
+
+        writeContact(writer, s.contact.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.authors.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("authors"),
+            ThriftFieldType::T_LIST,
+            16);
+
+        writer.writeListBegin(ThriftFieldType::T_STRING, s.authors.ref().length());
+        for(const auto & value: qAsConst(s.authors.ref())) {
+            writer.writeString(value);
+        }
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readRelatedContent(
+    ThriftBinaryBufferReader & reader,
+    RelatedContent & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.contentId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.title = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.url = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.sourceId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.sourceUrl = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.sourceFaviconUrl = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.sourceName = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.date = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 9) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.teaser = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 10) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< RelatedContentImage > v;
+                QList<RelatedContentImage> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (RelatedContent.thumbnails)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (RelatedContent.thumbnails)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     RelatedContentImage elem;
-                    readRelatedContentImage(r, elem);
+                    readRelatedContentImage(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.thumbnails = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 11) {
             if (fieldType == ThriftFieldType::T_I32) {
-                RelatedContentType::type v;
-                readEnumRelatedContentType(r, v);
+                RelatedContentType v;
+                readEnumRelatedContentType(reader, v);
                 s.contentType = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 12) {
             if (fieldType == ThriftFieldType::T_I32) {
-                RelatedContentAccess::type v;
-                readEnumRelatedContentAccess(r, v);
+                RelatedContentAccess v;
+                readEnumRelatedContentAccess(reader, v);
                 s.accessType = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 13) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.visibleUrl = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 14) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.clipUrl = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 15) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 Contact v;
-                readContact(r, v);
+                readContact(reader, v);
                 s.contact = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 16) {
             if (fieldType == ThriftFieldType::T_LIST) {
                 QStringList v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRING) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (RelatedContent.authors)"));
+                if (elemType != ThriftFieldType::T_STRING) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (RelatedContent.authors)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     QString elem;
-                    r.readString(elem);
+                    reader.readString(elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.authors = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeBusinessInvitation(ThriftBinaryBufferWriter & w, const BusinessInvitation & s) {
-    w.writeStructBegin(QStringLiteral("BusinessInvitation"));
-    if(s.businessId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("businessId"), ThriftFieldType::T_I32, 1);
-        w.writeI32(s.businessId.ref());
-        w.writeFieldEnd();
+void RelatedContent::print(QTextStream & strm) const
+{
+    strm << "RelatedContent: {\n";
+    localData.print(strm);
+
+    if (contentId.isSet()) {
+        strm << "    contentId = "
+            << contentId.ref() << "\n";
     }
-    if(s.email.isSet()) {
-        w.writeFieldBegin(QStringLiteral("email"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.email.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    contentId is not set\n";
     }
-    if(s.role.isSet()) {
-        w.writeFieldBegin(QStringLiteral("role"), ThriftFieldType::T_I32, 3);
-        w.writeI32(static_cast<qint32>(s.role.ref()));
-        w.writeFieldEnd();
+
+    if (title.isSet()) {
+        strm << "    title = "
+            << title.ref() << "\n";
     }
-    if(s.status.isSet()) {
-        w.writeFieldBegin(QStringLiteral("status"), ThriftFieldType::T_I32, 4);
-        w.writeI32(static_cast<qint32>(s.status.ref()));
-        w.writeFieldEnd();
+    else {
+        strm << "    title is not set\n";
     }
-    if(s.requesterId.isSet()) {
-        w.writeFieldBegin(QStringLiteral("requesterId"), ThriftFieldType::T_I32, 5);
-        w.writeI32(s.requesterId.ref());
-        w.writeFieldEnd();
+
+    if (url.isSet()) {
+        strm << "    url = "
+            << url.ref() << "\n";
     }
-    if(s.fromWorkChat.isSet()) {
-        w.writeFieldBegin(QStringLiteral("fromWorkChat"), ThriftFieldType::T_BOOL, 6);
-        w.writeBool(s.fromWorkChat.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    url is not set\n";
     }
-    if(s.created.isSet()) {
-        w.writeFieldBegin(QStringLiteral("created"), ThriftFieldType::T_I64, 7);
-        w.writeI64(s.created.ref());
-        w.writeFieldEnd();
+
+    if (sourceId.isSet()) {
+        strm << "    sourceId = "
+            << sourceId.ref() << "\n";
     }
-    if(s.mostRecentReminder.isSet()) {
-        w.writeFieldBegin(QStringLiteral("mostRecentReminder"), ThriftFieldType::T_I64, 8);
-        w.writeI64(s.mostRecentReminder.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    sourceId is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (sourceUrl.isSet()) {
+        strm << "    sourceUrl = "
+            << sourceUrl.ref() << "\n";
+    }
+    else {
+        strm << "    sourceUrl is not set\n";
+    }
+
+    if (sourceFaviconUrl.isSet()) {
+        strm << "    sourceFaviconUrl = "
+            << sourceFaviconUrl.ref() << "\n";
+    }
+    else {
+        strm << "    sourceFaviconUrl is not set\n";
+    }
+
+    if (sourceName.isSet()) {
+        strm << "    sourceName = "
+            << sourceName.ref() << "\n";
+    }
+    else {
+        strm << "    sourceName is not set\n";
+    }
+
+    if (date.isSet()) {
+        strm << "    date = "
+            << date.ref() << "\n";
+    }
+    else {
+        strm << "    date is not set\n";
+    }
+
+    if (teaser.isSet()) {
+        strm << "    teaser = "
+            << teaser.ref() << "\n";
+    }
+    else {
+        strm << "    teaser is not set\n";
+    }
+
+    if (thumbnails.isSet()) {
+        strm << "    thumbnails = "
+            << "QList<RelatedContentImage> {";
+        for(const auto & v: thumbnails.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    thumbnails is not set\n";
+    }
+
+    if (contentType.isSet()) {
+        strm << "    contentType = "
+            << contentType.ref() << "\n";
+    }
+    else {
+        strm << "    contentType is not set\n";
+    }
+
+    if (accessType.isSet()) {
+        strm << "    accessType = "
+            << accessType.ref() << "\n";
+    }
+    else {
+        strm << "    accessType is not set\n";
+    }
+
+    if (visibleUrl.isSet()) {
+        strm << "    visibleUrl = "
+            << visibleUrl.ref() << "\n";
+    }
+    else {
+        strm << "    visibleUrl is not set\n";
+    }
+
+    if (clipUrl.isSet()) {
+        strm << "    clipUrl = "
+            << clipUrl.ref() << "\n";
+    }
+    else {
+        strm << "    clipUrl is not set\n";
+    }
+
+    if (contact.isSet()) {
+        strm << "    contact = "
+            << contact.ref() << "\n";
+    }
+    else {
+        strm << "    contact is not set\n";
+    }
+
+    if (authors.isSet()) {
+        strm << "    authors = "
+            << "QList<QString> {";
+        for(const auto & v: authors.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    authors is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readBusinessInvitation(ThriftBinaryBufferReader & r, BusinessInvitation & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeBusinessInvitation(
+    ThriftBinaryBufferWriter & writer,
+    const BusinessInvitation & s)
+{
+    writer.writeStructBegin(QStringLiteral("BusinessInvitation"));
+    if (s.businessId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("businessId"),
+            ThriftFieldType::T_I32,
+            1);
+
+        writer.writeI32(s.businessId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.email.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("email"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.email.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.role.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("role"),
+            ThriftFieldType::T_I32,
+            3);
+
+        writer.writeI32(static_cast<qint32>(s.role.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.status.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("status"),
+            ThriftFieldType::T_I32,
+            4);
+
+        writer.writeI32(static_cast<qint32>(s.status.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.requesterId.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("requesterId"),
+            ThriftFieldType::T_I32,
+            5);
+
+        writer.writeI32(s.requesterId.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.fromWorkChat.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("fromWorkChat"),
+            ThriftFieldType::T_BOOL,
+            6);
+
+        writer.writeBool(s.fromWorkChat.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.created.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("created"),
+            ThriftFieldType::T_I64,
+            7);
+
+        writer.writeI64(s.created.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.mostRecentReminder.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("mostRecentReminder"),
+            ThriftFieldType::T_I64,
+            8);
+
+        writer.writeI64(s.mostRecentReminder.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readBusinessInvitation(
+    ThriftBinaryBufferReader & reader,
+    BusinessInvitation & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.businessId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.email = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I32) {
-                BusinessUserRole::type v;
-                readEnumBusinessUserRole(r, v);
+                BusinessUserRole v;
+                readEnumBusinessUserRole(reader, v);
                 s.role = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_I32) {
-                BusinessInvitationStatus::type v;
-                readEnumBusinessInvitationStatus(r, v);
+                BusinessInvitationStatus v;
+                readEnumBusinessInvitationStatus(reader, v);
                 s.status = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_I32) {
                 UserID v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.requesterId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.fromWorkChat = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.created = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.mostRecentReminder = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeUserIdentity(ThriftBinaryBufferWriter & w, const UserIdentity & s) {
-    w.writeStructBegin(QStringLiteral("UserIdentity"));
-    if(s.type.isSet()) {
-        w.writeFieldBegin(QStringLiteral("type"), ThriftFieldType::T_I32, 1);
-        w.writeI32(static_cast<qint32>(s.type.ref()));
-        w.writeFieldEnd();
+void BusinessInvitation::print(QTextStream & strm) const
+{
+    strm << "BusinessInvitation: {\n";
+    localData.print(strm);
+
+    if (businessId.isSet()) {
+        strm << "    businessId = "
+            << businessId.ref() << "\n";
     }
-    if(s.stringIdentifier.isSet()) {
-        w.writeFieldBegin(QStringLiteral("stringIdentifier"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.stringIdentifier.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    businessId is not set\n";
     }
-    if(s.longIdentifier.isSet()) {
-        w.writeFieldBegin(QStringLiteral("longIdentifier"), ThriftFieldType::T_I64, 3);
-        w.writeI64(s.longIdentifier.ref());
-        w.writeFieldEnd();
+
+    if (email.isSet()) {
+        strm << "    email = "
+            << email.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    email is not set\n";
+    }
+
+    if (role.isSet()) {
+        strm << "    role = "
+            << role.ref() << "\n";
+    }
+    else {
+        strm << "    role is not set\n";
+    }
+
+    if (status.isSet()) {
+        strm << "    status = "
+            << status.ref() << "\n";
+    }
+    else {
+        strm << "    status is not set\n";
+    }
+
+    if (requesterId.isSet()) {
+        strm << "    requesterId = "
+            << requesterId.ref() << "\n";
+    }
+    else {
+        strm << "    requesterId is not set\n";
+    }
+
+    if (fromWorkChat.isSet()) {
+        strm << "    fromWorkChat = "
+            << fromWorkChat.ref() << "\n";
+    }
+    else {
+        strm << "    fromWorkChat is not set\n";
+    }
+
+    if (created.isSet()) {
+        strm << "    created = "
+            << created.ref() << "\n";
+    }
+    else {
+        strm << "    created is not set\n";
+    }
+
+    if (mostRecentReminder.isSet()) {
+        strm << "    mostRecentReminder = "
+            << mostRecentReminder.ref() << "\n";
+    }
+    else {
+        strm << "    mostRecentReminder is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readUserIdentity(ThriftBinaryBufferReader & r, UserIdentity & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeUserIdentity(
+    ThriftBinaryBufferWriter & writer,
+    const UserIdentity & s)
+{
+    writer.writeStructBegin(QStringLiteral("UserIdentity"));
+    if (s.type.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("type"),
+            ThriftFieldType::T_I32,
+            1);
+
+        writer.writeI32(static_cast<qint32>(s.type.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.stringIdentifier.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("stringIdentifier"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.stringIdentifier.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.longIdentifier.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("longIdentifier"),
+            ThriftFieldType::T_I64,
+            3);
+
+        writer.writeI64(s.longIdentifier.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readUserIdentity(
+    ThriftBinaryBufferReader & reader,
+    UserIdentity & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I32) {
-                UserIdentityType::type v;
-                readEnumUserIdentityType(r, v);
+                UserIdentityType v;
+                readEnumUserIdentityType(reader, v);
                 s.type = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.stringIdentifier = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I64) {
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.longIdentifier = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writePublicUserInfo(ThriftBinaryBufferWriter & w, const PublicUserInfo & s) {
-    w.writeStructBegin(QStringLiteral("PublicUserInfo"));
-    w.writeFieldBegin(QStringLiteral("userId"), ThriftFieldType::T_I32, 1);
-    w.writeI32(s.userId);
-    w.writeFieldEnd();
-    if(s.serviceLevel.isSet()) {
-        w.writeFieldBegin(QStringLiteral("serviceLevel"), ThriftFieldType::T_I32, 7);
-        w.writeI32(static_cast<qint32>(s.serviceLevel.ref()));
-        w.writeFieldEnd();
+void UserIdentity::print(QTextStream & strm) const
+{
+    strm << "UserIdentity: {\n";
+    localData.print(strm);
+
+    if (type.isSet()) {
+        strm << "    type = "
+            << type.ref() << "\n";
     }
-    if(s.username.isSet()) {
-        w.writeFieldBegin(QStringLiteral("username"), ThriftFieldType::T_STRING, 4);
-        w.writeString(s.username.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    type is not set\n";
     }
-    if(s.noteStoreUrl.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noteStoreUrl"), ThriftFieldType::T_STRING, 5);
-        w.writeString(s.noteStoreUrl.ref());
-        w.writeFieldEnd();
+
+    if (stringIdentifier.isSet()) {
+        strm << "    stringIdentifier = "
+            << stringIdentifier.ref() << "\n";
     }
-    if(s.webApiUrlPrefix.isSet()) {
-        w.writeFieldBegin(QStringLiteral("webApiUrlPrefix"), ThriftFieldType::T_STRING, 6);
-        w.writeString(s.webApiUrlPrefix.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    stringIdentifier is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (longIdentifier.isSet()) {
+        strm << "    longIdentifier = "
+            << longIdentifier.ref() << "\n";
+    }
+    else {
+        strm << "    longIdentifier is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readPublicUserInfo(ThriftBinaryBufferReader & r, PublicUserInfo & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writePublicUserInfo(
+    ThriftBinaryBufferWriter & writer,
+    const PublicUserInfo & s)
+{
+    writer.writeStructBegin(QStringLiteral("PublicUserInfo"));
+    writer.writeFieldBegin(
+        QStringLiteral("userId"),
+        ThriftFieldType::T_I32,
+        1);
+
+    writer.writeI32(s.userId);
+    writer.writeFieldEnd();
+
+    if (s.serviceLevel.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("serviceLevel"),
+            ThriftFieldType::T_I32,
+            7);
+
+        writer.writeI32(static_cast<qint32>(s.serviceLevel.ref()));
+        writer.writeFieldEnd();
+    }
+
+    if (s.username.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("username"),
+            ThriftFieldType::T_STRING,
+            4);
+
+        writer.writeString(s.username.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noteStoreUrl.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noteStoreUrl"),
+            ThriftFieldType::T_STRING,
+            5);
+
+        writer.writeString(s.noteStoreUrl.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.webApiUrlPrefix.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("webApiUrlPrefix"),
+            ThriftFieldType::T_STRING,
+            6);
+
+        writer.writeString(s.webApiUrlPrefix.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readPublicUserInfo(
+    ThriftBinaryBufferReader & reader,
+    PublicUserInfo & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
     bool userId_isset = false;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I32) {
                 userId_isset = true;
                 UserID v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.userId = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_I32) {
-                ServiceLevel::type v;
-                readEnumServiceLevel(r, v);
+                ServiceLevel v;
+                readEnumServiceLevel(reader, v);
                 s.serviceLevel = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.username = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.noteStoreUrl = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.webApiUrlPrefix = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
-    if(!userId_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("PublicUserInfo.userId has no value"));
+    reader.readStructEnd();
+    if (!userId_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("PublicUserInfo.userId has no value"));
 }
 
-void writeUserUrls(ThriftBinaryBufferWriter & w, const UserUrls & s) {
-    w.writeStructBegin(QStringLiteral("UserUrls"));
-    if(s.noteStoreUrl.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noteStoreUrl"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.noteStoreUrl.ref());
-        w.writeFieldEnd();
+void PublicUserInfo::print(QTextStream & strm) const
+{
+    strm << "PublicUserInfo: {\n";
+    localData.print(strm);
+    strm << "    userId = "
+        << userId << "\n";
+
+    if (serviceLevel.isSet()) {
+        strm << "    serviceLevel = "
+            << serviceLevel.ref() << "\n";
     }
-    if(s.webApiUrlPrefix.isSet()) {
-        w.writeFieldBegin(QStringLiteral("webApiUrlPrefix"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.webApiUrlPrefix.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    serviceLevel is not set\n";
     }
-    if(s.userStoreUrl.isSet()) {
-        w.writeFieldBegin(QStringLiteral("userStoreUrl"), ThriftFieldType::T_STRING, 3);
-        w.writeString(s.userStoreUrl.ref());
-        w.writeFieldEnd();
+
+    if (username.isSet()) {
+        strm << "    username = "
+            << username.ref() << "\n";
     }
-    if(s.utilityUrl.isSet()) {
-        w.writeFieldBegin(QStringLiteral("utilityUrl"), ThriftFieldType::T_STRING, 4);
-        w.writeString(s.utilityUrl.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    username is not set\n";
     }
-    if(s.messageStoreUrl.isSet()) {
-        w.writeFieldBegin(QStringLiteral("messageStoreUrl"), ThriftFieldType::T_STRING, 5);
-        w.writeString(s.messageStoreUrl.ref());
-        w.writeFieldEnd();
+
+    if (noteStoreUrl.isSet()) {
+        strm << "    noteStoreUrl = "
+            << noteStoreUrl.ref() << "\n";
     }
-    if(s.userWebSocketUrl.isSet()) {
-        w.writeFieldBegin(QStringLiteral("userWebSocketUrl"), ThriftFieldType::T_STRING, 6);
-        w.writeString(s.userWebSocketUrl.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noteStoreUrl is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (webApiUrlPrefix.isSet()) {
+        strm << "    webApiUrlPrefix = "
+            << webApiUrlPrefix.ref() << "\n";
+    }
+    else {
+        strm << "    webApiUrlPrefix is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readUserUrls(ThriftBinaryBufferReader & r, UserUrls & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeUserUrls(
+    ThriftBinaryBufferWriter & writer,
+    const UserUrls & s)
+{
+    writer.writeStructBegin(QStringLiteral("UserUrls"));
+    if (s.noteStoreUrl.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noteStoreUrl"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.noteStoreUrl.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.webApiUrlPrefix.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("webApiUrlPrefix"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.webApiUrlPrefix.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.userStoreUrl.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("userStoreUrl"),
+            ThriftFieldType::T_STRING,
+            3);
+
+        writer.writeString(s.userStoreUrl.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.utilityUrl.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("utilityUrl"),
+            ThriftFieldType::T_STRING,
+            4);
+
+        writer.writeString(s.utilityUrl.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.messageStoreUrl.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("messageStoreUrl"),
+            ThriftFieldType::T_STRING,
+            5);
+
+        writer.writeString(s.messageStoreUrl.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.userWebSocketUrl.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("userWebSocketUrl"),
+            ThriftFieldType::T_STRING,
+            6);
+
+        writer.writeString(s.userWebSocketUrl.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readUserUrls(
+    ThriftBinaryBufferReader & reader,
+    UserUrls & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.noteStoreUrl = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.webApiUrlPrefix = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.userStoreUrl = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.utilityUrl = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.messageStoreUrl = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.userWebSocketUrl = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
-void writeAuthenticationResult(ThriftBinaryBufferWriter & w, const AuthenticationResult & s) {
-    w.writeStructBegin(QStringLiteral("AuthenticationResult"));
-    w.writeFieldBegin(QStringLiteral("currentTime"), ThriftFieldType::T_I64, 1);
-    w.writeI64(s.currentTime);
-    w.writeFieldEnd();
-    w.writeFieldBegin(QStringLiteral("authenticationToken"), ThriftFieldType::T_STRING, 2);
-    w.writeString(s.authenticationToken);
-    w.writeFieldEnd();
-    w.writeFieldBegin(QStringLiteral("expiration"), ThriftFieldType::T_I64, 3);
-    w.writeI64(s.expiration);
-    w.writeFieldEnd();
-    if(s.user.isSet()) {
-        w.writeFieldBegin(QStringLiteral("user"), ThriftFieldType::T_STRUCT, 4);
-        writeUser(w, s.user.ref());
-        w.writeFieldEnd();
+void UserUrls::print(QTextStream & strm) const
+{
+    strm << "UserUrls: {\n";
+    localData.print(strm);
+
+    if (noteStoreUrl.isSet()) {
+        strm << "    noteStoreUrl = "
+            << noteStoreUrl.ref() << "\n";
     }
-    if(s.publicUserInfo.isSet()) {
-        w.writeFieldBegin(QStringLiteral("publicUserInfo"), ThriftFieldType::T_STRUCT, 5);
-        writePublicUserInfo(w, s.publicUserInfo.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noteStoreUrl is not set\n";
     }
-    if(s.noteStoreUrl.isSet()) {
-        w.writeFieldBegin(QStringLiteral("noteStoreUrl"), ThriftFieldType::T_STRING, 6);
-        w.writeString(s.noteStoreUrl.ref());
-        w.writeFieldEnd();
+
+    if (webApiUrlPrefix.isSet()) {
+        strm << "    webApiUrlPrefix = "
+            << webApiUrlPrefix.ref() << "\n";
     }
-    if(s.webApiUrlPrefix.isSet()) {
-        w.writeFieldBegin(QStringLiteral("webApiUrlPrefix"), ThriftFieldType::T_STRING, 7);
-        w.writeString(s.webApiUrlPrefix.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    webApiUrlPrefix is not set\n";
     }
-    if(s.secondFactorRequired.isSet()) {
-        w.writeFieldBegin(QStringLiteral("secondFactorRequired"), ThriftFieldType::T_BOOL, 8);
-        w.writeBool(s.secondFactorRequired.ref());
-        w.writeFieldEnd();
+
+    if (userStoreUrl.isSet()) {
+        strm << "    userStoreUrl = "
+            << userStoreUrl.ref() << "\n";
     }
-    if(s.secondFactorDeliveryHint.isSet()) {
-        w.writeFieldBegin(QStringLiteral("secondFactorDeliveryHint"), ThriftFieldType::T_STRING, 9);
-        w.writeString(s.secondFactorDeliveryHint.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    userStoreUrl is not set\n";
     }
-    if(s.urls.isSet()) {
-        w.writeFieldBegin(QStringLiteral("urls"), ThriftFieldType::T_STRUCT, 10);
-        writeUserUrls(w, s.urls.ref());
-        w.writeFieldEnd();
+
+    if (utilityUrl.isSet()) {
+        strm << "    utilityUrl = "
+            << utilityUrl.ref() << "\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+    else {
+        strm << "    utilityUrl is not set\n";
+    }
+
+    if (messageStoreUrl.isSet()) {
+        strm << "    messageStoreUrl = "
+            << messageStoreUrl.ref() << "\n";
+    }
+    else {
+        strm << "    messageStoreUrl is not set\n";
+    }
+
+    if (userWebSocketUrl.isSet()) {
+        strm << "    userWebSocketUrl = "
+            << userWebSocketUrl.ref() << "\n";
+    }
+    else {
+        strm << "    userWebSocketUrl is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readAuthenticationResult(ThriftBinaryBufferReader & r, AuthenticationResult & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeAuthenticationResult(
+    ThriftBinaryBufferWriter & writer,
+    const AuthenticationResult & s)
+{
+    writer.writeStructBegin(QStringLiteral("AuthenticationResult"));
+    writer.writeFieldBegin(
+        QStringLiteral("currentTime"),
+        ThriftFieldType::T_I64,
+        1);
+
+    writer.writeI64(s.currentTime);
+    writer.writeFieldEnd();
+
+    writer.writeFieldBegin(
+        QStringLiteral("authenticationToken"),
+        ThriftFieldType::T_STRING,
+        2);
+
+    writer.writeString(s.authenticationToken);
+    writer.writeFieldEnd();
+
+    writer.writeFieldBegin(
+        QStringLiteral("expiration"),
+        ThriftFieldType::T_I64,
+        3);
+
+    writer.writeI64(s.expiration);
+    writer.writeFieldEnd();
+
+    if (s.user.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("user"),
+            ThriftFieldType::T_STRUCT,
+            4);
+
+        writeUser(writer, s.user.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.publicUserInfo.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("publicUserInfo"),
+            ThriftFieldType::T_STRUCT,
+            5);
+
+        writePublicUserInfo(writer, s.publicUserInfo.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.noteStoreUrl.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("noteStoreUrl"),
+            ThriftFieldType::T_STRING,
+            6);
+
+        writer.writeString(s.noteStoreUrl.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.webApiUrlPrefix.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("webApiUrlPrefix"),
+            ThriftFieldType::T_STRING,
+            7);
+
+        writer.writeString(s.webApiUrlPrefix.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.secondFactorRequired.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("secondFactorRequired"),
+            ThriftFieldType::T_BOOL,
+            8);
+
+        writer.writeBool(s.secondFactorRequired.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.secondFactorDeliveryHint.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("secondFactorDeliveryHint"),
+            ThriftFieldType::T_STRING,
+            9);
+
+        writer.writeString(s.secondFactorDeliveryHint.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.urls.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("urls"),
+            ThriftFieldType::T_STRUCT,
+            10);
+
+        writeUserUrls(writer, s.urls.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readAuthenticationResult(
+    ThriftBinaryBufferReader & reader,
+    AuthenticationResult & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
     bool currentTime_isset = false;
     bool authenticationToken_isset = false;
     bool expiration_isset = false;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I64) {
                 currentTime_isset = true;
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.currentTime = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 authenticationToken_isset = true;
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.authenticationToken = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I64) {
                 expiration_isset = true;
                 qint64 v;
-                r.readI64(v);
+                reader.readI64(v);
                 s.expiration = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 User v;
-                readUser(r, v);
+                readUser(reader, v);
                 s.user = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 PublicUserInfo v;
-                readPublicUserInfo(r, v);
+                readPublicUserInfo(reader, v);
                 s.publicUserInfo = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.noteStoreUrl = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.webApiUrlPrefix = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.secondFactorRequired = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 9) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.secondFactorDeliveryHint = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 10) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 UserUrls v;
-                readUserUrls(r, v);
+                readUserUrls(reader, v);
                 s.urls = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
-    if(!currentTime_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("AuthenticationResult.currentTime has no value"));
-    if(!authenticationToken_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("AuthenticationResult.authenticationToken has no value"));
-    if(!expiration_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("AuthenticationResult.expiration has no value"));
+    reader.readStructEnd();
+    if (!currentTime_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("AuthenticationResult.currentTime has no value"));
+    if (!authenticationToken_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("AuthenticationResult.authenticationToken has no value"));
+    if (!expiration_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("AuthenticationResult.expiration has no value"));
 }
 
-void writeBootstrapSettings(ThriftBinaryBufferWriter & w, const BootstrapSettings & s) {
-    w.writeStructBegin(QStringLiteral("BootstrapSettings"));
-    w.writeFieldBegin(QStringLiteral("serviceHost"), ThriftFieldType::T_STRING, 1);
-    w.writeString(s.serviceHost);
-    w.writeFieldEnd();
-    w.writeFieldBegin(QStringLiteral("marketingUrl"), ThriftFieldType::T_STRING, 2);
-    w.writeString(s.marketingUrl);
-    w.writeFieldEnd();
-    w.writeFieldBegin(QStringLiteral("supportUrl"), ThriftFieldType::T_STRING, 3);
-    w.writeString(s.supportUrl);
-    w.writeFieldEnd();
-    w.writeFieldBegin(QStringLiteral("accountEmailDomain"), ThriftFieldType::T_STRING, 4);
-    w.writeString(s.accountEmailDomain);
-    w.writeFieldEnd();
-    if(s.enableFacebookSharing.isSet()) {
-        w.writeFieldBegin(QStringLiteral("enableFacebookSharing"), ThriftFieldType::T_BOOL, 5);
-        w.writeBool(s.enableFacebookSharing.ref());
-        w.writeFieldEnd();
+void AuthenticationResult::print(QTextStream & strm) const
+{
+    strm << "AuthenticationResult: {\n";
+    localData.print(strm);
+    strm << "    currentTime = "
+        << currentTime << "\n";
+    strm << "    authenticationToken = "
+        << authenticationToken << "\n";
+    strm << "    expiration = "
+        << expiration << "\n";
+
+    if (user.isSet()) {
+        strm << "    user = "
+            << user.ref() << "\n";
     }
-    if(s.enableGiftSubscriptions.isSet()) {
-        w.writeFieldBegin(QStringLiteral("enableGiftSubscriptions"), ThriftFieldType::T_BOOL, 6);
-        w.writeBool(s.enableGiftSubscriptions.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    user is not set\n";
     }
-    if(s.enableSupportTickets.isSet()) {
-        w.writeFieldBegin(QStringLiteral("enableSupportTickets"), ThriftFieldType::T_BOOL, 7);
-        w.writeBool(s.enableSupportTickets.ref());
-        w.writeFieldEnd();
+
+    if (publicUserInfo.isSet()) {
+        strm << "    publicUserInfo = "
+            << publicUserInfo.ref() << "\n";
     }
-    if(s.enableSharedNotebooks.isSet()) {
-        w.writeFieldBegin(QStringLiteral("enableSharedNotebooks"), ThriftFieldType::T_BOOL, 8);
-        w.writeBool(s.enableSharedNotebooks.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    publicUserInfo is not set\n";
     }
-    if(s.enableSingleNoteSharing.isSet()) {
-        w.writeFieldBegin(QStringLiteral("enableSingleNoteSharing"), ThriftFieldType::T_BOOL, 9);
-        w.writeBool(s.enableSingleNoteSharing.ref());
-        w.writeFieldEnd();
+
+    if (noteStoreUrl.isSet()) {
+        strm << "    noteStoreUrl = "
+            << noteStoreUrl.ref() << "\n";
     }
-    if(s.enableSponsoredAccounts.isSet()) {
-        w.writeFieldBegin(QStringLiteral("enableSponsoredAccounts"), ThriftFieldType::T_BOOL, 10);
-        w.writeBool(s.enableSponsoredAccounts.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    noteStoreUrl is not set\n";
     }
-    if(s.enableTwitterSharing.isSet()) {
-        w.writeFieldBegin(QStringLiteral("enableTwitterSharing"), ThriftFieldType::T_BOOL, 11);
-        w.writeBool(s.enableTwitterSharing.ref());
-        w.writeFieldEnd();
+
+    if (webApiUrlPrefix.isSet()) {
+        strm << "    webApiUrlPrefix = "
+            << webApiUrlPrefix.ref() << "\n";
     }
-    if(s.enableLinkedInSharing.isSet()) {
-        w.writeFieldBegin(QStringLiteral("enableLinkedInSharing"), ThriftFieldType::T_BOOL, 12);
-        w.writeBool(s.enableLinkedInSharing.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    webApiUrlPrefix is not set\n";
     }
-    if(s.enablePublicNotebooks.isSet()) {
-        w.writeFieldBegin(QStringLiteral("enablePublicNotebooks"), ThriftFieldType::T_BOOL, 13);
-        w.writeBool(s.enablePublicNotebooks.ref());
-        w.writeFieldEnd();
+
+    if (secondFactorRequired.isSet()) {
+        strm << "    secondFactorRequired = "
+            << secondFactorRequired.ref() << "\n";
     }
-    if(s.enableGoogle.isSet()) {
-        w.writeFieldBegin(QStringLiteral("enableGoogle"), ThriftFieldType::T_BOOL, 16);
-        w.writeBool(s.enableGoogle.ref());
-        w.writeFieldEnd();
+    else {
+        strm << "    secondFactorRequired is not set\n";
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    if (secondFactorDeliveryHint.isSet()) {
+        strm << "    secondFactorDeliveryHint = "
+            << secondFactorDeliveryHint.ref() << "\n";
+    }
+    else {
+        strm << "    secondFactorDeliveryHint is not set\n";
+    }
+
+    if (urls.isSet()) {
+        strm << "    urls = "
+            << urls.ref() << "\n";
+    }
+    else {
+        strm << "    urls is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readBootstrapSettings(ThriftBinaryBufferReader & r, BootstrapSettings & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeBootstrapSettings(
+    ThriftBinaryBufferWriter & writer,
+    const BootstrapSettings & s)
+{
+    writer.writeStructBegin(QStringLiteral("BootstrapSettings"));
+    writer.writeFieldBegin(
+        QStringLiteral("serviceHost"),
+        ThriftFieldType::T_STRING,
+        1);
+
+    writer.writeString(s.serviceHost);
+    writer.writeFieldEnd();
+
+    writer.writeFieldBegin(
+        QStringLiteral("marketingUrl"),
+        ThriftFieldType::T_STRING,
+        2);
+
+    writer.writeString(s.marketingUrl);
+    writer.writeFieldEnd();
+
+    writer.writeFieldBegin(
+        QStringLiteral("supportUrl"),
+        ThriftFieldType::T_STRING,
+        3);
+
+    writer.writeString(s.supportUrl);
+    writer.writeFieldEnd();
+
+    writer.writeFieldBegin(
+        QStringLiteral("accountEmailDomain"),
+        ThriftFieldType::T_STRING,
+        4);
+
+    writer.writeString(s.accountEmailDomain);
+    writer.writeFieldEnd();
+
+    if (s.enableFacebookSharing.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("enableFacebookSharing"),
+            ThriftFieldType::T_BOOL,
+            5);
+
+        writer.writeBool(s.enableFacebookSharing.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.enableGiftSubscriptions.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("enableGiftSubscriptions"),
+            ThriftFieldType::T_BOOL,
+            6);
+
+        writer.writeBool(s.enableGiftSubscriptions.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.enableSupportTickets.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("enableSupportTickets"),
+            ThriftFieldType::T_BOOL,
+            7);
+
+        writer.writeBool(s.enableSupportTickets.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.enableSharedNotebooks.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("enableSharedNotebooks"),
+            ThriftFieldType::T_BOOL,
+            8);
+
+        writer.writeBool(s.enableSharedNotebooks.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.enableSingleNoteSharing.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("enableSingleNoteSharing"),
+            ThriftFieldType::T_BOOL,
+            9);
+
+        writer.writeBool(s.enableSingleNoteSharing.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.enableSponsoredAccounts.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("enableSponsoredAccounts"),
+            ThriftFieldType::T_BOOL,
+            10);
+
+        writer.writeBool(s.enableSponsoredAccounts.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.enableTwitterSharing.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("enableTwitterSharing"),
+            ThriftFieldType::T_BOOL,
+            11);
+
+        writer.writeBool(s.enableTwitterSharing.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.enableLinkedInSharing.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("enableLinkedInSharing"),
+            ThriftFieldType::T_BOOL,
+            12);
+
+        writer.writeBool(s.enableLinkedInSharing.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.enablePublicNotebooks.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("enablePublicNotebooks"),
+            ThriftFieldType::T_BOOL,
+            13);
+
+        writer.writeBool(s.enablePublicNotebooks.ref());
+        writer.writeFieldEnd();
+    }
+
+    if (s.enableGoogle.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("enableGoogle"),
+            ThriftFieldType::T_BOOL,
+            16);
+
+        writer.writeBool(s.enableGoogle.ref());
+        writer.writeFieldEnd();
+    }
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readBootstrapSettings(
+    ThriftBinaryBufferReader & reader,
+    BootstrapSettings & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
     bool serviceHost_isset = false;
     bool marketingUrl_isset = false;
     bool supportUrl_isset = false;
     bool accountEmailDomain_isset = false;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 serviceHost_isset = true;
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.serviceHost = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 marketingUrl_isset = true;
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.marketingUrl = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 supportUrl_isset = true;
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.supportUrl = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 4) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 accountEmailDomain_isset = true;
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.accountEmailDomain = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 5) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.enableFacebookSharing = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 6) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.enableGiftSubscriptions = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 7) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.enableSupportTickets = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 8) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.enableSharedNotebooks = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 9) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.enableSingleNoteSharing = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 10) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.enableSponsoredAccounts = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 11) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.enableTwitterSharing = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 12) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.enableLinkedInSharing = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 13) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.enablePublicNotebooks = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 16) {
             if (fieldType == ThriftFieldType::T_BOOL) {
                 bool v;
-                r.readBool(v);
+                reader.readBool(v);
                 s.enableGoogle = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
-    if(!serviceHost_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("BootstrapSettings.serviceHost has no value"));
-    if(!marketingUrl_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("BootstrapSettings.marketingUrl has no value"));
-    if(!supportUrl_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("BootstrapSettings.supportUrl has no value"));
-    if(!accountEmailDomain_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("BootstrapSettings.accountEmailDomain has no value"));
+    reader.readStructEnd();
+    if (!serviceHost_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("BootstrapSettings.serviceHost has no value"));
+    if (!marketingUrl_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("BootstrapSettings.marketingUrl has no value"));
+    if (!supportUrl_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("BootstrapSettings.supportUrl has no value"));
+    if (!accountEmailDomain_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("BootstrapSettings.accountEmailDomain has no value"));
 }
 
-void writeBootstrapProfile(ThriftBinaryBufferWriter & w, const BootstrapProfile & s) {
-    w.writeStructBegin(QStringLiteral("BootstrapProfile"));
-    w.writeFieldBegin(QStringLiteral("name"), ThriftFieldType::T_STRING, 1);
-    w.writeString(s.name);
-    w.writeFieldEnd();
-    w.writeFieldBegin(QStringLiteral("settings"), ThriftFieldType::T_STRUCT, 2);
-    writeBootstrapSettings(w, s.settings);
-    w.writeFieldEnd();
-    w.writeFieldStop();
-    w.writeStructEnd();
+void BootstrapSettings::print(QTextStream & strm) const
+{
+    strm << "BootstrapSettings: {\n";
+    localData.print(strm);
+    strm << "    serviceHost = "
+        << serviceHost << "\n";
+    strm << "    marketingUrl = "
+        << marketingUrl << "\n";
+    strm << "    supportUrl = "
+        << supportUrl << "\n";
+    strm << "    accountEmailDomain = "
+        << accountEmailDomain << "\n";
+
+    if (enableFacebookSharing.isSet()) {
+        strm << "    enableFacebookSharing = "
+            << enableFacebookSharing.ref() << "\n";
+    }
+    else {
+        strm << "    enableFacebookSharing is not set\n";
+    }
+
+    if (enableGiftSubscriptions.isSet()) {
+        strm << "    enableGiftSubscriptions = "
+            << enableGiftSubscriptions.ref() << "\n";
+    }
+    else {
+        strm << "    enableGiftSubscriptions is not set\n";
+    }
+
+    if (enableSupportTickets.isSet()) {
+        strm << "    enableSupportTickets = "
+            << enableSupportTickets.ref() << "\n";
+    }
+    else {
+        strm << "    enableSupportTickets is not set\n";
+    }
+
+    if (enableSharedNotebooks.isSet()) {
+        strm << "    enableSharedNotebooks = "
+            << enableSharedNotebooks.ref() << "\n";
+    }
+    else {
+        strm << "    enableSharedNotebooks is not set\n";
+    }
+
+    if (enableSingleNoteSharing.isSet()) {
+        strm << "    enableSingleNoteSharing = "
+            << enableSingleNoteSharing.ref() << "\n";
+    }
+    else {
+        strm << "    enableSingleNoteSharing is not set\n";
+    }
+
+    if (enableSponsoredAccounts.isSet()) {
+        strm << "    enableSponsoredAccounts = "
+            << enableSponsoredAccounts.ref() << "\n";
+    }
+    else {
+        strm << "    enableSponsoredAccounts is not set\n";
+    }
+
+    if (enableTwitterSharing.isSet()) {
+        strm << "    enableTwitterSharing = "
+            << enableTwitterSharing.ref() << "\n";
+    }
+    else {
+        strm << "    enableTwitterSharing is not set\n";
+    }
+
+    if (enableLinkedInSharing.isSet()) {
+        strm << "    enableLinkedInSharing = "
+            << enableLinkedInSharing.ref() << "\n";
+    }
+    else {
+        strm << "    enableLinkedInSharing is not set\n";
+    }
+
+    if (enablePublicNotebooks.isSet()) {
+        strm << "    enablePublicNotebooks = "
+            << enablePublicNotebooks.ref() << "\n";
+    }
+    else {
+        strm << "    enablePublicNotebooks is not set\n";
+    }
+
+    if (enableGoogle.isSet()) {
+        strm << "    enableGoogle = "
+            << enableGoogle.ref() << "\n";
+    }
+    else {
+        strm << "    enableGoogle is not set\n";
+    }
+
+    strm << "}\n";
 }
 
-void readBootstrapProfile(ThriftBinaryBufferReader & r, BootstrapProfile & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeBootstrapProfile(
+    ThriftBinaryBufferWriter & writer,
+    const BootstrapProfile & s)
+{
+    writer.writeStructBegin(QStringLiteral("BootstrapProfile"));
+    writer.writeFieldBegin(
+        QStringLiteral("name"),
+        ThriftFieldType::T_STRING,
+        1);
+
+    writer.writeString(s.name);
+    writer.writeFieldEnd();
+
+    writer.writeFieldBegin(
+        QStringLiteral("settings"),
+        ThriftFieldType::T_STRUCT,
+        2);
+
+    writeBootstrapSettings(writer, s.settings);
+    writer.writeFieldEnd();
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readBootstrapProfile(
+    ThriftBinaryBufferReader & reader,
+    BootstrapProfile & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
     bool name_isset = false;
     bool settings_isset = false;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 name_isset = true;
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.name = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRUCT) {
                 settings_isset = true;
                 BootstrapSettings v;
-                readBootstrapSettings(r, v);
+                readBootstrapSettings(reader, v);
                 s.settings = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
-    if(!name_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("BootstrapProfile.name has no value"));
-    if(!settings_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("BootstrapProfile.settings has no value"));
+    reader.readStructEnd();
+    if (!name_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("BootstrapProfile.name has no value"));
+    if (!settings_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("BootstrapProfile.settings has no value"));
 }
 
-void writeBootstrapInfo(ThriftBinaryBufferWriter & w, const BootstrapInfo & s) {
-    w.writeStructBegin(QStringLiteral("BootstrapInfo"));
-    w.writeFieldBegin(QStringLiteral("profiles"), ThriftFieldType::T_LIST, 1);
-    w.writeListBegin(ThriftFieldType::T_STRUCT, s.profiles.length());
-    for(QList< BootstrapProfile >::const_iterator it = s.profiles.constBegin(), end = s.profiles.constEnd(); it != end; ++it) {
-        writeBootstrapProfile(w, *it);
-    }
-    w.writeListEnd();
-    w.writeFieldEnd();
-    w.writeFieldStop();
-    w.writeStructEnd();
+void BootstrapProfile::print(QTextStream & strm) const
+{
+    strm << "BootstrapProfile: {\n";
+    localData.print(strm);
+    strm << "    name = "
+        << name << "\n";
+    strm << "    settings = "
+        << settings << "\n";
+    strm << "}\n";
 }
 
-void readBootstrapInfo(ThriftBinaryBufferReader & r, BootstrapInfo & s) {
+////////////////////////////////////////////////////////////////////////////////
+
+void writeBootstrapInfo(
+    ThriftBinaryBufferWriter & writer,
+    const BootstrapInfo & s)
+{
+    writer.writeStructBegin(QStringLiteral("BootstrapInfo"));
+    writer.writeFieldBegin(
+        QStringLiteral("profiles"),
+        ThriftFieldType::T_LIST,
+        1);
+
+    writer.writeListBegin(ThriftFieldType::T_STRUCT, s.profiles.length());
+    for(const auto & value: qAsConst(s.profiles)) {
+        writeBootstrapProfile(writer, value);
+    }
+    writer.writeListEnd();
+
+    writer.writeFieldEnd();
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
+}
+
+void readBootstrapInfo(
+    ThriftBinaryBufferReader & reader,
+    BootstrapInfo & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
     bool profiles_isset = false;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_LIST) {
                 profiles_isset = true;
-                QList< BootstrapProfile > v;
+                QList<BootstrapProfile> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (BootstrapInfo.profiles)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (BootstrapInfo.profiles)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     BootstrapProfile elem;
-                    readBootstrapProfile(r, elem);
+                    readBootstrapProfile(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.profiles = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
-    if(!profiles_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("BootstrapInfo.profiles has no value"));
+    reader.readStructEnd();
+    if (!profiles_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("BootstrapInfo.profiles has no value"));
 }
 
+void BootstrapInfo::print(QTextStream & strm) const
+{
+    strm << "BootstrapInfo: {\n";
+    localData.print(strm);
+    strm << "    profiles = "
+        << "QList<BootstrapProfile> {";
+    for(const auto & v: profiles) {
+        strm << "    " << v << "\n";
+    }
+    strm << "}\n";
+    strm << "}\n";
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
 EDAMUserException::EDAMUserException() {}
-EDAMUserException::~EDAMUserException() throw() {}
+EDAMUserException::~EDAMUserException() noexcept {}
 EDAMUserException::EDAMUserException(const EDAMUserException& other) : EvernoteException(other)
 {
    errorCode = other.errorCode;
    parameter = other.parameter;
 }
-void writeEDAMUserException(ThriftBinaryBufferWriter & w, const EDAMUserException & s) {
-    w.writeStructBegin(QStringLiteral("EDAMUserException"));
-    w.writeFieldBegin(QStringLiteral("errorCode"), ThriftFieldType::T_I32, 1);
-    w.writeI32(static_cast<qint32>(s.errorCode));
-    w.writeFieldEnd();
-    if(s.parameter.isSet()) {
-        w.writeFieldBegin(QStringLiteral("parameter"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.parameter.ref());
-        w.writeFieldEnd();
+void writeEDAMUserException(
+    ThriftBinaryBufferWriter & writer,
+    const EDAMUserException & s)
+{
+    writer.writeStructBegin(QStringLiteral("EDAMUserException"));
+    writer.writeFieldBegin(
+        QStringLiteral("errorCode"),
+        ThriftFieldType::T_I32,
+        1);
+
+    writer.writeI32(static_cast<qint32>(s.errorCode));
+    writer.writeFieldEnd();
+
+    if (s.parameter.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("parameter"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.parameter.ref());
+        writer.writeFieldEnd();
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
 }
 
-void readEDAMUserException(ThriftBinaryBufferReader & r, EDAMUserException & s) {
+void readEDAMUserException(
+    ThriftBinaryBufferReader & reader,
+    EDAMUserException & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
     bool errorCode_isset = false;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I32) {
                 errorCode_isset = true;
-                EDAMErrorCode::type v;
-                readEnumEDAMErrorCode(r, v);
+                EDAMErrorCode v;
+                readEnumEDAMErrorCode(reader, v);
                 s.errorCode = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.parameter = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
-    if(!errorCode_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("EDAMUserException.errorCode has no value"));
+    reader.readStructEnd();
+    if (!errorCode_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("EDAMUserException.errorCode has no value"));
 }
 
+void EDAMUserException::print(QTextStream & strm) const
+{
+    strm << "EDAMUserException: {\n";
+    strm << "    errorCode = "
+        << errorCode << "\n";
+
+    if (parameter.isSet()) {
+        strm << "    parameter = "
+            << parameter.ref() << "\n";
+    }
+    else {
+        strm << "    parameter is not set\n";
+    }
+
+    strm << "}\n";
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
 EDAMSystemException::EDAMSystemException() {}
-EDAMSystemException::~EDAMSystemException() throw() {}
+EDAMSystemException::~EDAMSystemException() noexcept {}
 EDAMSystemException::EDAMSystemException(const EDAMSystemException& other) : EvernoteException(other)
 {
    errorCode = other.errorCode;
    message = other.message;
    rateLimitDuration = other.rateLimitDuration;
 }
-void writeEDAMSystemException(ThriftBinaryBufferWriter & w, const EDAMSystemException & s) {
-    w.writeStructBegin(QStringLiteral("EDAMSystemException"));
-    w.writeFieldBegin(QStringLiteral("errorCode"), ThriftFieldType::T_I32, 1);
-    w.writeI32(static_cast<qint32>(s.errorCode));
-    w.writeFieldEnd();
-    if(s.message.isSet()) {
-        w.writeFieldBegin(QStringLiteral("message"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.message.ref());
-        w.writeFieldEnd();
+void writeEDAMSystemException(
+    ThriftBinaryBufferWriter & writer,
+    const EDAMSystemException & s)
+{
+    writer.writeStructBegin(QStringLiteral("EDAMSystemException"));
+    writer.writeFieldBegin(
+        QStringLiteral("errorCode"),
+        ThriftFieldType::T_I32,
+        1);
+
+    writer.writeI32(static_cast<qint32>(s.errorCode));
+    writer.writeFieldEnd();
+
+    if (s.message.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("message"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.message.ref());
+        writer.writeFieldEnd();
     }
-    if(s.rateLimitDuration.isSet()) {
-        w.writeFieldBegin(QStringLiteral("rateLimitDuration"), ThriftFieldType::T_I32, 3);
-        w.writeI32(s.rateLimitDuration.ref());
-        w.writeFieldEnd();
+
+    if (s.rateLimitDuration.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("rateLimitDuration"),
+            ThriftFieldType::T_I32,
+            3);
+
+        writer.writeI32(s.rateLimitDuration.ref());
+        writer.writeFieldEnd();
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
 }
 
-void readEDAMSystemException(ThriftBinaryBufferReader & r, EDAMSystemException & s) {
+void readEDAMSystemException(
+    ThriftBinaryBufferReader & reader,
+    EDAMSystemException & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
     bool errorCode_isset = false;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_I32) {
                 errorCode_isset = true;
-                EDAMErrorCode::type v;
-                readEnumEDAMErrorCode(r, v);
+                EDAMErrorCode v;
+                readEnumEDAMErrorCode(reader, v);
                 s.errorCode = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.message = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_I32) {
                 qint32 v;
-                r.readI32(v);
+                reader.readI32(v);
                 s.rateLimitDuration = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
-    if(!errorCode_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("EDAMSystemException.errorCode has no value"));
+    reader.readStructEnd();
+    if (!errorCode_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("EDAMSystemException.errorCode has no value"));
 }
 
+void EDAMSystemException::print(QTextStream & strm) const
+{
+    strm << "EDAMSystemException: {\n";
+    strm << "    errorCode = "
+        << errorCode << "\n";
+
+    if (message.isSet()) {
+        strm << "    message = "
+            << message.ref() << "\n";
+    }
+    else {
+        strm << "    message is not set\n";
+    }
+
+    if (rateLimitDuration.isSet()) {
+        strm << "    rateLimitDuration = "
+            << rateLimitDuration.ref() << "\n";
+    }
+    else {
+        strm << "    rateLimitDuration is not set\n";
+    }
+
+    strm << "}\n";
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
 EDAMNotFoundException::EDAMNotFoundException() {}
-EDAMNotFoundException::~EDAMNotFoundException() throw() {}
+EDAMNotFoundException::~EDAMNotFoundException() noexcept {}
 EDAMNotFoundException::EDAMNotFoundException(const EDAMNotFoundException& other) : EvernoteException(other)
 {
    identifier = other.identifier;
    key = other.key;
 }
-void writeEDAMNotFoundException(ThriftBinaryBufferWriter & w, const EDAMNotFoundException & s) {
-    w.writeStructBegin(QStringLiteral("EDAMNotFoundException"));
-    if(s.identifier.isSet()) {
-        w.writeFieldBegin(QStringLiteral("identifier"), ThriftFieldType::T_STRING, 1);
-        w.writeString(s.identifier.ref());
-        w.writeFieldEnd();
+void writeEDAMNotFoundException(
+    ThriftBinaryBufferWriter & writer,
+    const EDAMNotFoundException & s)
+{
+    writer.writeStructBegin(QStringLiteral("EDAMNotFoundException"));
+    if (s.identifier.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("identifier"),
+            ThriftFieldType::T_STRING,
+            1);
+
+        writer.writeString(s.identifier.ref());
+        writer.writeFieldEnd();
     }
-    if(s.key.isSet()) {
-        w.writeFieldBegin(QStringLiteral("key"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.key.ref());
-        w.writeFieldEnd();
+
+    if (s.key.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("key"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.key.ref());
+        writer.writeFieldEnd();
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
 }
 
-void readEDAMNotFoundException(ThriftBinaryBufferReader & r, EDAMNotFoundException & s) {
+void readEDAMNotFoundException(
+    ThriftBinaryBufferReader & reader,
+    EDAMNotFoundException & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.identifier = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.key = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
+    reader.readStructEnd();
 }
 
+void EDAMNotFoundException::print(QTextStream & strm) const
+{
+    strm << "EDAMNotFoundException: {\n";
+
+    if (identifier.isSet()) {
+        strm << "    identifier = "
+            << identifier.ref() << "\n";
+    }
+    else {
+        strm << "    identifier is not set\n";
+    }
+
+    if (key.isSet()) {
+        strm << "    key = "
+            << key.ref() << "\n";
+    }
+    else {
+        strm << "    key is not set\n";
+    }
+
+    strm << "}\n";
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
 EDAMInvalidContactsException::EDAMInvalidContactsException() {}
-EDAMInvalidContactsException::~EDAMInvalidContactsException() throw() {}
+EDAMInvalidContactsException::~EDAMInvalidContactsException() noexcept {}
 EDAMInvalidContactsException::EDAMInvalidContactsException(const EDAMInvalidContactsException& other) : EvernoteException(other)
 {
    contacts = other.contacts;
    parameter = other.parameter;
    reasons = other.reasons;
 }
-void writeEDAMInvalidContactsException(ThriftBinaryBufferWriter & w, const EDAMInvalidContactsException & s) {
-    w.writeStructBegin(QStringLiteral("EDAMInvalidContactsException"));
-    w.writeFieldBegin(QStringLiteral("contacts"), ThriftFieldType::T_LIST, 1);
-    w.writeListBegin(ThriftFieldType::T_STRUCT, s.contacts.length());
-    for(QList< Contact >::const_iterator it = s.contacts.constBegin(), end = s.contacts.constEnd(); it != end; ++it) {
-        writeContact(w, *it);
+void writeEDAMInvalidContactsException(
+    ThriftBinaryBufferWriter & writer,
+    const EDAMInvalidContactsException & s)
+{
+    writer.writeStructBegin(QStringLiteral("EDAMInvalidContactsException"));
+    writer.writeFieldBegin(
+        QStringLiteral("contacts"),
+        ThriftFieldType::T_LIST,
+        1);
+
+    writer.writeListBegin(ThriftFieldType::T_STRUCT, s.contacts.length());
+    for(const auto & value: qAsConst(s.contacts)) {
+        writeContact(writer, value);
     }
-    w.writeListEnd();
-    w.writeFieldEnd();
-    if(s.parameter.isSet()) {
-        w.writeFieldBegin(QStringLiteral("parameter"), ThriftFieldType::T_STRING, 2);
-        w.writeString(s.parameter.ref());
-        w.writeFieldEnd();
+    writer.writeListEnd();
+
+    writer.writeFieldEnd();
+
+    if (s.parameter.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("parameter"),
+            ThriftFieldType::T_STRING,
+            2);
+
+        writer.writeString(s.parameter.ref());
+        writer.writeFieldEnd();
     }
-    if(s.reasons.isSet()) {
-        w.writeFieldBegin(QStringLiteral("reasons"), ThriftFieldType::T_LIST, 3);
-        w.writeListBegin(ThriftFieldType::T_I32, s.reasons.ref().length());
-        for(QList< EDAMInvalidContactReason::type >::const_iterator it = s.reasons.ref().constBegin(), end = s.reasons.ref().constEnd(); it != end; ++it) {
-            w.writeI32(static_cast<qint32>(*it));
+
+    if (s.reasons.isSet()) {
+        writer.writeFieldBegin(
+            QStringLiteral("reasons"),
+            ThriftFieldType::T_LIST,
+            3);
+
+        writer.writeListBegin(ThriftFieldType::T_I32, s.reasons.ref().length());
+        for(const auto & value: qAsConst(s.reasons.ref())) {
+            writer.writeI32(static_cast<qint32>(value));
         }
-        w.writeListEnd();
-        w.writeFieldEnd();
+        writer.writeListEnd();
+
+        writer.writeFieldEnd();
     }
-    w.writeFieldStop();
-    w.writeStructEnd();
+
+    writer.writeFieldStop();
+    writer.writeStructEnd();
 }
 
-void readEDAMInvalidContactsException(ThriftBinaryBufferReader & r, EDAMInvalidContactsException & s) {
+void readEDAMInvalidContactsException(
+    ThriftBinaryBufferReader & reader,
+    EDAMInvalidContactsException & s)
+{
     QString fname;
-    ThriftFieldType::type fieldType;
+    ThriftFieldType fieldType;
     qint16 fieldId;
     bool contacts_isset = false;
-    r.readStructBegin(fname);
+    reader.readStructBegin(fname);
     while(true)
     {
-        r.readFieldBegin(fname, fieldType, fieldId);
+        reader.readFieldBegin(fname, fieldType, fieldId);
         if (fieldType == ThriftFieldType::T_STOP) break;
         if (fieldId == 1) {
             if (fieldType == ThriftFieldType::T_LIST) {
                 contacts_isset = true;
-                QList< Contact > v;
+                QList<Contact> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_STRUCT) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (EDAMInvalidContactsException.contacts)"));
+                if (elemType != ThriftFieldType::T_STRUCT) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (EDAMInvalidContactsException.contacts)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
                     Contact elem;
-                    readContact(r, elem);
+                    readContact(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.contacts = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 2) {
             if (fieldType == ThriftFieldType::T_STRING) {
                 QString v;
-                r.readString(v);
+                reader.readString(v);
                 s.parameter = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
+            else {
+                reader.skip(fieldType);
+            }
+        }
+        else
         if (fieldId == 3) {
             if (fieldType == ThriftFieldType::T_LIST) {
-                QList< EDAMInvalidContactReason::type > v;
+                QList<EDAMInvalidContactReason> v;
                 qint32 size;
-                ThriftFieldType::type elemType;
-                r.readListBegin(elemType, size);
+                ThriftFieldType elemType;
+                reader.readListBegin(elemType, size);
                 v.reserve(size);
-                if(elemType != ThriftFieldType::T_I32) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("Incorrect list type (EDAMInvalidContactsException.reasons)"));
+                if (elemType != ThriftFieldType::T_I32) {
+                    throw ThriftException(
+                        ThriftException::Type::INVALID_DATA,
+                        QStringLiteral("Incorrect list type (EDAMInvalidContactsException.reasons)"));
+                }
                 for(qint32 i = 0; i < size; i++) {
-                    EDAMInvalidContactReason::type elem;
-                    readEnumEDAMInvalidContactReason(r, elem);
+                    EDAMInvalidContactReason elem;
+                    readEnumEDAMInvalidContactReason(reader, elem);
                     v.append(elem);
                 }
-                r.readListEnd();
+                reader.readListEnd();
                 s.reasons = v;
-            } else {
-                r.skip(fieldType);
             }
-        } else
-        {
-            r.skip(fieldType);
+            else {
+                reader.skip(fieldType);
+            }
         }
-        r.readFieldEnd();
+        else
+        {
+            reader.skip(fieldType);
+        }
+        reader.readFieldEnd();
     }
-    r.readStructEnd();
-    if(!contacts_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("EDAMInvalidContactsException.contacts has no value"));
+    reader.readStructEnd();
+    if (!contacts_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("EDAMInvalidContactsException.contacts has no value"));
 }
 
+void EDAMInvalidContactsException::print(QTextStream & strm) const
+{
+    strm << "EDAMInvalidContactsException: {\n";
+    strm << "    contacts = "
+        << "QList<Contact> {";
+    for(const auto & v: contacts) {
+        strm << "    " << v << "\n";
+    }
+    strm << "}\n";
+
+    if (parameter.isSet()) {
+        strm << "    parameter = "
+            << parameter.ref() << "\n";
+    }
+    else {
+        strm << "    parameter is not set\n";
+    }
+
+    if (reasons.isSet()) {
+        strm << "    reasons = "
+            << "QList<EDAMInvalidContactReason> {";
+        for(const auto & v: reasons.ref()) {
+            strm << "        " << v << "\n";
+        }
+        strm << "    }\n";
+    }
+    else {
+        strm << "    reasons is not set\n";
+    }
+
+    strm << "}\n";
+}
+
+////////////////////////////////////////////////////////////////////////////////
 
 /** @endcond */
-
-
 
 } // namespace qevercloud
