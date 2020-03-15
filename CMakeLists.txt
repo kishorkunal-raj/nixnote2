@@ -160,14 +160,24 @@ set (nixnote2_src
         src/oauth/oauthwindow.cpp
         src/hunspell/spellchecker.cpp
         src/qevercloud/QEverCloud/src/AsyncResult.cpp
+        src/qevercloud/QEverCloud/src/AsyncResult_p.cpp
+        src/qevercloud/QEverCloud/src/DurableService.cpp
         src/qevercloud/QEverCloud/src/EventLoopFinisher.cpp
-        src/qevercloud/QEverCloud/src/exceptions.cpp
-        src/qevercloud/QEverCloud/src/generated/constants.cpp
-        src/qevercloud/QEverCloud/src/generated/services.cpp
-        src/qevercloud/QEverCloud/src/generated/types.cpp
-        src/qevercloud/QEverCloud/src/http.cpp
-        src/qevercloud/QEverCloud/src/oauth.cpp
-        src/qevercloud/QEverCloud/src/services_nongenerated.cpp
+        src/qevercloud/QEverCloud/src/EverCloudException.cpp
+        src/qevercloud/QEverCloud/src/Exceptions.cpp
+        src/qevercloud/QEverCloud/src/Globals.cpp
+        src/qevercloud/QEverCloud/src/Http.cpp
+        src/qevercloud/QEverCloud/src/InkNoteImageDownloader.cpp
+        src/qevercloud/QEverCloud/src/Log.cpp
+        src/qevercloud/QEverCloud/src/OAuth.cpp
+        src/qevercloud/QEverCloud/src/Printable.cpp
+        src/qevercloud/QEverCloud/src/RequestContext.cpp
+        src/qevercloud/QEverCloud/src/Thumbnail.cpp
+        src/qevercloud/QEverCloud/src/generated/Constants.cpp
+        src/qevercloud/QEverCloud/src/generated/EDAMErrorCode.cpp
+        src/qevercloud/QEverCloud/src/generated/Servers.cpp
+        src/qevercloud/QEverCloud/src/generated/Services.cpp
+        src/qevercloud/QEverCloud/src/generated/Types.cpp
         src/reminders/reminderevent.cpp
         src/reminders/remindermanager.cpp
         src/settings/accountsmanager.cpp
@@ -352,25 +362,33 @@ set (nixnote2_hdr
         src/oauth/oauthtokenizer.h
         src/oauth/oauthwindow.h
         src/hunspell/spellchecker.h
-        src/qevercloud/QEverCloud/src/AsyncResult.h
-        src/qevercloud/QEverCloud/src/EventLoopFinisher.h
-        src/qevercloud/QEverCloud/src/EverCloudException.h
-        src/qevercloud/QEverCloud/src/exceptions.h
-        src/qevercloud/QEverCloud/src/generated/constants.h
-        src/qevercloud/QEverCloud/src/generated/EDAMErrorCode.h
-        src/qevercloud/QEverCloud/src/generated/services.h
-        src/qevercloud/QEverCloud/src/generated/types.h
-        src/qevercloud/QEverCloud/src/generated/types_impl.h
-        src/qevercloud/QEverCloud/src/http.h
-        src/qevercloud/QEverCloud/src/impl.h
-        src/qevercloud/QEverCloud/src/include/QEverCloud.h
-        src/qevercloud/QEverCloud/src/include/QEverCloudOAuth.h
-        src/qevercloud/QEverCloud/src/oauth.h
-        src/qevercloud/QEverCloud/src/Optional.h
-        src/qevercloud/QEverCloud/src/public.h
-        src/qevercloud/QEverCloud/src/qt4helpers.h
-        src/qevercloud/QEverCloud/src/thrift.h
-        src/qevercloud/tQEverCloud/src/humbnail.h
+        src/qevercloud/QEverCloud/headers/AsyncResult.h
+        src/qevercloud/QEverCloud/headers/DurableService.h
+        src/qevercloud/QEverCloud/headers/EventLoopFinisher.h
+        src/qevercloud/QEverCloud/headers/EverCloudException.h
+        src/qevercloud/QEverCloud/headers/Exceptions.h
+        src/qevercloud/QEverCloud/headers/Export.h
+        src/qevercloud/QEverCloud/headers/Globals.h
+        src/qevercloud/QEverCloud/headers/Helpers.h
+        src/qevercloud/QEverCloud/headers/InkNoteImageDownloader.h
+        src/qevercloud/QEverCloud/headers/Log.h
+        src/qevercloud/QEverCloud/headers/OAuth.h
+        src/qevercloud/QEverCloud/headers/Optional.h
+        src/qevercloud/QEverCloud/headers/Printable.h
+        src/qevercloud/QEverCloud/headers/QEverCloud.h
+        src/qevercloud/QEverCloud/headers/QEverCloudOAuth.h
+        src/qevercloud/QEverCloud/headers/RequestContext.h
+        src/qevercloud/QEverCloud/headers/Thumbnail.h
+        src/qevercloud/QEverCloud/headers/generated/Constants.h
+        src/qevercloud/QEverCloud/headers/generated/EDAMErrorCode.h
+        src/qevercloud/QEverCloud/headers/generated/Servers.h
+        src/qevercloud/QEverCloud/headers/generated/Services.h
+        src/qevercloud/QEverCloud/headers/generated/Types.h
+        src/qevercloud/QEverCloud/src/AsyncResult_p.h
+        src/qevercloud/QEverCloud/src/Http.h
+        src/qevercloud/QEverCloud/src/Impl.h
+        src/qevercloud/QEverCloud/src/Thrift.h
+        src/qevercloud/QEverCloud/src/generated/Types_io.h
         src/reminders/reminderevent.h
         src/reminders/remindermanager.h
         src/settings/accountsmanager.h
