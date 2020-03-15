@@ -16,18 +16,18 @@
 /**
  * This macro tells whether QEverCloud library was built with OAuth support
  */
-@QEVERCLOUD_HAS_OAUTH@
+#define QEVERCLOUD_HAS_OAUTH 1
 
 /**
  * This macro tells whether QEverCloud library uses QtWebEngine backend for
  * OAuth support (if it was built with OAuth support)
  */
-@QEVERCLOUD_USES_QT_WEB_ENGINE@
+#define QEVERCLOUD_USES_QT_WEB_ENGINE 0
 
 /**
  * This macro tells whether QEverCloud library was built with use of Q_NAMESPACE
  * and Q_ENUM_NS
  */
-@QEVERCLOUD_USES_Q_NAMESPACE@
+#define QEVERCLOUD_USES_Q_NAMESPACE 0
 
 #endif // QEVERCLOUD_VERSION_INFO_H

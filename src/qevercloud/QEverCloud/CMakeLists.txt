@@ -97,7 +97,7 @@ else()
   set(QEVERCLOUD_USES_Q_NAMESPACE "#define QEVERCLOUD_USES_Q_NAMESPACE 0")
 endif()
 
-configure_file(headers/VersionInfo.h.in
+configure_file(headers/VersionInfo.h
   ${PROJECT_BINARY_DIR}/VersionInfo.h @ONLY)
 list(APPEND ALL_HEADERS_AND_SOURCES ${PROJECT_BINARY_DIR}/VersionInfo.h)
 include_directories(${PROJECT_BINARY_DIR})
