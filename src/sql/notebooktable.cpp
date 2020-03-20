@@ -304,10 +304,10 @@ qint32 NotebookTable::add(qint32 l, Notebook &t, bool isDirty, bool isLocal) {
         }
 
         if (publishing.order.isSet()) {
-            NoteSortOrder::type order = publishing.order;
+            NoteSortOrder order = publishing.order;
             query.bindValue(":lid", lid);
             query.bindValue(":key", NOTEBOOK_PUBLISHING_ORDER);
-            query.bindValue(":data", order);
+            query.bindValue(":data", (int) order);
             query.exec();
         }
 
@@ -390,9 +390,10 @@ bool NotebookTable::get(Notebook &notebook, qint32 lid) {
             notebook.publishing = publishing;
             break;
         case (NOTEBOOK_PUBLISHING_ORDER): {
-            qint32 value = query.value(1).toInt();
+            NoteSortOrder value = (NoteSortOrder) (query.value(1).toInt());
             if (notebook.publishing.isSet())
                 publishing = notebook.publishing;
+
             publishing.order = NoteSortOrder::CREATED;
             if (value == NoteSortOrder::UPDATED) publishing.order = NoteSortOrder::UPDATED;
             if (value == NoteSortOrder::RELEVANCE) publishing.order = NoteSortOrder::RELEVANCE;

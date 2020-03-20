@@ -133,7 +133,7 @@ qint32 SharedNotebookTable::add(qint32 l, const SharedNotebook &t, bool isDirty)
         query.prepare("Insert into DataStore (lid, key, data) values (:lid, :key, :data)");
         query.bindValue(":lid", lid);
         query.bindValue(":key", SHAREDNOTEBOOK_PRIVILEGE);
-        qint32 priv = t.privilege;
+        auto priv = (qint32) t.privilege.ref();
         query.bindValue(":data", priv);
         query.exec();
     }
@@ -245,7 +245,7 @@ bool SharedNotebookTable::get(SharedNotebook &notebook, qint32 lid, QString user
         //     returnVal = true;
         //     break;
         case (SHAREDNOTEBOOK_PRIVILEGE): {
-            int priv = query.value(1).toInt();
+            SharedNotebookPrivilegeLevel priv = (SharedNotebookPrivilegeLevel) (query.value(1).toInt());
             notebook.privilege = SharedNotebookPrivilegeLevel::READ_NOTEBOOK;
             if (priv == SharedNotebookPrivilegeLevel::FULL_ACCESS)
                 notebook.privilege = SharedNotebookPrivilegeLevel::FULL_ACCESS;

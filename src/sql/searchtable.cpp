@@ -192,10 +192,10 @@ void SearchTable::add(qint32 l, SavedSearch &t, bool isDirty) {
     }
 
     if (t.format.isSet()) {
-        int format = t.format;
+        QueryFormat format = t.format.ref();
         query.bindValue(":lid", lid);
         query.bindValue(":key", SEARCH_FORMAT);
-        query.bindValue(":data", format);
+        query.bindValue(":data", (int) format);
         query.exec();
     }
 
@@ -245,7 +245,7 @@ bool SearchTable::get(SavedSearch &search ,qint32 lid) {
             search.query = query.value(1).toString();
             break;
         case (SEARCH_FORMAT):
-            qint32 value = query.value(1).toInt();
+            QueryFormat value = (QueryFormat) (query.value(1).toInt());
             search.format = QueryFormat::USER;
             if (value == QueryFormat::SEXP) search.format = QueryFormat::SEXP;
             break;

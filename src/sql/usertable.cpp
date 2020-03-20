@@ -142,7 +142,7 @@ void UserTable::updateUser(User &user) {
     if (user.privilege.isSet()) {
         query.prepare("Insert into UserTable (key, data) values (:key, :data);");
         query.bindValue(":key", USER_PRIVILEGE);
-        int priv = user.privilege;
+        int priv = (int) user.privilege.ref();
         query.bindValue(":data", priv);
         query.exec();
     }
@@ -461,7 +461,7 @@ void UserTable::getUser(User &user) {
             user.timezone = QVariant(query.value(1)).toString();
         }
         if (query.value(0) == USER_PRIVILEGE) {
-            int priv = QVariant(query.value(1)).toInt();
+            PrivilegeLevel priv = (PrivilegeLevel) (QVariant(query.value(1)).toInt());
             user.privilege = PrivilegeLevel::NORMAL;
             if (priv == PrivilegeLevel::ADMIN)
                 user.privilege = PrivilegeLevel::ADMIN;
