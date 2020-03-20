@@ -1222,7 +1222,7 @@ void SyncRunner::communicationErrorHandler() {
         apiRateLimitExceeded = true;
     }
     if (type == CommunicationError::EDAMUserException) {
-        if (comm->getLastErrorCode() == EDAMErrorCode::AUTH_EXPIRED) {
+        if (comm->getLastErrorCode() == ((int) EDAMErrorCode::AUTH_EXPIRED)) {
             global.accountsManager->setOAuthToken("");
         }
     }

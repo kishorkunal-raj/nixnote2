@@ -466,8 +466,8 @@ gcc {
     CONFIG += $$COMPILER_CONFIG
 }
 
-QMAKE_CXXFLAGS += -std=c++14 -g -O2  -Wformat -Werror=format-security
-QMAKE_LFLAGS += -Wl,-Bsymbolic-functions -Wl,-z,relro
+QMAKE_CXXFLAGS += -g -O2  -Wformat -Werror=format-security -std=c++14
+linux:QMAKE_LFLAGS += -Wl,-Bsymbolic-functions -Wl,-z,relro
 
 g++4 {
   # this is a guess, but "stack-protector-strong" may not be available yet
@@ -477,7 +477,7 @@ g++4 {
 }
 
 
-win32:QMAKE_CXXFLAGS +=-g -O2 --param=ssp-buffer-size=4 -Wformat -Werror=format-security
+win32:QMAKE_CXXFLAGS +=-g -O2 --param=ssp-buffer-size=4
 win32:QMAKE_LFLAGS += -Wl,-Bsymbolic-functions
 win32:DEFINES += SMTP_BUILD
 
