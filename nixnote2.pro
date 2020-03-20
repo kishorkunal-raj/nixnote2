@@ -169,7 +169,7 @@ SOURCES += \
     src/models/ntreemodel.cpp \
     src/oauth/oauthtokenizer.cpp \
     src/oauth/oauthwindow.cpp \
-    src/hunspell/spellchecker.cpp \      
+    src/hunspell/spellchecker.cpp \
     src/qevercloud/QEverCloud/src/AsyncResult.cpp \
     src/qevercloud/QEverCloud/src/AsyncResult_p.cpp \
     src/qevercloud/QEverCloud/src/DurableService.cpp \
