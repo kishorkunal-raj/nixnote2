@@ -20,7 +20,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "communicationerror.h"
 #include "src/logger/qslog.h"
-#include "src/qevercloud/QEverCloud/headers/generated/EDAMErrorCode.h"
 
 // Default constructor
 CommunicationError::CommunicationError(QObject *parent) :
@@ -47,10 +46,10 @@ bool CommunicationError::retry() {
 
 // reset class to given exception/error info
 void CommunicationError::resetTo(
-    CommunicationErrorType type,
-    int code,
-    const QString &message,
-    const QString &internalMessage) {
+        CommunicationErrorType type,
+        int code,
+        const QString &message,
+        const QString &internalMessage) {
     reset();
     this->type = type;
     this->code = code;
@@ -60,14 +59,14 @@ void CommunicationError::resetTo(
     QString msg(communicationErrorTypeToString(type));
 
     // followed by code
-    if (code != 0) {
+    if (((int) code) != 0) {
         msg.append("[");
         // for some type we have text table for codes
         if (type == CommunicationError::EDAMUserException) {
-            msg.append(edamErrorCodeToString(code));
+            msg.append(edamErrorCodeToString((qevercloud::EDAMErrorCode) code));
         } else {
             msg.append("code=");
-            msg.append(QString::number(code));
+            msg.append(QString::number((int) code));
         }
         msg.append("]");
     }
@@ -89,7 +88,7 @@ void CommunicationError::resetTo(
 }
 
 
-QString CommunicationError::edamErrorCodeToString(int code) {
+QString CommunicationError::edamErrorCodeToString(qevercloud::EDAMErrorCode code) {
     switch (code) {
         case qevercloud::EDAMErrorCode::UNKNOWN:
             return "UNKNOWN";
@@ -135,7 +134,7 @@ QString CommunicationError::edamErrorCodeToString(int code) {
             return "RATE_LIMIT_REACHED";
 
         default:
-            return QString("UNKNOWN(").append(QString::number(code)).append(")");
+            return QString("UNKNOWN(").append(QString::number((int) code)).append(")");
     }
 }
 

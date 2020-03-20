@@ -22,6 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define COMMUNICATIONERROR_H
 
 #include <QObject>
+#include "src/qevercloud/QEverCloud/headers/generated/EDAMErrorCode.h"
 
 
 //************************************************
@@ -54,14 +55,17 @@ public:
     void reset();
 
     void resetTo(
-        CommunicationErrorType type,
-        int code,
-        const QString &message,
-        const QString &internalMessage = QString());
+            CommunicationErrorType type,
+            int code,
+            const QString &message,
+            const QString &internalMessage = QString());
 
     bool retry();
+
     inline CommunicationErrorType getType() const { return type; };
+
     inline QString getMessage() const { return message; };
+
     inline int getCode() const { return code; };
 
 private:
@@ -71,12 +75,13 @@ private:
     QString message;
     QString internalMessage;
 
-    int code;                     // The EDAM error code
-    int retryCount;               // Current retry count
-    int maxRetryCount;            // Maximum number of times to retry
+    int code{};                     // The EDAM error code
+    int retryCount{};               // Current retry count
+    int maxRetryCount{};            // Maximum number of times to retry
 
     QString communicationErrorTypeToString(CommunicationErrorType type);
-    QString edamErrorCodeToString(int code);
+
+    static QString edamErrorCodeToString(qevercloud::EDAMErrorCode code);
 };
 
 #endif // COMMUNICATIONERROR_H
