@@ -129,6 +129,7 @@ bool CommunicationManager::initNoteStore() {
     QLOG_DEBUG() << "initNoteStore()";
 
     User user;
+    requestCtx = qevercloud::newRequestContext(authToken);
     if (!getUserInfo(user)) {
         QLOG_DEBUG() << "initNoteStore: fail";
         return false;
@@ -138,7 +139,6 @@ bool CommunicationManager::initNoteStore() {
     QString noteStoreUrl = QString("https://") + evernoteHost + noteStorePath;
 
     // QEverCloud 4.x: myNoteStore = new NoteStore(noteStoreUrl, authToken, this);
-    requestCtx = qevercloud::newRequestContext(authToken);
     myNoteStore = qevercloud::newNoteStore(noteStoreUrl, requestCtx, this);
 
     noteStore = myNoteStore;
@@ -164,11 +164,19 @@ bool CommunicationManager::getUserInfo(User &user) {
     QNetworkAccessManager::NetworkAccessibility accessibility = p->networkAccessible();
     // unfortunately it doesn't really seem to check the network availability
     qint64 time1 = QDateTime::currentMSecsSinceEpoch();
-    QLOG_DEBUG() << "Inside CommunicationManager::getUserInfo; networkAccessible=" << accessibility << ", timestamp=" << time1;
+
+    QString userStoreUrl("https://");
+    userStoreUrl.append(evernoteHost);
+    userStoreUrl.append("/edam/user");
+
+
+    QLOG_DEBUG() << "Inside CommunicationManager::getUserInfo; networkAccessible="
+                 << accessibility << ", timestamp=" << time1
+                 << ", evernoteHost=" << userStoreUrl;
 
 
     // QEverCloud 4.x: userStore = new UserStore(evernoteHost, authToken);
-    userStore = qevercloud::newUserStore(evernoteHost, requestCtx, this);
+    userStore = qevercloud::newUserStore(userStoreUrl, requestCtx, this);
 
 
     bool res = true;
