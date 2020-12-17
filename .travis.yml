@@ -3,6 +3,10 @@ compiler: gcc
 sudo: require
 dist: xenial
 
+arch:
+  - amd64
+  - ppc64le
+
 before_install:
   - sudo add-apt-repository ppa:nixnote/nixnote2-stable -y
   - sudo apt-get update -qq
